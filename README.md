@@ -6,7 +6,7 @@
 descargate el ZIP y en él encontrarás:
 - manual en pdf
 
-- binaries: ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. En principio para usar la libreria desde basic no lo necesitas, aunque si quieres incluir músicas nuevas hechas por ti tendrás que re-ensamblarla (es muy facil y el proceso se indica en el manual)
+- binaries: ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. En principio para probar la libreria desde basic no lo necesitas, aunque si quieres incluir músicas nuevas hechas por ti tendrás que re-ensamblarla (es muy facil y el proceso se indica en el manual). Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
 - gameexamples: un completo juego hecho ("mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. Tambien encontraras (en el .dsk de este juego) el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones.
 
