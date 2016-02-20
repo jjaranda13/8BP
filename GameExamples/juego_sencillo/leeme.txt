@@ -1,0 +1,8 @@
+en la carpeta basic he puesto el listado basic del juego
+
+en la carpeta dsk he metido el listado basic del juego, el loader y tambien los binarios necesarios:
+- la libreria 
+- el fichero de sprites. 
+- tambien tienes la herramienta spedit para hacer tus propios sprites
+
+empieza con esto y poco a poco (leyendo el libro) seras capaz de hacer tus propios sprites, ensamblarlos y usarlos 
