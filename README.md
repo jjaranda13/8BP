@@ -10,5 +10,28 @@ descargate el ZIP y en él encontrarás:
 
 - gameexamples: un completo juego hecho ("mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. Tambien encontraras (en el .dsk de este juego) el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones.
 
-
 Dentro de algun tiempo haré una nueva version de la libreria pero será retrocompatible, añadirá alguna de las funcionalidades que se indican en el capitulo 14 de mejoras futuras . La libreria estará viva y distribuiré siempre gratis mejoras y documentacion y juegos. Siempre estará todo a disposición de todos. Ese es el espiritu. compartir le da sentido a las creaciones
+
+22/02/2016 ACTUALIZACION v17 (retrocompatible) 
+==============================================
+
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: ahora se incluye 8bitsdepoder_v17.asm con mejoras en dos comandos (STARS y PRINTSPALL)
+
+- documentacion: disponible el manual v17, que incluye:
+
+  - explicacion adicional del comando MUSIC, por clarificar mas su funcionamiento 
+  - algun detalle mas en la explicacion de como hacer una cinta y un disco
+  - nuevo comportamiento de PRINTSPALL, en la guia de referencia. compatible con el uso anterior
+    ahora es capaz de imprimir en 0.7 ms menos de tiempo. no es una gran mejora pero todo suma.
+  - nuevo comportamiento de STARS, con unificacion de los dos bancos de estrellas en uno solo, de modo que ahora puede haber 
+    muchos planos de estrellas. compatible con el uso anterior, aunque ahora el significado del primer parametro ha cambiado
+
+
+
+
+
+
+
+
