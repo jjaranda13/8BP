@@ -1,0 +1,11 @@
+
+- explicacion adicional del comando MUSIC: esto puede ir a consejos y trucos en la web
+
+- algun detalle mas en la explicacion de como hacer una cinta y un disco
+
+- nuevo comportamiento de PRINTSPALL, en la guia de referencia. compatible con el uso anterior
+  ahora es capaz de imprimir en 0.7 ms menos de tiempo
+
+- nuevo comportamiento de STARS, con unificacion de los dos bancos de estrellas en uno solo, de modo que ahora puede haber 
+  muchos planos de estrellas. compatible con el uso anterior, aunque ahora el significado del primer parametro ha cambiado
+
