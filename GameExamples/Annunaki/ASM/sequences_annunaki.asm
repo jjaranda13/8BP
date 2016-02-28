@@ -16,3 +16,5 @@ org 33500;
 ; empezamos desde la secuencia 1
 
 ;--------------secuencias de animacion  --------
+dw MINAVE,MINAVEUP,0,0,0,0,0,0	  ;1
+dw MINAVE,0,0,0,0,0,0,0	  ;2
