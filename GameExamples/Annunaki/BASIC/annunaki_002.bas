@@ -49,7 +49,6 @@
 
 749' logica disparo (logica masiva)--------------------------
 750 if nd=0 then return else dc=dc mod 3 +1:rem dc-> disparo counter
-751 poke disparo+1,4: 
 752 dir=ddisp(dc):|COLSP,10-dc,@dcol%: if dcol <32 then 783
 770 |peek,dir,@yd%: if yd%<-4 then poke dir-1,0: |POKE,dir,200:nd=nd-1
 780 return
