@@ -29,7 +29,18 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
     muchos planos de estrellas. compatible con el uso anterior, aunque ahora el significado del primer parametro ha cambiado
 
 
+28/02/2016 ACTUALIZACION v18 (retrocompatible) 
+==============================================
 
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: ahora se incluye 8bitsdepoder_v18.asm con mejoras en COLSP y aumento de velocidad en STARS, mediante una optimización de cálculos
+
+- documentacion: disponible el manual v18, que incluye:
+  - explicacion adicional de la diferencia entre 8BP y un motor de juegos
+  - nuevo uso del comando COLSP, especificando el sprite 32 se puede acelerar
+  - explicaciones adicionales sobre el uso del flag de colision en tu personaje y disparos
+  - nuevos ejemplos en la tabla de velocidad de los comandos BASIC
 
 
 
