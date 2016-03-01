@@ -123,8 +123,8 @@
 1190 dirorig = buffer + yf*anchob+xf
 1200 dirdest = &C000  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + (anchob-1-xf)
 1210 a=(PEEK(dirorig) AND &X01010101)
-1220 b=(PEEK(dirorig) AND &X1010101)
-1230 a=a/2:b=b*2
+1220 b=(PEEK(dirorig) AND &X10101010)
+1230 a=a*2:b=b/2
 1240 byte=(a OR b)
 1250 REM locate 10,25 :print byte :rem "X:";xf;"Y";yf
 1260 POKE dirdest, byte

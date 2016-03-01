@@ -23,7 +23,7 @@ sprite0		db 1; status, es un byte de flags
 	 	   ; un 0 significa que no hay secuencia de animacion
 		db 0; identificador de frame en la secuencia de animacion[0..n]
 	    	; si sa secuencia de animacion es cero , este campo se ignora
-		dw MINAVE; como ejemplo he puesto la direccion de la imagen 0
+		dw 34000; como ejemplo he puesto la direccion de la imagen 0
 		; si hay una secuencia  de animacion asignada, entonces este dato es 
 		; redundante con el id_frame. Aun asi es necesario.
 		; Ademas si no hay secuencia es la unica forma de indicar cual es la imagen,

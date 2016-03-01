@@ -3,8 +3,8 @@
 30 CALL &BC02:'restaura paleta por defecto por si acaso
 40 INK 0,0:'fondo negro
 50 FOR j=0 TO 31:|SETUPSP,j,0,&X0:NEXT:'reset sprites
-60 |SETUPSQ,9,&894C,&8A70,&89DE,&8A70,0,0,0,0: REM soldado derecha
-70 |SETUPSQ,10,&8B02,&8C26,&8B94,&8C26,0,0,0,0: REM soldado izq
+60 |SETUPSQ,9,&8562,&85f4,&8562,&8686,0,0,0,0: REM soldado derecha
+70 |SETUPSQ,10,&8718,&87aa,&883c,&87aa,0,0,0,0: REM soldado izq
 80 |SETLIMITS,12,80,0,186: ' establecemos los limites de la pantalla de juego
 90 x=40:y=100:' coordenadas del personaje
 100 |SETUPSP,0,0,&1:' status del personaje

@@ -9,16 +9,16 @@
 
 
 org 33500
-read "sequences_annunaki.asm"
+read "sequences_juegosimple.asm"
 
 ;org 34000+420; ATENCION! si no vas a usar el layout pon 34000
 
 org 34000
-read "images_annunaki.asm"
+read "images_juegosimple.asm"
 ;---------------------TABLA DE SPRITES-------------------------
 ; esta parte es opcional. puedes manipular la tabla desde basic 
 ; usando SETUPSP y LOCATESP o bien directamente con POKE
 ; aunque con POKE no puedes insertar coordenadas negativas
 
 org 27000
-read "sprites_table_annunaki.asm"
+read "sprites_table_juegosimple.asm"

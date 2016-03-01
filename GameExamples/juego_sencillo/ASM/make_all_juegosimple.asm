@@ -8,10 +8,10 @@ read "make_codigo.asm"
 
 ;--------------------MUSICA------------------------------------
 ; incluye las canciones. 
-read "make_musica_annunaki.asm"
+read "make_musica_juegosimple.asm"
 
 ; ---------- GRAFICOS -------------------
 ; esta parte incluye imagenes y secuencias de animacion
 ; y la tabla de sprites inicializada con dichas imagenes y secuencias
-read "make_graficos_annunaki.asm"
+read "make_graficos_juegosimple.asm"
 
