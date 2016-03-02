@@ -45,4 +45,19 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
 
 
 
+02/03/2016 ACTUALIZACION v19 (retrocompatible) 
+==============================================
+
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: 
+  - ahora se incluye 8bitsdepoder_v19.asm con mejoras en COLSP y soporte de "secuencias de muerte"
+  - los directorios aparecen mejor organizados, de acuerdo a la recomendacion que se hace en el manual de 8BP 
+
+- documentacion: disponible el manual v19, que incluye:
+  - nuevo uso del comando COLSP, especificando el sprite 33 se puede acelerar reutilizando la variable de retorno
+  - soporte de secuencias de animacion "de muerte". Se trata de una secuencia de animacion, que tras recorrerla, un sprite queda desactivado
+  - recomendacion sobre directorios en los que almacenar los ficheros de tu proyecto
+
+
 
