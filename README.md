@@ -6,11 +6,11 @@
 descargate el ZIP y en él encontrarás:
 - manual en pdf
 
-- binaries: ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. En principio para probar la libreria desde basic no lo necesitas, aunque si quieres incluir músicas nuevas hechas por ti tendrás que re-ensamblarla (es muy facil y el proceso se indica en el manual). Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
+- libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, además del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
-- gameexamples: un completo juego hecho ("mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. Tambien encontraras (en el .dsk de este juego) el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones.
+- gameexamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes un completo juego  ("mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
 
-Dentro de algun tiempo haré una nueva version de la libreria pero será retrocompatible, añadirá alguna de las funcionalidades que se indican en el capitulo 14 de mejoras futuras . La libreria estará viva y distribuiré siempre gratis mejoras y documentacion y juegos. Siempre estará todo a disposición de todos. Ese es el espiritu. compartir le da sentido a las creaciones
+Las mejoras que vaya incorporando serán retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima versión de la libreria. La libreria estará viva y distribuiré siempre gratis mejoras y documentacion y juegos. Siempre estará todo a disposición de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 22/02/2016 ACTUALIZACION v17 (retrocompatible) 
 ==============================================
