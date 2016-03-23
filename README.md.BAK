@@ -1,43 +1,16 @@
 # 8BP
 8 bits de poder ( 8 bits of power)
 
-8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nació pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
+8BP nos proporciona una potente librería que nos permitirá realizar juegos profesionales desde el Basic, mientras que las operaciones más intensivas en el uso de CPU son interpretadas y ejecutadas en código máquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nació pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como verás todos los comandos nuevos tienen ese palito delante.
 
-descargate el ZIP y en el encontraras:
-
+descargate el ZIP y en él encontrarás:
 - manual en pdf
 
-- libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, ademas del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
+- libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, además del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
-- gameexamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes dos juegos para aprender y disfrutar con ellos
+- gameexamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes un completo juego  ("mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
 
- - "mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
- - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
- 
-Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estará viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
-
-
-23/03/2016 ACTUALIZACION V21 (retrocompatible) 
-==============================================
-He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
-
-- libreria: 
-  - ahora se incluye 8bitsdepoder_v21.asm con las siguientes mejoras 
-  	- COLSP : ahora puedes definir la sensibilidad de la collision (grado de solape entre sprites)
-  	- nuevo comando COLSPALL que permite acelerar la detecci�n de colisiones entre sprites y simplifica el BASIC necesario
-  	- nuevo bit de "colisionador" en el byte de status
-  - herramienta SPEDIT v5: ahora puedes "espejar" tu sprites sobre un eje central imaginario, una ayuda para dibujar sprites simetricos
-  
-- documentacion: disponible el manual v21, que incluye:
-	- SETUPSP,5,Vy,Vx: con un solo comando ahora actualizamos la Vy y la Vx, ahorrando casi 3 milisegundos
-	- STARS: comando mejorado, ahora realiza mejor el calculo cuando una estrella se sale por un limite y debe entrar por el lado opuesto
-  	- explicacion mas detallada de la tecnica de logicas masivas
-  	- nuevos consejos  de programacion
-  	- codigo del videojuego anunnaki
-  	- nuevos consejos sobre como editar musica para no tener problemas
-  	
-
-
+Las mejoras que vaya incorporando serán retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima versión de la libreria. La libreria estará viva y distribuiré siempre gratis mejoras y documentacion y juegos. Siempre estará todo a disposición de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
 08/03/2016 ACTUALIZACION v20 (retrocompatible) 
