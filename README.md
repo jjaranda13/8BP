@@ -25,7 +25,7 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
   - ahora se incluye 8bitsdepoder_v21.asm con las siguientes mejoras 
    	- SETUPSP,5,Vy,Vx: con un solo comando ahora actualizamos la Vy y la Vx, ahorrando casi 3 milisegundos
    	- STARS: comando mejorado, ahora realiza mejor el calculo cuando una estrella se sale por un limite y debe entrar por el lado
-    - herramienta SPEDIT v5: ahora puedes "espejar" tu sprites sobre un eje central imaginario, una ayuda para dibujar sprites simetricos
+  - herramienta SPEDIT v5: ahora puedes "espejar" tu sprites sobre un eje central imaginario, una ayuda para dibujar sprites simetricos
   
 - documentacion: disponible el manual v21, que incluye:
 	- SETUPSP,5,Vy,Vx: con un solo comando ahora actualizamos la Vy y la Vx, ahorrando casi 3 milisegundos
