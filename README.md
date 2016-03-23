@@ -1,7 +1,7 @@
 # 8BP
 8 bits de poder ( 8 bits of power)
 
-8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nació pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
+8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya naciÃ³ pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
 descargate el ZIP y en el encontraras:
 
@@ -14,7 +14,7 @@ descargate el ZIP y en el encontraras:
  - "mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
  - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
  
-Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estará viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
+Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
 23/03/2016 ACTUALIZACION V21 (retrocompatible) 
@@ -23,10 +23,9 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
 
 - libreria: 
   - ahora se incluye 8bitsdepoder_v21.asm con las siguientes mejoras 
-  	- COLSP : ahora puedes definir la sensibilidad de la collision (grado de solape entre sprites)
-  	- nuevo comando COLSPALL que permite acelerar la detecci�n de colisiones entre sprites y simplifica el BASIC necesario
-  	- nuevo bit de "colisionador" en el byte de status
-  - herramienta SPEDIT v5: ahora puedes "espejar" tu sprites sobre un eje central imaginario, una ayuda para dibujar sprites simetricos
+   	- SETUPSP,5,Vy,Vx: con un solo comando ahora actualizamos la Vy y la Vx, ahorrando casi 3 milisegundos
+   	- STARS: comando mejorado, ahora realiza mejor el calculo cuando una estrella se sale por un limite y debe entrar por el lado
+    - herramienta SPEDIT v5: ahora puedes "espejar" tu sprites sobre un eje central imaginario, una ayuda para dibujar sprites simetricos
   
 - documentacion: disponible el manual v21, que incluye:
 	- SETUPSP,5,Vy,Vx: con un solo comando ahora actualizamos la Vy y la Vx, ahorrando casi 3 milisegundos
@@ -48,15 +47,15 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
 - libreria: 
   - ahora se incluye 8bitsdepoder_v20.asm con las siguientes mejoras 
   	- COLSP : ahora puedes definir la sensibilidad de la collision (grado de solape entre sprites)
-  	- nuevo comando COLSPALL que permite acelerar la detecci�n de colisiones entre sprites y simplifica el BASIC necesario
+  	- nuevo comando COLSPALL que permite acelerar la detección de colisiones entre sprites y simplifica el BASIC necesario
   	- nuevo bit de "colisionador" en el byte de status
   
 - documentacion: disponible el manual v20, que incluye:
 	- COLSP : ahora puedes definir la sensibilidad de la collision (grado de solape entre sprites)
-  	- nuevo comando COLSPALL que permite acelerar la detecci�n de colisiones entre sprites y simplifica el BASIC necesario
+  	- nuevo comando COLSPALL que permite acelerar la detección de colisiones entre sprites y simplifica el BASIC necesario
   	- nuevo bit de "colisionador" en el byte de status
 
-con estas mejoras los juegos arcade ahora funcionan aun m�s rapido. Se incluye la demo de annunaki donde podeis comprobar el uso de estas mejoras
+con estas mejoras los juegos arcade ahora funcionan aun más rapido. Se incluye la demo de annunaki donde podeis comprobar el uso de estas mejoras
   
   
 
@@ -80,7 +79,7 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
 
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
 
-- libreria: ahora se incluye 8bitsdepoder_v18.asm con mejoras en COLSP y aumento de velocidad en STARS, mediante una optimización de cálculos
+- libreria: ahora se incluye 8bitsdepoder_v18.asm con mejoras en COLSP y aumento de velocidad en STARS, mediante una optimizaciÃ³n de cÃ¡lculos
 
 - documentacion: disponible el manual v18, que incluye:
   - explicacion adicional de la diferencia entre 8BP y un motor de juegos
