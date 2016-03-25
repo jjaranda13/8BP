@@ -4,20 +4,20 @@
 22 INK 0,0
 81 LOCATE 7,5:PEN 11:PRINT "ANUNNAKI"
 82 LOCATE 2,9:PEN 13:PRINT "nuestro pasado alien"
-
-100 locate 1, 18: pen 2
+100 LOCATE 1, 18: PEN 2
 280 PRINT"    is loading ...." 
 290 PRINT"" 
 300 PRINT" Jose Javier 
-310 print "       Garcia Aranda" 
-311 print ""
-315 print "      JJGA 2016 ";:PEN 2
-316 pen 3:PRINT "   8 Bits de Poder "; 
+310 PRINT "       Garcia Aranda" 
+311 PRINT ""
+315 PRINT "      JJGA 2016 ";:PEN 2
+316 PEN 3:PRINT "   8 Bits de Poder "; 
 318 xini=8*4:yini=11*8
 320 FOR y=yini TO yini+23-1
+321 dirdesty = &C000  + (INT (y / 8) * 80) + (INT(y MOD 8) * 2048)
 330 FOR x=xini TO xini+15
-360 dirdest = &C000  + (INT (y / 8) * 80) + (INT(y MOD 8) * 2048) +x
-361 read a
+360 dirdest=dirdesty+x
+361 READ a
 370 POKE dirdest, a
 380 NEXT
 390 NEXT
@@ -26,10 +26,6 @@
 1030 LOAD "!sprites.bin"    
 1035 LOAD "!music.bin"
 1040 RUN "!annu07.bas"   
-
-
-
-
 2000 'nave
 2010 DATA 0 , 0 , 16 , 48 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 
 2020 DATA 0 , 0 , 0 , 48 , 32 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 

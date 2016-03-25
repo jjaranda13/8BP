@@ -32,10 +32,12 @@
 301 INK 0,fondo
 310 anchob=ancho/2: altob=alto
 320 FOR y=0 TO altob-1
+321 dirorigy = buffer + y*anchob
+322 dirdesty= &C000  + (INT (y / 8) * 80) + (INT(y MOD 8) * 2048) 
 330 FOR x=0 TO anchob-1
 340 REM dirorig = buffer + (INT(y / 8) * 80) + (INT (y MOD 8) * 2048) +x
-350 dirorig = buffer + y*anchob+x
-360 dirdest = &C000  + (INT (y / 8) * 80) + (INT(y MOD 8) * 2048) +x
+350 dirorig = dirorigy+x
+360 dirdest =dirdesty+x
 370 POKE dirdest, PEEK(dirorig)
 380 NEXT
 390 NEXT
@@ -119,10 +121,12 @@
 1141 LOCATE 1,25:PRINT "flipping H..."
 1150 REM volcamos el sprite de buffer en pantalla flipeando
 1160 FOR yf=0 TO altob-1
+1161 dirorigy = buffer + yf*anchob
+1162 dirdesty = &C000  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) 
 1170 FOR xf=0 TO anchob-1 -mitad
 1180 REM dirorig = buffer + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) +xf
-1190 dirorig = buffer + yf*anchob+xf
-1200 dirdest = &C000  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + (anchob-1-xf)
+1190 dirorig = dirorigy + xf
+1200 dirdest = dirdesty + (anchob-1-xf)
 1210 a=(PEEK(dirorig) AND &X10101010)
 1220 b=(PEEK(dirorig) AND &X01010101)
 1230 a=a*2:b=b/2
@@ -135,10 +139,12 @@
 1300 REM ahora volcamos el sprite de pantalla en el buffer
 1310 LOCATE 1,25: PRINT "buffering..:"
 1320 FOR yf=0 TO altob-1
+1321 dirorigy = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048)
+1322 dirdesty = buffer  + yf*anchob
 1330 FOR xf=0 TO anchob-1
-1340 dirorig = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) +xf
+1340 dirorig = dirorigy+xf
 1350 REM dirdest = buffer  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
-1360 dirdest = buffer  + yf*anchob+xf
+1360 dirdest = dirdesty+xf
 1370 POKE dirdest, PEEK(dirorig)
 1380 REM locate 10,25 :print "X:";xf;"Y";yf
 1390 NEXT
@@ -152,10 +158,12 @@
 1441 LOCATE 1,25: PRINT "flipping V..."
 1450 REM volcamos el sprite de buffer en pantalla flipeando
 1460 FOR yf=0+mitad TO altob-1 
+1461 dirorigy = buffer + (altob-1-yf)*anchob
+1462 dirdesty = &C000  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) 
 1470 FOR xf=0 TO anchob-1
 1480 REM dirorig = buffer + (INT((altob-1-yf) / 8) * 80) + (INT ((altob-1-yf) MOD 8) * 2048) +xf
-1490 dirorig = buffer + (altob-1-yf)*anchob+xf
-1500 dirdest = &C000  + (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
+1490 dirorig = dirorigy+xf
+1500 dirdest = dirdesty+ xf
 1510 a=(PEEK(dirorig) AND &X10101010)
 1520 b=(PEEK(dirorig) AND &X01010101)
 1530 REM a=a/2:b=b*2
@@ -168,9 +176,11 @@
 1600 REM ahora volcamos el sprite de pantalla en el buffer
 1610 LOCATE 1,25: PRINT "buffering..:"
 1620 FOR yf=0 TO altob-1
+1621 dirorigy = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) 
+1622 dirdesty = buffer  + yf*anchob+xf
 1630 FOR xf=0 TO anchob-1
-1640 dirorig = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) +xf
-1650 dirdest = buffer  + yf*anchob+xf: REM (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
+1640 dirorig = dirorigy+xf
+1650 dirdest = dirdesty+xf: REM (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
 1660 POKE dirdest, PEEK(dirorig)
 1670 REM locate 10,25 :print "X:";xf;"Y";yf
 1680 NEXT
@@ -180,9 +190,11 @@
 1720 REM ------------ CLEAR SPRITE -------------------
 1730 LOCATE 1,25: PRINT "clearing.."
 1740 FOR yf=0 TO altob-1
+1741 dirorigy = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) 
+1742 dirdesty = buffer  + yf*anchob
 1750 FOR xf=0 TO anchob-1
-1760 dirorig = &C000 + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) +xf
-1770 dirdest = buffer  + yf*anchob+xf: REM (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
+1760 dirorig = dirorigy +xf
+1770 dirdest = dirdesty+xf: REM (INT (yf / 8) * 80) + (INT(yf MOD 8) * 2048) + xf
 1780 POKE dirdest, 0:POKE dirorig,0
 1790 REM locate 10,25 :print "X:";xf;"Y";yf
 1800 NEXT
