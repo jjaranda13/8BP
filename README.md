@@ -1,5 +1,5 @@
 # 8BP
-8 bits de poder ( 8 bits of power)
+8 bits de poder (8BP)
 
 8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya naciÃ³ pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
@@ -15,6 +15,24 @@ descargate el ZIP y en el encontraras:
  - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
+
+16/05/2016 ACTUALIZACION V22 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: 
+  - ahora se incluye 8bitsdepoder_v22.asm con las siguientes mejoras 
+   	- flag de sobreescritura en sprites, capacidad para imprimirse sobre un fondo reestableciendolo
+   	- colisiones entre sprites ahora pueden tener la forma del sprite y no una forma rectangular
+   	- los sprites se pueden imprimir ordenados por coordenada "Y", gracias a un nuevo parámetro en |PRINTSPALL. Ello permite solapes de sprites ordenados
+  - herramienta SPEDIT v6: ahora puedes dibujar sprites con capacidad de sobreescritura
+  
+- documentacion: disponible el manual v22, que incluye:
+	- seccion de sprites con sobreescritura
+	- sección de ordenamiento de sprites
+  	- comando |PRINTSPALL con nuevo parámetro
+  	- mas información sobre la memoria de video y los barridos de pantalla
+  	
 
 
 23/03/2016 ACTUALIZACION V21 (retrocompatible) 
