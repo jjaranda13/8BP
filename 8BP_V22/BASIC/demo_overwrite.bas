@@ -3,7 +3,7 @@
 30 CALL &6B78
 40 CALL &BC02:' default palete
 50 GOSUB 470:' paleta sobreescritura de 9 colores
-51 |music,1,5: on break gosub 5000
+51 |MUSIC,1,5: ON BREAK GOSUB 5000
 60 spsuelo=&84D0:sptierra=&8558
 70 sptejado=&85E0:sptejado1=&85BE
 80 sptronco=&84F2
@@ -69,9 +69,9 @@
 640 AMARILLO=10
 650 RETURN
 1000 REM llegamos aqui con el DECORADO TERMINADO. 
-1010 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT: 'reset sprites
-1020 |PRINTSPALL,0,1,0
-1021 personaje=31
+1010 FOR i=0 TO 31:|SETUPSP,i,0,0:|LOCATESP,i,0,0:NEXT: 'reset sprites    
+1020 |PRINTSPALL,1,1,0 
+1021 personaje=16
 1030 |SETUPSP,personaje,7,1:'secuencia soldado derecha
 1040 |SETUPSP,personaje,0,&X1001001
 1041 ' enemigos
@@ -89,9 +89,7 @@
 1110 IF INKEY(69)=0 THEN  Y=Y+1: 
 1120 ciclo=ciclo MOD 40 +1 :IF ciclo=40 THEN seq1=seq1 MOD 2 +1:v1=-v1:|SETUPSP,17,7,seq1:|SETUPSP,17,5,0,v1:seq2=seq2 MOD 2 +1:v2=-v2:|SETUPSP,18,7,seq2:|SETUPSP,18,5,0,v2
 1130 GOTO 1060
-
-
-5000 rem on break
-5010 |musicoff
-5020 CALL &BC02:pen 1:' default palete
-5020 end
+5000 REM on break
+5010 |MUSICOFF
+5020 CALL &BC02:PEN 1:' default palete    
+5030 END

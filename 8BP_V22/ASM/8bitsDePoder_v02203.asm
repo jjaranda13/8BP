@@ -2653,10 +2653,13 @@ get_offsets
 
 
 ;=============================================================================================================
-; _PRINT_SPRITES(ordenar, anima, sync)   PS2
+; _PRINT_SPRITES(spriteid_inicial_orden, anima, sync)   PS2
 ;=============================================================================================================
 ; esta rutina pinta todos los sprites activos
 ; puede sincronizar si se lo indicamos con sync!=0
+; puede animar los sprites antes de imprimirlos si anima!=0 (vale 1 o mayor)
+; puede ordenar por coord y a partir del sprite id inicial que se indique.
+; si sprite >31 entonces no se ordena y se imprimen secuencialmente
 ;
 ; variables locales
 ;-------------------------------------
@@ -2716,12 +2719,13 @@ PS2_noparam
 		
 PS2_mas		ld a, (PS2_flag_orden)
 		and a
-		cp 31
-	 	JR NC,PS2_ns
-		;JR Z, PS2_ns; si es cero es que no sort
+		;cp 31 ; si Sprite>=31  no se ordena nada, se recorre en modo secuencial
+	 	;JR NC,PS2_ns ; ns es NO SORT = no ordenar. en ese caso se recorren secuencialmente
+
+		JR Z, PS2_ns; si es cero es que no sort
 
 		; ordenamiento de la tabla de sprites
-		ld a,1
+		ld a,1; modo ordenar por coord Y
 		ld (SOR_mode),a
 		call _SORTY
 		;------------
@@ -3022,7 +3026,7 @@ SOR_count	db 0; contador de sprites a ordenar. en principio solo 16
 SOR_ant		dw 0; direccion de coordy de sprite anterior
 SOR_sig		dw 0; direccion de coordy de sprite siguiente
 SOR_ini		dw 0; direccion del sprite inicial
-SOR_fin		dw 0; direccion del sprite final
+;SOR_fin		dw 0; direccion del sprite final
 
 ;variables locales para modo=1 (orden)
 ;-------------------------------------
@@ -3085,29 +3089,40 @@ SOR_bucle	push hl; guardo ant
 		ld (HL),0; no hay siguiente
 		ld hl,27001 
 		ld (SOR_ini), hl; 
-		ld HL, 27497
-		ld (SOR_fin), hl
+
+
+		;ld HL, 27497
+		;ld (SOR_fin), hl ; NO ES NECESARIO, NO SE USA
 		ret
 		
 SOR_orden	
 
 
-		; DEFAULT VALUE 15
-		;ld a, 15; solo se ordenan 16. En realidad son 15 vueltas pero en la 
 		ld a,31
-		; vuelta 0 se compara el 16 con el 17
-		; vuelta 1 se compara el 17 con el 18
-		; vuelta 14 se esta comparando el 30 con el 31
+		; vuelta 0 se compara el 0 con el 1
+		; vuelta 30 se compara el 30 con el 31
+		; aun asi debo poner a=31, porque si no falla cuando spinicial=0
+
 		; en cada ordenacion se considera un sprite y el siguiente de modo que son 15 iteraciones como mucho
 		ld (SOR_count), a
 		; debo recorrer desde el primero buscando un fallo de ordenacion y cambiarlo
-		ld a, (PS2_flag_orden)
-		ld h,a
-		ld e,16
-		call _mul8bit;HL=H*E
-		ld bc, 27001
-		add hl,bc
+		;ld a, (PS2_orden)
+		;and a
+		;JR NZ, SOR_noini
+		ld hl, (SOR_ini)
+		;JR SOR_bucley
+
+SOR_noini	;inc a
+		;ld h,a
+		;ld e,16
+		;call _mul8bit;HL=H*E
+		;ld bc, 27001; asi si A=0 entonces estamos en 27001. si A es 31 no tiene sentido y no llegamos aqui
+		;add hl,bc
+		;ahora HL apunta a coordy del primer sprite a ordenar
 		;ld HL, 27257;(SOR_ini); ahora HL apunta a coordy del primer sprite. 27257 es el 16
+		
+		;ld hl, (SOR_ini)
+		
 
 SOR_bucley	;jp SOR_finbuc
 		ld (SOR_ant), HL
@@ -3130,9 +3145,9 @@ SOR_bucley	;jp SOR_finbuc
 		inc hl
 		ld d,(HL)
 
-		; si de es cero es que ya hemos terminado? pues si pero es imposible que sea cero si solo hay
-		;15 vueltas 
+		; si de es cero es que ya hemos terminado
 		; si el contador y el valor inicial de HL son coherentes no ocurrira !!!
+
 		ld bc,0
 		and a
 		ex hl, de
@@ -3162,6 +3177,7 @@ SOR_bucley	;jp SOR_finbuc
 
 		;ld hl, (SOR_yant)
 		;ld (SOR_ysig), bc; no hace falta
+		and a; acarreo a cero
 		sbc hl, bc; yant debe ser menor que ysig
 	
 		;ld a,(SOR_yant)
@@ -3195,13 +3211,31 @@ SOR_fallo
 		
 		; voy a corregir al sprite0 que ahora debe apuntar a sprite2
 		;-------------------------------------------------------------------------
+		; ojo, solo si existe!!!!
 		ld HL, (SOR_ant)
 		ld bc, 10
 		add hl, bc
 		ld e,(HL)
 		inc hl
 		ld d,(HL); ahora en de esta la direccion del sprite0
+		;de puede ser cero!!!
 		ex hl, de
+
+		;ld (SOR_buffer),hl; he almacenado la direccion "anterior", la del sprite0
+
+
+		ld bc, 0
+		and a 
+		sbc HL,bc
+		
+		JR NZ, SOR_nocero
+		; SOR_ANT era el primero! y ahora debe ser sor_sig		
+
+		ld hl, (SOR_sig)
+		ld (SOR_ini), hl; se usa SOR_ini como direccion del primer sp a imprimir
+		JR SOR_cero
+
+SOR_nocero	
 		ld bc, 12
 		add hl, bc
 		; ahora debo meter en (hl) la direccion de sprite2
@@ -3211,7 +3245,7 @@ SOR_fallo
 		ld (HL), d
 
 
-		; ahora voy a almacenar los datos de sprite1 en un buffer
+SOR_cero	; ahora voy a almacenar los datos de sprite1 en un buffer 
 		;--------------------------------------------------------
 		ld HL, (SOR_ant)
 		ld bc, 10
@@ -3220,7 +3254,7 @@ SOR_fallo
 		ld c,(HL)
 		inc hl
 		ld b, (HL)
-		ld (SOR_buffer),bc; he almacenado la direccion "anterior", la del sprite0
+		ld (SOR_buffer),bc; he almacenado la direccion "anterior", la del sprite0 (que puede ser 0)
 
 		; HL esta apuntando a anterior
 
@@ -3253,7 +3287,7 @@ SOR_fallo
 		
 		ld e, (HL)
 		inc hl
-		ld d,(HL); ahora en de esta la dir de sprite3
+		ld d,(HL); ahora en de esta la dir de sprite3 (puede ser 0)
 
 		ld hl, (SOR_ant)
 		ld bc, 12
@@ -3279,7 +3313,7 @@ SOR_fallo
 		;ld bc, 12
 		;add hl, bc
 		
-		inc hl
+		inc hl; con esto ya tengo hl colocado en sp2 dir sig
 
 
 		ld bc, (SOR_ant)
