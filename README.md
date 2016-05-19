@@ -16,6 +16,20 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+19/05/2016 ACTUALIZACION V22b (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: 
+  - ahora se incluye 8bitsdepoder_v2204.asm con las siguientes mejoras 
+  	- la impresion ordenada de sprites es mas rapida (0.4ms mas rapida)
+  	- el parametro de ordenacion ahora permite ordenar la lista de sprites parcialmente, de modo que puedes imprimir un subconjunto de sprites ordenado y otro de forma secuencial.
+ 
+- manual v22 actualizado, indicando los
+	- impresion ordenada de sprites parcial, configurable con un parametro en PRINTSPALL
+	- algunos tiempos de ejecucion, comparando impresion ordenada con secuencial e impresion con/sin sobreescritura 
+
+
 16/05/2016 ACTUALIZACION V22 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
