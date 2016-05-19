@@ -2653,13 +2653,13 @@ get_offsets
 
 
 ;=============================================================================================================
-; _PRINT_SPRITES(spriteid_inicial_orden, anima, sync)   PS2
+; _PRINT_SPRITES(spriteid_final_orden, anima, sync)   PS2
 ;=============================================================================================================
 ; esta rutina pinta todos los sprites activos
 ; puede sincronizar si se lo indicamos con sync!=0
 ; puede animar los sprites antes de imprimirlos si anima!=0 (vale 1 o mayor)
-; puede ordenar por coord y a partir del sprite id inicial que se indique.
-; si sprite >31 entonces no se ordena y se imprimen secuencialmente
+; puede ordenar por coord y desde el sprite 0 hasta el sprite que se indique
+; si sprite_id_final =0 no hay ordenamiento y se recorre secuencialmente (mas rapido)
 ;
 ; variables locales
 ;-------------------------------------
@@ -2674,7 +2674,7 @@ PS2_flag_sync	db 0;
 
 PS2_flag_solape	db 0;flag de primera y segunda pasada
 
-PS2_flag_orden	db 0; flag de ordenar y recorrer en orden
+PS2_orden	db 0; flag de ordenar y recorrer en orden
 
 ;PS2_dirini	dw 0
 ;function body
@@ -2697,7 +2697,7 @@ PS2:
 		;cp a,0
 		;and A ; es como cp a,0 pero consume solo 1 ciclo.
 		;ld (PS2_flag_orden),a
-		ld (PS2_flag_orden),a
+		ld (PS2_orden),a
 
 
 
@@ -2717,7 +2717,7 @@ PS2_noparam
 		call NZ, _ANIMA_ALL
 
 		
-PS2_mas		ld a, (PS2_flag_orden)
+PS2_mas		ld a, (PS2_orden)
 		and a
 		;cp 31 ; si Sprite>=31  no se ordena nada, se recorre en modo secuencial
 	 	;JR NC,PS2_ns ; ns es NO SORT = no ordenar. en ese caso se recorren secuencialmente
@@ -3053,6 +3053,16 @@ SOR_default
 
 		ld HL, _spr_sprites_table+1; coordy
 SOR_bucle	push hl; guardo ant
+
+		; reset status
+		;-------------
+		; esto lo hago porque solo se invoca este ordenamiento default al invocar 
+		; la instalacion de comandos RSX
+		dec hl
+		ld (HL), 0
+		inc hl
+		;------------
+
 		ld bc, 10
 		add HL,bc; posicion 11 y 12
 		ld bc ,(SOR_ant) ;  "anterior"
@@ -3098,12 +3108,10 @@ SOR_bucle	push hl; guardo ant
 SOR_orden	
 
 
-		ld a,31
-		; vuelta 0 se compara el 0 con el 1
-		; vuelta 30 se compara el 30 con el 31
-		; aun asi debo poner a=31, porque si no falla cuando spinicial=0
+		;ld a,10;31; contador
+		ld a,(PS2_orden); numero de sprites a ordenar desde 0 hasta PS2_orden
 
-		; en cada ordenacion se considera un sprite y el siguiente de modo que son 15 iteraciones como mucho
+		; en cada ordenacion se considera un sprite y el siguiente 
 		ld (SOR_count), a
 		; debo recorrer desde el primero buscando un fallo de ordenacion y cambiarlo
 		;ld a, (PS2_orden)
@@ -3148,17 +3156,23 @@ SOR_bucley	;jp SOR_finbuc
 		; si de es cero es que ya hemos terminado
 		; si el contador y el valor inicial de HL son coherentes no ocurrira !!!
 
-		ld bc,0
-		and a
-		ex hl, de
-		sbc hl,bc
-		JR Z, SOR_RET
-		ex hl,de
-
+		; ----check fin
+		;ld bc,0
+		;and a
+		;ex hl, de
+		;sbc hl,bc
+		;JR Z, SOR_RET
+		;ex hl,de
+		;-------------
 
 
 		ld (SOR_sig), de; lo guardo				
-
+		; -----optimizacion
+		;ld a, (SOR_count)
+		;cp 20
+		
+		;JR C, SOR_finbuc
+		;-------fin optimizacion
 
 		ld hl, (SOR_yant)
 		;bit 7,h

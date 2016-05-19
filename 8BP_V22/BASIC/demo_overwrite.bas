@@ -70,16 +70,16 @@
 650 RETURN
 1000 REM llegamos aqui con el DECORADO TERMINADO. 
 1010 FOR i=0 TO 31:|SETUPSP,i,0,0:|LOCATESP,i,0,0:NEXT: 'reset sprites    
-1020 |PRINTSPALL,1,1,0 
-1021 personaje=16
+1020 |PRINTSPALL,3,1,0       
+1021 personaje=0
 1030 |SETUPSP,personaje,7,1:'secuencia soldado derecha
 1040 |SETUPSP,personaje,0,&X1001001
 1041 ' enemigos
 1042 v1=-1:v2=1:seq1=2:seq2=1
-1043 |SETUPSP,17,7,seq1:|SETUPSP,17,0,&X1011101:|LOCATESP,17,160,70:|SETUPSP,17,5,0,v1      
-1044 |SETUPSP,18,7,seq2:|SETUPSP,18,0,&X1011101:|LOCATESP,18,120,10:|SETUPSP,18,5,0,v2
+1043 |SETUPSP,1,7,seq1:|SETUPSP,1,0,&X1011101:|LOCATESP,1,160,70:|SETUPSP,1,5,0,v1   
+1044 |SETUPSP,2,7,seq2:|SETUPSP,2,0,&X1011101:|LOCATESP,2,120,10:|SETUPSP,2,5,0,v2  
 1045 caldero=&896E
-1046 |SETUPSP,19,9,caldero:|SETUPSP,19,0,&X1000001:|LOCATESP,19,150,40
+1046 |SETUPSP,3,9,caldero:|SETUPSP,3,0,&X1000001:|LOCATESP,3,150,40   
 1050 X=20:Y=100: dir=0: ciclo=0
 1060 |LOCATESP,personaje,y,x
 1070 |PRINTSPALL: |AUTOALL
@@ -87,8 +87,21 @@
 1090 IF INKEY(34)=0 THEN  X=X-1:|ANIMA,personaje: IF dir<>1 THEN dir=1:|SETUPSP,personaje,7,2:x=x+1
 1100 IF INKEY(67)=0 THEN  Y=Y-1: 
 1110 IF INKEY(69)=0 THEN  Y=Y+1: 
-1120 ciclo=ciclo MOD 40 +1 :IF ciclo=40 THEN seq1=seq1 MOD 2 +1:v1=-v1:|SETUPSP,17,7,seq1:|SETUPSP,17,5,0,v1:seq2=seq2 MOD 2 +1:v2=-v2:|SETUPSP,18,7,seq2:|SETUPSP,18,5,0,v2
+1120 ciclo=ciclo MOD 40 +1 :IF ciclo=40 THEN seq1=seq1 MOD 2 +1:v1=-v1:|SETUPSP,1,7,seq1:|SETUPSP,1,5,0,v1:seq2=seq2 MOD 2 +1:v2=-v2:|SETUPSP,2,7,seq2:|SETUPSP,2,5,0,v2           
 1130 GOTO 1060
+3000 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset     
+3001 |PRINTSPALL,4,0,0    
+3100 a!= TIME
+3200 FOR i=1 TO 1000
+3300 |PRINTSPALL
+3400 NEXT
+3500 b!=TIME
+3600 PRINT (b!-a!)
+3700 c!=1000/((b!-a!)*1/300)
+3800 PRINT c, "fps"
+3900 d!=c!/60
+4000 PRINT "puedes ejecutar ",d!, "comandos por barrido (1/50 seg)"
+4100 PRINT "el comando tarda ";((b!-a!)/300 -0.47);"milisegundos"    
 5000 REM on break
 5010 |MUSICOFF
 5020 CALL &BC02:PEN 1:' default palete    
