@@ -79,10 +79,10 @@
 ; 34000 +---------- 
 ;       |  hasta 31 secuencias de animacion de 8 frames (496 bytes)
 ; 33500 +---------- 
-;       | canciones (1.5kB para musica)       
+;       | canciones (1.25kB para musica)       
 ;       |		       
-; 32000 +----------
-;       |  rutinas 8BP   ( y sobran 500 bytes para ampliaciones)
+; 32250 +----------
+;       |  rutinas 8BP  (5250 bytes)
 ;       |	 aqui estan todas las rutinas y la tabla de sprites
 ;       |        incluye el player de musica "wyz"
 ; 27000 +---------- 
@@ -2731,7 +2731,7 @@ PS2_mas		ld a, (PS2_orden)
 		;------------
 
 		ld de, PS2_sort
-		ld (PS2_sd+1), de
+		ld (PS2_sd+1), de; para rellenar un JR PS2_sort
 		ld de, PS2_sortsig
 		ld (PS2_sig+1),de
 		ld bc, (SOR_ini)
@@ -2739,7 +2739,7 @@ PS2_mas		ld a, (PS2_orden)
 		ld (PS2_dini+1), bc 
 		JR PS2_chksyn
 
-PS2_ns		
+PS2_ns		; modo ns ("no SORT") (no se llama a SORTY y se recorre secuencialmente)
 		ld de, PS2_nosort
 		ld (PS2_sd+1), de
 		ld de, PS2_nosortsig
