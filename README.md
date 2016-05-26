@@ -16,6 +16,18 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+26/05/2016 ACTUALIZACION V22.06 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
+
+- libreria: 
+	- ahora se incluye 8bitsdepoder_v2206.asm con las siguientes mejoras 
+  	- impresion de sprites normales y transparentes más rapida (en un soldado de 12x24 ahora es 0.5 ms mas rápida)
+  	
+- manual v22 actualizado, 
+	- corregida la relacion entre impresión transparente versus impresion normal, que ahora es de 1.5 
+	
+	
 19/05/2016 ACTUALIZACION V22b (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
