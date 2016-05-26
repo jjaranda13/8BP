@@ -789,14 +789,14 @@ PNT_loop_alto
  		push de; pantalla
 	
 PNT_loop_ancho      
-		ld a,(SPR_anchofinal); esto es mas rapido que LD A,C
-
+		ld a,b;(SPR_anchofinal); esto es mas rapido que LD A,C
+		ld b,0
 ;PNT_NOP1	NOP; ex de,hl; para pintar en el buffer en lugar de en pantalla					***
 PNT_scanh
-		ldi; es mas rapido que ldir usando a como contador
-		dec a
-		jr nz, PNT_scanh
-	
+		ldir; es mas rapido que ldir usando a como contador
+		;dec a
+		;jr nz, PNT_scanh
+		ld b,a
 ;PNT_NOP2	NOP; ex de,hl; para pintar en el buffer en lugar de en pantalla					***
 		; si no se ha transferido todo el ancho
 		; debo sumar a HL lo que falta
@@ -868,7 +868,7 @@ PTR_loop_alto
  		push de; pantalla
 	
 PTR_loop_ancho      
-		ld a,(SPR_anchofinal); esto es mas rapido que LD A,C
+		ld a,c;(SPR_anchofinal); esto es mas rapido que LD A,C falso
 		ld b,a;***
 
 ;PTR_NOP1	NOP; ex de,hl; para pintar en el buffer en lugar de en pantalla					***
