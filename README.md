@@ -16,6 +16,18 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+07/06/2016 ACTUALIZACION V23 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). La documentacion no ha sido actualizada porque los cambios no afectan a la documentacion.
+
+- libreria: ahora se incluye 8bitsdepoder_v23.asm con las siguientes mejoras 
+  	- gestion de interrupciones mejorada: ahora la musica funciona mejor, mas fluida, siempre a la misma velocidad
+- juegos:
+	- he añadido una version del anunnaki en la que uso la version v23. El programa BASIC es el mismo, pero con esta version de la libreria, el juego funciona mejor. los sprites se imprimen algo mas deprisa y la musica suena con fluidez y sin que pueda relentizarse en ningun momento
+
+
+
+
 26/05/2016 ACTUALIZACION V22.06 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria).
