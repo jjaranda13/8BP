@@ -16,6 +16,19 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+
+14/07/2016 ACTUALIZACION V23b (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v23b.asm con las siguientes mejoras 
+  	- comando |COLAY permite definir un umbral ASCII de colision, de modo que podemos usar elementos que tengan asociada una letra en el layout que sea considerada como el espacio en blanco de cara a considerar colision. muy util en sobreescritura
+  	
+- nuevo directorio de demos:
+	- he añadido un directorio con demos hechas con 8BP, como un repositorio de ejemplos sencillos y didácticos que ire ampliando
+
+
+
 07/06/2016 ACTUALIZACION V23 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). La documentacion no ha sido actualizada porque los cambios no afectan a la documentacion.
