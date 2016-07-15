@@ -1,7 +1,7 @@
 # 8BP
 8 bits de poder (8BP)
 
-8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya naciÃ³ pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
+8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nacio pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
 descargate el ZIP y en el encontraras:
 
