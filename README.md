@@ -5,14 +5,16 @@
 
 descargate el ZIP y en el encontraras:
 
-- manual en pdf
+- manual en .pdf y en .docx
 
 - libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, ademas del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
-- gameexamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes dos juegos para aprender y disfrutar con ellos
+- GameExamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes dos juegos para aprender y disfrutar con ellos
 
  - "mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
  - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
+
+- DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
