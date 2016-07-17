@@ -1,10 +1,10 @@
 ; si ensamblas esto independientemente
 ; deberia ser al menos donde acaba el codigo de 8bp y del player, comprobando
 ; donde se ensambla la etiqueta _FIN_CODIGO. 
-; suponiendo que es menor de 32000 (en realidad es algo menos, puedes ensamblar en 32000)
-; tras ensamblarlo, salvalo con save "musica.bin",b,32000,1500
-;org 32000
-org 32350 ; para usar la v23
+
+; tras ensamblarlo, salvalo con save "musica.bin",b,32250,1250
+
+org 32250 ; para usar la v23
 ;--------------------MUSICA------------------------------------
 ; tiene la limitacion de tan solo poder incluir un solo fichero de 
 ; instrumentos para todas las canciones
