@@ -3,6 +3,7 @@
 21 ON BREAK GOSUB 5000
 25 CALL &BC02:'restaura paleta por defecto por si acaso
 26 GOSUB 2300:' paleta con sobreescritura
+27 |MUSIC,1,5 
 30 FOR j=0 TO 31:|SETUPSP,j,0,&X0:NEXT:'reset sprites
 40 PEN 1: PAPER 0:FOR i=0 TO 20*24:PRINT CHR$(INT(204.5+RND(1)));:NEXT  :' imprime un fondo con tintas 1 y 0     
 45 LOCATE 1,2:PEN 5:PRINT " demo pelota botando con sobreescritura"
@@ -20,7 +21,7 @@
 160 IF x<=0 THEN incx=-incx
 170 |LOCATESP,0,y,x
 180 |PRINTSPALL,0,0
-181 LOCATE 1,1 :PRINT t
+181 CALL &BD19
 190 GOTO 120
 2300 REM ---------- PALETA sprites transparentes MODE 0------------------
 2301 INK 0,11: REM azul claro
