@@ -19,6 +19,19 @@ descargate el ZIP y en el encontraras:
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
+10/09/2016 ACTUALIZACION V24 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v24.asm con las siguientes mejoras 
+  	- scroll multidireccional basado en el nuevo comando |MAP2SP capaz de trasladar un mapa del mundo a sprites activos.
+  	- fichero map_table.asm donde se describe la lista de elementos graficos que componen el mundo, ubicados en coordenadas que van desde 0 hasta 32000 tanto en x como en y
+  	- la libreria ahora ocupa desde la direccion 26000, dejando 26 KB al programador BASIC, frente a los 27KB anteriores
+
+- demos:
+	- se incluye un minijuego tipo commando para demostrar el mecanismo de scroll
+
+
 14/07/2016 ACTUALIZACION V23b (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
