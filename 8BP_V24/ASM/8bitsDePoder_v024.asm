@@ -2628,7 +2628,7 @@ SCS_number	db 20
 star_color	db 64
 bkgd_color	db 0
 
-SCS_starbuffer 	dw STARS1; tambien puede tomar el valor STARS2
+SCS_starbuffer 	dw STARS0; 
 
 SCS_initstar	db 0
 
@@ -2708,9 +2708,9 @@ SCS_START	sla a
 SCS_bucle	ld a, (star_color)
 		ld (SCS_pen),a; actualiza el pen por si se ha cambiado
 		ld a, (SCS_pen)
-		ld (SCS_check),a; solo borro si encuentro un 255
+		ld (SCS_check),a; solo borro si encuentro un SCS_pen
 		ld a, (bkgd_color)
-		ld (SCS_pen),a; poner un cero es borrar
+		ld (SCS_pen),a; poner un bkgd_color es borrar
 
 		;----modo borra
 		;ld a,0
@@ -2741,7 +2741,7 @@ SCS_incyneg	ld c, a; ahora C tiene incy
 		add a, c; 
 		;cp b; y - yant no puede NO dar acarreo. si lo da, hay que saltar
 		; si da acarreo es porque y ha cruzado el cero
-
+		jr nc,SCS_Ycycle
 		;jp nc, SCS_Ycycle
 		; ahora comparo la y actualizada con ymin
 		; ambos los puedo considerar ahora numeros positivos
@@ -2791,6 +2791,7 @@ SCS_incypos	ld c, a; c tiene incy
 
 
 SCS_finwritey  	pop hl; direccion de coord y
+		
 		ld (HL),a; nueva coordenada de la estrella insertada
 
 		; actualizacion de coord x
@@ -2806,32 +2807,37 @@ SCS_finwritey  	pop hl; direccion de coord y
 
 		; scroll hacia izq 
 		;--------------------
-SCS_incxneg	ld c, a; ahora C tiene incy
-		ld a, (HL); coord y, pues HL apunta a starbuffer
+SCS_incxneg	ld c, a; ahora C tiene incx
+		ld a, (HL); coord x, pues HL apunta a starbuffer
 		;ld b, a; y antes	
-		add a, c; 
-		;cp b; y - yant no puede NO dar acarreo. si lo da, hay que saltar
-		; si da acarreo es porque y ha cruzado el cero
-		;jp nc, SCS_Xcycle
+		add a, c; EL REGISTRO c CONTIENE UN NUMERO NEGATIVO, por lo que es una resta.
+		; si el resultado desborda es que ha ciclado. 
+
+		JR nc, SCS_Xcycle
+		; Si no desborda aun asi puede que tengamos que ciclar
 		; ahora comparo la y actualizada con ymin
 		; ambos los puedo considerar ahora numeros positivos
-		ld c,a ; guardo y
-		inc c
+		ld c,a ; guardo x nueva
+		inc c; esto era para que no de cero cuando sean iguales
+		
 		ld a,(SPR_MIN_X)
 		and a; reset acarreo
 		
 		cp c;	(a-c = ymin-y)
 		jp nc,  SCS_Xcycle; ymin>y, lo cual no debe ocurrir
-		dec c
+		
+		dec c; lo dejo como estaba
 		; si es cero o positivo (sin acarreo) no hay que salir por abajo
 		ld a,c; le vuelvo a dar su valor
 		Jr SCS_finwritex; si y > ymin sale negativa la resta	y hay acarreo			
 
 SCS_Xcycle	
-		LD HL,SPR_MAX_X
+		LD HL,SPR_MAX_X; pej 80
 		add a,(HL)
-		ld HL, SPR_MIN_X
+		ld HL, SPR_MIN_X; pej 0
 		sub (HL)				
+
+		;ld a, 80;(SPR_MAX_X); PRUEBA PARA ARREGLAR EL BUG
 
 
 		;ld a, (SPR_MAX_X); sale por ariba , entra por abajo
@@ -2843,7 +2849,7 @@ SCS_Xcycle
 SCS_incxpos	ld c, a; c tiene incy
 		ld a, (HL); coord y, pues HL apunta a starbuffer
 		
-		add a, c; sumo incy.
+		add a, c; sumo incx.
 
 		ld HL,  SPR_MAX_X
 		ld c, (hl)
@@ -2862,7 +2868,7 @@ SCS_incxpos	ld c, a; c tiene incy
 
 
 SCS_finwritex	pop hl; n
-		ld (HL),a
+		ld (HL),a; actualizacion de la coordenada x
 		; --------------------------
 		; pinto la estrella
 		;-----------------------
