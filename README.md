@@ -16,7 +16,7 @@ descargate el ZIP y en el encontraras:
 
 - DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
-Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
+Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
 13/09/2016 ACTUALIZACION V24 (retrocompatible) 
