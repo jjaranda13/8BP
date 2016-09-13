@@ -19,6 +19,12 @@ descargate el ZIP y en el encontraras:
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estarÃ¡ viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
+13/09/2016 ACTUALIZACION V24 (retrocompatible) 
+==============================================
+He actualizado el repositorio con el siguiente cambio:
+
+- libreria: corregido un pequeno bug que he detectado en el comando |STARS y ahora no solo funciona correctamente sino que ademas es mas rapido. No he cambiado de nombre el fichero .asm , simplemente lo he corregido. Por coherencia he reensamblado y regenerado los .dsk de ejemplo de la V24 y de la demo de minicomando
+
 10/09/2016 ACTUALIZACION V24 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
