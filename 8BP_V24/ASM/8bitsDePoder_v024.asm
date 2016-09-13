@@ -646,6 +646,8 @@ SPR_MIN_Y:	; limite vertical para el clipping
 SPR_MAX_Y:	; limite vertical para el clipping
 		dw 200; ojo, es el primer scanline que no se pinta!!!
 
+SPR_DIFX	db 80
+SPR_DIFY	db 200
 ;function body
 ;-------------------------------------
 _SET_LIMITS:
@@ -654,17 +656,36 @@ _SET_LIMITS:
 		ld l,(IX+6);menos signific
 		ld (SPR_MIN_X), hl
 
+		ld B, H
+		ld c,l
+
 		ld h, (IX+5);es el mas signific. no lo necesito
 		ld l,(IX+4);menos signific
 		ld (SPR_MAX_X), hl
+
+		and a
+		SBC HL,BC
+		ld a,l
+		ld (SPR_DIFX),a
 
 		ld h, (IX+3);es el mas signific. no lo necesito
 		ld l,(IX+2);menos signific
 		ld (SPR_MIN_Y), hl
 
+		ld B, H
+		ld c,l
+
+
 		ld h, (IX+1);es el mas signific. no lo necesito
 		ld l,(IX+0);menos signific
 		ld (SPR_MAX_Y), hl
+
+		and a
+		SBC HL,BC
+		ld a,l
+		ld (SPR_DIFY),a
+
+
 		ret
 
 ;=============================================================================================================
@@ -2632,6 +2653,8 @@ SCS_starbuffer 	dw STARS0;
 
 SCS_initstar	db 0
 
+
+
 ; function body
 ;-------------------------------------
 _SCROLL_STARS
@@ -2759,11 +2782,16 @@ SCS_incyneg	ld c, a; ahora C tiene incy
 SCS_Ycycle	
 		; el problema de ciclar es que tenemos aqui una aritmetica modular de modulo MAX-MIN y no de modulo 255
 		; basta con sumar max y restar min 
-		LD HL,SPR_MAX_Y
+		;LD HL,SPR_MAX_Y
+		;add a,(HL)
+		;ld HL, SPR_MIN_Y
+		;sub (HL)		
+
+		ld HL,SPR_DIFY
 		add a,(HL)
-		ld HL, SPR_MIN_Y
-		sub (HL)		
-		;ld a, (SPR_MAX_Y); sale por ariba , entra por abajo
+
+
+
 		dec a; el max es justo el byte que ya no se pinta, debo restar 1
 		jr SCS_finwritey
 
@@ -2832,12 +2860,14 @@ SCS_incxneg	ld c, a; ahora C tiene incx
 		Jr SCS_finwritex; si y > ymin sale negativa la resta	y hay acarreo			
 
 SCS_Xcycle	
-		LD HL,SPR_MAX_X; pej 80
-		add a,(HL)
-		ld HL, SPR_MIN_X; pej 0
-		sub (HL)				
+		;LD HL,SPR_MAX_X; pej 80
+		;add a,(HL)
+		;ld HL, SPR_MIN_X; pej 0
+		;sub (HL)				
 
-		;ld a, 80;(SPR_MAX_X); PRUEBA PARA ARREGLAR EL BUG
+		ld HL,SPR_DIFX
+		add a,(HL)
+
 
 
 		;ld a, (SPR_MAX_X); sale por ariba , entra por abajo
