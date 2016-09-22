@@ -19,6 +19,10 @@ descargate el ZIP y en el encontraras:
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
 
+22/09/2016 ACTUALIZACION de SPEDIT V08
+==============================================
+He actualizado el repositorio con una version de spedit que corrige un pequeno bug, solo detectable si ejecutabas dos veces seguidas un flip vertical. 
+
 13/09/2016 ACTUALIZACION V24 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con el siguiente cambio:
