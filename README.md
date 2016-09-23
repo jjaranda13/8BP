@@ -18,6 +18,16 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+23/09/2016 ACTUALIZACION V25 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v25.asm con las siguientes mejoras 
+  	- macrosecuencias de animacion: permiten que un sprite cambie de secuencia de animacion de un modo automatico en funcion de su direccion
+  	- nuevo comando ROUTEALL capaz de enrutar a los sprites por trayectorias definidas por usuario
+
+- demos:
+	- se incluyen una serie de demos en el dsk de la V25, asi como una demo de scroll horizontal en el directorio de demos
 
 22/09/2016 ACTUALIZACION de SPEDIT V08
 ==============================================
