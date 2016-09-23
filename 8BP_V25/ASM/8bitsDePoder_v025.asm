@@ -4,7 +4,7 @@
 ;   88888
 ;  8     8
 ;  8     8
-;   88888   bits de poder . Un tributo al amstrad CPC                  
+;   88888   bits de poder . Un tributo al AMSTRAD CPC                  
 ;  8     8                                            
 ;  8     8   
 ;   88888
@@ -83,7 +83,7 @@
 ;       | definiciones de rutas (de longitud variable cada una)
 ;       +----------
 ;	| secuencias de animacion de 8 frames (16 bytes cada una)
-;	| y grupos de secuencias de animacion
+;	| y grupos de secuencias de animacion (macrosecuencias)
 ; 33500 +---------- 
 ;       | canciones (1.25kB para musica)       
 ;       |		       
@@ -94,10 +94,10 @@
 ; 26390 +----------
 ;       | mapa del mundo (389 bytes)
 ; 26000 +---------- 
-;       |  |variables el basic
+;       |  |variables el BASIC
 ;       |  V
 ;       |  
-;       |  ^ basic (texto del programa)
+;       |  ^ BASIC (texto del programa)
 ;       |  |
 ;     0 +---------- 
 
@@ -1054,8 +1054,8 @@ sp1	let COUNTER = NUM_SPRITES-1
 	db 1; identificador de secuencia de animacion asignada [0..NUM_SEQUENCES-1]
 	db 0; identificador de frame en la secuencia de animacion[0..9]
 	dw 34000:; esto es  direccion de la imagen 0
-	dw 0 ; direccion de sprite anterior (posiciones 10 y 11). para ordenar
-	dw 0 ; direccion de sprite anterior (posiciones 12 y 13). para ordenar
+	dw 0 ; direccion de sprite anterior (posiciones 11 y 12). para ordenar
+	dw 0 ; direccion de sprite anterior (posiciones 13 y 14). para ordenar
 	db 0 ; ruta_id
 	let COUNTER = COUNTER-1
 	wend
