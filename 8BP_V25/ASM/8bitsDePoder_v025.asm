@@ -66,7 +66,7 @@
 ;50 RUN "tujuego.bas"  <--- tu juego se carga al final con RUN, reemplazando este listado BASIC
 ;
 ; ----------------------------------------------------------------------
-; AMSTRAC CPC464 MAPA DE MEMORIA de 8BP
+; AMSTRAD CPC464 MAPA DE MEMORIA de 8BP
 ;
 ; &FFFF +---------- 
 ;       |  pantalla + 8 segmentos ocultos de 48bytes cada uno
