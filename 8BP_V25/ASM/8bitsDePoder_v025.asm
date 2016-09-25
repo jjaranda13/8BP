@@ -2613,6 +2613,10 @@ MOV_positivoX	ld hl, (MOV_address)
 ; function body
 ;-------------------------------------
 _AUTO_ALL
+		
+		and a
+		CALL NZ, _ROUTEALL
+
 		ld a, NUM_SPRITES-1 ;empezamos por el ultimo sprite
 		ld (MOA_spid), a
 		
