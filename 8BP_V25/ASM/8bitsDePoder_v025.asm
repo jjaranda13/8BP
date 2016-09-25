@@ -2608,14 +2608,19 @@ MOV_positivoX	ld hl, (MOV_address)
 ; variables locales
 ;-------------------------------------
 
-
+MOA_flag_route	db 0
 
 ; function body
 ;-------------------------------------
 _AUTO_ALL
-		
 		and a
-		CALL NZ, _ROUTEALL
+		JR Z,MOA_noparam
+		ld a, (IX+0)
+		ld (MOA_flag_route),a
+MOA_noparam	ld a,(MOA_flag_route)
+		cp 1
+		CALL Z, _ROUTEALL
+
 
 		ld a, NUM_SPRITES-1 ;empezamos por el ultimo sprite
 		ld (MOA_spid), a
