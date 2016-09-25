@@ -18,6 +18,17 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+
+
+23/09/2016 ACTUALIZACION V25 (retrocompatible) 
+==============================================
+He actualizado el repositorio con un pequeno cambio (coherentes entre la documentacion y la libreria).  Al ser un cambio pequeño no he modificado el nombre de version de la libreria ni de la documentación, aunque lo he incorporado en ambos. En la documentacion ademas he añadido un par de apendices utiles nuevos (de una pagina cada uno)
+
+- libreria: ahora se incluye 8bitsdepoder_v25.asm con la siguiente mejora
+  	- nuevo parámetro opcional en |AUTOALL, de modo que AUTOALL,1 invoca internamente a ROUTEALL antes de mover el sprite, ahorrándote una invocación desde BASIC que siempre va a suponer un precioso milisegundo.
+
+
+
 23/09/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
