@@ -20,7 +20,7 @@ Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego sie
 
 
 
-23/09/2016 ACTUALIZACION V25 (retrocompatible) 
+25/09/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con un pequeno cambio (coherentes entre la documentacion y la libreria).  Al ser un cambio pequeño no he modificado el nombre de version de la libreria ni de la documentación, aunque lo he incorporado en ambos. En la documentacion ademas he añadido un par de apendices utiles nuevos (de una pagina cada uno)
 
