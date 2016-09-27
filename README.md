@@ -5,7 +5,7 @@
 
 descargate el ZIP y en el encontraras:
 
-- manual en .pdf y en .docx
+- manual en .pdf y en .docx, tanto en espanol como en ingles (la version ingles es borrador)
 
 - libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, ademas del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
@@ -18,7 +18,22 @@ descargate el ZIP y en el encontraras:
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
+8BP provides a powerful library that will allow us to make professional games from Basic, while the most intensive operations CPU usage are interpreted and executed in machine code. The library, once is loaded on the Amstrad, extends BASIC with a series of specific commands to games. This new command set is called "extensions of the basic" or RSX commands. Amstrad in his day already thought to be born could do RSX commands. The RSX commands are characterized by a "|" at the initial character, for example to print a sprite with the library is used "|PRINTSP" and as you will see all new commands have that in front stick.
 
+Download the ZIP and the find:
+
+- Manual .pdf and .docx, both in Spanish and English (the English version is draft)
+
+- Library, and prepared in a directory structure to make a game, in fact in the library directory you will find a simple game that allow you to take the first steps. In addition you will find the SPEDIT, the sprite editor (works in BASIC in amstrad ) for you to make your creations. The library has files in assembler (.asm) which are the sources of the library and some other auxiliary files. To make full game you need this but do not worry because you do not have to learn assembler, you just have to learn only the meaning of the word "assemble".
+
+- GameExamples: Here i will upload games made with 8BP. At the moment you have two games to learn and enjoy with them
+
+ - "Mutant montoya" in honor of the classic "mutant monty") developed entirely in basic using the library. With this game you can learn modifying it.
+ - "Anunnaki": an arcade game made in BASIC . it uses "massive logic" technique programmed in BASIC
+
+- DemoExamples: Here i will upload small demos with didactic examples made 8BP
+ 
+The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 25/09/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
