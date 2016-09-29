@@ -1110,6 +1110,7 @@ RSX_TABLE	defw RSX_NAMETB
 		JP _COLSPALL		;|COLSPALL
 		JP _MAP2SP		;|MAP2SP,yo,xo
 		JP _ROUTEALL		;|ROUTEALL
+		JP _NOP			;|NOP no es un comando, solo es para medir
 
 RSX_space	db 0,0,0,0
 
@@ -1159,9 +1160,16 @@ RSX_NAMETB	defM "PRINTS"
 		db "P"+&80
 		defM "ROUTEAL"
 		db "L"+&80
+		defM "NO"
+		db "P"+&80
 
 		db 0
 ENDRSX
+;=============================================================================================================
+;RUTINA  _NOP para medir tiempos de invocacion y paso de parametros
+;=============================================================================================================
+_NOP		ret
+
 ;=============================================================================================================
 ;RUTINA  _MUL8bit(H,E) (MUL)
 ;=============================================================================================================
@@ -2533,9 +2541,19 @@ _AUTO_SPRITE
 		call _get_dir_sp; A=num sprite, retorna HL con la direccion
 		JR MOV_uno; solo voy a mover uno
 
-MOV_i		ld a, (HL); status en A
+_MOV_i		ld a, (HL); status en A
+		;AND %10001000; cuarto bit es el de movimiento automatico
 		AND %1000; cuarto bit es el de movimiento automatico
 		RET Z ; si el flag es inactivo no hacemos nada
+
+		; si estamos aqui es porque el sprite tiene flag de mov auto o ruta
+		; voy a ver si tiene de ruta
+		;cp %10001000
+		;JR NZ, MOV_uno
+		; estamos aqui porque hay que hacerle el routeall
+		
+
+
 MOV_uno		ld (MOV_address),hl; guardo la direccion de comienzo del sprite
 
 		;update y
@@ -2613,14 +2631,14 @@ MOA_flag_route	db 0
 ; function body
 ;-------------------------------------
 _AUTO_ALL
+		
 		and a
 		JR Z,MOA_noparam
 		ld a, (IX+0)
 		ld (MOA_flag_route),a
 MOA_noparam	ld a,(MOA_flag_route)
 		cp 1
-		CALL Z, _ROUTEALL
-
+		CALL Z, _ROUTEALL; invoca a ROUTEALL si hay flag de ruta
 
 		ld a, NUM_SPRITES-1 ;empezamos por el ultimo sprite
 		ld (MOA_spid), a
@@ -2630,7 +2648,7 @@ MOA_noparam	ld a,(MOA_flag_route)
 MOA_bucle	
 
 		;call MOV_a; invoca a animacion de sprite i
-		call MOV_i
+		call _MOV_i
 		ld a, (MOA_spid)
 		dec a
 		ld (MOA_spid), a
