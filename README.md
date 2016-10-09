@@ -45,6 +45,20 @@ He actualizado el repositorio con un pequeno cambio (coherentes entre la documen
   	- nuevo parámetro opcional en |AUTOALL, de modo que AUTOALL,1 invoca internamente a ROUTEALL antes de mover el sprite, ahorrándote una invocación desde BASIC que siempre va a suponer un precioso milisegundo.
 
 
+23/09/2016 ACTUALIZACION V25 (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v26.asm con las siguientes mejoras 
+  	- 8BP ahora es compatible con WYZtracker 2.0.1.0: esta version del secuenciador de musica (creado por Augusto Ruiz, un excelente programador) es perfecta y no tiene ningun bug, aunque ocupa algo mas de memoria, por lo que he hecho algunos ajustes en el mapa de memoria de 8BP
+  	- El mapa de memoria de 8BP te sigue dejando libres 26KB para BASIC pero ahora la zona de memoria donde se almacena el mapa del mundo y la zona donde se almacena el layout es el mismo area. Ello implica que no se pueden usar ambas cosas a la vez (lo cual tiene mucho sentido porque un juego con scroll usa mapa del mundo y no layout y viceversa)
+	- Puesto que en la V25 el area de memoria de las imagenes comenzaba con las secuencias y las rutas, cada vez que creabas una secuencia o una ruta, las imagenes se ensamblaban en otras direcciones y era un rollo consultar las direcciones cuando quieres usar las imagenes en los comandos |SETUPSP,#,9,image_address o bien |SETUPSQ. Por ello he creado una lista llamada IMAGE_LIST que se incluye en el fichero images_tujuego.asm y donde puedes apuntar imagenes que quieras usar desde esos comandos usando numeros constantes desde 16 hasta 255 y que no cambian aunque las imagenes se reesamblen en direcciones diferentes. Esto facilita la vida al programador de BASIC 
+
+- demos:
+	- he recompilado juegosimple con la libreria V26
+
+- TOOLS: he incluido la version del WYZtracker (la 2.0.1.0) que es compatible con 8BP en el directorio raiz. La web de augusto ruiz es https://github.com/AugustoRuiz/WYZTracker
+
 
 23/09/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
