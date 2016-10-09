@@ -39,7 +39,7 @@ The improvements that are incorporated will be backwards compatible so your game
 
 
 
-09/10/2016 ACTUALIZACION V25 (retrocompatible) 
+09/10/2016 ACTUALIZACION V26 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
 
@@ -47,6 +47,7 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
   	- 8BP ahora es compatible con WYZtracker 2.0.1.0: esta version del secuenciador de musica (creado por Augusto Ruiz, un excelente programador) es perfecta y no tiene ningun bug, aunque ocupa algo mas de memoria, por lo que he hecho algunos ajustes en el mapa de memoria de 8BP
   	- El mapa de memoria de 8BP te sigue dejando libres 26KB para BASIC pero ahora la zona de memoria donde se almacena el mapa del mundo y la zona donde se almacena el layout es el mismo area. Ello implica que no se pueden usar ambas cosas a la vez (lo cual tiene mucho sentido porque un juego con scroll usa mapa del mundo y no layout y viceversa)
 	- Puesto que en la V25 el area de memoria de las imagenes comenzaba con las secuencias y las rutas, cada vez que creabas una secuencia o una ruta, las imagenes se ensamblaban en otras direcciones y era un rollo consultar las direcciones cuando quieres usar las imagenes en los comandos |SETUPSP,#,9,image_address o bien |SETUPSQ. Por ello he creado una lista llamada IMAGE_LIST que se incluye en el fichero images_tujuego.asm y donde puedes apuntar imagenes que quieras usar desde esos comandos usando numeros constantes desde 16 hasta 255 y que no cambian aunque las imagenes se reesamblen en direcciones diferentes. Esto facilita la vida al programador de BASIC 
+	- ahora hay una opcion nueva en el comando |MOVER. si indicas el sprite 32 (que no existe), entonces puedes definir las direcciones de memoria de las variables BASIC, de modo que en la siguiente invocacion sin estos parametros se usaran dichas variables. Esto aplica tanto a |MOVER como a |MOVERALL. Es decir MOVER,32,@dy,@dx la ventaja de este mecanismo es ahorrar paso de parametros y asi ganar un milisegundo en sprites que muevas con movimiento relativo
 
 - demos:
 	- he recompilado juegosimple con la libreria V26
