@@ -51,24 +51,26 @@ LOOP:		CALL 	mc_wait_flyback
 
 BUFFER_DEC:     DS      &20*4		;************************* mucha atencion!!!!
 					; aqui se decodifica la cancion hay que dejar suficiente espacio libre.
+					; son 128 bytes
 					;*************************
                 
 
 
 
-TABLA_SONG:     DW      SONG_0;SONG_1		
+TABLA_SONG:     DW      SONG_0		
 		DW	SONG_1
 		DW	SONG_2
 		DW	SONG_3
 		DW	SONG_4
-		DW	SONG_5
-		DW	SONG_6
-		DW	SONG_7
+		
 
 ;codigo del player
-read	"WYZProplay47bCPC_winape.asm"		
-
+;read	"WYZProplay47bCPC_winape.asm"	; obsoleto	
+read "WYZPROPLAY47c_CPC_winape.asm" ; bugs solucionados!!, v2.0.1.0
 _FIN_PLAYERWYZ
-_FIN_CODIGO
 
-;read "musica.asm"
+_FIN_CODIGO
+;org _SCREEN_4_BEGIN
+;BUFFER_DEC     DS      48		;************************* mucha atencion!!!!
+
+

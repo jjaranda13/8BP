@@ -1,5 +1,5 @@
 1 call &6b78
-10 MEMORY 26999
+10 MEMORY 25999
 11 DEFINT a-z
 12 c%=0: a=2
 30 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset

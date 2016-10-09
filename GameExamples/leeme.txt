@@ -1,6 +1,0 @@
-he puesto dos versiones del juego anunnaki. una esta hecha con la version v21 de la libreria mientras que en la otra he usado la v23
-el programa en basic es el mismo, pero la v23 es ligeramente mas rapida y ademas la musica funciona mejor porque el mecanismo de las 
-interrupciones esta mejor implementado.
-
-lo mismo del mutante montoya, he metido una version limpia usando la libreria v23
-

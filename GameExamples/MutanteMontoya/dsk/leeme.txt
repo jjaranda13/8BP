@@ -1,2 +1,0 @@
-la version mont5.dsk esta modificada levemente para aprovechar alguna ventaja de la version v20 de la libreria 8bp
-la diferencia es algo mas de velocidad pero apenas perceptible. no obstante es un pelin mejor
