@@ -38,7 +38,7 @@
 ;|POKE, direccion, valor	    -> acepta valores negativos. es un poke de 16bit
 ;|PEEK,dir,@variable	    	    -> lee valores negativos. es un peek de 16bit
 ;|ROUTEALL			    -> cambia la velocidad de los sprites de acuerdo a sus rutas (flag ruta)
-;|ALL, tasks			    -> invoca varios comandos a la vez
+;
 ; tablas de datos accesibles desde BASIC
 ; -------------------------------------------
 ; 42540	    STARS0 tabla de 40 estrellas (y,x) 1 byte por coordenada. Usar POKE para rellenarla
