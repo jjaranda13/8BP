@@ -13,11 +13,6 @@ org 32250
 ;archivo de instrumentos. OJO TIENE QUE SER SOLO UNO
 read	"../MUSIC/montoya7_v2.mus.asm" ;
 ; archivos de musica
-; ojo la primera nota debe sonar en los 3 canales y ademas ya nunca se repetira
-; si no hacemos sonar una primera nota, el canal se queda mudo. Parece un bug del player aunque 
-; no tiene ningun efecto negativo si cumplimos esta regla.
-; IMPORTANTE esta nota especial debe ser del instrumento con id=0 (edito usando WYZ tracker)
-; si es de otro instrumento me da problemas.
 SONG_0:
 INCBIN	"../MUSIC/montoya7_v2.mus" ;
 SONG_0_END:
