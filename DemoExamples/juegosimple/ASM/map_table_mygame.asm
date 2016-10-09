@@ -59,40 +59,7 @@ db 16
 ;------------------------
 ;    FASE 1 , desde xo=0 hasta xo=380+80=460
 ;---------------------
-dw 36,82,MONTUP; 1
-dw 48,104,MONTUP;2
-dw 60,126,MONTUP;3
-dw 72,138,MONTUP;4
-dw 72,150,MONTDW;5
-dw 60,172,MONTH;6
-dw 60,194,MONTDW;7
-dw 48,206,MONTDW;8
-;aqui repito elementos para encajar con la posicion 100
-dw 48,228,MONTUP;9
-dw 60,250,MONTUP;10
-dw 72,262,MONTUP;11
-dw 72,274,MONTDW;12
-dw 60,296,MONTH;13
-dw 60,320,MONTDW;14
-dw 48,350,MONTDW;15
-dw 36,380,MONTDW;16
-;-------------------------
-; FASE 2 desde xo=600
-;-------------------------
-dw 36,682,MONTUP; 1
-dw 48,704,MONTUP;2
-dw 60,726,MONTUP;3
-dw 72,738,MONTUP;4
-dw 72,750,MONTDW;5
-dw 60,772,MONTH;6
-dw 60,794,MONTDW;7
-dw 48,806,MONTDW;8
-;aqui repito elementos para encajar con la posicion 100
-dw 48,828,MONTUP;9
-dw 60,850,MONTUP;10
-dw 72,862,MONTUP;11
-dw 72,874,MONTDW;12
-dw 60,896,MONTH;13
-dw 60,920,MONTDW;14
-dw 48,950,MONTDW;15
-dw 36,980,MONTDW;16
+;dw 36,0,IMAGE0; 1
+;dw 36,20,IMAGE0; 2
+;dw 36,24,IMAGE0; 3
+;...etc
