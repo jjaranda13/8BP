@@ -37,7 +37,7 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
-25/09/2016 ACTUALIZACION V25 (retrocompatible) 
+09/10/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con un pequeno cambio (coherentes entre la documentacion y la libreria).  Al ser un cambio pequeño no he modificado el nombre de version de la libreria ni de la documentación, aunque lo he incorporado en ambos. En la documentacion ademas he añadido un par de apendices utiles nuevos (de una pagina cada uno)
 
