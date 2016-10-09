@@ -37,15 +37,9 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+
 09/10/2016 ACTUALIZACION V25 (retrocompatible) 
-==============================================
-He actualizado el repositorio con un pequeno cambio (coherentes entre la documentacion y la libreria).  Al ser un cambio pequeño no he modificado el nombre de version de la libreria ni de la documentación, aunque lo he incorporado en ambos. En la documentacion ademas he añadido un par de apendices utiles nuevos (de una pagina cada uno)
-
-- libreria: ahora se incluye 8bitsdepoder_v25.asm con la siguiente mejora
-  	- nuevo parámetro opcional en |AUTOALL, de modo que AUTOALL,1 invoca internamente a ROUTEALL antes de mover el sprite, ahorrándote una invocación desde BASIC que siempre va a suponer un precioso milisegundo.
-
-
-23/09/2016 ACTUALIZACION V25 (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
 
@@ -58,6 +52,13 @@ He actualizado el repositorio con los siguientes cambios (coherentes entre la do
 	- he recompilado juegosimple con la libreria V26
 
 - TOOLS: he incluido la version del WYZtracker (la 2.0.1.0) que es compatible con 8BP en el directorio raiz. La web de augusto ruiz es https://github.com/AugustoRuiz/WYZTracker
+
+25/09/2016 ACTUALIZACION V25 (retrocompatible) 
+==============================================
+He actualizado el repositorio con un pequeno cambio (coherentes entre la documentacion y la libreria).  Al ser un cambio pequeño no he modificado el nombre de version de la libreria ni de la documentación, aunque lo he incorporado en ambos. En la documentacion ademas he añadido un par de apendices utiles nuevos (de una pagina cada uno)
+
+- libreria: ahora se incluye 8bitsdepoder_v25.asm con la siguiente mejora
+  	- nuevo parámetro opcional en |AUTOALL, de modo que AUTOALL,1 invoca internamente a ROUTEALL antes de mover el sprite, ahorrándote una invocación desde BASIC que siempre va a suponer un precioso milisegundo.
 
 
 23/09/2016 ACTUALIZACION V25 (retrocompatible) 
