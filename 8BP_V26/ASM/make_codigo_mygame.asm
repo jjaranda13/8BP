@@ -1,6 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
 org 26000
-read "8bitsDePoder_v026.asm"
+read "8bitsDePoder_v026b.asm"
 
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
