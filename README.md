@@ -1,7 +1,7 @@
 # 8BP
 8 bits de poder (8BP). For english version read below
 
-8BP nos proporciona una potente libreria que nos permitira realizar juegos profesionales desde el Basic, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nacio pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
+8BP es una potente libreria para AMSTRAD CPC que nos permitira realizar juegos profesionales desde el BASIC, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nacio pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
 descargate el ZIP y en el encontraras:
 
@@ -20,7 +20,7 @@ Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego sie
 
 
 ==============================================
-8BP provides a powerful library that will allow us to make professional games from Basic, while the most intensive operations CPU usage are interpreted and executed in machine code. The library, once is loaded on the Amstrad, extends BASIC with a series of specific commands to games. This new command set is called "extensions of the basic" or RSX commands. Amstrad in his day already thought to be born could do RSX commands. The RSX commands are characterized by a "|" at the initial character, for example to print a sprite with the library is used "|PRINTSP" and as you will see all new commands have that in front stick.
+8BP is a powerful library for AMSTRAD CPC that will allow us to make professional games from BASIC, while the most intensive operations CPU usage are interpreted and executed in machine code. The library, once is loaded on the Amstrad, extends BASIC with a series of specific commands to games. This new command set is called "extensions of the basic" or RSX commands. Amstrad in his day already thought to be born could do RSX commands. The RSX commands are characterized by a "|" at the initial character, for example to print a sprite with the library is used "|PRINTSP" and as you will see all new commands have that in front stick.
 
 Download the ZIP and you will find:
 
@@ -38,6 +38,15 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+17/10/2016 ACTUALIZACION V26b (retrocompatible) 
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v26b.asm con las siguientes mejoras 
+  	- 8BP ahora es mas rapida ya que he reordenado los comandos RSX para ubicar los mas frecuentes en las primeras posiciones de la lista de comandos que maneja internamente el AMSTRAD. De este modo los comandos mas frecuentes ahora tardan un pelin menos en ejecutarse y los menos frecuentes tardan mas. El rendimiento global de los juegos ahora es mayor.
+	
+	
+	
 
 09/10/2016 ACTUALIZACION V26 (retrocompatible) 
 ==============================================
