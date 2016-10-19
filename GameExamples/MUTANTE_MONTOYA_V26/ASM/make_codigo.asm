@@ -2,7 +2,8 @@
 org 27000
 ;read "8bp.asm"
 ;read "8bitsDePoder_v017.asm"
-read "8bitsDePoder_v023.asm"
+;read "8bitsDePoder_v023.asm"
+read "8bitsDePoder_v026b.asm"
 
 
 ;---------------------PLAYER DE MUSICA-------------------------

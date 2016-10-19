@@ -66,8 +66,8 @@ TABLA_SONG:     DW      SONG_0;SONG_1
 		DW	SONG_7
 
 ;codigo del player
-read	"WYZProplay47bCPC_winape.asm"		
-
+;read	"WYZProplay47bCPC_winape.asm"		
+read	"WYZProplay47c_CPC_winape.asm"
 _FIN_PLAYERWYZ
 _FIN_CODIGO
 

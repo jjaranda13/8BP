@@ -1,10 +1,10 @@
 ; si ensamblas esto independientemente
 ; deberia ser al menos donde acaba el codigo de 8bp y del player, comprobando
 ; donde se ensambla la etiqueta _FIN_CODIGO. 
-
-; tras ensamblarlo, salvalo con save "musica.bin",b,32250,1250
-
-org 32250 ; para usar la v23
+; suponiendo que es menor de 32000 (en realidad es algo menos, puedes ensamblar en 32000)
+; tras ensamblarlo, salvalo con save "musica.bin",b,32000,1500
+;org 32000
+org 32350 ; para usar la v23
 ;--------------------MUSICA------------------------------------
 ; tiene la limitacion de tan solo poder incluir un solo fichero de 
 ; instrumentos para todas las canciones
@@ -12,7 +12,7 @@ org 32250 ; para usar la v23
 ; instrumentos en un solo fichero.
 
 ;archivo de instrumentos. OJO TIENE QUE SER SOLO UNO
-read	"../music/montoya7.mus.asm"	
+read	"../music/montoya7_v26.mus.asm"	
 ;read	"medieval5.mus.asm" ;	
 ;read	"pingu4.mus.asm"		
 
@@ -23,7 +23,7 @@ read	"../music/montoya7.mus.asm"
 ; IMPORTANTE esta nota especial debe ser del instrumento con id=0 (edito usando WYZ tracker)
 ; si es de otro instrumento me da problemas.
 SONG_0:
-INCBIN	"../music/montoya7.mus" ;
+INCBIN	"../music/montoya7_v26.mus" ;
 ;INCBIN	"medieval5.mus" ;
 ;INCBIN	"pingu3.mus" ;
 SONG_0_END:
@@ -31,11 +31,11 @@ SONG_0_END:
 
 SONG_1:
 ;INCBIN	"pingu2.mus" ;
-INCBIN	"../music/pingu4.mus" ;
+INCBIN	"../music/pingu4_v26.mus" ;
 SONG_1_END:
 
 SONG_2:
-INCBIN	"../music/medieval5.mus" ;
+INCBIN	"../music/medieval5_v26.mus" ;
 SONG_2_END:
 SONG_3:
 SONG_4:

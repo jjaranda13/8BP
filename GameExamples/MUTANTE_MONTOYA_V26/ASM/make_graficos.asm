@@ -11,9 +11,11 @@
 org 33500
 read "sequences_montoya.asm"
 
-;org 34000+420; ATENCION! si no vas a usar el layout pon 34000
+; tabla de rutas. Espacio de longitud variable
+read "routes_montoya.asm"
 
-org 34000
+
+;org 34000
 read "images_montoya.asm"
 ;---------------------TABLA DE SPRITES-------------------------
 ; esta parte es opcional. puedes manipular la tabla desde basic 
@@ -22,3 +24,9 @@ read "images_montoya.asm"
 
 org 27000
 read "sprites_table.asm"
+
+org 42040; 
+;----------------- MAPA DEL MUNDO (400bytes) ------------------------
+read "map_table_montoya.asm"
+
+

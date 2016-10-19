@@ -1,3 +1,18 @@
+IMAGE_LIST
+;---------------------------------------------------------------------------------------------
+;pondremos aqui una lista de las imagenes que queremos usar sin especificar la direccion de memoria desde basic
+; de este modo el comando |SETUPSP,<id>,9,<address> se transforma en |SETUPSP,<id>,9,<numero>
+; la ventaja de no usar direcciones de memoria en basic es que si ampliamos los graficos o se reensamblan en 
+; direcciones diferentes, el numero que asignemos no cambiara
+; NO tienen que tener todas un numero, solo aquellas que vamos a usar con |setupsp, id, 9,<num>
+; se empiezan a numerar en 16
+; podemos usar hasta 255 imagenes especificadas de este modo 
+; no hace falta que la lista tenga 255 elementos. es de longitud variable, incluso puede estar vacia
+;----------------------------------------------------------------------------------------------
+
+dw llave; 16
+dw telon;17
+
 ;org 34000
 ;==============================================================
 ; DATOS DE imagenes para SPRITES (8 KB desde 34000 hasta 42000)

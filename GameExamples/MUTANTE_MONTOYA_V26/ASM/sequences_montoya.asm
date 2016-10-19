@@ -14,7 +14,7 @@ org 33500;
 ; SEQUENCES:
 ; la secuencia cero es que no hay secuencia. 
 ; empezamos desde la secuencia 1
-
+_SEQUENCES_LIST
 ;--------------secuencias de animacion del personaje --------
 dw MONTOYA_R0,MONTOYA_R1,MONTOYA_R2,MONTOYA_R1,0,0,0,0	  ;1
 dw MONTOYA_UR0,MONTOYA_UR1,MONTOYA_UR2,MONTOYA_UR1,0,0,0,0  ;2
@@ -37,3 +37,12 @@ dw PATO_I,0,0,0,0,0,0,0;13
 dw NAVE_MALA,0,0,0,0,0,0,0;14
 dw PRINCESS,PRINCESS,PRINCESS,PRINCESS,PRINCESS2,PRINCESS2,PRINCESS2,PRINCESS2;15
 dw MOSCA1,MOSCA2,0,0,0,0,0,0 ;16
+
+
+
+_MACRO_SEQUENCES
+;--------MACRO SECUENCIAS ----------------------
+; son grupos de secuencias, una para cada direccion
+; el significado es:
+; still, left, right, up, up-left, up-right, down, down-left, down-right
+; se numeran desde 32 en adelante
