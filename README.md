@@ -43,7 +43,10 @@ The improvements that are incorporated will be backwards compatible so your game
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
 
 - libreria: ahora se incluye 8bitsdepoder_v26b.asm con las siguientes mejoras 
-  	- 8BP ahora es mas rapida ya que he reordenado los comandos RSX para ubicar los mas frecuentes en las primeras posiciones de la lista de comandos que maneja internamente el AMSTRAD. De este modo los comandos mas frecuentes ahora tardan un pelin menos en ejecutarse y los menos frecuentes tardan mas. El rendimiento global de los juegos ahora es mayor.
+  	- 8BP ahora es mas rapida ya que he reordenado los comandos RSX para ubicar los mas frecuentes en las primeras posiciones de la lista de comandos que maneja internamente el AMSTRAD. De este modo los comandos mas frecuentes ahora tardan un pelin menos en ejecutarse y los menos frecuentes tardan mas. El rendimiento global de los juegos ahora es mayor. 
+
+- Juegos
+	- he reensamblado los juegos (los juegos estan en BASIC, realmente he reensamblado su libreria y sus graficos y su musica) con la nueva version de la libreria y ahora son mas rapidos. El incremento de velocidad no es muy grande pero es apreciable
 	
 	
 	
