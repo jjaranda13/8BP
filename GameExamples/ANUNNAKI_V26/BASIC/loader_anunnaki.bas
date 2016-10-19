@@ -21,11 +21,11 @@
 370 POKE dirdest, a
 380 NEXT
 390 NEXT
-1000 MEMORY 26999
+1000 MEMORY 25999
 1020 LOAD "!8bp.lib"
 1030 LOAD "!sprites.bin"    
 1035 LOAD "!music.bin"
-1040 RUN "!annu07.bas"   
+1040 RUN "!annu08.bas" 
 2000 'nave
 2010 DATA 0 , 0 , 16 , 48 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 
 2020 DATA 0 , 0 , 0 , 48 , 32 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 

@@ -16,9 +16,14 @@ org 33500;
 ; empezamos desde la secuencia 1
 
 ;--------------secuencias de animacion  --------
+_SEQUENCES_LIST
 dw MINAVE,MINAVEUP,0,0,0,0,0,0	  ;1
 dw MINAVE,0,0,0,0,0,0,0	  ;2
 dw EXPLO1,EXPLO2,EXPLO1,EXPLO2,EXPLO1,EXPLO2,EXPLO3,0	  ;3 muerte de nuestra nave (no es secuencia de muerte)
 dw EXPLO1,EXPLO2,EXPLO1,EXPLO2,EXPLO1,EXPLO2,EXPLO3,1	  ;4 muerte de nave enemiga (secuencia de tipo muerte)
 dw JEFE_A_01,JEFE_A_01,JEFE_A_01,JEFE_A_02,JEFE_A_02,JEFE_A_02,0,0; 5 jefe de fase
 DW MOSCA1,MOSCA2,0,0,0,0,0,0; 6 PAJARO
+
+
+
+_MACRO_SEQUENCES

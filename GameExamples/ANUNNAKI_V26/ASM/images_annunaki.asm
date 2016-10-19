@@ -1,3 +1,36 @@
+IMAGE_LIST
+;---------------------------------------------------------------------------------------------
+;pondremos aqui una lista de las imagenes que queremos usar sin especificar la direccion de memoria desde basic
+; de este modo el comando |SETUPSP,<id>,9,<address> se transforma en |SETUPSP,<id>,9,<numero>
+; la ventaja de no usar direcciones de memoria en basic es que si ampliamos los graficos o se reensamblan en 
+; direcciones diferentes, el numero que asignemos no cambiara
+; NO tienen que tener todas un numero, solo aquellas que vamos a usar con |setupsp, id, 9,<num>
+; se empiezan a numerar en 16
+; podemos usar hasta 255 imagenes especificadas de este modo 
+; no hace falta que la lista tenga 255 elementos. es de longitud variable, incluso puede estar vacia
+;----------------------------------------------------------------------------------------------
+dw AVION2 ; 16
+dw NAVE_MALA_07;17
+dw METEORITO;18
+dw BORRADISPARO;19
+dw DISPLINE;20
+dw NAVE_MALA_02;21
+dw BOLA;22
+dw CRATER;23
+dw NAVE_MALA_03;24
+dw MUROL;25
+dw MUROR;26
+dw NAVE_MALA_04;27
+dw NAVE_MALA_05;28
+dw NAVE_MALA_06;29
+dw ROCASLR;30
+dw ROCASLL;31
+dw ROCASRL;32
+dw ROCASRR;33
+dw MINA;34
+dw TIERRA;35
+dw NAVEND;36
+
 ;------ BEGIN SPRITE --------
 MINAVE
 db 8 ; ancho
