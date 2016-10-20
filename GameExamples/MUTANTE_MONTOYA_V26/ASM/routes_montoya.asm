@@ -1,4 +1,7 @@
 
+
+; en el juego montoya no se usan rutas. esto es solo un fichero de ejemplo
+
 ; LISTA DE RUTAS
 ;================
 ;pon aqui los nombres de todas las rutas que hagas

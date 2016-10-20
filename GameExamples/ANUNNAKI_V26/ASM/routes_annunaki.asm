@@ -2,6 +2,10 @@
 ; LISTA DE RUTAS
 ;================
 ;pon aqui los nombres de todas las rutas que hagas
+; en el juego anunnaki NO SE USA NINGUNA RUTA, pues lo hice antes de crear esta funcionalidad.
+; estas son solo rutas de ejemplo
+
+
 ROUTE_LIST
 	dw ROUTE0
 	dw ROUTE1

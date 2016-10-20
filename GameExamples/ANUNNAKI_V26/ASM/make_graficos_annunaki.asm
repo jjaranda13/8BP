@@ -13,7 +13,7 @@ read "sequences_annunaki.asm"
 
 ;org 34000+420; ATENCION! si no vas a usar el layout pon 34000
 ; tabla de rutas. Espacio de longitud variable
-read "routes_pruebaV25.asm"
+read "routes_annunaki.asm"
 
 ;org 34000
 read "images_annunaki.asm"

@@ -1,5 +1,9 @@
 ;MAP TABLE
 ;-----------------------
+
+; en el juego anunnaki no se usa la map table. lo hice antes de incorporar esta funcionalidad a la libreria
+; este es solo un fichero de ejemplo
+
 ; esta tabla contiene las 64 entradas que definen las imagenes del mapa del mundo para 
 ; tus juegos con scroll. 
 ; la tabla se ensambla en la 26000 y contiene 3 parametros globales (que ocupan 5 bytes en total) y 
