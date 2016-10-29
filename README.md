@@ -38,6 +38,19 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+
+30/10/2016 NUEVO JUEGO NIBIRU y version 09 de SPEDIT 
+==============================================
+He actualizado el repositorio con los siguientes cambios 
+
+
+- SPEDIT (editor de sprites): 
+	-he subido la version 09 que incorpora 4 paletas a elegir y el buffer de imagen lo he movido a la direccion 24000. 
+
+- Juegos
+	- he anadido el nuevo juego "nibiru", un arcade de scroll horizontal. pronto actualizare la documentacion explicando algo sobre su diseno. Es un juego de 15KB (sin contar graficos ni musica) escrito en BASIC, logicamente
+	
+
 17/10/2016 ACTUALIZACION V26b (retrocompatible) 
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
