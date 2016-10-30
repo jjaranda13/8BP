@@ -46,7 +46,7 @@
 350 |MUSIC,1,6
 360 TAGOFF:LOCATE 8,10:PRINT "        ":TAG 
 370 |STARS,0,5,2,0,-1:'con parametros solo 1 vez
-380 POKE &B8B4,0:POKE &B8B5,0:POKE &B8B6,0:POKE &B8B7,0:a=TIME
+380 'POKE &B8B4,0:POKE &B8B5,0:POKE &B8B6,0:POKE &B8B7,0:a=TIME
 390 cadencia=40: ink 1,12
 400 countdown=-4:ov=0: ciclo=0:xo=0
 410 'ciclo de juego
@@ -418,9 +418,8 @@
 7085 |SETUPSP,1,9,24000:|SETUPSP,1,0,9
 7089 PRINT
 7090 locate 2,24:print "8BP": locate 30,24:print "2016 JJGA "
-7091|MUSIC,2,6: counter=1
-7110 if inkey(47)=0 then 160
-7111' |STARS,0,40,3,0,1
+7091|MUSIC,2,6: counter=1:x=80
+7110 if inkey(47)=0 then |musicoff: goto 160
 7112 counter=counter mod espera +1: if counter=1 then 7300
 7113 |LOCATESP,0,21*8,x:|LOCATESP,1,21*8,x+80:|PRINTSPALL,0,0,1:x=x MOD 80 -1 
 7120 goto 7110
@@ -441,7 +440,7 @@
 7310 gosub 7700:'lee tabla
 7320 gosub 7800:'print tabla
 7321 |MUSIC,0,6
-7330 if inkey(47)=0 then 160
+7330 if inkey(47)=0 then |MUSICOFF:goto 160
 7331 |LOCATESP,0,21*8,x:|LOCATESP,1,21*8,x+80:|PRINTSPALL,0,0,1:x=x MOD 80 -1 
 7340 counter=counter mod espera +1: if counter=1 then 7021
 7350 goto 7330

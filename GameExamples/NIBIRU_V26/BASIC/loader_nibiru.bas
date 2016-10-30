@@ -18,10 +18,10 @@
 160 INK  14 , 4 
 170 INK  15 , 6 
 180' ------ END PALETA --------
-181 load "nibiru06.scr"
-190 load "8bp.lib"
-200 load "music.bin"
-210 load "sprites.bin"
-220 load "fases.bin"
-230 load "press.bin"
-240 run "nibiru.bas"
+181 load "!nibiru06.scr",&c000
+190 load "!8bp.lib"
+200 load "!music.bin"
+210 load "!sprites.bin"
+220 load "!fases.bin"
+230 load "!press.bin"
+240 run "!nibiru.bas"
