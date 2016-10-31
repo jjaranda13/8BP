@@ -29,10 +29,11 @@ Download the ZIP and you will find:
 
 - Library, and prepared in a directory structure to make a game, in fact in the library directory you will find a simple game that allow you to take the first steps. In addition you will find the SPEDIT, the sprite editor (works in BASIC in amstrad ) for you to make your creations. The library has files in assembler (.asm) which are the sources of the library and some other auxiliary files. To make full game you need this but do not worry because you do not have to learn assembler, you just have to learn only the meaning of the word "assemble".
 
-- GameExamples: Here i will upload games made with 8BP. At the moment you have two games to learn and enjoy with them
+- GameExamples: Here i will upload games made with 8BP. At the moment you have three games to learn and enjoy with them
 
  - "Mutant montoya" in honor of the classic "mutant monty") developed entirely in basic using the library. With this game you can learn modifying it.
  - "Anunnaki": an arcade game made in BASIC . it uses "massive logic" technique programmed in BASIC
+ - "nibiru": an arcade game with horizontal scroll, macrosequences, sprite routing, overwrite and massive logics
 
 - DemoExamples: Here i will upload small demos with didactic examples made 8BP
  
