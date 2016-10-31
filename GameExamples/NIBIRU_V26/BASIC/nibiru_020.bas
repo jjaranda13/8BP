@@ -38,6 +38,7 @@
 270 GOSUB 4900: 'fin
 280 ' FASE 1A: PAJAROS ESPACIALES
 290 '======================================
+291 cls
 300 GOSUB 1620:|COLSP,32,0,27:|colsp,34,1,0
 310 ' pokes del mapa del mundo
 320 dirmap!=42040:FOR i!=&61A8 TO &620D
@@ -170,7 +171,7 @@
 1590 RETURN
 1600 'inicializaciones
 1610 '---------------
-1620 CLS:TAGOFF:LOCATE 8,10:PRINT "PHASE ";fase
+1620 TAGOFF:CLS:LOCATE 8,10:PRINT "PHASE ";fase
 1630 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:|AUTOALL,1:|PRINTSPALL,0,1,0
 1640 GOSUB 1300:' init disparos y nave
 1650 GOSUB 1200:' pinta marcadores
