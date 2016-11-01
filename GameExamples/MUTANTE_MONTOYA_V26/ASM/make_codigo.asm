@@ -1,5 +1,5 @@
 ;---------------------RUTINAS 8 bits de poder------------------
-org 27000
+org 26000
 ;read "8bp.asm"
 ;read "8bitsDePoder_v017.asm"
 ;read "8bitsDePoder_v023.asm"
