@@ -15,7 +15,7 @@
 170 PRINT "     c: clear sprite"
 180 PRINT "     b: imprime bytes (asm) en printer"
 181 PRINT "     i: imprime paleta en printer"
-190 PRINT "     r: reload &4000"
+190 PRINT "     r: reload 24000"
 195 PRINT "     z, x: cambia color de tinta"
 196 PRINT "     t: RESET"
 200 PRINT "    -------------------------"
@@ -65,7 +65,7 @@
 540 PRINT "v: flip vertical"
 550 PRINT "c: clear sprite"
 560 PRINT "b: imprime bytes "
-565 PRINT "r: reload &4000"     
+565 PRINT "r: reload 24000"     
 567 PRINT "z,x: tinta. t:RESET"
 568 PRINT "i: print paleta"
 570 TCOUNT =0
@@ -286,7 +286,7 @@
 3110 RETURN
 4000 ' RUTINA GET INK 
 4001 ' ---------------
-4100 FOR dir=23900 TO 23913
+4100 FOR dir=23900 TO 23914
 4110 READ dato:POKE dir,dato
 4120 NEXT: RETURN
 4130 DATA &dd,&7e,&02,&cd,&35,&bc,&78,&dd,&6e,&00,&dd,&66,&01,&77,&c9
