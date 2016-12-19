@@ -39,6 +39,19 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+19/12/2016 ACTUALIZACION V27 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+
+- libreria: ahora se incluye 8bitsdepoder_v27.asm con las siguientes mejoras 
+	- ahora las rutas pueden contener cambios de estado en un sprite. muy util para disparos, ya que simplifica la logica. Este mecanismo tambien sirve para que tu personaje de saltitos muy eficientemente
+	- nuevo comando |RINK capaz de hacer animacion por tintas, un complemento para juegos de scroll. encontraras demos en la carpeta de demos, directorio DemoExamples/scroll_rink
+
+- demos : 
+	- encontraras demos del nuevo comando RINK en la carpeta de demos, directorio DemoExamples/scroll_rink. verás un juego de coches de carreras y otro de un muñeco que avanza en un escenario con ladrillos, un castillo, un arbol y un pajaro que vuela
+	- en el ejemplo que viene con la libreria V27 encontraras varias versiones del juego sencillo, uno donde solo se mueve izquierda derecha, en otra salta sin ruta, en otra salta usando una ruta, en otra dispara 
+
+
 
 
 30/10/2016 NUEVO JUEGO NIBIRU y version 09 de SPEDIT 
