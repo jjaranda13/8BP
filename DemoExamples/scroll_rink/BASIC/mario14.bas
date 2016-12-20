@@ -26,12 +26,14 @@
 390 dir=1:x=0:xp=80: ciclo=40: stepy=2
 400 |MUSIC,0,7
 409 ' ciclo de juego ---------------------------
-410 |AUTOALL:|PRINTSPALL:IF xant<>x THEN |MAP2SP,0,32000:xant=x:' IF quieto THEN no imprimo el castillo asi no parpadea
+410 |AUTOALL:|PRINTSPALL
 450 IF INKEY(27)=0 THEN |RINK,STEPy:x=x+1:|MAP2SP,0,x:|MOVER,30,0,-1:if jump=0 then IF dir=2 THEN dir=1:|SETUPSP,31,7,dir ELSE |ANIMA,31
 460 IF INKEY(34)=0 THEN |RINK,-STEPy::x=x-1:|MAP2SP,0,x:if jump=0 then IF dir=1 THEN dir=2:|SETUPSP,31,7,dir ELSE |ANIMA,31
 471 IF INKEY(67)+jump=0 THEN jump=ciclo:|SETUPSP,31,0,205:|SETUPSP,31,15,dir-1:|SETUPSP,31,7,31+dir
 472 IF ciclo-jump=20 THEN jump=0:|MOVER,31,5,0:|SETUPSP,31,7,dir
 490 |PEEK,27483,@xp:IF xp<-20 THEN |LOCATESP,30,50,80:'pajaro vuelta a empezar
 501 ciclo=ciclo+1
+502 IF xant=x THEN |MAP2SP,0,32000
+503 xant=x:' IF quieto THEN no imprimo el castillo asi no parpadea
 510 GOTO 410
 5000 |musicoff:CALL &BC02:pen 1:MODE 2:END
