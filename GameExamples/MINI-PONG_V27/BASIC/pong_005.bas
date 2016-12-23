@@ -58,7 +58,7 @@
 350 RETURN
 400 ' rutina movimiento computer
 410 IF vxp<0 THEN RETURN:'|SETUPSP,30,5,0:return
-411 IF xp<10 THEN RETURN 
+411 IF xp<40 THEN RETURN 
 420 |PEEK,27481,@yc: yc=yc+21
 430 IF yc<yp-5 THEN vyc=5: GOTO 450
 440 IF yc>yp+5 THEN vyc=-5: goto 450
