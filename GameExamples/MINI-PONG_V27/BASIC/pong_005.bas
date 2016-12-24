@@ -47,7 +47,7 @@
 310 xp=PEEK(27467)
 311 IF xp>6 THEN IF xp<70 THEN 345
 320 IF xp>=80 THEN GOSUB 500: CLS:GOTO 33:'vxp=-vxp: REM AQUI HAY QUE HACER GOSUB GOL
-321 IF xp<=8 OR xp>68 THEN |COLSPALL: IF collider=32 THEN 345
+321 |COLSPALL: IF collider=32 THEN 345
 341 IF collided=31 THEN SOUND 1,200,7,15:IF vxp<0 THEN vxp=-vxp:IF vy>0 THEN IF vyp<4 THEN vyp=vyp+1 ELSE ELSE IF vy<0 THEN IF vyp>-4 THEN vyp=vyp-1
 342 IF collided=30 THEN SOUND 1,200,7,15:|SETUPSP,30,5,0:IF vxp>0 THEN vxp=-vxp: IF vyp=0 THEN vyp=1
 343 pongs=pongs+1: if pongs=10 then vxp=vxp*2
