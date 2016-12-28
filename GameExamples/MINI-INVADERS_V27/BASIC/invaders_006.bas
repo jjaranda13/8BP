@@ -1,0 +1,88 @@
+10 MEMORY 25999
+20 dir=42540:FOR star=0 TO 40
+30 POKE dir+star*2,RND*200
+40 POKE dir+star*2+1,RND*80
+50 NEXT
+60 DEFINT A-Z: CALL &6B78:' install RSX
+70 |PRINTSPALL,0,1,0:|AUTOALL,1:MODE 0
+80 ON BREAK GOSUB 810
+90 CALL &BC02:'restaura paleta por defecto     
+100 INK 0,0:BORDER 1: vidas=3: puntos=0
+110 CLS: |STARS,0,10,4,2,0: ciclo=0:counter=0
+120 ENT -5,7,10,1,7,-10,1:ENV 1,1,15,1,15,-1,1:
+130 'nave
+140 |SETUPSP,31,9,16:|SETUPSP,31,0,33:|SETUPSP,31,7,0
+150 x=40:y=192:|LOCATESP,31,192,40
+160 'fire [29,30]
+170 FOR i=29 TO 30:|SETUPSP,i,9,18:|SETUPSP,i,0,0:NEXT
+180 disp=0
+190 'fire invaders [28]
+200 |SETUPSP,28,9,19:|SETUPSP,28,0,0
+210 ' invaders [0..27]
+220 i=0:FOR yi=0 TO 3
+230 FOR xi=0 TO 6
+240 |SETUPSP,i,7,1
+250 |LOCATESP,i,yi*16+10,xi*8
+260 |SETUPSP,i,0,143
+270 |SETUPSP,i,15,0
+280 i=i+1:NEXT:NEXT
+290 'setup colision ------------
+300 collider=0:collided=0:|COLSP,34,6,0
+310 |COLSPALL,@collider,@collided:|COLSP,32,0,28
+
+320 'WAIT SPACE TO START --------
+330 PLOT 1,382:DRAW 640,382:|SETLIMITS,1,80,10,200:|PRINTSPALL
+340 LOCATE 1,1:PRINT "SCORE";puntos:LOCATE 12,1:PRINT "LIVES:";vidas
+350 SOUND 1,25,80,12,,5
+360 IF INKEY(47)<>0 THEN  360
+370 SOUND 1,100,7,15
+
+380 'ciclo de juego ------------
+390 GOSUB 520:'lectura teclado y movimiento nave y/o disparo
+400 GOSUB 630:'disparo invaders
+410 ciclo=ciclo+1: IF ciclo>=1048 THEN 110
+420 |STARS,0,10,4,1,0
+430 |AUTOALL:|PRINTSPALL:|COLSPALL
+440 IF collided=32 THEN 390
+450 IF collider=31 THEN vidas=vidas-1: IF vidas=0 THEN 690 ELSE 730
+460 |SETUPSP,collided,7,2:puntos=puntos+1
+470 |SETUPSP,collider,9,17:'borrado
+480 |SETUPSP,collider,15,3:'1frame y muerto
+490 SOUND 7,1000,20,15,,,15:LOCATE 7,1:PRINT puntos
+500 GOTO 390
+
+510 ' rutina de movimiento nave -----
+520 IF INKEY(27)=0 THEN x=x+1:GOTO 540
+530 IF INKEY(34)=0 THEN x=x-1
+540 IF counter+8<=ciclo THEN IF INKEY(47)=0 THEN counter=ciclo:GOSUB 580
+550 |LOCATESP,31,y,x
+560 RETURN
+
+570 ' disparo nave ---------------
+580 disp=1+disp MOD 2
+590 |LOCATESP,28+disp,y,x+2:|SETUPSP,28+disp,0,169:|SETUPSP,28+disp,15,1:|SETUPSP,28+disp,9,18
+600 SOUND 1,25,20,12,,5
+610 RETURN
+
+620 ' rutina disparo invaders ----
+630 IF PEEK(27448)<>0 THEN RETURN
+640 invader=RND*28:dirinvader=invader*16+27000
+650 IF PEEK (dirinvader)=0 THEN RETURN
+660 |LOCATESP,28,PEEK(dirinvader+1),PEEK(dirinvader+3):|SETUPSP,28,0,139:|SETUPSP,28,15,2
+670 SOUND 1,250,20,12,,5
+680 RETURN
+
+690 ' GAME OVER
+700 LOCATE 7,12:PEN 7:PRINT "GAME OVER"
+710 IF INKEY(47)<>0 THEN  710 ELSE RUN
+
+730 ' rutina muerte nave
+740 SOUND 7,1000,20,15,,,15
+750 BORDER 7,0
+760 |SETUPSP,31,7,3:|SETUPSP,31,0,143:|LOCATESP,31,186,x:'plot x*8+rnd*32,rnd*16,rnd*15
+770 |PRINTSPALL
+780 IF INKEY(47)<>0 THEN  770
+790 BORDER 1
+800 GOTO 110
+
+810 MODE 2: INK 0,0:PEN 1:BORDER 0: END
