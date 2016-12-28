@@ -27,7 +27,7 @@
 270 |SETUPSP,i,15,0
 280 i=i+1:NEXT:NEXT
 290 'setup colision ------------
-300 collider=0:collided=0:|COLSP,34,6,0
+300 collider=0:collided=0:|COLSP,34,4,0
 310 |COLSPALL,@collider,@collided:|COLSP,32,0,28
 
 320 'WAIT SPACE TO START --------
@@ -46,8 +46,8 @@
 440 IF collided=32 THEN 390
 450 IF collider=31 THEN vidas=vidas-1: IF vidas=0 THEN 690 ELSE 730
 460 |SETUPSP,collided,7,2:puntos=puntos+1
-470 |SETUPSP,collider,9,17:'borrado
-480 |SETUPSP,collider,15,3:'1frame y muerto
+470 |SETUPSP,collider,9,17:'borrado del disparo
+480 |SETUPSP,collider,15,3
 490 SOUND 7,1000,20,15,,,15:LOCATE 7,1:PRINT puntos
 500 GOTO 390
 
@@ -73,13 +73,16 @@
 680 RETURN
 
 690 ' GAME OVER
+695 |SETUPSP,31,7,3:|SETUPSP,31,0,143:|LOCATESP,31,186,x
 700 LOCATE 7,12:PEN 7:PRINT "GAME OVER"
-710 IF INKEY(47)<>0 THEN  710 ELSE RUN
+701 for i=0 to 27:|setupsp,i,0,0:next
+702 |PRINTSPALL
+710 IF INKEY(47)<>0 THEN  702 ELSE RUN
 
 730 ' rutina muerte nave
 740 SOUND 7,1000,20,15,,,15
 750 BORDER 7,0
-760 |SETUPSP,31,7,3:|SETUPSP,31,0,143:|LOCATESP,31,186,x:'plot x*8+rnd*32,rnd*16,rnd*15
+760 |SETUPSP,31,7,3:|SETUPSP,31,0,143:|LOCATESP,31,186,x
 770 |PRINTSPALL
 780 IF INKEY(47)<>0 THEN  770
 790 BORDER 1

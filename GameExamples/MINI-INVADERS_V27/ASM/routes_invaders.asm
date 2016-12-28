@@ -29,7 +29,7 @@ ROUTE1; fire
 
 
 ROUTE2; fireinvaders
-	db 24,8,0
+	db 26,8,0
 	db 255,0
 	db 0
 
