@@ -45,7 +45,7 @@
 430 |AUTOALL:|PRINTSPALL:|COLSPALL
 440 IF collided=32 THEN 390
 450 IF collider=31 THEN vidas=vidas-1: IF vidas=0 THEN 690 ELSE 730
-460 |SETUPSP,collided,7,2:puntos=puntos+1
+460 |SETUPSP,collided,7,2:|SETUPSP,collided,0,141:puntos=puntos+1
 470 |SETUPSP,collider,9,17:'borrado del disparo
 480 |SETUPSP,collider,15,3
 490 SOUND 7,1000,20,15,,,15:LOCATE 7,1:PRINT puntos
