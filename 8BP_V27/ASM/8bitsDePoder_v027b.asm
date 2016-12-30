@@ -37,6 +37,7 @@
 ;|MUSICOFF                          -> para la musica
 ;|POKE, direccion, valor	    -> acepta valores negativos. es un poke de 16bit
 ;|PEEK,dir,@variable	    	    -> lee valores negativos. es un peek de 16bit
+;|RINK,salto			    -> Rota un conjunto de tintas (4 u 8) de acuerdo a un patron definible
 ;|ROUTEALL			    -> cambia la velocidad de los sprites de acuerdo a sus rutas (flag ruta)
 ;|ALL, tasks			    -> invoca varios comandos a la vez
 ; tablas de datos accesibles desde BASIC
