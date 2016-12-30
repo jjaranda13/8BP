@@ -14,6 +14,8 @@ descargate el ZIP y en el encontraras:
  - "mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
  - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
  - "Nibiru" : un juego de arcade hecho en BASIC con scroll horizontal, macrosecuencias, enrutado de sprites, sobreescritura y logicas masivas.
+ - "mini-pong": un juego didactico, corto y sencillo de entender
+ - "mini-invaders": un juego didactico, corto y sencillo de entender
 
 - DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -34,6 +36,8 @@ Download the ZIP and you will find:
  - "Mutant montoya" in honor of the classic "mutant monty") developed entirely in basic using the library. With this game you can learn modifying it.
  - "Anunnaki": an arcade game made in BASIC . it uses "massive logic" technique programmed in BASIC
  - "nibiru": an arcade game with horizontal scroll, macrosequences, sprite routing, overwrite and massive logics
+ - "mini-pong": a simple , short game, easy to understand for beginners
+ - "mini-invaders": a simple , short game, easy to understand for beginners
 
 - DemoExamples: Here i will upload small demos with didactic examples made 8BP
  
