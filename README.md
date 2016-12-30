@@ -39,6 +39,15 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+30/12/2016 ACTUALIZACION V27b (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v27.asm con las siguientes mejoras 
+	- el comando |PRINTSP,#,y,x actualiza las coordenadas del sprite en la tabla. Ademas, ahora también puede invocarse sin coordenadas y se imprime en las que posea en la tabla de sprites
+
+En la documentacion, además de reflejar este cambio, se han incluido descripciones de los minijuegos "mini-pong" y "mini-invaders"
+
+
 19/12/2016 ACTUALIZACION V27 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
