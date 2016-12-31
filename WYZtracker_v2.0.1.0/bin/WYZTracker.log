@@ -1,0 +1,46 @@
+31/12/2016 6:55:01
+System.DllNotFoundException: openal32.dll
+   at OpenTK.Audio.AudioContext.CreateContext(String device, Int32 freq, Int32 refresh, Boolean sync, Boolean enableEfx, MaxAuxiliarySends efxAuxiliarySends)
+   at OpenTK.Audio.AudioContext..ctor()
+   at WYZTracker.PlaybackStreamer.InitializeAudio()
+31/12/2016 6:55:04
+System.DllNotFoundException: Unable to load DLL 'openal32.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at OpenTK.Audio.OpenAL.AL.GenSourcesPrivate(Int32 n, UInt32* sources)
+   at OpenTK.Audio.OpenAL.AL.GenSources(Int32 n, Int32& sources)
+   at OpenTK.Audio.OpenAL.AL.GenSource()
+   at WYZTracker.PlaybackStreamer..ctor()
+   at WYZTracker.Player..ctor()
+   at WYZTracker.VirtualPiano..ctor(Control ctrl)
+   at WYZTracker.PatternView..ctor()
+   at WYZTracker.PatternEditor.InitializeComponent()
+   at WYZTracker.PatternEditor..ctor()
+   at WYZTracker.frmDockedMain.InitializeComponent()
+   at WYZTracker.frmDockedMain..ctor(String[] args)
+   at WYZTracker.Program.startSingleInstance(String[] args)
+   at WYZTracker.Program.Main(String[] args)
+31/12/2016 6:55:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WYZTracker.PatternView.Finalize()
+31/12/2016 7:02:40
+System.DllNotFoundException: openal32.dll
+   at OpenTK.Audio.AudioContext.CreateContext(String device, Int32 freq, Int32 refresh, Boolean sync, Boolean enableEfx, MaxAuxiliarySends efxAuxiliarySends)
+   at OpenTK.Audio.AudioContext..ctor()
+   at WYZTracker.PlaybackStreamer.InitializeAudio()
+31/12/2016 7:02:40
+System.DllNotFoundException: Unable to load DLL 'openal32.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at OpenTK.Audio.OpenAL.AL.GenSourcesPrivate(Int32 n, UInt32* sources)
+   at OpenTK.Audio.OpenAL.AL.GenSources(Int32 n, Int32& sources)
+   at OpenTK.Audio.OpenAL.AL.GenSource()
+   at WYZTracker.PlaybackStreamer..ctor()
+   at WYZTracker.Player..ctor()
+   at WYZTracker.VirtualPiano..ctor(Control ctrl)
+   at WYZTracker.PatternView..ctor()
+   at WYZTracker.PatternEditor.InitializeComponent()
+   at WYZTracker.PatternEditor..ctor()
+   at WYZTracker.frmDockedMain.InitializeComponent()
+   at WYZTracker.frmDockedMain..ctor(String[] args)
+   at WYZTracker.Program.startSingleInstance(String[] args)
+   at WYZTracker.Program.Main(String[] args)
+31/12/2016 7:02:42
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WYZTracker.PatternView.Finalize()
