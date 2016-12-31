@@ -7,4 +7,7 @@ https://github.com/AugustoRuiz/WYZTracker
 yo he puesto una carpeta aqui con los binarios de la version 2.0.1.0 que son los compatibles 
 con el player integrado en 8BP a partir de la V26
 
+
+para instalar, ejecuta oalinst.exe y despues ya puedes ejecutar el wyztracker.exe
+
 gracias Augusto!
