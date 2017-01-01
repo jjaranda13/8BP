@@ -14,7 +14,7 @@
 130 'ciclo de juego ------
 150 |AUTOALL,1:|PRINTSPALL,0,1,0
 170 ' rutina movimiento personaje -----
-171 IF INKEY(67)+jump=0 THEN  jump=ciclo:|SETUPSP,0,0,141:|SETUPSP,0,15,dir
+171 IF INKEY(67)+jump=0 THEN  jump=ciclo:|SETUPSP,0,0,141:|SETUPSP,0,15,dir:|MOVER,0,-5,0
 172 IF jump>0 THEN 192 ELSE |SETUPSP,0,6,0
 180 IF INKEY(27)=0 THEN dir=0:|SETUPSP,0,6,1: GOTO 193
 190 IF INKEY(34)=0 THEN dir=1:|SETUPSP,0,6,-1:GOTO 193
