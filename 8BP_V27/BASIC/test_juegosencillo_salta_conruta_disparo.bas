@@ -18,7 +18,7 @@
 170 ' rutina movimiento personaje -----
 172 IF INKEY(47)=0 THEN if espera<ciclo-10 then espera=ciclo:disp= 1+ disp mod 4:|LOCATESP,10+disp,peek(27001)+8,peek(27003):|SETUPSP,10+disp,0,137:|SETUPSP,10+disp,15,3+dir
 173 IF jump>0 THEN 192 ELSE |SETUPSP,0,6,0
-174 IF INKEY(67)+jump=0 THEN  jump=ciclo:|SETUPSP,0,0,141:|SETUPSP,0,15,dir:|MOVER,0,-5,0
+174 IF INKEY(67)+jump=0 THEN  jump=ciclo:|SETUPSP,0,0,141:|SETUPSP,0,15,dir
 180 IF INKEY(27)=0 THEN dir=0:|SETUPSP,0,6,1: GOTO 192
 190 IF INKEY(34)=0 THEN dir=1:|SETUPSP,0,6,-1:GOTO 192
 192 IF ciclo-jump=20 THEN jump=0:|MOVER,0,5,0:|SETUPSP,0,6,1-DIR*2
