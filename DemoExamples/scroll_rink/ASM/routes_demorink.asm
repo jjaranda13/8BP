@@ -16,7 +16,7 @@ ROUTE_LIST
 ; DEFINICION DE CADA RUTA
 ;==========================
 ROUTE0; jumpderecha
-	db 2,-5,0
+	db 1,-10,0
 	db 2,-4,0
 	db 2,-3,0
 	db 2,-2,0
@@ -32,7 +32,7 @@ ROUTE0; jumpderecha
 	db 0
 
 ROUTE1; jumpizq
-	db 2,-5,0
+	db 1,-10,0
 	db 2,-4,0
 	db 2,-3,0
 	db 2,-2,0
