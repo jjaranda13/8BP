@@ -15,7 +15,7 @@ ROUTE_LIST
 
 ; DEFINICION DE CADA RUTA
 ;==========================
-ROUTE0; jumpderecha
+ROUTE0; jump_right
 	db 1,-10,0
 	db 2,-4,0
 	db 2,-3,0
@@ -26,12 +26,11 @@ ROUTE0; jumpderecha
 	db 2,3,0
 	db 2,4,0
 	db 1,5,0
-	db 1,0,0; quietoooo al mismo tiempo que el cambio de estado
 	db 255,65; nuevo estado, ya sin flag de ruta
 	db 1,0,0; quietoooo al mismo tiempo que el cambio de estado
 	db 0
 
-ROUTE1; jumpizq
+ROUTE1; jump_left
 	db 1,-10,0
 	db 2,-4,0
 	db 2,-3,0
