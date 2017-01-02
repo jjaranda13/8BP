@@ -12,7 +12,7 @@
 110 |SETUPSP,0,7,9:'secuencia de animacion asignada al empezar
 120 |LOCATESP,0,y,x:'colocamos al sprite (sin imprimirlo aun)
 121 DIM salto(24):' datos del salto
-122 for i=-5 to 5: k=k+1:salto(k)=i: k=k+1: salto(k)=i: next: salto(11)=-5: salto(23)=5
+122 for i=-5 to 5: k=k+1:salto(k)=i: k=k+1: salto(k)=i:next :salto(1)=-10: salto(23)=5
 123 locate 1,1: print "pulsa Q" : print "para saltar": print "ejemplo sin ruta"
 125 PLOT 1,150:DRAW 640,150: plot 92,150:draw 92,400:'suelo y pared
 126 |MUSIC,0,5: 'comienza a sonar la musica
