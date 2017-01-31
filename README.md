@@ -43,6 +43,18 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+31/01/2017 ACTUALIZACION V28 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v28.asm con las siguientes mejoras 
+	- se permite cambio de secuencia de animacion en mitad de una ruta (usando un segmento que comience  con valor 254)
+	- se permite cambio de imagen en mitad de una ruta (usando un segmento que comience  con valor 253)
+
+Esta mejora funcional permite programar de un modo mas sencillo cosas tales como sprites que dan saltos, sprites que durante una trayectoria se transforman en otra cosa y se hacen vulnerables, etc
+
+En la documentacion se ha reflejado esta nueva funcionalidad
+
+
 30/12/2016 ACTUALIZACION V27b (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
