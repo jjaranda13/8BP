@@ -43,6 +43,15 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+13/02/2017 ACTUALIZACION V28b (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v28b.asm con las siguientes mejoras 
+	- La colision de sprites funciona mejor. Habia un bug en el caso de que un sprite estuviese parcialmente fuera de la pantalla, ya que en ese caso no se detectaba colision. Con esta version queda solucionado
+
+
+
 31/01/2017 ACTUALIZACION V28 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
