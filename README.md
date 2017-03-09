@@ -44,6 +44,22 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+09/03/2017 ACTUALIZACION V29 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v29.asm con las siguientes mejoras 
+	- se permite definir un cambio de ruta dentro de una ruta. Por ejemplo, ahora un sprite puede recorrer la ruta 5 y al final de la misma empezar a recorrer la ruta 2. Para ello usaremos el codigo de escape 252
+		- 255: cambio de estado en mitad de ruta
+		- 254: cambio de secuencia de animacion en mitad de ruta
+		- 253: cambio de imagen en mitad de ruta
+		- 252: cambio de ruta (al final de ruta, logicamente)
+
+Como ya habia consumido 6KB y no queria consumir mas, he modificado algunas funciones y ubicacion de datos para lograr mas espacio y asi incluir esta nueva funcionalidad sin consumo extra de memoria.
+
+En la documentacion he reflejado esta nueva funcionalidad
+	
+
+
 13/02/2017 ACTUALIZACION V28b (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
