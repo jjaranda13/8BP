@@ -44,6 +44,13 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+13/04/2017 ACTUALIZACION V30 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v29.asm con las siguientes mejoras 
+	- mejora del sincronismo de pantalla en el comando |PRINTSPALL. funcionalmente no cambia nada
+
+
 09/03/2017 ACTUALIZACION V29 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
