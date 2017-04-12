@@ -9,7 +9,7 @@ descargate el ZIP y en el encontraras:
 
 - libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, ademas del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
-- GameExamples: Aqui ire dejando juegos hechos con 8BP. De momento tienes dos juegos para aprender y disfrutar con ellos
+- GameExamples: Aqui ire dejando juegos hechos con 8BP. Ya hay varios juegos para aprender y disfrutar con ellos
 
  - "mutante montoya", en honor al clasico "mutant monty") desarrollado integramente en basic usando la libreria. Con este juego puedes aprender modificandolo. 
  - "Anunnaki": un juego de arcade hecho en BASIC que emplea la tecnica de programacion de logicas masivas
@@ -31,7 +31,7 @@ Download the ZIP and you will find:
 
 - Library, and prepared in a directory structure to make a game, in fact in the library directory you will find a simple game that allow you to take the first steps. In addition you will find the SPEDIT, the sprite editor (works in BASIC in amstrad ) for you to make your creations. The library has files in assembler (.asm) which are the sources of the library and some other auxiliary files. To make full game you need this but do not worry because you do not have to learn assembler, you just have to learn only the meaning of the word "assemble".
 
-- GameExamples: Here i will upload games made with 8BP. At the moment you have three games to learn and enjoy with them
+- GameExamples: Here i will upload games made with 8BP. There are several available games to learn and enjoy with them
 
  - "Mutant montoya" in honor of the classic "mutant monty") developed entirely in basic using the library. With this game you can learn modifying it.
  - "Anunnaki": an arcade game made in BASIC . it uses "massive logic" technique programmed in BASIC
