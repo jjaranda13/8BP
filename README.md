@@ -47,7 +47,7 @@ The improvements that are incorporated will be backwards compatible so your game
 13/04/2017 ACTUALIZACION V30 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
-- libreria: ahora se incluye 8bitsdepoder_v29.asm con las siguientes mejoras 
+- libreria: ahora se incluye 8bitsdepoder_v30.asm con las siguientes mejoras 
 	- mejora del sincronismo de pantalla en el comando |PRINTSPALL. funcionalmente no cambia nada
 
 
