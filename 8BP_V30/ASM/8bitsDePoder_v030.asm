@@ -357,6 +357,8 @@ COA_spid	db 0; contador de sprites
 SOR_yant	dw 0 ; creo que esta se puede poner global
 SOR_count	db 0; contador de sprites a ordenar.  
 
+
+SOR_buffer	dw 0; buffer de 2 bytes. me la he llevado a global
 _SCREEN_3_END; esta ultima instruccion debe ensamblarse como mucho en la DFFF
 	NOP
 ;-----------------------------------------
@@ -1230,7 +1232,8 @@ SOR_ini		dw 0; direccion del sprite inicial
 ;variables locales para modo=1 (orden)
 ;-------------------------------------
 ;SOR_yant	dw 0 ; creo que esta se puede poner global
-SOR_buffer	dw 0; buffer de 2 bytes
+
+;SOR_buffer	dw 0; buffer de 2 bytes. me la he llevado a global
 
 ;--------------------------------
 
@@ -1666,6 +1669,19 @@ SET_0a16	ld b,0
 		ld (HL),a; reset paso
 		ret
 
+
+;==========================================================================================
+; algunas variables de la rutina stars las he traido aqui
+SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
+SCS_check	db 0
+
+SCS_incy	db 2; lo que vamos a mover en eje y
+SCS_incx	db 1; lo que vamos a mover en eje x
+
+SCS_counter	db 20
+SCS_number	db 20
+
+star_color	db 64
 
 _FIN_27000
 ;=============================================================================================================
@@ -3126,7 +3142,6 @@ CIL_END		;--protecciones
 ;-------------------------------------
 _SETUP_SEQUENCE		
 
-
 		; ubico la secuencia
 		;ld e,(IX+14)
 		ld e,(IX+16); son 8 frames
@@ -3222,14 +3237,14 @@ MOV_uno		ld (MOV_address),hl; guardo la direccion de comienzo del sprite
 		ld b,0; ojo puede no ser cero
 		bit 7,c
 		jr Z, MOV_positivoY; Vy es positivo
-		dec b
+		dec b; ahora b=255 ya que c es un numero negativo
 MOV_positivoY   ld hl, (MOV_address)
 		inc hl; me coloco en la posicion Y
 		push HL; guardo la direccion de coord Y
 		ld e, (Hl)
 		inc hl
 		ld d, (HL)
-		; ahora en de esta la Y
+		; ahora en DE esta la Y
 		ex de,hl
 		add HL,BC; sumo la velocidad
 		; ahora en HL esta la nueva coordenada
@@ -3830,16 +3845,20 @@ COS_CHOCA
 
 ; variables locales
 ;-------------------------------------
-SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
-SCS_check	db 0
 
-SCS_incy	db 2; lo que vamos a mover en eje y
-SCS_incx	db 1; lo que vamos a mover en eje x
+; me he llevado algunas a la zona que acaba en 27000 para ganar unos bytes y asi
+; poder chequear si num stars =0 y retornar
 
-SCS_counter	db 20
-SCS_number	db 20
+;SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
+;SCS_check	db 0
 
-star_color	db 64
+;SCS_incy	db 2; lo que vamos a mover en eje y
+;SCS_incx	db 1; lo que vamos a mover en eje x
+
+;SCS_counter	db 20
+;SCS_number	db 20
+
+;star_color	db 64
 bkgd_color	db 0
 
 
@@ -3854,6 +3873,9 @@ SCS:
 		; optimizacion. si no hay parametros asumo los ultimos
 		and a
 		jr nz, SCS_sigue
+		LD A, (SCS_number)
+		and a
+		ret Z; si num estrellas =0 entonces no hay nada que hacer
 		ld a, (SCS_initstar)
 		jr SCS_START
 		
@@ -3861,6 +3883,8 @@ SCS_sigue
 		ld a, (ix+6)	; numero maximo de estrellas
 		ld (SCS_number),a
 		ld (SCS_counter),a
+		and a
+		ret Z; si num estrellas =0 entonces no hay nada que hacer
 
 		LD A, (ix+0)
 		ld (SCS_incx), a
