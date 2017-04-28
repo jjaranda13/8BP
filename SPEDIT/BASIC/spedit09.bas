@@ -19,7 +19,7 @@
 195 PRINT "     z, x: cambia color de tinta"
 196 PRINT "     t: RESET"
 200 PRINT "    -------------------------"
-210 PRINT "Antes de empezar puedes cargar un spriteensamblandolo en la direccion &4000."
+210 PRINT "Antes de empezar puedes cargar un spriteensamblandolo en la direccion 24000."
 220 PRINT "No ensambles ancho y alto,solo los bytesdel dibujo."
 230 PRINT " "
 240 PRINT " La paleta la puedes cambiar pero debera ser la misma en tu programa."

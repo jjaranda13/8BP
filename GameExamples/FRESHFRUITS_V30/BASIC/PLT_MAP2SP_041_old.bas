@@ -1,0 +1,501 @@
+10 MEMORY 23999:banco=42540
+20 FOR dir=banco TO banco+38*2 STEP 2:'8:
+30 y=INT(RND*190):x=INT(RND*60)+4
+40 POKE dir,y:POKE dir+1,x:
+80 NEXT
+100 CALL &6B78:|MUSICOFF
+110 |MUSIC,0,6
+120 IF INKEY(47)<>0 THEN  120
+130 |MUSICOFF
+140 DEFINT A-Z
+141 maxpoints1=20
+142 maxpoints2=20
+150 CALL &BC02:INK 0,0
+160 '-- sounds
+170 ENT 1,10,-20,1,2,20,1,20,-20,1  :'fruta
+180 ENV 1,10,1,1: 'pasos
+190 ENV 2,10,-1,1:'salto
+200 ENT 2,20,-4,1:'salto
+210 ENV 3,11,-1,25:ENT 3,9,49,5,9,-10,15:'muerte
+220 'ini fase 1---------------------
+230 lives=3:fase=1
+240 CLS
+250 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset sprites
+260 'plataformas sprites 0-12
+270 plt80=17:plt42=16
+280 cereza=19: lemon=24: apple=25
+290 seqexplo= 10:fluto=27:tomate=28:pltfill=30
+300 brick8x8=23: meter=26: borra= 22:selva=29
+310 beginfase=&61A8:endfase=&6242:GOSUB 330:' mapea fase1
+320 GOTO 390
+330 '---rutina carga mapa
+340 map=&A438:'42040
+350 FOR i=beginfase TO endfase
+360 POKE map,PEEK(i):map=map+1
+370 NEXT
+380 RETURN 
+390 'PRESENTACION ----------------
+400 MODE 0:CLS:|SETLIMITS,0,80,0,200:|RINK,8,0,2,11,11,11,11,11,14:|RINK,0: 'patron azules
+410 sp=9: |SETUPSP,sp,9,brick8x8:|SETUPSP,sp,0,1:'brick8x8
+420 xini=0:FOR y=20 TO 11*8+4 STEP 8:FOR x=xini TO xini+80 STEP 4::|PRINTSP,sp,y,x:NEXT
+430 xini=(xini-2) MOD 4: NEXT:
+440 LOCATE 5,5:PEN 1: PRINT CHR$(22)+CHR$(1);"FRESH FRUITS";:PEN 1:LOCATE 10,6:PRINT "&";:LOCATE 6,8:PRINT "VEGETABLES";
+450 LOCATE 1,14:PEN 7:PRINT "CONTROLS:":LOCATE 2,15:PEN 4:PRINT "q:";CHR$(240)
+460 LOCATE 2,17:PEN 4:PRINT "o:";CHR$(242)
+470 LOCATE 2,19:PEN 4:PRINT "p:";CHR$(243)
+480 LOCATE 1,23:PEN 7:PRINT "Come fruta. Es buena";
+490 LOCATE 1,25:PEN 1:PRINT "8BP        2017 JJGA";
+500 FOR i=0 TO 7:
+510 |SETUPSP,i,9,tomate:|SETUPSP,i,0,128+8+1:|SETUPSP,i,15,14:|LOCATESP,i,100+i*8,40:|AUTOALL,1:|AUTOALL,1:|AUTOALL,1:
+520 NEXT
+530 |SETUPSP,31,7,2:|LOCATESP,31,4,-4:|SETUPSP,31,5,0,0:|SETUPSP,31,0,128+32+8+4+1:|SETUPSP,31,15,15
+540 FOR i=1 TO 20:|AUTOALL,1:NEXT
+550 FOR i=30 TO 30:|SETUPSP,i,7,8:|LOCATESP,i,4,-4:|SETUPSP,i,5,0,0:|SETUPSP,i,0,128+32+8+4+1:|SETUPSP,i,15,15:
+560 FOR j=1 TO 8::|AUTOALL,1:NEXT:NEXT
+570 |MUSIC,0,6: FOR i=1 TO 100:NEXT: demora=0:|AUTOALL,1:|PRINTSPALL,0,1,1
+580 |RINK,1: demora=demora+1: if demora=1200 then 6000
+580 call &76be,1: demora=demora+1: if demora=1600 then 6000
+590 |AUTOALL:|PRINTSPALL
+600 IF INKEY(47)<>0 THEN  580
+610 |MUSICOFF: MODE 0
+620 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:MODE 0:CALL &BC02:INK 0,0:'reset sprites
+630 |LOCATESP,31,12*8-1,36:|SETUPSP,31,0,16+2+1:|SETUPSP,31,9,lemon
+640 |LOCATESP,30,14*8-1,20:|SETUPSP,30,0,16+2+1:|SETUPSP,30,9,pltfill
+650 |PRINTSPALL
+660 TAG:PLOT -10,-1,3:MOVE 7*32-2,16*16: PRINT "LEVEL 1";:TAGOFF
+670 LOCATE 8,10:PEN 1: PRINT CHR$(22)+CHR$(1);"LEVEL 1";
+680 LOCATE 5,18:PEN 2: PRINT CHR$(22)+CHR$(0);"Fruity Castle";
+690 IF  INKEY(47)<>0 THEN 690
+700 MODE 0:FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset sprites
+710 |RINK,8,0,3,6,6,6,6,6,15:'patron rojos
+720 |RINK,0:'set tintas
+730 pltx%=0:'variable para check coord x de plataformas
+740 '|PRINTSPALL,0,0,0
+750 ' setup del personaje
+760 |SETUPSP,31,7,2:'derecha
+770 |LOCATESP,31,18*8,38:|SETUPSP,31,5,0,0
+780 |SETUPSP,31,0,128+32+8+1:|SETUPSP,31,15,0
+790 collider=0:collided=0:|COLSPALL,@collider,@collided:|COLSP,33,@collided
+800 |COLSP,34,0,0: |COLSP,32,0,30
+810 |SETLIMITS,0,80,0,200
+820 GOSUB 2500:'pinta marcadores
+830 GOSUB 2600:'pintafrutometer
+840 GOSUB 2940:' paint FLOOR
+850 puntos=0
+860 dir=0:|AUTOALL,1:|PRINTSPALL,0,1,0:' dir0=derecha, dir1=izq
+870 'setup enemigos----------------------
+880 |LOCATESP,30,10*8-16-1,20
+890 |SETUPSP,30,0,128+16+8+4+2+1
+900 |SETUPSP,30,15,6:'ruta guardian ya lleva secuencia
+910 'setup enemigo
+920 |LOCATESP,29,15*8-16-1,75
+930 |SETUPSP,29,0,128+16+8+4+2+1
+940 |SETUPSP,29,15,7:'ruta guardian ya lleva secuencia
+950 'setup enemigo
+960 |LOCATESP,28,20*8-16-1,160
+970 |SETUPSP,28,0,128+16+8+4+2+1
+980 |SETUPSP,28,15,7:'ruta guardian ya lleva secuencia
+990 'setup enemigo
+1000 |LOCATESP,27,20*8-16-1,360
+1010 |SETUPSP,27,0,128+16+8+4+2+1
+1020 |SETUPSP,27,15,7:'ruta guardian ya lleva secuencia
+1030 |LOCATESP,24,60,500
+1040 ' setup enemigo
+1050 |LOCATESP,26,60,110
+1060 |SETUPSP,26,0,128+16+8+4+2+1
+1070 |SETUPSP,26,15,12:'ruta bug
+1080 |SETUPSP,26,7,1
+1090 ' setup enemigo
+1100 |LOCATESP,25,40,410
+1110 |SETUPSP,25,0,128+16+8+4+2+1
+1120 |SETUPSP,25,15,13:'ruta bug
+1130 |SETUPSP,25,7,1
+1140 ' setup enemigo
+1150 |LOCATESP,24,60,500
+1160 |SETUPSP,24,0,128+16+8+4+2+1
+1170 |SETUPSP,24,15,10:'ruta bug
+1180 |SETUPSP,24,7,1
+1190 ' setup enemigo
+1200 |LOCATESP,23,100,510
+1210 |SETUPSP,23,0,128+16+8+4+2+1
+1220 |SETUPSP,23,15,11:'ruta bug2
+1230 |SETUPSP,23,7,1
+1240 ' setup enemigo
+1250 |LOCATESP,22,60,520
+1260 |SETUPSP,22,0,128+16+8+4+2+1
+1270 |SETUPSP,22,15,12:'ruta bug2
+1280 |SETUPSP,22,7,1
+1290 ' setup enemigo
+1300 |LOCATESP,21,80,530
+1310 |SETUPSP,21,0,128+16+8+4+2+1
+1320 |SETUPSP,21,15,13:'ruta bug2
+1330 |SETUPSP,21,7,1
+1340 ' setup enemigo
+1350 |LOCATESP,20,20*8-16,250
+1360 |SETUPSP,20,0,128+16+8+4+2+1
+1370 |SETUPSP,20,15,7:'guardian
+1380 'frutas----------------------------
+1390 |LOCATESP,10,5*8-16-1,60
+1400 |SETUPSP,10,0,16+2+1
+1410 |SETUPSP,10,9,cereza
+1420 |LOCATESP,11,8*8-16-1,190
+1430 |SETUPSP,11,0,16+2+1
+1440 |SETUPSP,11,9,lemon
+1450 |LOCATESP,12,8*8-16-1,240
+1460 |SETUPSP,12,0,16+2+1
+1470 |SETUPSP,12,9,apple
+1480 |LOCATESP,13,8*8-16-1,350
+1490 |SETUPSP,13,0,16+2+1
+1500 |SETUPSP,13,9,apple
+1510 |LOCATESP,14,8*8-16-1,400
+1520 |SETUPSP,14,0,16+2+1
+1530 |SETUPSP,14,9,apple
+1540 |LOCATESP,15,15*8-16-1,420
+1550 |SETUPSP,15,0,16+2+1
+1560 |SETUPSP,15,9,LEMON  
+1570 |LOCATESP,16,14*8-16-1,310
+1580 |SETUPSP,16,0,16+2+1
+1590 |SETUPSP,16,9,LEMON
+1600 |LOCATESP,17,14*8-16-1,480
+1610 |SETUPSP,17,0,16+2+1
+1620 |SETUPSP,17,9,apple 
+1630 |LOCATESP,18,5*8-16-1,257
+1640 |SETUPSP,18,0,16+2+1
+1650 |SETUPSP,18,9,cereza 
+1660 |LOCATESP,19,20*8-16-1,550
+1670 |SETUPSP,19,0,16+2+1
+1680 |SETUPSP,19,9,cereza 
+1690 GOSUB 2810:'frutas espejo
+1700 k=0:'coordenada inicial para scroll
+1710 GOSUB 2160:'1st scroll to print
+1720 fase=1
+1730 ' CICLO JUEGO FASE 1
+1740 ruta=PEEK(27511)
+1750 IF ruta<2 THEN GOSUB 1830 ELSE IF ruta <4 THEN GOSUB 1880 ELSE IF ruta <8 THEN GOSUB 1980
+1760 IF counter >0 THEN IF dir=1 THEN GOSUB 2080:GOTO 1790 ELSE IF dir=0 THEN GOSUB 2170:GOTO 1790 
+1770 IF INKEY(34)=0 THEN counter=4:dir=0:GOSUB 2080 ELSE IF INKEY(27)=0 THEN dir=1:counter=4:GOSUB 2170
+1780 IF counter=3 THEN IF ruta<2 THEN SOUND 1,300,10,7,,1,15
+1790 IF collided<32 THEN IF collided>=20 THEN 2250 ELSE IF collided >=10 THEN 2380:'muerte y fruta
+1800 |AUTOALL:|PRINTSPALL
+
+1810 GOTO 1740
+1820 'rutina andando---ruta 0,1
+1830 POKE 27497,5+PEEK(27497):|COLSP,31:POKE 27497,PEEK(27497)-5
+1840 IF collided>9 THEN |SETUPSP,31,15,4+dir:RETURN:'caer
+1850 IF INKEY(67)=0 THEN |SETUPSP,31,15,2+dir: SOUND 1,400,20,0,2,2
+1860 RETURN
+1870 ' saltando---ruta 2,3
+1880 vy=PEEK(27501): IF vy>127 THEN vy=vy-255-1
+1890 'fin salto ->caer
+1900 IF vy=5 THEN |SETUPSP,31,15,4+dir:RETURN
+1910 IF vy>=0 THEN  1980
+1920 'subiendo---ruta 2,3
+1930 |COLSP,31 
+1940 IF collided=32  THEN RETURN
+1950 |SETUPSP,31,15,4+dir
+1960 RETURN
+1970 ' cayendo--- rutas 4,5
+1980 |MOVER,31,6,0:|COLSP,31:|MOVER,31,-6,0
+1990 IF collided>10 THEN RETURN
+2000 posy%=0:|PEEK,27497,@posy%
+2010 '22+5 seria justo el 1er pixel de suelo, ya que boladown mide 21
+2020 dy =(posy%+26) AND 7
+2030 |MOVER,31,5-dy,0
+2040 |SETUPSP,31,15,8+dir:|SETUPSP,31,7,2+dir
+2050 SOUND 1,4000,10,7,,1,15
+2060 RETURN
+2070 'scroll izq--------------
+2080 IF dir=0 THEN dir=1:POKE 27503,2+dir
+2090 counter=counter-1
+2100 IF ruta<2 THEN |ANIMA,31
+2110 POKE 27499,37:|COLSP,31:POKE 27499,38
+2110 POKE 27499,37:|COLSPALL:POKE 27499,38
+2120 IF collided<32 THEN RETURN
+2130 k=k-1:|MAP2SP,0,k:|MOVERALL,0,1
+2140 call &76be,-2:'|RINK,-2
+2150 RETURN
+2160 'scroll dere--------------
+2170 IF dir=1 THEN dir=0 :POKE 27503,2+dir
+2180 counter=counter-1
+2190 IF ruta<2 THEN |ANIMA,31
+2200 POKE 27499,39:|COLSP,31:POKE 27499,38
+2200 POKE 27499,39:|COLSPALL:POKE 27499,38
+2210 IF collided<32 THEN RETURN
+2220 k=k+1:|MAP2SP,0,k:|MOVERALL,0,-1
+2230 call &76be,2:'|RINK,2
+2240 RETURN
+2250 ' muerte. ojo si seq es caida (5 o 7) habria que mover 
+2260 IF ruta>=4 THEN IF  ruta<=5  THEN |MOVER,31,5,0
+2270 |SETUPSP,31,7,seqexplo:|SETUPSP,31,0,5
+2280 counter=100:SOUND 6,0,150,7,3,,15
+2290 |AUTOALL:|PRINTSPALL
+2300 counter=counter-1:IF counter>0 THEN 2290
+2310 lives=lives-1: IF lives=0 THEN GOTO 2680
+2320 CLS:|SETUPSP,31,7,2:|LOCATESP,31,16,38:|SETUPSP,31,5,0,0:|SETUPSP,31,0,128+32+8+1:|SETUPSP,31,15,0
+2330 GOSUB 2500:'pinta marcadores 
+2340 GOSUB 2600:'pintafrutometer
+2350 'GOSUB 2540:'pinta suelo
+2360 IF fase=1 THEN  GOSUB 2940:GOTO 1710:'pinta suelo y fase 1
+2370 IF fase=2 THEN GOSUB 3330:GOTO 4250:'fase 2
+2380 ' fruta
+2390 |SETLIMITS,0,80,0,200:xant=PEEK(27003+collided*16):yant=PEEK(27001+collided*16)
+2400 |SETUPSP,collided,9,borra
+2410 |PRINTSP,collided:|SETUPSP,collided,0,0
+2420 puntos=puntos+1:SOUND 6,400,30,7,,1
+2440 |SETUPSP,collided,9,fluto
+2450 |PRINTSP,collided,8*23+6,7+puntos:|LOCATESP,collided,yant,xant
+2460 GOSUB 2750:collided=32:collider=32
+2470 IF fase =1 then if puntos=maxpoints1 THEN 3070 else 1800
+2490 IF fase=2 THEN if puntos=maxpoints2 THEN 5000 else |SETLIMITS,0,80,0,limy:GOTO 4340
+2500 ' print lives
+2510 |SETLIMITS,0,80,0,200
+2520 TAG:PLOT -10,0,7:MOVE 7*4+8,3*16-2: PRINT "FRUTOMETER   LIVES";:TAGOFF
+2530 LOCATE 2,23:PEN 1: PRINT CHR$(22)+CHR$(1);"FRUTOMETER   LIVES";
+2540 PRINT CHR$(22)+CHR$(0);:' modo transparente 
+2550 sp=0:|SETUPSP,sp,7,2
+2560 FOR i=1 TO lives
+2570 |PRINTSP,sp,23*8,50+i*6
+2580 NEXT
+2590 RETURN
+2600 ' print flutometer
+2610 |SETLIMITS,0,80,0,200:|SETUPSP,0,9,meter
+2620 |PRINTSP,0,8*23+2,4
+2630 PLOT 64,20,4:DRAW 64+20*8-4,20
+2640 PLOT 64,10,4:DRAW 64+20*8-4,10
+2650 PLOT 64+20*8,18,4:DRAW 64+20*8,12
+2660 |SETUPSP,0,9,fluto:FOR i=1 TO puntos:|PRINTSP,0,8*23+6,7+i:NEXT
+2670 RETURN
+2680 ' game over
+2690 LOCATE 2,9: PRINT "                  "
+2700 LOCATE 2,10: PEN 2:PRINT " G A M E  O V E R "
+2710 LOCATE 2,11: PRINT "                  "
+2720 WHILE INKEY(47)<>0 :WEND
+2730 RUN
+2740 'fruit mirror
+2750 IF fruit(collided-10)=0 THEN RETURN
+2760 fruit(collided-10)=0
+2770 |SETUPSP,collided,9,fruitf(collided-10)
+2780 |SETUPSP,collided,0,16+2+1
+2790 |MOVER,collided, fruity(collided-10),fruitx(collided-10)
+2800 RETURN
+2810 'arrays de frutas espejo
+2820 FOR i=0 TO 9:fruit(i)=1:NEXT
+2830 fruity(0)=5*8:fruitx(0)=45:fruitf(0)=apple
+2840 fruity(1)=12*8:fruitx(1)=-16:fruitf(1)=cereza
+2850 fruity(2)=12*8:fruitx(2)=-16:fruitf(2)=lemon
+2860 fruity(3)=0:fruitx(3)=-25:fruitf(3)=cereza
+2870 fruity(4)=12*8:fruitx(4)=-30:fruitf(4)=cereza
+2880 fruity(5)=5*8:fruitx(5)=-16:fruitf(5)=apple
+2890 fruity(6)=-6*8:fruitx(6)=8:fruitf(6)=cereza
+2900 fruity(7)=4*8:fruitx(7)=90:fruitf(7)=lemon
+2910 fruity(8)=10*8:fruitx(8)=4:fruitf(8)=cereza:
+2920 fruity(9)=0:fruitx(9)=-60:fruitf(9)=lemon
+2930 RETURN
+2940 'paint floor (sprite 9)
+2950 sp=9
+2960 |SETUPSP,sp,9,brick8x8:|SETUPSP,sp,0,1:'brick8x8
+2970 y=20*8:x=80 
+2980 FOR x=0 TO 80 STEP 4::|PRINTSP,sp,y,x:NEXT
+2990 FOR x=-2 TO 80 STEP 4:|PRINTSP,sp,y+8,x:NEXT
+3000 ' ahora creo sprite invisible suelo=9
+3010 |SETUPSP,sp,9,PLT80
+3020 |SETUPSP,sp,0,2:'colisionable, nada mas
+3030 |LOCATESP,sp,20*8-1,0
+3040 ' marco de marcadores
+3050 PLOT 16,3*16+2,2:DRAW 0,2*16+2:DRAW 0,16+2: DRAW 16,0:DRAW 638-16,0:DRAW 638,16:DRAW 638,2*16:DRAW 638-16,3*16+2:DRAW 16,3*16+2
+3060 RETURN
+3070 '---fin fase 1 --------------
+3080 |PRINTSP,31
+3090 FOR i1=1 TO 3
+3100 FOR i2=0 TO 26
+3110 BORDER i2
+3120 FOR j=1 TO 1:NEXT
+3130 SOUND 6,1000/i1/(1+i2),1,7,1,2
+3140 NEXT: NEXT:BORDER 1
+3150 '---- fase 2 ---------------
+3160 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:MODE 0:CALL &BC02:INK 0,0:'reset sprites
+3170 |LOCATESP,31,12*8-1,40:|SETUPSP,31,0,16+2+1:|SETUPSP,31,9,apple
+3180 |LOCATESP,30,14*8-1,26:|SETUPSP,30,0,16+2+1:|SETUPSP,30,9,selva
+3190 |PRINTSPALL
+3200 TAG:PLOT -10,-1,3:MOVE 7*32-2,16*16: PRINT "LEVEL 2";:TAGOFF
+3210 LOCATE 8,10:PEN 1: PRINT CHR$(22)+CHR$(1);"LEVEL 2";
+3220 LOCATE 3,18:PEN 2: PRINT CHR$(22)+CHR$(0);"Jungle adventures";
+3230 IF  INKEY(47)<>0 THEN 3230
+3240 |PRINTSPALL,0,1,0:MODE 0
+3250 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset sprites
+3260 |SETLIMITS,0,80,0,200:s=0
+3270 GOSUB 2500:'pinta marcadores
+3280 puntos=0:GOSUB 2600:'pintafrutometer
+3290 GOSUB 3330:' pintado de suelo
+3300 beginfase=&6243:endfase=&6302:GOSUB 330:' mapea fase2
+3310 k=0:|MAP2SP,0,k
+3320 GOTO 3470
+3330 ' pintado suelo fase 2
+3340 PLOT 0,5*16-1,12:DRAW 640,5*16-1
+3350 FOR i=3*16+4 TO 5*16-2-1
+3360 PLOT 0,i,11:DRAW 640,i
+3370 NEXT
+3380 'for i=&a62c to &a67a step 2:poke i,20*8-1+rnd*14:poke (i+1),rnd*80:next
+3390 '|stars,0,40,1,0,0
+3400 ' ahora creo sprite invisible suelo=9
+3410 sp=9:|SETUPSP,sp,9,PLT80
+3420 |SETUPSP,sp,0,2:'colisionable, nada mas
+3430 |LOCATESP,sp,20*8-1,0
+3440 ' marco de marcadores
+3450 PLOT 16,3*16+2,2:DRAW 0,2*16+2:DRAW 0,16+2: DRAW 16,0:DRAW 638-16,0:DRAW 638,16:DRAW 638,2*16:DRAW 638-16,3*16+2:DRAW 16,3*16+2
+3460 RETURN
+3470 ' setup del personaje
+3480 |SETUPSP,31,7,2:'derecha
+3490 |LOCATESP,31,18*8,38:|SETUPSP,31,5,0,0
+3500 |SETUPSP,31,0,128+32+8+1:|SETUPSP,31,15,0 
+3510 collider=0:collided=0:|COLSPALL,@collider,@collided:|COLSP,33,@collided
+3520 |COLSP,34,0,0: |COLSP,32,0,30: counter=0
+3530 'setup enemigos----------------------
+3540 |LOCATESP,30,5*8-16-1,400
+3550 |SETUPSP,30,0,128+16+8+4+2+1
+3560 |SETUPSP,30,15,17:'ruta abeja. lleva secuencia
+3570 |LOCATESP,29,9*8-16-1,250
+3580 |SETUPSP,29,0,128+16+8+4+2+1
+3590 |SETUPSP,29,15,16:'ruta abeja. lleva secuencia
+3600 |LOCATESP,28,15*8-16-1,250
+3610 |SETUPSP,28,0,128+16+8+4+2+1
+3620 |SETUPSP,28,15,17:'ruta abeja. lleva secuencia
+3630 |LOCATESP,26,19*8-1,200
+3640 |SETUPSP,26,0,128+16+8+4+2+1
+3650 |SETUPSP,26,15,19:'snake
+3660 |LOCATESP,25,19*8-1,340
+3670 |SETUPSP,25,0,128+16+8+4+2+1
+3680 |SETUPSP,25,15,19:'snake
+3690 |LOCATESP,21,20*8-16-1,390
+3700 |SETUPSP,21,0,128+16+8+4+2+1
+3710 |SETUPSP,21,15,6:'guardian
+3720 |LOCATESP,20,10*8-16-1,360
+3730 |SETUPSP,20,0,128+16+8+4+2+1
+3740 |SETUPSP,20,15,20:'abeja
+3750 |LOCATESP,27,15*8-16-1,68
+3760 |SETUPSP,27,0,128+16+8+4+2+1
+3770 |SETUPSP,27,15,18:'ruta guardianmini ya lleva secuencia
+3780 |LOCATESP,24,10*8-16-1,390
+3790 |SETUPSP,24,0,128+16+8+4+2+1
+3800 |SETUPSP,24,15,12:'bug
+3810 |LOCATESP,23,9*8-16-1,410
+3820 |SETUPSP,23,0,128+16+8+4+2+1
+3830 |SETUPSP,23,15,11:'bug
+3840 |LOCATESP,22,6*8-16-1,430
+3850 |SETUPSP,22,0,128+16+8+4+2+1
+3860 |SETUPSP,22,15,12:'bug
+3870 'fruta----------------------------
+3880 FOR i=0 TO 9:fruit(i)=1:NEXT
+3890 |LOCATESP,10,13*8-16-1,60
+3900 |SETUPSP,10,0,16+2+1
+3910 |SETUPSP,10,9,apple
+3920 fruity(0)=-3*8:fruitx(0)=-38:fruitf(0)=cereza
+3930 |LOCATESP,11,20*8-16-1,250
+3940 |SETUPSP,11,0,16+2+1
+3950 |SETUPSP,11,9,lemon
+3960 fruity(1)=-11*8:fruitx(1)=30:fruitf(1)=apple
+3970 |LOCATESP,12,14*8-16-1,352
+3980 |SETUPSP,12,0,16+2+1
+3990 |SETUPSP,12,9,cereza
+4000 fruity(2)=6*8:fruitx(2)=-30:fruitf(2)=apple
+4010 |LOCATESP,13,5*8-16-1,57
+4020 |SETUPSP,13,0,16+2+1
+4030 |SETUPSP,13,9,lemon
+4040 fruity(3)=5*8:fruitx(3)=80:fruitf(3)=tomate
+4050 |LOCATESP,14,20*8-16-1,200
+4060 |SETUPSP,14,0,16+2+1
+4070 |SETUPSP,14,9,apple
+4080 fruity(4)=-6*8:fruitx(4)=30:fruitf(4)=apple
+4090 |LOCATESP,15,11*8-16-1,450
+4100 |SETUPSP,15,0,16+2+1
+4110 |SETUPSP,15,9,cereza
+4120 fruity(5)=9*8:fruitx(5)=40:fruitf(5)=apple
+4130 |LOCATESP,16,11*8-16-1,460
+4140 |SETUPSP,16,0,16+2+1
+4150 |SETUPSP,16,9,cereza
+4160 fruity(6)=9*8:fruitx(6)=20:fruitf(6)=lemon
+4170 |LOCATESP,17,9*8-16-1,250
+4180 |SETUPSP,17,0,16+2+1
+4190 |SETUPSP,17,9,cereza
+4200 fruity(7)=11*8:fruitx(7)=50:fruitf(7)=apple
+4210 |LOCATESP,18,9*8-16-1,320
+4220 |SETUPSP,18,0,16+2+1
+4230 |SETUPSP,18,9,lemon
+4240 fruity(8)=11*8:fruitx(8)=20:fruitf(8)=cereza
+4241 |LOCATESP,19,15*8-16-1,270
+4242 |SETUPSP,19,0,16+2+1
+4243 |SETUPSP,19,9,lemon
+4244 fruity(9)=0*8:fruitx(9)=30:fruitf(9)=apple
+
+
+
+4250 ' ciclo de juego fase 2
+4260 fase=2:GOSUB 4440:limy=170:|SETLIMITS,0,80,0,limy:|STARS,0,s,2,8,-1
+4270 ruta=PEEK(27511)
+4290 IF ruta<2 THEN GOSUB 1830 ELSE IF ruta <4 THEN GOSUB 1880 ELSE IF ruta <8 THEN GOSUB 1980
+4300 IF counter >0 THEN IF dir=1 THEN GOSUB 4370:GOTO 4330 ELSE IF dir=0 THEN GOSUB 4450:GOTO 4330 
+4310 IF INKEY(34)=0 THEN counter=4:dir=0:GOSUB 4370 ELSE IF INKEY(27)=0 THEN dir=1:counter=4:GOSUB 4450: ELSE |COLSPALL
+4320 IF counter=3 THEN IF ruta<2 THEN SOUND 1,300,10,7,,1,15
+4330 IF collided<32 THEN IF collided>=20 THEN 2250 ELSE IF collided >=10 THEN 2380:'muerte y fruta
+4340 |AUTOALL:|PRINTSPALL:|STARS
+4350 GOTO 4270
+4360 'scroll izq fase 2--------------
+4370 IF dir=0 THEN dir=1:POKE 27503,2+dir
+4380 counter=counter-1
+4390 IF ruta<2 THEN |ANIMA,31
+4400 POKE 27499,37:|COLSP,31:POKE 27499,38
+4410 IF collided<32 THEN RETURN
+4420 k=k-1:|MAP2SP,0,k:|MOVERALL,0,1
+4430 RETURN
+4440 'scroll dere fase 2--------------
+4450 IF dir=1 THEN dir=0 :POKE 27503,2+dir
+4460 counter=counter-1
+4470 IF ruta<2 THEN CALL &6EE6,31
+4480 POKE 27499,39:|COLSP,31:POKE 27499,38
+4490 IF collided<32 THEN RETURN
+4500 k=k+1:|MAP2SP,0,k:|MOVERALL,0,-1: IF k=120 THEN IF s<10 THEN s=10:|STARS,0,s,2,8,-1
+4510 RETURN
+
+5000 mode 0:call &bc02:ink 0,0
+5010 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset sprites
+5012 locate 1,1:pen 10:print "Enhorabuena fruitman":print "  Has dejado a tu    pueblo sin fruta.    Ahora tendran que  matar al cerdo para   poder comer"
+5013 locate 13,14: pen 1: print "HELP!"
+5020 |SETUPSP,30,9,31
+5030 |PRINTSP,30,100,30
+5040 |SETUPSP,29,9,selva
+5050 |PRINTSP,29,129,20
+5051 |MUSIC,1,6
+5052 |LOCATESP,30,10*8-16-1,-60
+5053 |SETUPSP,30,0,128+16+8+4+2+1
+5054 |SETUPSP,30,15,20:'ruta abeja mini
+5055 |LOCATESP,29,11*8-16-1,-10
+5056 |SETUPSP,29,0,128+16+8+4+2+1
+5057 |SETUPSP,29,15,20:'ruta abeja mini
+
+
+5058 |AUTOALL:|PRINTSPALL,0,1,1
+5060 if inkey(47)=0 then 130
+5070 goto 5058
+
+
+6000 mode 1: call &bc02: ink 0,0: pen 1: |MUSICOFF
+6010 locate 6,2: print "FRESH FRUITS & VEGETABLES"
+6020 locate 6,3: pen 3:print "=========================":pen 1
+6030 locate 6,5: print "Code................JJGA"
+6040 locate 6,7: print "Graphics............JJGA"
+6050 locate 6,9: print "Music........DJGA & JJGA"
+
+7030 locate 1,14:pen 1:print "    by Jose Javier Garcia Aranda"
+7040 PRINT:PRINT "    A 100% BASIC program Made with 8BP"
+7050 PRINT "     8BP: The ultimate set of RSX"
+7051 PRINT "          commands for games!"
+7052 PRINT: pen 2
+7060 print "     www.github.com/jjaranda13/8BP"
+7080 print "     www.8bitsdepoder.blogspot.com"
+7081 PRINT
+7082 PRINT: pen 1
+7100 demora=0
+7120 demora=demora+1
+7121 IF INKEY(47)=0 THEN  400
+7130 if demora<3000 then 7120
+7200 goto 400
