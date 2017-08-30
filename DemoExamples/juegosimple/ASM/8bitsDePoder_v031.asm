@@ -30,15 +30,17 @@
 ;|AUTOALL                           -> movimiento de todos los sprites con flag de mov automatico activo 
 ;|STARS, starini,numstars,color,dy,dx  -> scroll de un banco de estrellas en cualquier direccion y velocidad
 ;|SETLIMITS, xmin,xmax,ymin,ymax    -> define la ventana de juego, donde se hace clippling
-;|LAYOUT, y,x,string                -> imprime un layout de imagenes de 8x8 y rellena map layout
+;|LAYOUT, y,x,@string               -> imprime un layout de imagenes de 8x8 y rellena map layout
 ;|SETUPSP, #, param_number, valor   -> modifica un parametro de un sprite
 ;|SETUPSQ, #, adr0,adr1,...,adr7    -> crea una secuencia de animacion
 ;|MUSIC, cancion,speed              -> comienza a sonar una cancion a la velocidad deseada
 ;|MUSICOFF                          -> para la musica
 ;|POKE, direccion, valor	    -> acepta valores negativos. es un poke de 16bit
 ;|PEEK,dir,@variable	    	    -> lee valores negativos. es un peek de 16bit
+;|PRINTAT,flag,y,x,@string          -> imprime una cadena de caracteres (minicaracteres)
+;|RINK,salto			    -> Rota un conjunto de tintas (4 u 8) de acuerdo a un patron definible
 ;|ROUTEALL			    -> cambia la velocidad de los sprites de acuerdo a sus rutas (flag ruta)
-;
+;|ALL, tasks			    -> invoca varios comandos a la vez
 ; tablas de datos accesibles desde BASIC
 ; -------------------------------------------
 ; 42540	    STARS0 tabla de 40 estrellas (y,x) 1 byte por coordenada. Usar POKE para rellenarla
@@ -139,7 +141,7 @@ ROU_SPID	db 0; sprite id
 ROU_ID		db 0; identificador de ruta del sprite
 ROU_SEG		db 0; segmento id dentro de la ruta
 ROU_dir		dw 0; direccion donde se almacena la ruta
-
+;ROU_dirsp	dw 0; direccion sprite
 
 ;PRINT_SPRITE
 ;**************
@@ -266,7 +268,10 @@ CO2y2fin	dw 0; yfin
 CO2x2fin	dw 0; xfin
 
 
-
+; variables locales comando RINK
+;-------------------------------------
+ink_counter	db 0
+ink_cambiar	db 0
 
 
 
@@ -328,8 +333,39 @@ PUNTERO_EFECTO DW 0
 ;*******************
 
 
+; ROUTEALL
+;**********
+ROU_HL	DW 0; un buffer para guardar HL temporalmente
+
+; MAP2SP
+;************
+M2S_Xorig: 		dw 0 ; coordx del origen "movil". inicialmente deberia ser 0
+M2S_Yorig: 		dw 0 ; coordy del origen "movil". inicialmente deberia ser 0
+
+; COLSPALL (COA)
+;******************
+COA_spid	db 0; contador de sprites
 
 
+
+;INSTALL_INTERRUPT
+;**********************
+;INS_counter	db 0;ultimo instante en que se toco la musica
+
+
+; SORTY
+;********************************
+SOR_yant	dw 0 ; creo que esta se puede poner global
+SOR_count	db 0; contador de sprites a ordenar.  
+
+
+SOR_buffer	dw 0; buffer de 2 bytes. me la he llevado a global
+
+
+; PRINTAT
+;****************************
+PAT_coordx dw 0
+PAT_coordy dw 0
 
 _SCREEN_3_END; esta ultima instruccion debe ensamblarse como mucho en la DFFF
 	NOP
@@ -339,6 +375,11 @@ org &E7D0
 _SCREEN_4_BEGIN 
 
 
+COR_spriteid db 0
+COR_dy db 0
+COR_dx db 0
+
+
 _SCREEN_4_END; esta ultima instruccion debe ensamblarse como mucho en la E7FF
 	NOP
 ;-----------------------------------------
@@ -346,6 +387,46 @@ _SCREEN_4_END; esta ultima instruccion debe ensamblarse como mucho en la E7FF
 org &EFD0
 _SCREEN_5_BEGIN 
 
+_FLIP_TABLE
+; es la tabla para flipear los sprites
+; podria usarla en un futuro como una extension del campo status
+; 0= normal
+; 1= flip arriba/abajo
+; 2= flip derecja/izquierda
+flip_sp0 db 0
+flip_sp1 db 0
+flip_sp2 db 0
+flip_sp3 db 0
+flip_sp4 db 0
+flip_sp5 db 0
+flip_sp6 db 0
+flip_sp7 db 0
+flip_sp8 db 0
+flip_sp9 db 0
+flip_sp10 db 0
+flip_sp11 db 0
+flip_sp12 db 0
+flip_sp13 db 0
+flip_sp14 db 0
+flip_sp15 db 0
+flip_sp16 db 0
+flip_sp17 db 0
+flip_sp18 db 0
+flip_sp19 db 0
+flip_sp20 db 0
+flip_sp21 db 0
+flip_sp22 db 0
+flip_sp23 db 0
+flip_sp24 db 0
+flip_sp25 db 0
+flip_sp26 db 0
+flip_sp27 db 0
+flip_sp28 db 0
+flip_sp29 db 0
+flip_sp30 db 0
+flip_sp31 db 0
+
+FLIP_COUNTER db 0; contador de flipeados para chequeo rapido. debe ser updated en SETUPSP
 
 _SCREEN_5_END; esta ultima instruccion debe ensamblarse como mucho en la EFFF
 	NOP
@@ -353,6 +434,27 @@ _SCREEN_5_END; esta ultima instruccion debe ensamblarse como mucho en la EFFF
 ;-----------------------------------------
 org &F7D0
 _SCREEN_6_BEGIN 
+
+ROU_NUM_PASOS	db 0; variable temporal de numero de pasos
+
+_ROUTE_TABLE;
+_ROUTE_TABLE_0a15;
+route_sp0	db 0,0; segmento, cuentaatras
+route_sp1	db 0,0
+route_sp2	db 0,0
+route_sp3	db 0,0
+route_sp4	db 0,0
+route_sp5	db 0,0
+route_sp6	db 0,0
+route_sp7	db 0,0
+route_sp8	db 0,0
+route_sp9	db 0,0
+route_sp10	db 0,0
+route_sp11	db 0,0
+route_sp12	db 0,0
+route_sp13	db 0,0
+route_sp14	db 0,0
+route_sp15	db 0,0
 
 
 _SCREEN_6_END; esta ultima instruccion debe ensamblarse como mucho en la F7FF
@@ -362,16 +464,200 @@ _SCREEN_6_END; esta ultima instruccion debe ensamblarse como mucho en la F7FF
 org &FFD0
 _SCREEN_7_BEGIN 
 
+_ROUTE_TABLE_16a31;
+route_sp16	db 0,0
+route_sp17	db 0,0
+route_sp18	db 0,0
+route_sp19	db 0,0
+route_sp20	db 0,0
+route_sp21	db 0,0
+route_sp22	db 0,0
+route_sp23	db 0,0
+route_sp24	db 0,0
+route_sp25	db 0,0
+route_sp26	db 0,0
+route_sp27	db 0,0
+route_sp28	db 0,0
+route_sp29	db 0,0
+route_sp30	db 0,0
+route_sp31	db 0,0
 
 _SCREEN__END; esta ultima instruccion debe ensamblarse como mucho en la FFFF
 	NOP
 ;-----------------------------------------
 ;-----------------------------------------
+;================================================================================================================
+; EXTENSIONES DE LA V31 comienzan en 25000
+; =========================================
+org 25000
 
+_INSTALL_RSX2
+		ld bc, RSX_TABLE
+		ld HL, RSX_space
+		call &bcd1
+
+		; ordenamiento de la tabla de sprites
+		ld a,0; mode default de ordenamiento
+		ld (SOR_mode),a
+		call _SORTY; se ordenan los sprites del 0 al 31
+		
+		ret
+	
+;=============================================================================================================
+; PRINTAT()  RUTINA DE impresion de caracteres
+;=============================================================================================================
+; inputs
+;  flag_sobreescritura,y,x, cadena$
+; ejemplo: 
+; cad$="hola"
+; PRINTAT, 0, 100,40,@cad$
+;
+; x e y en coordenadas graficas
+; cadena$ es una variable que contiene la cadena de caracteres a imprimir
+; esta funcion invoca a printsp iterativamente, caracter a caracter
+; se basa en la definicion de alfabeto que se haya hecho en Alphabet.asm
+
+; variables locales
+;-------------------------------------
+; voy a usar las variables de la funcion LAYOUT por que se usan las mismas cosas
+;LAY_coordy db 0
+;LAY_coordx db 0
+;LAY_chars dw 0; cadena de caracteres
+;LAY_len db 0; longitud de la cadena
+
+;PAT_coordx dw 0
+;PAT_coordy dw 0
+
+
+;function body
+;-------------------------------------
+_PRINTAT
+PAT
+ 		; recogida de parametros
+		cp 3
+		jr z, PAT_noover
+		ld a, (IX+6); flag sobreescritura
+		and a
+		jr z, PAT_noover
+		ld a,65;flag sobreescritura
+		jr PAT_over
+PAT_noover      ld a,1
+PAT_over	ld (SPR_status),a
+
+		; coord y [0..199]. tambien puede ser negativa o mayor de 200
+		;------------------
+  		ld a, (IX+4)
+		ld (SPR_coordy),a
+		ld (PAT_coordy),a
+  		ld a, (IX+5)
+		ld (SPR_coordy+1),a
+		ld (PAT_coordy+1),a
+		
+		; coord x. la quiero en bytes [0..79]
+		;--------------------------------------
+ 		ld a, (IX+2)
+		ld (SPR_coordx),a
+		ld (PAT_coordx),a
+  		ld a, (IX+3)
+		ld (SPR_coordx+1),a
+		ld (PAT_coordx+1),a
+
+		; ahora debo extraer el string 
+		; en (IX+0) y (IX+1) esta la direccion del bloque de descripcion de cadena
+		;-----------------------------------------
+		ld l, (IX+0)
+		ld h, (IX+1)
+		ld a, (HL)
+		ld (LAY_len), A; longitud del string
+		inc HL
+		ld c,(HL)
+		inc hl
+		ld b, (HL)
+		ld (LAY_chars), bc; direccion de memoria donde comienza el string
+
+		; pongo spr_status a 1 pues lo necesita la rutina de impresion
+		;ld a,(PAT_over)
+		;ld (SPR_status),a
+
+		; ahora entro en bucle hasta que se acabe el string		
+		ld HL, (LAY_chars); HL tiene la direccion de la cadena
+		
+
+PAT_buc		ld a, (HL); cargamos en A el codigo ASCII
+		push hl
+		; ahora se debe hacer una busqueda sobre la lista ALPHA_LIST 
+		; de momento lo pongo fijo
+
+		ld b,a; buscamos a ascii guardado en b
+		ld c,0; posicion del char en ALPHALIST.empezamos en cero
+		;ld HL, ALPHA_LETTERS; corresponde a la direccion del cero
+
+		ld hl,ALPHA_LIST
+PAT_busca	ld a,(HL)
+		cp b
+		jr Z, PAT_found
+		inc c ; contador de chars en la alphalist
+		inc hl
+		jr pat_busca
+		
+PAT_found			
+
+		ld h,c; ahora hl tiene el contador pero en 16bit
+		ld a, (ALPHA_tamano)		
+		ld e, a
+		call _MUL8bit  ; this routine performs the operation HL=H*E
+		ld bc , ALPHA_LETTERS
+		add hl,bc; ya estamos en la letra
+		
+		LD (SPR_sprite_data),HL;
+		LD (SPR_spritefinal),HL;
+	
+		;-------rutina impresion letra --------------
+		ld a,(ALPHA_ancho)
+		ld c,a
+		ld (SPR_ancho), a
+		ld a,(ALPHA_alto)
+		ld (SPR_alto), a
+		ld b,a
+		ld (SPR_anchoaltofinal),bc;
+
+		;el problema del clipping es que altera SPR_coordx, SPR_coord_y para la siguiente impresion
+		
+		
+		
+		call Z, PSP_caso1	
+		
+		
+
+		;-------end rutina impresion letra-------------
+PAT_next	ld a, (LAY_len)
+		dec a
+		jr z, pat_fin
+		ld (LAY_len), A; longitud del string actualizada 
+
+		; ahora hay que sumar el ancho de una letra
+		ld hl, (PAT_coordx)
+		ld a,(ALPHA_ancho)
+		ld c,a
+		ld b,0
+		add hl,bc
+		ld (PAT_coordx),hl
+		ld (SPR_coordx),HL ; coordenada x actualizada (necesario pues cliping altera)
+		ld hl, (PAT_coordy)
+		ld (SPR_coordy),HL ; coordenada y actualizada (necesario pues cliping altera)
+
+		pop hl; hl ahora esta apuntando a la cadena de caracteres
+		inc hl; siguiente direccion tiene el siguiente char
+		jr PAT_buc
+
+PAT_fin		pop hl
+		ret
+
+	
 
 ;================================================================================================================
 ; 
-; comenzamos en 26000 
+; V30 -> comenzamos en 26000 
 ; el mapa del mundo, que ocupa 390 bytes ahora se almacena solapado con el layout
 ; pues no tiene sentido un juego con scroll que usa layout
 ; es necesario desde basic ejecutar memory 25999 al principio del programa
@@ -394,8 +680,8 @@ org 26000
 ;-------------------------------------
 ; estas variables son globales pero se rellenan aqui.
 ; por defecto los limites del clipping es la pantalla
-M2S_Xorig: 		dw 0 ; coordx del origen "movil". inicialmente deberia ser 0
-M2S_Yorig: 		dw 0 ; coordy del origen "movil". inicialmente deberia ser 0
+;M2S_Xorig 		dw 0 ; coordx del origen "movil". inicialmente deberia ser 0
+;M2S_Yorig 		dw 0 ; coordy del origen "movil". inicialmente deberia ser 0
 
 M2SXMARGIN		dw 80; luego se ajusta sumando el max ancho de la tabla map_table
 M2SYMARGIN		dw 200; luego se ajusta sumando el max alto de la tabla map_table
@@ -422,8 +708,8 @@ M2S_sprites_before db 0; num sprites en la invocacion anterior
 
 
 
-;M2S_pXorig: 		dw 0 ; pointer coordx del origen "movil". inicialmente deberia ser 0
-;M2S_pYorig: 		dw 0 ; pointer coordy del origen "movil". inicialmente deberia ser 0
+;M2S_pXorig 		dw 0 ; pointer coordx del origen "movil". inicialmente deberia ser 0
+;M2S_pYorig 		dw 0 ; pointer coordy del origen "movil". inicialmente deberia ser 0
 
 
 ;M2S_numparam		db 0; 
@@ -712,46 +998,49 @@ M2S_fin2
 ; 
 ; variables locales
 ;-------------------------------------
-;tabla interna de segmento y contador de paso asociado a la ruta de cada sprite. ocupa 64Bytes
-
-; segmento, contador decreciente
+;tabla interna de segmento y contador de paso asociado a la ruta de cada sprite. ocupa 64Bytes (64=32 x 2 bytes)
+; esta tabla tiene dos campos
+;     [ segmento, contador decreciente ]
 ; segmento=0 + contador =1 significa que no hemos empezado. el primer segmento es el 1
-; el segmento 0 es de inicializacion
+; el segmento 0 es de inicializacion, antes de empezar a recorrer la ruta
 
-_ROUTE_TABLE;
 
-route_sp0	db 0,0; segmento, cuentaatras
-route_sp1	db 0,0
-route_sp2	db 0,0
-route_sp3	db 0,0
-route_sp4	db 0,0
-route_sp5	db 0,0
-route_sp6	db 0,0
-route_sp7	db 0,0
-route_sp8	db 0,0
-route_sp9	db 0,0
-route_sp10	db 0,0
-route_sp11	db 0,0
-route_sp12	db 0,0
-route_sp13	db 0,0
-route_sp14	db 0,0
-route_sp15	db 0,0
-route_sp16	db 0,0
-route_sp17	db 0,0
-route_sp18	db 0,0
-route_sp19	db 0,0
-route_sp20	db 0,0
-route_sp21	db 0,0
-route_sp22	db 0,0
-route_sp23	db 0,0
-route_sp24	db 0,0
-route_sp25	db 0,0
-route_sp26	db 0,0
-route_sp27	db 0,0
-route_sp28	db 0,0
-route_sp29	db 0,0
-route_sp30	db 0,0
-route_sp31	db 0,0
+;_ROUTE_TABLE;
+;_ROUTE_TABLE_0a15;
+;route_sp0	db 0,0; segmento, cuentaatras
+;route_sp1	db 0,0
+;route_sp2	db 0,0
+;route_sp3	db 0,0
+;route_sp4	db 0,0
+;route_sp5	db 0,0
+;route_sp6	db 0,0
+;route_sp7	db 0,0
+;route_sp8	db 0,0
+;route_sp9	db 0,0
+;route_sp10	db 0,0
+;route_sp11	db 0,0
+;route_sp12	db 0,0
+;route_sp13	db 0,0
+;route_sp14	db 0,0
+;route_sp15	db 0,0
+
+;_ROUTE_TABLE_16a31;
+;route_sp16	db 0,0
+;route_sp17	db 0,0
+;route_sp18	db 0,0
+;route_sp19	db 0,0
+;route_sp20	db 0,0
+;route_sp21	db 0,0
+;route_sp22	db 0,0
+;route_sp23	db 0,0
+;route_sp24	db 0,0
+;route_sp25	db 0,0
+;route_sp26	db 0,0
+;route_sp27	db 0,0
+;route_sp28	db 0,0
+;route_sp29	db 0,0
+;route_sp30	db 0,0
+;route_sp31	db 0,0
 
 
 
@@ -761,20 +1050,26 @@ _ROUTEALL
 		ld (ROU_spid), a
 
 		ld HL, 27496;_SPR_SPRITES_TABLE;
-		push hl;
-		jr ROU_call; new
+		push hl; v28
+		;ld (ROU_dirsp), HL ; v28
+
+		jr ROU_call; new. esto enruta el sprite 31. ojo es un jr, no un call
 ROU_bucle	
 		pop HL
+		;ld hl, (ROU_dirsp)
+
 		ld bc, 16;sprite_size aun no es conocido (se ensambla luego), he tenido que poner 16 a fuego
 		and a
 		sbc HL, bc
-		push HL
+		push HL; v28
+		;ld (ROU_dirsp), HL ; v28
 		
 		
 ROU_call
 ;	JR ROUTE_SP
 ;-------------------------------------------------
-ROUTE_SP; rutina invocada desde ROUTEALL por cada sprite. usando jr porque necesita la pila
+ROUTE_SP; rutina invocada desde ROUTEALL por cada sprite. 
+	; se invoca usando jr porque necesita la pila
 ;-------------------------------------------------
 
 		; check flag de ruta en status
@@ -783,35 +1078,44 @@ ROUTE_SP; rutina invocada desde ROUTEALL por cada sprite. usando jr porque neces
 		JR Z,ROU_cont
 		;RET Z; nada que hacer
 	
-		; actualizacion paso (decremento)
+ROU_mas		; actualizacion paso (decremento)
 		ld HL,_ROUTE_TABLE
-		ld b,0
+		;ld b,0
 		ld a, (ROU_SPID)
+
+
+		; mejora v28c-------
+		cp 16
+		jp M, ROU_0a16
+		ld HL,_ROUTE_TABLE_16a31
+		sub 16
+ROU_0a16	ld b,0			
+		;end mejora---------
+
 		add a,a; x2, ya que cada entrada son 2 bytes
 		ld c,a
 		add HL, BC
 		ld (UPS_PTR),HL; guardamos puntero a la entrada en la tabla
 		ld a,(HL)
-		ld (ROU_SEG),a; segmento actual
+		ld (ROU_SEG),a; segmento actual del sprite
 		inc hl
 		ld a,(HL); leo el contador de pasos
 		and a
-		JR Z,ROU_INIRUTA; detectado comienzo de ruta
+
+		JP Z,ROU_INIRUTA; detectado comienzo de ruta  v28( antes era jr)
+		;JR Z,ROU_INIRUTA; detectado comienzo de ruta
 		dec a
 		ld (HL),a; actualizo el contador de pasos
 		
 		; si paso es cero, actualizacion de segmento y contador de pasos
 		; la primera vez el contador deberia de ser 1
+		; si no es cero, no hay nada que hacer pues la Vy,Vx son son correctas en el segmento en curso
 		JR Z, _UPDATE_SEGMENT
 		;ret
 		;JR ROU_cont
 
 
-
-
-
-
-		
+	
 ROU_cont
 		ld a, (ROU_spid)
 		dec a
@@ -839,18 +1143,20 @@ _UPDATE_SEGMENT
 	; lectura de ruta en ROU_ID
 	pop hl; contiene la direccion del sprite
 	push hl
+	;ld hl, (ROU_dirsp)
 	;ret
 
 	ld bc,15
-	add hl,bc
+	add hl,bc; ahora hl tiene la direccion del campo "ruta" del sprite
 	ld a,(HL)
-	ld (ROU_ID),a
+	ld (ROU_ID),a; a tiene la ruta
 	; calculo de su direccion de memoria en la definicion de rutas
 	ld HL, ROUTE_LIST
 	add a,a; ruta x2 para sumarlo a HL y obtener la dir ruta
 	ld b,0
 	ld c,a
 	add HL,BC; ya tengo en HL la direccion donde esta la direccion de la ruta
+
 	; hay que hacer una indireccion
 	ld a,(hl)
 	ld e,a
@@ -860,28 +1166,134 @@ _UPDATE_SEGMENT
 	ex de, hl; ahora hl tiene la direccion de la ruta!
 	ld (ROU_dir), hl
 
+ROU_sigseg
 	;lectura del siguiente segmento
 	ld a, (ROU_SEG)
 	inc a; siguiente segmento 
 	ld (ROU_SEG),a
 	ld c,a; guardo a
 	add a,a
-	add a,c; con esto es como multiplicar ax3. cada segmento son 3 bytes
+	add a,c; con esto es como multiplicar ax3. cada segmento son 3 bytes. 
+		; V28
+		;----------------
+		; OJO, esto significa que los segmentos de cambio de estado o cambio de secuencia deben tener dos campos
+		; aunque solo se use uno, es decir algo como 
+		;   255,37,0  se pone status=37
+		;   254,10,0 se pone la secuencia 10
 	ld c,a
 	ld b,0
 	add hl,bc; hl posicionado en el segmento siguiente
 	
 	; si es cero, lectura del primer segmento y asignacion de vx,vy al sprite
-	ld a,(HL); a contiene numero de pasos
-	and a
-	JR z, ROU_cicla	
+ROU_leepaso	ld a,(HL); a contiene numero de pasos
+		;ld (ROU_NUM_PASOS),a
+		and a; pone acarreo a cero
+		JR z, ROU_cicla	; si el numero de pasos es cero, es que es indicador de fin=ciclar la ruta
+
+	; MEJORA v28. cambio de status, secuencia o imagen en mitad de ruta
+	;------------------------------------------------------------------
+		;and a
+		cp 250
+		jr c,ROU_normal; si es menor de 250 entonces no hay cambios de estado ni nada
+
+		inc HL; ahora apunta al parametro (estado o secuencia o dirimagen)
+		ld (ROU_HL), HL; lo guardo, ROU_Hl es un simple buffer temporal
+
+		; si el numero de pasos es 255 entonces es que hay que cambiar de status
+		;and a
+;		ld c,a ; guardo a
+
+		cp 253
+		JR NZ, ROU_no253
+		; estamos aqui porque nos han pasado un 253 = cambio de imagen
+		ex de,hl; ahora DE= dir image param, hl=corrupt
+		pop hl
+		push hl; hl=dir sprite
+		ld bc,9
+		add hl,bc; hl= sprite dir image
+		ex de, hl; DE= sprite dir image , HL= dir image param
+		ld bc ,2
+		ldir; mete en (DE) la direccion de la imagen (2 bytes) = actualiza la imagen
+		jr ROU_kkk
+
+ROU_no253	; estamos aqui porque el parametro es 1 byte (no 253 =casos 255 y 254 y 252)
+		; mejora v28c----------------
+		cp 252
+		jr NZ,ROU_no252
+
+		; hay que invocar a reset ruta con a= id_sprite
+		push hl; hl tiene la direccion del parametro (=valor de nueva ruta)
+		ld a, (ROU_spid) 
+		call _resetruta; ponemos segmento y paso a cero
+		pop hl
+		
+		ld a, (hl); valor de nueva ruta
+		pop hl; dir sprite
+		push hl
+		ld bc,15
+		add hl,bc
+		ld (hl),a
+		;jp ROU_sigseg
+		jp ROU_mas;bucle 
+		;jr ROU_CONT esta funciona
+		;jr _update_segment
+
+		;ld a,252; regenero A pues se toca en el call
+		;ld bc,15
+		;ld (ROU_off+1),bc;15
+		; ojo, lo malo es que hay que resetear la entrada en ROUTETABLE!
+		; pero es facil si el cambio ruta solo se acepta al final
+		;jr ROU_no253b
+
+
+
+
+ROU_no252       ;ld bc,7
+		;ld (ROU_off+1),bc
+		; end mejora v28c-------------
+
+ROU_no253b	; pasamos por aqui si el parametro no es 253
+		cp 255
+		;JR NZ, ROU_normal
+
+		ld a, (HL); lee el parametro
+		pop HL; hl tiene la dir sprite (donde esta justo el estado)
+		push hl
+		;ld hl, (ROU_dirsp)
+
+		JR Z, ROU_kk1; si es 0 es que es 255 y cambia estado
+		; estamos aqui porque nos han pasado un 254 = cambio de secuencia o un 252 pero hay que hacer lo mismo
+		; ya que el 7 se ha cambiado antes por un 15 si es 252
+
+ROU_off		ld bc, 7; posiciono hl para cambio de secuencia
+		add hl,bc; hl= sprite dir sequence
+
+ROU_kk1		ld (hl),a; actualiza la secuencia o el estado
+ROU_kkk		ld hl, (ROU_dir); cargo en HL la direccion de esta ruta, que la tengo en ROU_dir
+
+		;ld a, (ROU_NUM_PASOS)
+		;cp 252
+		;jP Z, _UPDATE_SEGMENT
+		
+		jp ROU_sigseg
+		
+
+;ROU_NUM_PASOS	db 0
+
+
+ROU_normal
+	ld (ROU_dir), hl; ahora la variable apunta al segmento y no a la ruta
+	ld a, (HL) ; ahora a tiene el numero de pasos 
+
+	;------------------------------
+
 	; si estoy aqui es que no ha ciclado. puedo actualizar el segmento
 	;ld a, (ROU_SEG)
 	;inc a; 
 	;ld (ROU_SEG),a
-	ld (ROU_dir), hl; ahora la variable apunta al segmento y no a la ruta
-	ld a, (HL) ; ahora a tiene el numero de pasos 
 
+
+	;JR z, ROU_cicla	
 	
 ROU_update
 	;JR vuelve	
@@ -899,19 +1311,16 @@ ROU_update
 	; falta asignar vy, vx
 	ld HL, (ROU_dir); direccion del segmento
 	inc hl; ahora apunta a vy
-	ld a, (HL); a tiene vy
-	ex de,hl; guardo hl
-	pop hl; hl tiene ahora la direccion del sprite
+
+	ex de, hl
+	pop hl
 	push hl
 	ld bc, 5
 	add hl,bc
-	ld (hl),a
-	ex de,hl
-	inc hl
-	ld a, (HL); ahora a tiene vx
-	ex de,hl
-	inc hl
-	ld (HL), a
+	ex de, hl
+	ld bc,2
+	ldir
+
 		
 	JP ROU_cont
 	;ret
@@ -920,15 +1329,17 @@ ROU_cicla
 	ld a,0
 	ld (ROU_SEG),a; segmento=0
 	ld HL, (ROU_dir);direccion de la ruta=direccion del segmento
-	ld a,(HL); aqui esta el numero de pasos del segmento cero
-	JR ROU_update
-	
+;	ld a,(HL); aqui esta el numero de pasos del segmento cero
+;	JR ROU_update
+	JP ROU_leepaso	; v28
+
 ROU_INIRUTA
 	; venimos desde _UPDATE_SEGMENT porque se ha detectado un comienzo de ruta
 	ld a,255; asi al sumar un 1 pasara a cero
 	ld (ROU_SEG),a
 	ld a,0; nuevo paso
-	JR _UPDATE_SEGMENT
+	;JR _UPDATE_SEGMENT
+	JP _UPDATE_SEGMENT ; v28
 
 
 
@@ -1013,10 +1424,6 @@ finmacrox	ld b,a
 		ret
 
 
-_FIN_AMPLIACION
-
-
-
 ;=============================================================================================================
 ; _SORTY (mode),   SOR
 ;=============================================================================================================
@@ -1025,12 +1432,12 @@ _FIN_AMPLIACION
 
 ; variables globales
 ;--------------------
-SOR_changes	db 0; 0 =ordenado completamente
-SOR_mode	db 0; 0=set default values, 1=orden en coord y de 16 sprites (del 16 al 31)
+;SOR_changes	db 0; 0 =ordenado completamente . en v28 lo he quitado. no aporta a nivel de programador
+SOR_mode	db 0; 0=set default values, 1=orden en coord y 
 
 ; variables locales
 ;-------------------------------------
-SOR_count	db 0; contador de sprites a ordenar. en principio solo 16
+;SOR_count	db 0; contador de sprites a ordenar.  
 SOR_ant		dw 0; direccion de coordy de sprite anterior
 SOR_sig		dw 0; direccion de coordy de sprite siguiente
 SOR_ini		dw 0; direccion del sprite inicial
@@ -1038,8 +1445,9 @@ SOR_ini		dw 0; direccion del sprite inicial
 
 ;variables locales para modo=1 (orden)
 ;-------------------------------------
-SOR_yant	dw 0
-SOR_buffer	dw 0; buffer de 2 bytes
+;SOR_yant	dw 0 ; creo que esta se puede poner global
+
+;SOR_buffer	dw 0; buffer de 2 bytes. me la he llevado a global
 
 ;--------------------------------
 
@@ -1219,8 +1627,8 @@ SOR_finbuc	; fin del bucle
 		ld (SOR_count), a
 		JR NZ, SOR_bucley
 
-SOR_ret		ld a,0 
-		ld (SOR_changes),a; no ha habido ningun cambio. completamente ordenado
+SOR_ret		;ld a,0 
+		;ld (SOR_changes),a; no ha habido ningun cambio. completamente ordenado
 		ret
 
 SOR_fallo	
@@ -1365,8 +1773,8 @@ SOR_cero	; ahora voy a almacenar los datos de sprite1 en un buffer
 		inc HL
 		ld (HL), d
 
-SOR_end		ld a,1 
-		ld (SOR_changes),a; ha habido un cambio. puede no estar completamente ordenado
+SOR_end		;ld a,1 v28
+		;ld (SOR_changes),a; ha habido un cambio. puede no estar completamente ordenado
 		ret
 
 
@@ -1455,25 +1863,39 @@ _NOP		ret
 
 
 ;=============================================================================================================
-;RUTINA DE SINCRONISMO _SYNC() (SYN)
+;RUTINA  _SETUPSP parametro 15
 ;=============================================================================================================
-; esta funcion espera al barrido de pantalla de un modo 
-; mas "correcto" que ra rutina del firmware call &bd19
 
-; se puede eliminar para ahorrar memoria, reemplazandola por call &bd19, aunque ocupa poco
-_SYNC:
-SYN:
-		ld c,0
-		ld b,#f5; PPI port B
-SYN_lee:
-		in a,(c)
-		; (bit 0 = "1" if vsync is active,
-		;  or bit 0 = "0" if vsync is in-active)
-		rra; put bit 0 into carry flag
-		jr nc,SYN_lee
+		; mejora v28c
+_resetruta	ld HL,_ROUTE_TABLE
+		cp 16
+		jp M, SET_0a16
+		ld HL,_ROUTE_TABLE_16a31
+		sub 16
+SET_0a16	ld b,0			
+		;end mejora
+		add a,a; x2, ya que cada entrada son 2 bytes
+		ld c,a
+		add HL, BC
+		ld a, 0
+		ld (HL),a; reset segmento
+		inc hl
+		ld (HL),a; reset paso
 		ret
-		
 
+
+;==========================================================================================
+; algunas variables de la rutina stars las he traido aqui
+SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
+SCS_check	db 0
+
+SCS_incy	db 2; lo que vamos a mover en eje y
+SCS_incx	db 1; lo que vamos a mover en eje x
+
+SCS_counter	db 20
+SCS_number	db 20
+
+star_color	db 64
 
 _FIN_27000
 ;=============================================================================================================
@@ -1533,9 +1955,9 @@ sp0img		dw 34000; direccion de la imagen
 		;cada sprite ocupa 16 bytes para que sea muy rapido calcular su direccion
 		; 16 en binario es 1000, mientras que 11 en binario es 1011
 		; la velocidad en multiplicar depende del numero de unos.
-		dw 0 ; direccion de sprite anterior (posiciones 10 y 11). para ordenar
-		dw 0 ; direccion de sprite anterior (posiciones 12 y 13). para ordenar
-		db 0 ; ruta_id
+		dw 0 ; direccion de sprite anterior (posiciones 11 y 12). para ordenar
+		dw 0 ; direccion de sprite anterior (posiciones 13 y 14). para ordenar
+		db 0 ; ruta_id , posicion 15
 ;------- resto de sprites  ------------------
 sprite_size 	equ sp1-sp0
 sp_seq_offset	equ sp0_seq-sp0
@@ -1568,99 +1990,94 @@ org 27000+512 ; la tabla de sprites ocupa 32 x 16bytes = 512 bytes
 ;=============================================================================================================
 ; instala los comandos RSX para usar desde basic
 _INSTALL_RSX
-		ld bc, RSX_TABLE
-		ld HL, RSX_space
-		call &bcd1
+		JP _INSTALL_RSX2
 
-		; ordenamiento de la tabla de sprites
-		ld a,0; mode default de ordenamiento
-		ld (SOR_mode),a
-		call _SORTY; se ordenan los sprites del 0 al 31
 		
-		; instalacion de interrupcion para caso sync=2
-		ld a,255
-		ld (INS_cancion),a
-		;call _SALTO_INT
-		;call INS_init
-
-		ret
-
+		; ES MUY IMPORTANTE EL ORDEN, CUANTO MAS ABAJO, MAS TARDA, HASTA 2ms adicionales
 RSX_TABLE	defw RSX_NAMETB
-		JP _PRINT_SPRITE	;|PRINTSP, #,y,x
 		JP _PRINT_SPRITES	;|PRINTSPALL, orden,animall,sync
-		JP _POKE		;|POKE,dir,@variable
-		JP _LOCATE_SPRITE	;|LOCATESP, #,y,x
-		JP _COLISION_LAYOUT	;|COLAY, #,@colision
-		JP _COLISION_SPRITES	;|COLSP, #,@id
-		JP _ANIMA_SP		;|ANIMA, #
-		JP _ANIMA_ALL		;|ANIMALL
-		JP _MOVER		;|MOVER, #,dy,dx
-		JP _MOVER_ALL		;|MOVERALL, dy,dx
-		JP _AUTO_SPRITE		;|AUTO, #,dy,dx
+		JP _COLSPALL		;|COLSPALL
 		JP _AUTO_ALL		;|AUTOALL
+		JP _MOVER_ALL		;|MOVERALL, dy,dx
+		JP _MAP2SP		;|MAP2SP,yo,xo
 		JP _SCROLL_STARS	;|SCROLLSTARS, bank,num,color,dy,dx
-		JP _SET_LIMITS		;|SETLIMITS, xmin,xmax,ymin,ymax
-		JP _PRINT_LAYOUT	;|LAYOUT, y,x,string
+		JP _COLISION_LAYOUT	;|COLAY, #,@colision
 		JP _SETUP_SPRITE	;|SETUPSP, #, param_number, valor
+		JP _LOCATE_SPRITE	;|LOCATESP, #,y,x
+		JP _PEEK		;|PEEK,dir,@variable
+		JP _POKE		;|POKE,dir,@variable
+		JP _ANIMA_SP		;|ANIMA, #
+		JP _COLISION_SPRITES	;|COLSP, #,@id
+		JP _RINK		;|RINK,step
+		JP _ANIMA_ALL		;|ANIMALL		
+		JP _ROUTEALL		;|ROUTEALL
+		JP _PRINT_SPRITE	;|PRINTSP, #,y,x
+		JP _MOVER		;|MOVER, #,dy,dx
+		JP _AUTO_SPRITE		;|AUTO, #,dy,dx
+		JP _PRINT_LAYOUT	;|LAYOUT, y,x,string
 		JP _SETUP_SEQUENCE	;|SETUPSQ, #, adr0,adr1,...,adr6
 		JP _MUSIC_ON		;|MUSIC, cancion,speed
 		JP _MUSIC_OFF		;|MUSICOFF
-		JP _PEEK		;|PEEK,dir,@variable
-		JP _COLSPALL		;|COLSPALL
-		JP _MAP2SP		;|MAP2SP,yo,xo
-		JP _ROUTEALL		;|ROUTEALL
+		JP _SET_LIMITS		;|SETLIMITS, xmin,xmax,ymin,ymax
+		JP _PRINTAT		;|PRINTAT,y,x,string
 		JP _NOP			;|NOP no es un comando, solo es para medir
-
 RSX_space	db 0,0,0,0
 
-RSX_NAMETB	defM "PRINTS"
-		db "P"+&80
+RSX_NAMETB	
+
 		defM "PRINTSPAL"
 		db "L"+&80
-		defM "POK"
-		db "E"+&80
-		defM "LOCATES"
-		db "P"+&80
-		defM "COLA"
-		db "Y"+&80
-		defM "COLS"
-		db "P"+&80
-		defM "ANIM"
-		db "A"+&80
-		defM "ANIMAL"
+		defM "COLSPAL"
 		db "L"+&80
-		defM "MOVE"
-		db "R"+&80
-		defM "MOVERAL"
-		db "L"+&80
-		defM "AUT"
-		db "O"+&80
 		defM "AUTOAL"
 		db "L"+&80
+		defM "MOVERAL"
+		db "L"+&80
+		defM "MAP2S"
+		db "P"+&80
 		defM "STAR"
 		db "S"+&80
-		defM "SETLIMIT"
-		db "S"+&80
-		defM "LAYOU"
-		db "T"+&80
+		defM "COLA"
+		db "Y"+&80
 		defM "SETUPS"
 		db "P"+&80
+		defM "LOCATES"
+		db "P"+&80
+		defM "PEE"
+		db "K"+&80
+		defM "POK"
+		db "E"+&80
+		defM "ANIM"
+		db "A"+&80
+		defM "COLS"
+		db "P"+&80
+		defM "RIN"
+		db "K"+&80
+		defM "ANIMAL"
+		db "L"+&80
+		defM "ROUTEAL"
+		db "L"+&80
+		defM "PRINTS"
+		db "P"+&80
+		defM "MOVE"
+		db "R"+&80
+		defM "AUT"
+		db "O"+&80
+		defM "LAYOU"
+		db "T"+&80
 		defM "SETUPS"
 		db "Q"+&80
 		defM "MUSI"
 		db "C"+&80
 		defM "MUSICOF"
 		db "F"+&80
-		defM "PEE"
-		db "K"+&80
-		defM "COLSPAL"
-		db "L"+&80
-		defM "MAP2S"
-		db "P"+&80
-		defM "ROUTEAL"
-		db "L"+&80
+		defM "SETLIMIT"
+		db "S"+&80
+		defM "PRINTA"
+		db "T"+&80
 		defM "NO"
 		db "P"+&80
+		
 
 		db 0
 ENDRSX
@@ -1691,9 +2108,9 @@ _LOCATE_SPRITE
 		;-------------------------------------------------------------------------------
 		inc hl; la primera variable es status
 		;----- coord y -----
-		ld b, (IX+3);es el mas signific. 
+_AT		ld b, (IX+3);es el mas signific. 
 		ld c,(IX+2);menos signific
-
+		ld (SPR_coordy), bc; NUEVO v27b
 		ld (HL),C
 		inc hl
 		ld (HL),B
@@ -1701,6 +2118,7 @@ _LOCATE_SPRITE
 		inc HL
 		ld b, (IX+1);es el mas signific. 
 		ld c,(IX+0);menos signific
+		ld (SPR_coordx), bc; NUEVO v27b
 		ld (HL),C
 		inc hl
 		ld (HL),B
@@ -1754,26 +2172,44 @@ _LOCATE_SPRITE
 _PRINT_SPRITE:
 
 PSP:; RUTINA PSP 
+		cp 1 ; 1 parametro es que no trae coordenadas
+		JR NZ,PSP_xy		
 		
+		ld (PS2_spid), a; meto un 1 para que PRINTSPALL solo imprima 1
+		ld a,(IX+0)
+		ld (SPR_ID), a
+		ld c,a
+		call _get_dir_sp;sprite id en c, retorna hl
+		call PS2car; invoca a una parte de PRINTSPALL y ya hace ret desde alli
+		; esto ya hace ret solo
+
+
+PSP_xy
+		CALL _LOCATE_SPRITE
+		dec hl
+		dec hl
+		dec hl
+		dec hl ; estamos en status
+
 		; vamos a rellenar las coordenadas
 		; ---------------------------------
-		ld b,(IX+3); mas signific
-		ld c,(IX+2);menos signific
-		ld (SPR_coordy), bc
+		;ld b,(IX+3); mas signific
+		;ld c,(IX+2);menos signific
+		;ld (SPR_coordy), bc
        
- 	        ld h,(IX+1); mas signific
-		ld l,(IX+0);menos signific
-		ld (SPR_coordx), hl
+ 	        ;ld h,(IX+1); mas signific
+		;ld l,(IX+0);menos signific
+		;ld (SPR_coordx), hl
 
 
 		; voy a extraer el id_sprite 
 		;----------------------------
-        	ld b, 0;(IX+5);es el mas signific.  en principio es 0 pues solo hay 32 sprites
-		ld c,(IX+4);menos signific
-		ld a,c
-		ld (SPR_ID), a ; ya tenemos cargado el id_sprite 
+        	;ld b, 0;(IX+5);es el mas signific.  en principio es 0 pues solo hay 32 sprites
+		;ld c,(IX+4);menos signific
+		;ld a,c
+		;ld (SPR_ID), a ; ya tenemos cargado el id_sprite 
 		;------------------calculo de la direccion de imagen -----------
-		call _get_dir_sp; sprite id en c, retorna hl
+		;call _get_dir_sp; sprite id en c, retorna hl
 		; ahora en HL esta la direccion de la entrada del sprite en tabla SPRITES__TABLE
 		;-------------------------------------------------------------------------------
 
@@ -1975,9 +2411,21 @@ PSP_finclippling:
 		call _COMPUTE_DIRPANT; HL ahora tiene la dir de pantalla
 		ld (SPR_dirpant),hl
 
-		ld a, (SPR_status);										***
-		and a, %1000000; flag de sobrescritura								***
-		JR NZ, PSP_owr;					
+		ld a, (SPR_status);										
+		and a, %1000000; flag de sobrescritura								
+		JR NZ, PSP_owr;	//"owr" es "overwrite"	
+
+
+PSP_FLIPPING   
+		;JR PSP_FLIP_NORMAL`
+		; esto hay que arreglarlo usando IX +i 
+		;ld a, (FLIP_counter)
+		;and a
+		;jr z,PSP_FLIP_NORMAL
+		; estamos aqui porque algun sprite tiene flip
+		;call FLIP_CHECK
+              
+PSP_FLIP_NORMAL			
 		call _PAINT
 		ret
 		;--------------------- SOBREESCRITURA -----------------------------------------------
@@ -2059,12 +2507,12 @@ _PAINT:  ; dibujar en pantalla el sprite
 
 PNT:
 		;ld hl, (SPR_dirpant); direccion de pant donde vamos a pintar
-		ld de,(SPR_spritefinal); direccion de memoria donde se encuentra el sprite
+		ld de,(SPR_spritefinal); direccion de memoria donde se encuentra la imagen a pintar
 		ld a, (SPR_ancho)
 		ld bc,(SPR_anchoaltofinal) ; ancho final en c
 		sub c
 		ld (PNT_restoancho),a; 
-		ld hl, (SPR_dirpant)
+		ld hl, (SPR_dirpant); direccion de memoria de pantalla
 
 		; NO DESHABILITO LAS INTERRUPCIONES, podria ralentizar musica pej.
 		; lo malo es que la probabilidad de quedarse a medias imprimiendo aumenta
@@ -2324,12 +2772,12 @@ UNI:
 
 ; variables locales
 ;-------------------------------------
-INS_counter	db 6; hay 300 interrupciones por segundo, cada 50 se ejecutara la rutina (6 veces por segundo)
+INS_counter	db 0;ultimo instante en que se toco la musica. de una invocacion a otra hay que mantener este valor
+
 ;INS_model	dw &B939; model 464=>&B939 ,model 6128=> &B941. al instalar la interrupcion se corrige solo.
 INS_cancion	db 0
 INS_speed	db 5; una velocidad "normal" es 6. si ponemos 5 estamos acelerando un poco la musica
 
-;INS_counter2	db 0
 
 ; function body
 ;-------------------------------------
@@ -2362,35 +2810,23 @@ INS_rutina:
  		push iy
 
 ;--------- codigo de la rutina -------
-		; EJECUCION DE LA COLA DE PETICIONES DE COMANDOS DESDE BASIC
-		; PARA SALTARNOS EL ANALIZADOR SINTACTICO
-		;CALL _TUNEL
 
-		; contador para sincronismo pantalla=2, en el que se divide la pantalla en 2
-		;ld a,(INS_counter2)
-		;inc a
-		;ld (INS_counter2),a
-
-		; si la cancion es 255 es que no hay cancion
-		;ld a, (INS_cancion)
-		;cp 255
-		;JR Z, INS_fin
-		;jp tocar
 
 		ld a, (INS_speed)
 		ld c, a
 
-		LD a, (INS_counter); ultima vez que se toco+ speed
+		LD a, (INS_counter); ultima vez que se toco
 		ld b,a
-		call &bd0d; TIME PLEASE
+		call &bd0d; TIME PLEASE. DEHL contiene el time en 1/300 fracciones de segundo. cada 6 son 50ms
 		ld a, l
-		sub b; a-b . IF a >=b then tocar musica
+		sub b; a-b . Tnow-Tlast =possitive number.
 			
-		and a
+		and a; acarreo a cero
 		cp c; comparamos con speed
 
 		JR C, INS_FIN
 
+		; si estamos aqui es que hay que tocar musica ya que no hay acarreo por lo que Tnow>=Tlast+speed
 		; si l es 254 y b es 5 no salta el acarreo pero no hemos llegado!!
 		
 		;JR NC, INS_FIN
@@ -2401,18 +2837,7 @@ INS_rutina:
 		;add a,(hl); a=contador anterior cuando se toco la musica + speed(=demora)
 		LD (INS_counter),a; guardo el contador
 
-;		ld de,0
-;		ld hl,0
-;		call &bd10
-;		jp tocar
 
-
-		;ld a, (INS_counter)
-		;dec a
-		;LD (INS_counter),A
-		;AND A ; ES CERO?
-		;JR nz,INS_fin
-		
 		;ld a, 65
 		;CALL &BB5D ; esto simplemente es un experimento. imprime una "A" periodicamente
 
@@ -2656,7 +3081,7 @@ _PRINT_LAYOUT
 		ld (LAY_coordxchar),a
 		;como es en caracteres multiplico x 4 
 		add a,a; x2
-		add a,a; x2 
+LAY_PAT1	add a,a; x2 
 		ld (LAY_coordx), a
 
 		; ahora debo extraer el string y actualizar el layout
@@ -2675,7 +3100,7 @@ _PRINT_LAYOUT
 LAY_buc		ld a, (HL); cargamos en A el codigo ASCII
 		;actualizacion del layout map
 		;----------------------------
-		call LAY_update_map
+LAY_PAT2	call LAY_update_map
 		;-----
 		cp 32; check si es SPACE
 		Jr Z, LAY_next
@@ -2730,7 +3155,7 @@ LAY_next	ld a, (LAY_len)
 		;jp z, LAY_FIN
 		ld (LAY_len), A; longitud del string actualizada 
 		ld a, (LAY_coordx)
-		add a, 4; 8 pix son 4 bytes
+LAY_PAT3	add a, 4; 8 pix son 4 bytes
 		ld (LAY_coordx),a ; coordenada x actualizada
 		ld a, (LAY_coordxchar)
 		inc a
@@ -2738,7 +3163,7 @@ LAY_next	ld a, (LAY_len)
 		inc hl; siguiente direccion tiene el siguiente char
 		jr LAY_buc
 
-
+		; yo creo que aqui falta un ret
 LAY_update_map	
 		
 		; vamos a actualizar el layout map ubicado en la direccion LAYOUT
@@ -2796,7 +3221,7 @@ _SETUP_SPRITE;
 		; mejora en v21. si hay 4 parametros supongo que es SETUPSP,<id>,5,Vy,Vx
 		cp 4
 		JR NZ, SET3param
-SET4param	ld c,(ix+6); id
+SET4param	ld c,(ix+6); id_sprite
 		call _get_dir_sp
 		ld c,5 ; es el parametro 5
 		ld b,0
@@ -2840,9 +3265,9 @@ SET3param	ld c,(IX+4);menos signific. aqui tenemos el sprite id
 		; si se trata del parametro sequence, llamo adicionalmente a anima para que 
 		; reemplace el campo de direccion de memoria de imagen, asignando un 7 al frame id
 SET_7		cp 7 
-		JP NZ,SET10
+		JP NZ,SET15
 		;ret NZ
-		; voy a poner un 7 en frame id
+		; voy a poner un 7 en frame id, para que en la proxima animacion cicle a frame=0
 		inc hl
 		ld a,7
 		ld (HL), a; frame 7
@@ -2851,21 +3276,19 @@ SET_7		cp 7
 		call ANS_a; invoco anima con el sprite id en regisro a, asi se pone en primer frame
 		ret
 
-SET10		cp 15
+		; queda comparar con parametro 15, que es la ruta
+		; lo hago en el tramo de codigo 26000 a 27000
+		;JP SET15
+
+SET15		cp 15
 		RET NZ
 		;ya hemos puesto la ruta.
 		;falta resetear la entrada en la tabla de segmentos y pasos
 		; actualizacion paso (decremento)
-		ld HL,_ROUTE_TABLE
-		ld b,0
-		ld a, (IX+4)
-		add a,a; x2, ya que cada entrada son 2 bytes
-		ld c,a
-		add HL, BC
-		ld a, 0
-		ld (HL),a; reset segmento
-		inc hl
-		ld (HL),a; reset paso
+		;ld HL,_ROUTE_TABLE
+;		ld b,0
+		ld a, (IX+4); spriteid
+		call _resetruta;
 		ret
 		
 ;---------------------------------------------------------------------------------
@@ -2933,7 +3356,6 @@ CIL_END		;--protecciones
 ; function body
 ;-------------------------------------
 _SETUP_SEQUENCE		
-
 
 		; ubico la secuencia
 		;ld e,(IX+14)
@@ -3030,14 +3452,14 @@ MOV_uno		ld (MOV_address),hl; guardo la direccion de comienzo del sprite
 		ld b,0; ojo puede no ser cero
 		bit 7,c
 		jr Z, MOV_positivoY; Vy es positivo
-		dec b
+		dec b; ahora b=255 ya que c es un numero negativo
 MOV_positivoY   ld hl, (MOV_address)
 		inc hl; me coloco en la posicion Y
 		push HL; guardo la direccion de coord Y
 		ld e, (Hl)
 		inc hl
 		ld d, (HL)
-		; ahora en de esta la Y
+		; ahora en DE esta la Y
 		ex de,hl
 		add HL,BC; sumo la velocidad
 		; ahora en HL esta la nueva coordenada
@@ -3361,40 +3783,51 @@ CO2_j		ld a, (HL); leo status
 		; ahora voy a comprobar colision en una coordenada y si no hay colision fin
 		; chequeo solape Y
 		; -------------------
-CO2_MARGENY	ld bc,2; ayudita (2 lineas de margen). se modifican por configuracion con COLSP,33,dy,dx
-		and a ; acarreo a cero
+CO2_MARGENY	ld bc,2; ayudita (2 lineas de margen). se modifican por configuracion con COLSP,34,dy,dx
+		;and a ; acarreo a cero
 		; caso 1 y2ini > y1fin -> no hay solape
 		ld hl,(CO2y2ini)
 		add HL,bc; ayudita para que no te coman facil **********
 		ld de, (CO2y1fin)
+		and a ; acarreo a cero
 		sbc hl, de
-		JR NC, CO2_NOCHOCA
+		JP P, CO2_NOCHOCA
+		;JR NC, CO2_NOCHOCA
 		; caso 2 y1ini > y2fin -> no hay solape
-		and a ; reset acarreo
+		;and a ; reset acarreo
 		ld hl,(CO2y1ini)
 		add HL,bc; ayudita para que no te coman facil ***********
 		ld de, (CO2y2fin)
+		and a ; acarreo a cero
 		sbc hl, de
-		JR NC, CO2_NOCHOCA
+		;JR NC, CO2_NOCHOCA
+		JP P, CO2_NOCHOCA
 		; si no se cumple uno de los casos anteriores, es que hay solape
 
 		; chequeo solape X
 		; -------------------
 		; caso 1 x2ini > x1fin -> no hay solape
+		; OJO!!! si x2ini es negativo esto no funciona!!!!!!
 CO2_MARGENX	ld bc,1; ayudita (1 byte de margen)
-		and a ; reset acarreo
+		;and a ; reset acarreo
 		ld hl,(CO2x2ini)
 		add HL,bc; ayudita para que no te coman facil ***********
 		ld de, (CO2x1fin)
-		sbc hl, de
-		JR NC, CO2_NOCHOCA
-		; caso 2 x1ini > x2fin -> no hay solape
 		and a ; reset acarreo
+		sbc hl, de
+		;JR NC, CO2_NOCHOCA
+		;JR Z,  CO2_NOCHOCA
+		JP P,  CO2_NOCHOCA
+		; caso 2 x1ini > x2fin -> no hay solape
+		;and a ; reset acarreo
 		ld hl,(CO2x1ini)
 		add HL,bc; ayudita para que no te coman facil ***********
 		ld de, (CO2x2fin)
+		and a ; reset acarreo
 		sbc hl, de
-		JR NC, CO2_NOCHOCA
+		;JR NC, CO2_NOCHOCA
+		;JR Z,  CO2_NOCHOCA
+		JP P,  CO2_NOCHOCA
 		; si no se cumple uno de los casos anteriores, es que hay solape
 		; llegamos aqui porque hay colision
 		ld a,1; a=1 significa colision
@@ -3627,16 +4060,20 @@ COS_CHOCA
 
 ; variables locales
 ;-------------------------------------
-SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
-SCS_check	db 0
 
-SCS_incy	db 2; lo que vamos a mover en eje y
-SCS_incx	db 1; lo que vamos a mover en eje x
+; me he llevado algunas a la zona que acaba en 27000 para ganar unos bytes y asi
+; poder chequear si num stars =0 y retornar
 
-SCS_counter	db 20
-SCS_number	db 20
+;SCS_pen		db 64; el byte (2ndo pix mode 0) que vamos a pintar. esto es una constante
+;SCS_check	db 0
 
-star_color	db 64
+;SCS_incy	db 2; lo que vamos a mover en eje y
+;SCS_incx	db 1; lo que vamos a mover en eje x
+
+;SCS_counter	db 20
+;SCS_number	db 20
+
+;star_color	db 64
 bkgd_color	db 0
 
 
@@ -3651,6 +4088,9 @@ SCS:
 		; optimizacion. si no hay parametros asumo los ultimos
 		and a
 		jr nz, SCS_sigue
+		LD A, (SCS_number)
+		and a
+		ret Z; si num estrellas =0 entonces no hay nada que hacer
 		ld a, (SCS_initstar)
 		jr SCS_START
 		
@@ -3658,6 +4098,8 @@ SCS_sigue
 		ld a, (ix+6)	; numero maximo de estrellas
 		ld (SCS_number),a
 		ld (SCS_counter),a
+		and a
+		ret Z; si num estrellas =0 entonces no hay nada que hacer
 
 		LD A, (ix+0)
 		ld (SCS_incx), a
@@ -4230,6 +4672,7 @@ ps2_chk3	and a
 		JR z, PS2_all
 		; sincronismo con barrido
 		call _SYNC
+		;call &bd19
 
 
 ; llegamos aqui tras animar y sincronizar con barrido
@@ -4350,9 +4793,9 @@ PS2_fin
 ;-------------------------------------
 _POKE
 	ld c,(IX+0)
-	ld b,(IX+1)
+	ld b,(IX+1); en bc tengo el dato
 	ld l,(ix+2)
-	ld h,(ix+3)
+	ld h,(ix+3); en hl la direccion
 	ld (hl),c
 	inc hl
 	ld (hl),b
@@ -4369,11 +4812,11 @@ _POKE
 ;-------------------------------------
 _PEEK
 	ld l,(ix+2)
-	ld h,(ix+3)
+	ld h,(ix+3); en hl tengo la direccion
 
 	ld c,(hl)
 	inc hl
-	ld b,(hl)
+	ld b,(hl); en bc tengo el dato
 	; he leido y lo tengo en bc
 
 	ld l,(IX+0)
@@ -4390,11 +4833,11 @@ _PEEK
 ;
 ; variables globales
 ;-------------------------------------
-COA_colider	dw 0;
+COA_colider	dw 0; direccion de memoria de colider
 
 ; variables locales
 ;-------------------------------------
-COA_spid	db 0
+;COA_spid	db 0; contador
 
 
 ;function body
@@ -4463,5 +4906,191 @@ COA_fin
 		ld (hl),a
 		ret
 
+;=============================================================================================================
+;RUTINA  _RINK 				(INK)
+; usos:
+;   RINK t_ini,t1,t2,t3,t4,t5,t6,t7,t8  para establecer patron de 8 tintas de rotacion
+;   RINK t_ini,t1,t2,t3,t4   para establecer patron de 4 tintas de rotacion
+;   RINK step  para mover las tintas un step, que puede ser mayor o menor segun velocidad deseada
+;=============================================================================================================
+; esta funcion hace una rotacion de tintas 
+; puede tener 9 parametros o solo 1
+; si se invoca con 9 parametros estamos pasando la tinta inicial donde comienzan las 8 que van a rotar y 
+; el patron de 8 tintas a mover. por ejemplo si invocamos con RINK, 8,3,3,3,3,24,24,24,24
+; significa que las tintas [8..15] van a rotar con un patron de franjas (4 rojas y 4 amarillas)
+; si se invoca con 5 parametros estamos pasando la tinta inicial donde comienzan las 4 que van a rotar y 
+; el patron de 4 tintas a mover. por ejemplo si invocamos con RINK, 8,3,3,24,24
+; significa que las tintas [8..11] van a rotar con un patron de franjas (2 rojas y 2 amarillas)
+; si se invoca con 1 parametro estamos pasando el step
+; para dar sensacion de mas velocidad simplemente hay que aumentar el step
+; t1...t8 es el patron de color que se va a hacer rotar. pueden ser franjas o cualquier cosa
 
+
+;local variables
+;---------------------
+;ink_tinta	db 2; current tinta a cambiar
+ink_index	db 0; valor puntero. de una invocacion a la siguiente hay que preservarlo
+		; ink_index es la tinta a la que le toca ser t1 en esta invocacion.
+
+ink_tini	db 1; tinta inicial de rango 
+;ink_tfin	db 10; tinta final de rango
+ink_t1		db 3; tinta 
+ink_t2		db 3; tinta 
+ink_t3		db 3; tinta 
+ink_t4		db 3; tinta 
+ink_t5		db 24; tinta 
+ink_t6		db 24; tinta 
+ink_t7		db 24; tinta 
+ink_t8		db 24; tinta 
+ink_step	db 0; salto a dar
+
+;ink_len		db 8; longitud de patron 8 o 4 (meto 7 o 3)
+
+ink_counter_aux db 0;longitud de patron 8 o 4 (meto 7 o 3)
+;function body
+;-------------------------------------
+
+;carga de parametros de entrada
+_RINK
+		; recogida de los 8 colores de franja
+		cp a,1
+		jr z, ink_noparam
+
+		; Si llegamos aqui es porque nos estan pasando un patron
+		
+		
+		
+		push IX
+;		pop hl
+
+		cp a,5; patron corto
+		jr nz, ink8
+
+ink4		ld BC,ink_t4
+		ld d,4; contador
+		dec a
+		jr _inkbuc
+		
+ink8		ld BC,ink_t8
+		ld d,8; contador
+		dec a
+_inkbuc		
+
+		ld (ink_counter_aux),a		
+		dec a; a= num param -1
+		;ld (ink_counter_aux),a		
+
+
+		ld hl, ink_and1+1
+		ld (hl),a
+		ld hl, ink_and2+1
+		ld (hl),a
+		ld a,0		
+		ld (ink_index),a
+
+		pop hl
+		
+_inkbuc8		
+		
+		
+		
+		ld a,(hl)
+		ld (BC),a
+		inc hl
+		inc hl
+		dec bc
+		dec d
+
+		JR nz,_inkbuc8
+		; voy a recoger ink_tini que es el ultimo parametro
+		ld a,(hl)
+		ld (ink_tini),a
+
+		ret
+
+ink_noparam	; recogida de step
+		
+		ld a,(ix+0); aqui esta el step, es el unico parametro
+		ld (ink_step),a
+		ld b,a
+;ink_noparam
+		ld a, (ink_index)
+		add b ;b tiene el step
+ink_and1	and a, %111; si index+step se sale de rango pues nos colocamos al ppio con aritmetica modular
+
+		ld (ink_index),a; actualizado el index [0..7]
+		;ld a, 8
+		;ld (ink_counter),a
+		ld a, (ink_counter_aux)
+		ld (ink_counter), a
+
+		ld a,(ink_tini)
+		dec a
+		ld (ink_cambiar),a; si tini es 1, entonces ink_cambiar inicialmente es cero, pero es para sumar 
+
+		;call &bd19
+		DI; nuevo. Que nos corten a la mitad puede provocar un fallo de color grave
+		;aunque no he visto fallos pero por si acaso
+ink_bucle       
+		;seleccion de tinta a alterar
+		ld a, (ink_cambiar)
+		inc a
+		ld (ink_cambiar),a; la primera vez es tini
+		
+		;seleccion de tinta a poner
+		ld a, (ink_index)
+		inc a
+ink_and2	and %111
+
+		ld (ink_index),a
+		ld c,a
+		ld b,0
+		ld hl, ink_t1
+		add hl, bc
+		ld a,(hl)
+		ld b,a
+		ld c,b
+		; comando ink
+		ld a,(ink_cambiar)
+		call &bc32; rutina de firmware de cambio de tinta
+
+ink_finbucle		
+		ld a, (ink_counter)
+		dec a
+		JR z, ink_fin
+		ld (ink_counter),a; decremento contador
+		jr ink_bucle
+		
+ink_fin		EI; NUEVO
+	
+		ret
+
+
+
+
+;=============================================================================================================
+;RUTINA DE SINCRONISMO _SYNC() (SYN)
+;=============================================================================================================
+; esta funcion espera al barrido de pantalla de un modo 
+; mas "correcto" que ra rutina del firmware call &bd19
+
+; se puede eliminar para ahorrar memoria, reemplazandola por call &bd19, aunque ocupa poco (6 bytes)
+
+; de momento el sitio desde donde se invoca (PRINTSPALL lo he cambiado por call &bd19
+
+_SYNC:
+
+SYN:
+
+		ld c,0
+		ld b,#f5; PPI port B
+SYN_lee:
+		in a,(c)
+;		; (bit 0 = "1" if vsync is active,
+;		;  or bit 0 = "0" if vsync is in-active)
+		rra; put bit 0 into carry flag
+		jr nc,SYN_lee
+SYN_ret		ret
+		
 _END_8BP
+
