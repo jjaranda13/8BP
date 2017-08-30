@@ -46,6 +46,16 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+30/08/2017 ACTUALIZACION V31 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v31.asm con las siguientes mejoras 
+	- nuevo comando PRINTAT, capaz de imprimir cadenas de caracteres pequenas, adecuadas para juegos en mode 0 y con la posibilidad de definir tu propio juego de minicaracteres
+
+- demos : 
+	- encontraras demos del nuevo comando PRINTAT en la carpeta de demos, directorio DemoExamples/minicaracteres. 
+
+
 13/04/2017 ACTUALIZACION V30 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
