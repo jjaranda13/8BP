@@ -1,9 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
 org 26000
-read "8bitsDePoder_v031.asm"
-
-
-
+read "8bitsDePoder_v028.asm"
 
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
@@ -100,4 +97,3 @@ STARS0
 	db 150,15
 	db 180,35; estrella 40
 ENDSTARS
-
