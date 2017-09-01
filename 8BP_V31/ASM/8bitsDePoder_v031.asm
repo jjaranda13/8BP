@@ -51,21 +51,21 @@
 ;	    _SEQUENCES_GROUPS_LIST tabla de grupos de secuencia. editarla en asm, no se puede editar con |SETUPSQ
 ; 42040	    MAP_TABLE tabla de hasta 82 entradas con el mapa del mundo en imagenes
 ;--------------------------------------------------------------------------------------------------
-; Ensambladas a partir de direccion 26000. La primera instruccion BASIC debe ser memory 25999 para
-; colocar HIMEM en 25999 y asi no machacar las rutinas que comienzan en 26000
+; Ensambladas a partir de direccion 25000. La primera instruccion BASIC debe ser memory 24999 para
+; colocar HIMEM en 24999 y asi no machacar las rutinas que comienzan en 25000
 ; los sprites deben dibujarse a partir de direccion 33500 por lo que disponemos de  8KB para graficos
 ; El programa basic podra ocupar hasta 26KB, pero cuidado, las variables de basic
 ; tambien ocupan memoria de modo que tu programa debe de ser menor de 26KB
 ; 
 ; para salvar las diferentes partes de tu programa ejecuta lo siguiente
-; SAVE "8BP.lib",b,26000,6250  version de 8BP especifica de tu juego. es necesario hacerla
+; SAVE "8BP.lib",b,25000,7250  version de 8BP especifica de tu juego. es necesario hacerla
 ; SAVE "music.bin",b,32000,1250 tus musicas
 ; SAVE "sprites.bin",b,33500,8540 tus sprites
 ;
 ; por ultimo, es acosejable que tu programa se cargue mediante un "cargador" que carga la
 ; libreria 8bp y los sprites y la musica, y a continuacion tu programa
 ;
-;10 MEMORY 25999
+;10 MEMORY 24999
 ;20 LOAD "8bp.lib"   <--- esta libreria, incluye tabla de sprites y layout de pantallas
 ;30 LOAD "music.bin"  <--- musica (dos ficheros generados por el editor de musica)
 ;40 LOAD "sprites.bin" <--- graficos y tabla de secuencias
@@ -100,7 +100,7 @@
 ;       |  rutinas 8BP  (6250 bytes)
 ;       |	 aqui estan todas las rutinas y la tabla de sprites
 ;       |        incluye el player de musica "wyz" 2.0.1.0
-; 26000 +---------- 
+; 25000 +---------- 
 ;       |  |variables el BASIC
 ;       |  V
 ;       |  
