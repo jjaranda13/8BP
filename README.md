@@ -17,6 +17,7 @@ descargate el ZIP y en el encontraras:
 	- "mini-pong": un juego didactico, corto y sencillo de entender
 	- "mini-invaders": un juego didactico, corto y sencillo de entender
 	- "Fresh fruits & vegetables": un juego de plataformas con scroll
+	- "3D racing one" : un juego de carreras de coches pseudo 3D
 
 - DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -40,10 +41,33 @@ Download the ZIP and you will find:
 	- "mini-pong": a simple , short game, easy to understand for beginners
 	- "mini-invaders": a simple , short game, easy to understand for beginners
 	- "Fresh fruits & vegetables": a platform scrolling game
+	- "3D racing one" : a pseudo 3D racing cars game
 
 - DemoExamples: Here i will upload small demos with didactic examples made 8BP
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+
+
+15/04/2018 ACTUALIZACION V32 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v31.asm con las siguientes mejoras 
+	- capacidad pseudo 3D: 
+		- explicacion detallada del funcionamiento pseudo3D y de las matematicas asociadas
+		- nuevo comando "3D" que permite prooyectar en 3D al imprimir con PRINTSP y PRINTSPALL
+		- soporta imagenes de tipo zoom para juegos 3D
+		- soporta imagenes de tipo segmento para juegos 3D
+	- nuevo comando ROUTESP que enruta un unico sprite
+	- mejora del comando PRINTAT para que imprima el ultimo caracter en caso de error
+	- mejora del comando MAP2SP para que el estado de los sprites generados sea configurable
+	- mas memoria para la musica: ahora dispones de 1300 bytes
+	
+- SPEDIT (editor de sprites):  
+	- nueva version v10, aunque no posee mejoras
+	
+- JUEGOS: 
+	-nuevo juego "3D racing one" disponible en la carpeta GameExamples. Es el primer juego que usa la capacidad 3D de la version32 de 8BP. ocupa casi 20KB de BASIC
 
 
 30/08/2017 ACTUALIZACION V31 (retrocompatible)  
