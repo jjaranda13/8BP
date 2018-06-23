@@ -1,0 +1,21 @@
+1 MODE 0
+10 CALL &6B78
+
+20 for i=18 to 21
+30 |SETUPSP,i,0,128+16+8+1    
+31 |SETUPSP,i,15,9
+32 |SETUPSP,i,9,17
+33 |LOCATESP,i,i*5,0
+34 next
+
+
+
+132 for i=1 to 5:|ROUTESP,18:|AUTO,18:next
+133 for i=1 to 20:|ROUTESP,19:|AUTO,19:next
+134 for i=1 to 40:|ROUTESP,20:|AUTO,20:next
+135 for i=1 to 60:|ROUTESP,21:|AUTO,21:next
+
+
+139 input a
+140 |AUTOALL,1:|PRINTSPALL   
+150 GOTO 139
