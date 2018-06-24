@@ -49,6 +49,25 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+24/06/2018 ACTUALIZACION V33 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+el manual ha sido mejorado notablemente, con mas aclaraciones y correccion de muchisimos detalles. He incluido mas medidas de rendimiento, mejor explicacion de los mecanismos de scroll, mejor capitulo de memoria de video, mas diagramas explicativos, codigo fuente con colores y tipo de letra monoespaciado, etc.
+
+- libreria: ahora se incluye 8bitsdepoder_v33.asm con las siguientes mejoras:
+	- ocupa lo mismo que la v32 (7700 bytes)
+	- ahora tienes 1400 bytes para musica (100 bytes mas que con v32)
+	- el comando RSX SETUPSQ ha sido eliminado. Este comando tenia una sintaxis mas compleja en BASIC que en asm y he preferido dejar la creacion de secuencias unicamente en el fichero asm. Ademas en ninguno de mis juegos lo habia usado. Era el comando menos util. gracias a ello he ganado espacio de memoria para mejoras de funcionalidad y para graficos, pues antes este comando reservaba 256bytes en la zona de memoria de graficos pra poder funcionar.
+	
+	- En modo pseudo-3D, ahora tiene capacidad de imprimir segmentos con sobreescritura. Esto es algo que se podia hacer en v32 con todo tipo de sprites menos con los segmentos. Ahora simplemente al configurar los items con sobreescritura (usando MAP2SP, status) los segmentos tendran sobreescritura
+	
+	- Rotación de tintas (comando RINK) sin limitaciones. Hasta ahora se podian hacer patrones de 4 y 8 tintas rotando. Ahora puedes rotar cualquier numero de tintas
+	
+	- Sobreescritura de sprites con posibilidad de elegir el numero de bits de fondo: esto te va a permitir si lo deseas usar 4 colores de fondo en tus juegos
+	
+	- sprite flipping horizontal: ahora puedes definir imágenes "virtuales", que en realidad se definen como el "flip" horizontal de una imagen real. Esto te permite ahorrar mucha memoria RAM destinada a graficos. He hecho el horizontal y no el vertical porque el horizontal es el más util. Normalmente un personaje que camina a la izquierda es la imagen especular del mismo caminando hacia la derecha, mientras que cuando sube hacia arriba muestra la espalda y al bajar muestra el pecho y la cara. 
+
+
 
 15/04/2018 ACTUALIZACION V32 (retrocompatible)  
 ==============================================
