@@ -48,6 +48,9 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+15/07/2018 ACTUALIZACION V33 (correccion retrocompatible)  
+==============================================
+he actualizado el repositorio con una correccion de la libreria. Se trataba de un bug que afectaba al comando PRINTAT si justo antes se habia impreso un sprite flipeado. En ese caso, las cadena de texto de PRINTAT se imprimia tambien flipeada. Este bug ya esta corregido. No hay ningun otro bug detectado.
 
 24/06/2018 ACTUALIZACION V33 (retrocompatible)  
 ==============================================
