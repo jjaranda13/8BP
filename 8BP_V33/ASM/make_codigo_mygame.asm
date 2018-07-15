@@ -1,5 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
-read "8bitsDePoder_v033_009.asm"; con mas optimizaciones 
+;read "8bitsDePoder_v033_009.asm"; con mas optimizaciones 
+read "8bitsDePoder_v033_010.asm"; fix bug v33 flip and printat
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.
