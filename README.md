@@ -48,6 +48,13 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+31/07/2018 ACTUALIZACION V33 (retrocompatible)  
+==============================================
+he actualizado el repositorio con una mejora para el comando MAP2SP. Si por algun casual encuentra mas de 32 items para traducir a sprites, tan solo creará 32 sprites y no mas, pues la tabla de sprites no soporta mas. Hasta ahora si ocurria esa circunstancia el comando MAP2SP corrompia la memoria de la libreria. No era un bug, pero ahora el uso de MAP2SP es mas seguro.
+He indicado esta circunstancia en el manual tambien.
+
+
 15/07/2018 ACTUALIZACION V33 (correccion retrocompatible)  
 ==============================================
 he actualizado el repositorio con una correccion de la libreria. Se trataba de un bug que afectaba al comando PRINTAT si justo antes se habia impreso un sprite flipeado. En ese caso, las cadena de texto de PRINTAT se imprimia tambien flipeada. Este bug ya esta corregido. No hay ningun otro bug detectado.
