@@ -1,6 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
 ;read "8bitsDePoder_v033_009.asm"; con mas optimizaciones 
-read "8bitsDePoder_v033_010.asm"; fix bug v33 flip and printat
+;read "8bitsDePoder_v033_010.asm"; fix bug v33 flip and printat
 read "8bitsDePoder_v033_011.asm"; limits MAP2SP to 32 sprites
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
