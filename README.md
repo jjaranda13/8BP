@@ -49,6 +49,23 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+10/10/2018 ACTUALIZACION V34 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v34.asm con las siguientes mejoras:
+	- corregido un bug detectado en v33 en la deteccion de colisiones
+	- el comando PRINTAT ahora puede imprimir fuera de los limites establecidos por SETLIMITS y es algo mas rapido
+	- soporte de impresion transparente y flipeada en mode 1
+	- nuevo codigo de ruta 251 para forzar animacion en mitad de una ruta
+	- la libreria ahora ocupa 8200 bytes de los que unos 180 estan libres. comienza en la direccion 24000 dejando 24kB libres para BASIC
+
+- SPEDIT: (editor de sprites):  
+	- nueva version v11 con soporte de mode 1, con capacidad de flip tambien para este modo
+	
+	
+- manual : En la documentacion he reflejado todos los cambios y he corregido la distribucion de bits en mode 1 en el capitulo de video
+
+
 31/07/2018 ACTUALIZACION V33 (retrocompatible)  
 ==============================================
 he actualizado el repositorio con una mejora para el comando MAP2SP. Si por algun casual encuentra mas de 32 items para traducir a sprites, tan solo creará 32 sprites y no mas, pues la tabla de sprites no soporta mas. Hasta ahora si ocurria esa circunstancia el comando MAP2SP corrompia la memoria de la libreria. No era un bug, pero ahora el uso de MAP2SP es mas seguro.
