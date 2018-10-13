@@ -3383,7 +3383,7 @@ ROU_leepaso	ld a,(HL); a contiene numero de pasos
 	; MEJORA v28. cambio de status, secuencia o imagen en mitad de ruta
 	;------------------------------------------------------------------
 		;and a
-		cp 250
+		cp 251
 		jr c,ROU_normal; si es menor de 250 entonces no hay cambios de estado ni nada
 
 		inc HL; ahora apunta al parametro (estado o secuencia o dirimagen)
