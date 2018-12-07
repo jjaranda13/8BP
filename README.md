@@ -49,6 +49,22 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+
+06/12/2018 ACTUALIZACION V35 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v35.asm con las siguientes mejoras:
+	- comando |ROUTESP mejorado, ahora permite adelantar varios pasos en la ruta para colocar facilmente naves en hilera
+	- he incluido una nueva demo para demostrar ROUTESP
+	- corregido un bug detectado en v34 en el uso combinado del codigo 251 y |AUTOALL,1
+	- no ha cambiado el espacio ocupado por la libreria
+		
+- manual : En la documentacion he reflejado todos los cambios y he mejorado apendice de teclado, asi como el apartado de logicas masivas
+
+- JUEGOS: 
+	- nuevo juego "SPACE PHANTOM" disponible en la carpeta GameExamples. Es un juego pseudo 3D creado con 8BP V35, ocupa unos 18KB de BASIC
+
+
 10/10/2018 ACTUALIZACION V34 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
