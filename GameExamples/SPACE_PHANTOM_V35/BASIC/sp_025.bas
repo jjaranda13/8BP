@@ -15,7 +15,7 @@
 71 star=22:marcoL=26:marcoR=27:corazon=28:borra=33:coin=31
 72 score=0:vidas=4:scp=10:scx=60:scm=0
 73 dim r(24):for i=0 to 23: r(j)=(j+5) mod 24:j=r(j):next:'rutas estrellas
-75 diry(0)=-1 :diry(1)=-1:diry(2)=-3:diry(3)=-4:diry(4)=-3:diry(5)=-1:diry(6)=-1:diry(7)=-1:'explo joe
+75 diry(0)=-1:diry(1)=-1:diry(2)=-3:diry(3)=-4:diry(4)=-3:diry(5)=-1:diry(6)=-1:diry(7)=-1:'explo joe
 76 dirx(0)=-3:dirx(1)=-2:dirx(2)=-1 :dirx(3)=0:dirx(4)=1:dirx(5)=2:dirx(6)=3:dirx(7)=2:'explo joe
 77 rt(0)=8:rt(1)=22:rt(2)=19:rt(3)=7:rt(4)=9:rt(5)=21:rt(6)=10:rt(7)=20:rt(8)=22:rt(9)=9:'rutas piedras
 80 'rutas, posiciones y pasos de naves fase 2 
@@ -39,7 +39,7 @@
 131 ink 3,11
 140 LOCATE 1,4:PEN 3:PRINT CHR$(22)+CHR$(1);"8BP game - JJGA 2018";CHR$(22)+CHR$(0);
 150 |3D,1,31,0:|MAP2SP,1:|SETLIMITS,0,80,0,200   
-160 x=218:INK 1,15: INK 2,7
+160 x=218:INK 1,15:INK 2,7
 170 Y=2000:|PRINTSPALL,0,0,0
 171 |MUSIC,0,6
 180 |MAP2SP,Y,X:|PRINTSPALL
@@ -397,7 +397,7 @@
 6010 locate 1,1:paper 4:pen 11:print STRING$(40," "):locate 6,2:print "RETIRADA!!"
 6011 for i=0 to 31:|SETUPSP,i,0,0:next:|3d,0
 6012 b$=inkey$:if b$<>"" then 6012:'clean buffer
-6013 |SETUPSP,0,9,29:|PRINTSP,0,1,1:|SETUPSP,0,9,30:|PRINTSP,0,1,7
+6013 |SETLIMITS,0,80,0,200:|SETUPSP,0,9,29:|PRINTSP,0,1,1:|SETUPSP,0,9,30:|PRINTSP,0,1,7
 6014 |SETUPSP,0,9,29:|PRINTSP,0,1,67:|SETUPSP,0,9,30:|PRINTSP,0,1,73
 6020 |MUSIC,0,6: |SETLIMITS,0,80,16,200
 6030 ciclo=ciclo+1: if ciclo and 15 then 6040
