@@ -50,6 +50,10 @@ The improvements that are incorporated will be backwards compatible so your game
 
 
 
+13/12/2018 ACTUALIZACION V35.01 (retrocompatible)  
+==============================================
+he corregido un bug que afectaba a la impresion transparente en mode 1 cuando se usaba el color 1, que es para respetar el fondo y asi hacer limites redondeados de sprites. En mode 0 funcionaba pero en mode 1 habia un problema. Ya esta corregido
+
 06/12/2018 ACTUALIZACION V35 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
