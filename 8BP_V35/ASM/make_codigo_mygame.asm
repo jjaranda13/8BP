@@ -1,5 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
-read "8bitsDePoder_v035.asm"; 
+;read "8bitsDePoder_v035.asm"; 
+read "8bitsDePoder_v035_001.asm"; fix bug impresion transp mode 1
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.
