@@ -50,6 +50,30 @@ The improvements that are incorporated will be backwards compatible so your game
 
 
 
+27/01/2011 ACTUALIZACION V36 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v36.asm con las siguientes mejoras:
+	- comando |PRINTSPALL mejorado, ahora permite un parametro adicional para especificar el primer sprite que se va a ordenar del grupo de sprites ordenados, es decir ahora se usa del siguiente modo:
+		- PRINTSPALL, spriteini,spritefin,anima,sync
+		donde spriteini es el primer sprite que se va a ordenar y spritefin el ultimo. esto permite por ejemplo si usamos PRINTSPALL,0,11,20,anima,sync imprimir secuencialmente los sprites del 0 al 10, ordenados del 11 al 20 y secuencialmente del 21 al 31
+	- ahora se permiten 4 modos de ordenamiento de sprites, que se configuran usando PRINTSPALL con un solo parametro. En 8BP ordenacion "parcial" significa que en cada invocacion solo se corrigen 2 sprites desordenados:
+		- PRINTSPALL,0 : ordenacion parcial de sprites basado en Ymin
+		- PRINTSPALL,1 : ordenacion total de sprites basado en Ymin
+		- PRINTSPALL,2 : ordenacion parcial de sprites basado en Ymax
+		- PRINTSPALL,3 : ordenacion total de sprites basado en Ymax
+	
+	- se han optimizado en velocidad un poquito la impresion flipeada y el comando STARS
+	- no ha cambiado el espacio ocupado por la libreria
+		
+- manual : En la documentacion he reflejado todos los cambios 
+	- explicados los 4 modos de ordenamiento y el nuevo parametro de PRINTSPALL para el sprite inicial ordenado
+	- aclaraciones sobre donde se almacena el stack pointer en la memoria del amstrad
+	- aclaraciones sobre el uso de codigos de escape en rutas
+	- aclaraciones sobre como medir tiempos de ejecucion
+	- aclaraciones sobre los items en un mapa del mundo
+
+
 13/12/2018 ACTUALIZACION V35.01 (retrocompatible)  
 ==============================================
 he corregido un bug que afectaba a la impresion transparente en mode 1 cuando se usaba el color 1, que es para respetar el fondo y asi hacer limites redondeados de sprites. En mode 0 funcionaba pero en mode 1 habia un problema. Ya esta corregido
