@@ -50,7 +50,24 @@ The improvements that are incorporated will be backwards compatible so your game
 
 
 
-27/01/2011 ACTUALIZACION V36 (retrocompatible)  
+17/02/2019 ACTUALIZACION V36_01 (retrocompatible)  
+==============================================
+He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
+- libreria: ahora se incluye 8bitsdepoder_v36_006.asm con las siguientes mejoras:
+	- colision de sprites: ahora es mas precisa, y funciona tal como se describe en el manual. Antes se toleraba 1byte de ancho y una linea de alto mas de lo que decia el manual
+
+-manual
+	- ahora hay un apendice extra con algunos efectos de sonido
+	- incluida rutina de firmware en apendice (call &bb18 que espera a pulsar tecla)
+	- explicacion de que una ruta puede medir como mucho 255 bytes y como hacerlas mas largas
+	- incluido un apartado de como programar rutas que tienen un patron de repeticion complejo
+	- explicacion de como se recorren los colliders frente a como se recorren los collided y ejemplo de solucion de solape multiple
+	
+	
+	
+
+
+27/01/2019 ACTUALIZACION V36 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con los siguientes cambios (coherentes entre la documentacion y la libreria). 
 - libreria: ahora se incluye 8bitsdepoder_v36.asm con las siguientes mejoras:
