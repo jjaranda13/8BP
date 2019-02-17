@@ -603,6 +603,9 @@ INS_cancion	db 0
 INS_speed	db 5; una velocidad "normal" es 6. si ponemos 5 estamos acelerando un poco la musica
 
 
+; de colspall
+COA_colider	dw 0; direccion de memoria de colider
+
 
 ;=================================================
 ; Tabla de alturas de sprites. esta tabla se ubica en la memoria de sprites
@@ -2956,6 +2959,16 @@ R3d_fin
 ;M2S_Xorig 		dw 0 ; coordx del origen "movil". inicialmente deberia ser 0
 ;M2S_Yorig 		dw 0 ; coordy del origen "movil". inicialmente deberia ser 0
 
+
+;M2S_SP_POINTER	dw _SPR_SPRITES_TABLE; puntero al primer sprite a dar de alta
+;M2S_sprites	db 0; este es un output de la funcion
+M2S_sprites_before db 0; num sprites en la invocacion anterior
+M2S_ANCHOVISIBLE	dw 79; ancho en bytes visibles en la pantalla. el byte 80 no es visible
+
+
+
+
+
 M2SXMARGIN		dw 80; luego se ajusta sumando el max ancho de la tabla map_table
 M2SYMARGIN		dw 200; luego se ajusta sumando el max alto de la tabla map_table
 M2SXoffset		dw 0; el offset es el margen izq desde donde se considera presencia de sprite
@@ -4900,12 +4913,6 @@ _INSTALL_RSX_end
 
 
 
-;M2S_SP_POINTER	dw _SPR_SPRITES_TABLE; puntero al primer sprite a dar de alta
-;M2S_sprites	db 0; este es un output de la funcion
-M2S_sprites_before db 0; num sprites en la invocacion anterior
-M2S_ANCHOVISIBLE	dw 79; ancho en bytes visibles en la pantalla. el byte 80 no es visible
-
-
 
 ;=====================================
 ; variables de la funcion SET_LIMITS
@@ -4926,8 +4933,7 @@ SPR_DIFY	db 200
 
 
 ;----------------VARIABLES QUE ME HE TRAIDO AQUI --------------------------------
-; de colspall
-COA_colider	dw 0; direccion de memoria de colider
+
 
 ;de MOVER
 MOR_ypointer dw 0; direccion de una variable basic dy
@@ -6952,17 +6958,24 @@ CO2_MARGENY	ld bc,2; ayudita (2 lineas de margen). se modifican por configuracio
 		ld de, (CO2y1fin)
 		and a ; acarreo a cero
 		sbc hl, de
-		JP P, CO2_NOCHOCA
-		;JR NC, CO2_NOCHOCA
-		; caso 2 y1ini > y2fin -> no hay solape
+
+		JR Z, CO2_AUNNOCHOCA;v36b
+		JR NC, CO2_NOCHOCA;v36b
+		;JP P, CO2_NOCHOCA
+		
+CO2_AUNNOCHOCA	; caso 2 y1ini > y2fin -> no hay solape
 		;and a ; reset acarreo
 		ld hl,(CO2y1ini)
 		add HL,bc; ayudita para que no te coman facil ***********
 		ld de, (CO2y2fin)
 		and a ; acarreo a cero
 		sbc hl, de
-		;JR NC, CO2_NOCHOCA
-		JP P, CO2_NOCHOCA
+
+		JR Z,CO2_MARGENX;v36b
+		JR NC, CO2_NOCHOCA; v36b
+		;JP P, CO2_NOCHOCA
+		
+
 		; si no se cumple uno de los casos anteriores, es que hay solape
 
 		; chequeo solape X
@@ -6976,25 +6989,27 @@ CO2_MARGENX	ld bc,1; ayudita (1 byte de margen)
 		ld de, (CO2x1fin)
 		and a ; reset acarreo
 		sbc hl, de
-		;JR NC, CO2_NOCHOCA
-		;JR Z,  CO2_NOCHOCA
-		JP P,  CO2_NOCHOCA
 
-		;JR NC, CO2_NOCHOCA
+		;JP P,  CO2_NOCHOCA
+		JR Z,  CO2_QUIZASCHOCA;v36b si son iguales estan solapados al menos en 1 byte
+		JR NC, CO2_NOCHOCA;v36b
 
 		; caso 2 x1ini > x2fin -> no hay solape
 		;and a ; reset acarreo
-		ld hl,(CO2x1ini)
+CO2_QUIZASCHOCA	ld hl,(CO2x1ini)
 		add HL,bc; ayudita para que no te coman facil ***********
 		ld de, (CO2x2fin)
 		and a ; reset acarreo
 		sbc hl, de
 		;JR NC, CO2_NOCHOCA
 		;JR Z,  CO2_NOCHOCA
-		JP P,  CO2_NOCHOCA
+		; con cero debe de chocar!! v36b
+		JR Z,  CO2_CHOCA;v36b
+		JR NC, CO2_NOCHOCA
+		;JP P,  CO2_NOCHOCA
 		; si no se cumple uno de los casos anteriores, es que hay solape
 		; llegamos aqui porque hay colision
-		ld a,1; a=1 significa colision
+CO2_CHOCA	ld a,1; a=1 significa colision
 		ret
 
 CO2_NOCHOCA	xor a; a=0 significa no colision
