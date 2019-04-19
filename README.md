@@ -18,6 +18,8 @@ descargate el ZIP y en el encontraras:
 	- "mini-invaders": un juego didactico, corto y sencillo de entender
 	- "Fresh fruits & vegetables": un juego de plataformas con scroll
 	- "3D racing one" : un juego de carreras de coches pseudo 3D
+	- "Space Phantom" : un juego arcade estilo "Space Harrier"
+	- "Frogger Eterno" : una versión del clasico "Frogger"
 
 - DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -43,6 +45,8 @@ Download the ZIP and you will find:
 	- "mini-invaders": a simple , short game, easy to understand for beginners
 	- "Fresh fruits & vegetables": a platform scrolling game
 	- "3D racing one" : a pseudo 3D racing cars game
+	- "Space Phantom" : an arcade "Space harrier" style
+	- "Frogger Eterno": a version of the classic "Frogger"
 
 - DemoExamples: Here i will upload small demos with didactic examples made 8BP
  
