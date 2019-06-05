@@ -1,4 +1,5 @@
 
+to create cdt , i have used "2cdt" tool
 
 path=%path%;../2cdt/2cdt
 2cdt.exe -n -s 1 -r "LOADER.BAS" "LOADER.BAS" temp.cdt

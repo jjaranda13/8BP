@@ -1,4 +1,10 @@
+
+to create cdt , i have used "2cdt" tool
+this game load in different order in tape than disc
+
+
 path=%path%;../2cdt/2cdt
+
 2cdt.exe -n -s 1 -r "LOADER.bas" "loadTAPE.BAS" temp.cdt
 2cdt.exe -b 2000 -r "3dracing.scr" "3dracing.scr" temp.cdt
 2cdt.exe -b 2000 -r "3dracing.bas" "3dtape.bas" temp.cdt
