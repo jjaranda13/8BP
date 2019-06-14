@@ -52,6 +52,16 @@ Download the ZIP and you will find:
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+14/06/2019 ACTUALIZACION V36_07 (retrocompatible)  
+==============================================
+He actualizado el repositorio con el siguiente cambio
+- libreria: ahora se incluye 8bitsdepoder_v36_008.asm con las siguientes mejoras:
+	- aceleracion de los comandos ROUTESP, SETUPSP,LOCATESP,PRINTSP, PRINTSPALL, ANIMASP,AUTOSP,COLAY COLSPALL
+
+- manual: no lo he actualizado porque no hay ningun cambio en la funcionalidad, simplementa ahora 8BP va mas rapido. Pronto actualizare el manual para incluir nuevas recomendaciones de programacion y algunas de las mediciones de tiempo de ejecucion (en milisegundos) de los comandos tras esta actualizacion
+
+
 08/05/2019 ACTUALIZACION V36_07 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con el siguiente cambio
