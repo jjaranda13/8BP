@@ -53,7 +53,7 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
-14/06/2019 ACTUALIZACION V36_07 (retrocompatible)  
+14/06/2019 ACTUALIZACION V36_08 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con el siguiente cambio
 - libreria: ahora se incluye 8bitsdepoder_v36_008.asm con las siguientes mejoras:
