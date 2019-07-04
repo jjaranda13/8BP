@@ -38,6 +38,10 @@ DW BOLA;38
 
 DW BLOQUE1;39
 DW BLOQUE2;40
+; images de demo layout
+DW BRICK;41
+DW FONDO;42
+DW BOLITA;43
 ; ahora las imagenes
 ;=================================================
 ; si no vas a usar el comando PRINTAT,  sino simplemente los caracteres del amstrad, entonces
@@ -72,6 +76,57 @@ _END_FLIP_IMAGES
 ;=================================================
 _BEGIN_IMAGES
 ;=================================================
+;------ BEGIN IMAGE --------
+BRICK
+db 4 ; ancho
+db 8 ; alto
+db 60 , 60 , 28 , 60 
+db 60 , 60 , 28 , 60 
+db 60 , 60 , 28 , 60 
+db 12 , 12 , 12 , 12 
+db 44 , 60 , 60 , 60 
+db 44 , 60 , 60 , 60 
+db 44 , 60 , 60 , 60 
+db 12 , 12 , 12 , 12 
+;------ END IMAGE --------
+;------ BEGIN IMAGE --------
+FONDO
+db 4 ; ancho
+db 8 ; alto
+db 128 , 64 , 128 , 64 
+db 128 , 64 , 128 , 64 
+db 64 , 0 , 0 , 128 
+db 64 , 0 , 0 , 128 
+db 0 , 128 , 64 , 0 
+db 0 , 128 , 64 , 0 
+db 128 , 64 , 128 , 64 
+db 128 , 64 , 128 , 64 
+
+;------ END IMAGE --------
+;------ BEGIN IMAGE --------
+BOLITA
+db 4 ; ancho
+db 16 ; alto
+db 0 , 0 , 0 , 0 
+db 0 , 0 , 0 , 0 
+db 0 , 0 , 0 , 0 
+db 0 , 4 , 8 , 0 
+db 0 , 13 , 14 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 15 , 15 , 0 
+db 0 , 13 , 14 , 0 
+db 0 , 4 , 8 , 0 
+db 0 , 0 , 0 , 0 
+db 0 , 0 , 0 , 0 
+db 0 , 0 , 0 , 0 
+;------ END IMAGE --------
+
+
+
 CARA
 ;------ BEGIN IMAGE --------
 ;db 7 ; ancho
