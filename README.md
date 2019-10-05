@@ -20,6 +20,7 @@ descargate el ZIP y en el encontraras:
 	- "3D racing one" : un juego de carreras de coches pseudo 3D
 	- "Space Phantom" : un juego arcade estilo "Space Harrier"
 	- "Frogger Eterno" : una versión del clasico "Frogger"
+	- "Eridu: the space port": un juego inspirado en el clasico scramble con scroll
 
 - DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -47,11 +48,22 @@ Download the ZIP and you will find:
 	- "3D racing one" : a pseudo 3D racing cars game
 	- "Space Phantom" : an arcade "Space harrier" style
 	- "Frogger Eterno": a version of the classic "Frogger"
+	- "Eridu: the space port": a game inspired in the classic "scramble"
 
 - DemoExamples: Here i will upload small demos with didactic examples made 8BP
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+
+05/10/2019 ACTUALIZACION V37_01 (retrocompatible)  
+==============================================
+He actualizado el repositorio con el siguiente cambio
+- libreria: ahora se incluye 8bitsdepoder_v37_001.asm con las siguientes mejoras:
+	- comando |COLAY mas rapido y con un cambio en su paso de paramtros. ahora acepta 3,2,1 o ningun parametro y el orden de los parametros es  |COLAY umbral,@col,sp . En caso de no usarse ningun parametro, el comando tiene memoria y usa los de la ultima vez
+	- se han acelerado un poco unos cuantos comandos
+
+- manual: he hecho una revisión completa y lo he actualizado con los cambios en la libreria. He mejorado especialmente el capitulo de logicas masivas
 
 14/06/2019 ACTUALIZACION V36_08 (retrocompatible)  
 ==============================================
