@@ -61,7 +61,7 @@ The improvements that are incorporated will be backwards compatible so your game
 He actualizado el repositorio con el siguiente cambio
 - libreria: ahora se incluye 8bitsdepoder_v37_001.asm con las siguientes mejoras:
 	- comando |COLAY mas rapido y con un cambio en su paso de paramtros. ahora acepta 3,2,1 o ningun parametro y el orden de los parametros es  |COLAY umbral,@col,sp . En caso de no usarse ningun parametro, el comando tiene memoria y usa los de la ultima vez
-	- se han acelerado un poco unos cuantos comandos
+	- se han acelerado un poco unos cuantos comandos, (MOVER, MOVERALL y otros)
 
 - manual: he hecho una revisión completa y lo he actualizado con los cambios en la libreria. He mejorado especialmente el capitulo de logicas masivas
 
