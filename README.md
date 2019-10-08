@@ -56,6 +56,15 @@ The improvements that are incorporated will be backwards compatible so your game
 
 
 
+08/10/2019 ACTUALIZACION V37_03 (retrocompatible)  
+==============================================
+He actualizado el repositorio con el siguiente cambio
+- libreria: ahora se incluye 8bitsdepoder_v37_003.asm con las siguientes mejoras:
+	- comando |COLSPALL mas potente. ahora ademas puede ser invocado con un parametro para especificar el colisionador inicial
+	- comando |ANIMALL ya solo se puede invocar mediante un parametro en PRINTSPALL o mediante CALL pues se ha sacado de la lista para ganar algunos bytes de memoria. El comando normalmente solo se usa desde PRINTSPALL, de modo que no supone ningun problema
+
+- manual: he actualizado el manual reflejando los cambios en la libreria y he incluido un apendice con la correspondencia entre cada comando y su equivalente CALL
+
 05/10/2019 ACTUALIZACION V37_01 (retrocompatible)  
 ==============================================
 He actualizado el repositorio con el siguiente cambio
