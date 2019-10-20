@@ -1,0 +1,24 @@
+13/05/2019 20:45:21
+System.InvalidOperationException: Error en el documento XML (2, 2). ---> System.InvalidOperationException: No se esperaba <ArrayOfInstrument xmlns=''>.
+   en Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderSong.Read11_Song()
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   en System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   en WYZTracker.SongManager.LoadSong(Stream stream)
+   en WYZTracker.SongManager.LoadSong(String fileName)
+   en WYZTracker.frmDockedMain.loadSongFromFile(String fileName)
+   en WYZTracker.frmDockedMain..ctor(String[] args)
+   en WYZTracker.Program.startSingleInstance(String[] args)
+   en WYZTracker.Program.Main(String[] args)
+13/05/2019 20:45:28
+System.InvalidOperationException: Error en el documento XML (2, 2). ---> System.InvalidOperationException: No se esperaba <ArrayOfInstrument xmlns=''>.
+   en Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderSong.Read11_Song()
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   en System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   en WYZTracker.SongManager.LoadSong(Stream stream)
+   en WYZTracker.SongManager.LoadSong(String fileName)
+   en WYZTracker.frmDockedMain.loadSongFromFile(String fileName)
+   en WYZTracker.frmDockedMain..ctor(String[] args)
+   en WYZTracker.Program.startSingleInstance(String[] args)
+   en WYZTracker.Program.Main(String[] args)

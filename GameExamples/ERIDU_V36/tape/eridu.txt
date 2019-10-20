@@ -1,0 +1,5 @@
+path=%path%;../2cdt/2cdt
+2cdt.exe -n -s 1 -r "LOADER.bas" "loader.BAS" temp.cdt
+2cdt.exe -b 2000 -r "eridu.scr" "eridu.scr" temp.cdt
+2cdt.exe -b 2000 -r "eridu.bin" "eridu.bin" temp.cdt
+2cdt.exe -b 2000 -r "eridu.bas" "eridu.bas" temp.cdt
