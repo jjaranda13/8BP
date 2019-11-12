@@ -21,8 +21,9 @@ descargate el ZIP y en el encontraras:
 	- "Space Phantom" : un juego arcade estilo "Space Harrier"
 	- "Frogger Eterno" : una versión del clasico "Frogger"
 	- "Eridu: the space port": un juego inspirado en el clasico scramble con scroll
+	- "Happy Monty": la segunda parte del clasico  mutant monty con 25 nuevos niveles
 
-- DemoExamples: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
+- Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
 Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego siempre podras actualizarlo a la ultima version de la libreria. La libreria estara viva y distribuire siempre gratis mejoras y documentacion y juegos. Siempre estara todo a disposicion de todos. Ese es el espiritu. compartir le da sentido a las creaciones
 
@@ -49,10 +50,28 @@ Download the ZIP and you will find:
 	- "Space Phantom" : an arcade "Space harrier" style
 	- "Frogger Eterno": a version of the classic "Frogger"
 	- "Eridu: the space port": a game inspired in the classic "scramble"
+	- "Happy Monty": the second part of the classic game "mutant monty", with new 25 levels
 
-- DemoExamples: Here i will upload small demos with didactic examples made 8BP
+- Demos: Here i will upload small demos with didactic examples made 8BP
  
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+
+12/11/2019 ACTUALIZACION V38
+==============================================
+He actualizado el repositorio los siguientes cambios
+- libreria: ahora se incluye 8bitsdepoder_v38_001.asm con las siguientes mejoras:
+	- comando |COLSPALL mas potente. sin limitaciones de colision con sprites ubicados en coordenadas negativas
+	- comando |MUSIC: ahora acepta un nuevo parametro que permite elegir entre hacer sonar la musica en bucle o una sola vez. 
+	- comando |MUSICOFF: ya no existe, ha sido reemplazado por una invocacion a MUSIC sin parametros
+	
+
+- manual: he actualizado el manual reflejando los cambios en la libreria y he incluido un capitulo de primeos paos al principio
+
+- Demos: todas las demos se recopilan en un menu y estan hechas con la v38
+
+- games: se incluye el juego "happy monty"
+
 
 
 
