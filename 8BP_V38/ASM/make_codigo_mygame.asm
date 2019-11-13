@@ -2,7 +2,7 @@
 ;read "8bitsDePoder_v037_001.asm";
 ;read "8bitsDePoder_v037_002.asm";
 ;read "8bitsDePoder_v037_003.asm";
-read "8bitsDePoder_v038_000.asm";
+read "8bitsDePoder_v038_001.asm";
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.
