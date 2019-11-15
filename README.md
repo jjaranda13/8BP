@@ -53,7 +53,7 @@ Download the ZIP and you will find:
 	- "Happy Monty": the second part of the classic game "mutant monty", with new 25 levels
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
- 
+
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
