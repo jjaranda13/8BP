@@ -1,6 +1,6 @@
 # 8BP
 8 bits de poder (8BP). For english version read below
-Si te gusta esta iniciativa y quieres apoyarla, tu donativo servira para comprar materiales, divulgar y hacer que 8BP sea cada dia mejor. el enlace para donar es:
+Si te gusta esta iniciativa y quieres apoyarla, tu donativo servira para comprar materiales, divulgar y hacer que 8BP sea cada dia mejor. el enlace para donar (paypal) es:
 https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item_name=help+me+to+make+8BP+better&currency_code=EUR&source=url
 
 
