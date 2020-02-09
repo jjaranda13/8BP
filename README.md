@@ -35,6 +35,11 @@ Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego sie
 
 ==============================================
 
+If you like 8BP inituative and you want to help me to make 8BP better, you may donate (paypal using this link:
+
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item_name=help+me+to+make+8BP+better&currency_code=EUR&source=url
+
+
 8BP is a powerful library for AMSTRAD CPC that will allow us to make professional games from BASIC, while the most intensive operations CPU usage are interpreted and executed in machine code. The library, once is loaded on the Amstrad, extends BASIC with a series of specific commands to games. This new command set is called "extensions of the basic" or RSX commands. Amstrad in his day already thought to be born could do RSX commands. The RSX commands are characterized by a "|" at the initial character, for example to print a sprite with the library is used "|PRINTSP" and as you will see all new commands have that in front stick.
 
 Download the ZIP and you will find:
