@@ -1,5 +1,8 @@
 # 8BP
 8 bits de poder (8BP). For english version read below
+Si te gusta esta iniciativa y quieres apoyarla, tu donativo servira para comprar materiales, divulgar y hacer que 8BP sea cada dia mejor. el enlace para donar es:
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item_name=help+me+to+make+8BP+better&currency_code=EUR&source=url
+
 
 8BP es una potente libreria para AMSTRAD CPC que nos permitira realizar juegos profesionales desde el BASIC, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nacio pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
