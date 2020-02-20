@@ -1,5 +1,10 @@
 # 8BP
-8 bits de poder (8BP). For english version read below
+8 bits de poder (8BP). For english version read below.
+
+Si te gusta esta iniciativa y quieres apoyarla, tu donativo servira para comprar materiales, divulgar y hacer que 8BP sea cada dia mejor. el enlace para donar (paypal) es:
+
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item_name=help+me+to+make+8BP+better&currency_code=EUR&source=url
+
 
 8BP es una potente libreria para AMSTRAD CPC que nos permitira realizar juegos profesionales desde el BASIC, mientras que las operaciones mas intensivas en el uso de CPU son interpretadas y ejecutadas en codigo maquina. La libreria, al cargarla en el amstrad te "amplia" el BASIC con una serie de comandos especificos para hacer juegos. A este set de comandos nuevo se le llama "extensiones del basic" o comandos RSX. El amstrad en su dia ya nacio pensado para que se pudiesen hacer comandos RSX. Los comandos RSX se caracterizan por tener un "|" delante, por ejemplo para imprimir un sprite con la libreria se usa "|PRINTSP", y como veras todos los comandos nuevos tienen ese palito delante.
 
@@ -29,6 +34,11 @@ Las mejoras que vaya incorporando seran retrocompatibles por lo que tu juego sie
 
 
 ==============================================
+
+If you like 8BP inituative and you want to help me to make 8BP better, you may donate (paypal using this link:
+
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item_name=help+me+to+make+8BP+better&currency_code=EUR&source=url
+
 
 8BP is a powerful library for AMSTRAD CPC that will allow us to make professional games from BASIC, while the most intensive operations CPU usage are interpreted and executed in machine code. The library, once is loaded on the Amstrad, extends BASIC with a series of specific commands to games. This new command set is called "extensions of the basic" or RSX commands. Amstrad in his day already thought to be born could do RSX commands. The RSX commands are characterized by a "|" at the initial character, for example to print a sprite with the library is used "|PRINTSP" and as you will see all new commands have that in front stick.
 
