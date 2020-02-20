@@ -67,6 +67,23 @@ Download the ZIP and you will find:
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
 
+20/02/2020 ACTUALIZACION V39 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios
+- libreria: ahora se incluye 8bitsdepoder_v39_001.asm con las siguientes mejoras:
+	- comando |COLSPALL, id : ahora explora a partir del colisionador id+1
+	- comando |MUSIC: ahora acepta un nuevo parametro que permite dejar libre el canal C de sonido mientras suena la musica para usarlo en efectos sonoros con comando SOUND de BASIC 
+	- comando PRINTSPALL : ahora primero imprime y luego anima, de modo que el primer fotograma de una explosion se imprimira. Hasta ahora cuando se asignaba una secuencia de animacion, el primer fotograma no se imprimia porque primero animaba y luego imprimia
+	- ahora los comandos PRINTSP y PRINTSPALL pueden usar imagenes ubicadas en cualquier zona de memoria, incluso fuera del espacio destinado por la libreria 8BP para sprites. 
+	- corregido un minibug detectado en un caso concreto de sobreescritura
+	
+
+- manual: he actualizado el manual reflejando los cambios en la libreria 
+
+- Demos: todas las demos se recopilan en un menu y estan hechas con la v39. ahora hay una demo nueva para probar musica y FX a la vez
+
+
+
 12/11/2019 ACTUALIZACION V38 (retrocompatible)
 ==============================================
 He actualizado el repositorio los siguientes cambios
