@@ -27,8 +27,7 @@
 ;|MOVERALL, dy,dx                   -> movimiento relativo de todos los sprites con flag de mov relativo activo
 ;|LAYOUT, y,x,@string               -> imprime un layout de imagenes de 8x8 y rellena map layout
 ;|LOCATESP, #,y,x                   -> cambia las coordenadas de un sprite (sin imprimirlo)
-;|MUSIC, loopflag,cancion,speed     -> comienza a sonar una cancion a la velocidad deseada
-;|MUSICOFF                          -> para la musica
+;|MUSIC,ch_c,loopflag,cancion,speed -> comienza a sonar una cancion a la velocidad deseada. sin parametros para la musica
 ;|POKE, direccion, valor	    -> acepta valores negativos. es un poke de 16bit
 ;|PEEK,dir,@variable	    	    -> lee valores negativos. es un peek de 16bit
 ;|PRINTAT,flag,y,x,@string          -> imprime una cadena de caracteres (minicaracteres)
@@ -2373,9 +2372,10 @@ PS2_2param
 
 PS2_noparam
 		CALL _GET_MODE ; v34 obtiene el modo grafico
-		ld a, (PS2_flag_anim)
-		and a
-		call NZ, _ANIMA_ALL
+
+		;ld a, (PS2_flag_anim)    ;v39
+		;and a                    ;v39
+		;call NZ, _ANIMA_ALL      ;v39
 
 		
 PS2_mas		ld a, (PS2_orden)
@@ -2601,6 +2601,12 @@ PS2_fin
 
 		;xor a
 		;ld (flag3D),a
+
+		;v39 he cambiado esto de sitio. ahora la animacion se hace al final
+		ld a, (PS2_flag_anim)
+		and a
+		call NZ, _ANIMA_ALL
+
 		ret
 
 
@@ -3578,7 +3584,9 @@ _ROUTE_SP
 
 ;		cp 1
 		dec a ; v37
-		JR NZ, RS_2; solo hay un parametro
+		JR NZ, RS_2
+		; solo hay un parametro
+		ld a,1
 		ld (RS_pasos),a
 		ld a, (IX+0); spritid
 		JR RS_1
@@ -3586,20 +3594,25 @@ _ROUTE_SP
 RS_2		ld a, (IX+0) ; new v34_004
 		ld (RS_pasos),a; new v34_00 si solo es un parametro pasos=1
 		and a 
-		ret z	
+		ret z; si pasos es cero no hay nada que hacer
 
 		ld a, (IX+2); spritid
 RS_1		ld (ROU_SPID),a
 		;ld c,a
 		
-		call _get_dir_sp ; input c, output HL
+		call _get_dir_sp ; input A, output HL
 
 		ld (ROU_dirsp), HL ; v32
 		;JR ROUTE_SP; optimize call +ret ; new v34_004
 RS_route	call ROUTE_SP
 		ld a, (RS_pasos)
+		and a ;39
+		ret z;39
 		dec a
-		ret z
+		;ret z
+		;dec a
+		;ret M ;v39  OJO solo podremos dar 128 pasos
+		;ret C
 		ld (RS_pasos),a
 		ld hl, (ROU_dirsp)
 		call MOV_uno
@@ -4725,9 +4738,9 @@ _POKE
 	ret
 ;-------------- 	
 ;============================================================================================================
-; _get_dir_sp    (c -> HL)
+; _get_dir_sp    (A -> HL)
 ;=============================================================================================================
-; esta funcion retorna en HL la direccion del sprite en la tabla SPRITES_TABLE cuyo id esta en c
+; esta funcion retorna en HL la direccion del sprite en la tabla SPRITES_TABLE cuyo id esta en A
 _get_dir_sp
 		;------------------calculo de la direccion del sprite -----------
 		;ld e,sprite_size; esto es 16 pues es lo que ocupa cada sprite
@@ -5298,7 +5311,21 @@ PSP_CHECK_FLIP	; comprobacion flip
 		ld hl, _END_FLIP_IMAGES-1; el -1 es importante para el JR C
 		sbc hl,bc
 		JR C, PSP_noflip
+
+		;v39 ojo, debo comprobar si es mayor que BEGIN_FLIP
+		xor a ; acarreo a cero
+		ld hl,_BEGIN_FLIP_IMAGES-1
+
+;		ld b,d
+;		ld c,e
+		sbc hl,bc
+;		JR Z, hayflip
+		JR NC,PSP_noflip
+		;add hl,bc
+		;JR NC, PSP_noflip
+
 		;ld a,1; flip_flag
+hayflip:
 		ld a, (BC)
 		inc bc
 		ld h,a
@@ -5892,11 +5919,15 @@ PTR2_bin2	cp %11000000; si los dos son 1, entonces no hacemos nada, no hay que r
 		or  a,c; no modifico los 1's del pixel izq del sprite, almacenados en c
 		ld c,a
 
+		JR PTR2_fondo ; v39
+
 PTR2_izq 	res 7,c 
 		ld a, (DE)
-		and a, %10101010; pixel derecho de la pantalla
+		and a, %10101010; pixel izq de la pantalla
 		or a,c
 		ld c,a
+
+
 		
 PTR2_fondo	ld a, (DE); (DE) contiene el fondo "manchado" con restos del sprite en el frame anterior
 PTR2_bin3	AND A,%11000000; bin %11100110 192 (192 es 128+64, es decir los dos 1). en total 230 192 , o bien  %11001100
@@ -6063,11 +6094,31 @@ _MUSIC_ON: ; le damos tambien este nombre a la funcion
 _INSTALL_INTERRUPT:
 		or a
 		JP Z, _music_off
-		
+		;**************canal c
+		ld hl,CANAL_C_LIBRE+1
+		cp 4
+		jr nz, INS1
+		;han llegado 4 para
+		ld a,(ix+6)
+		or a ; =cp 0
+		JR z,INS1
+		ld bc,begin_no_tocar_c
+		JR INS2
+
+		;******************
+INS1		
+		ld bc,fin_no_tocar_c
+INS2		ld (hl),c
+		inc hl
+		ld (hl),b
 
 INS:		
 		di
 		call _SALTO_INT; asegura tener la dir de salto guardada
+		
+		
+
+
 		ld a,(ix+0)
 		ld (INS_speed),a
 		ld a,(ix+2)
@@ -6791,7 +6842,7 @@ _AUTO_ALL
 		and a
 		JR Z,MOA_noparam
 		ld a, (IX+0)
-		ld (MOA_flag_route),a
+MOA_inteno	ld (MOA_flag_route),a
 MOA_noparam	ld a, (MOA_flag_route)
 		;and a
 
@@ -7237,10 +7288,28 @@ _fill_sp_data
 		ld e,l
 		ld bc, _END_FLIP_IMAGES-1
 
+
 		xor a
 		sbc hl, bc
 		JR NC, fill_noflip
 		; si estamos aqui es que la imagen es flipeada
+
+		;v39 ojo BEGIN_FLIP
+		xor a ; acarreo a cero
+		ld hl,_BEGIN_FLIP_IMAGES-1
+		;ld b,d
+		;ld c,e
+
+		;ld bc,de
+		sbc hl,de
+		JR NC,fill_noflip
+
+		;add hl,bc
+		;JR NC, fill_noflip
+
+
+
+
 		ld a, (de)
 		ld c,a
 		inc de
@@ -7938,6 +8007,7 @@ COA1param; mejora para un colspall desde un collider en lugar de empezar en 31
 		dec a
 		JR NZ, COA2param
 		ld a,(ix+0)
+		dec a ; v39 empezamos a explorar a partir del numero de sprite -1
 		ld (COA_START+1),a	
 		ld e,a
 		ld h,16
@@ -8448,3 +8518,12 @@ PSTR_transp	inc de
 		djnz, PSTR_scanh; opt
 		ret
 
+_CALL_COMBINADO; no merece la pena
+	ld a,1
+	call MOA_inteno
+	xor a
+	call _printspall
+	xor a
+	call _colspall
+	ret
+	

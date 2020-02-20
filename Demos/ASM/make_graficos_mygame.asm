@@ -26,6 +26,5 @@ org 42040;
 ;----------------- MAPA DEL MUNDO para demo 3d (400bytes) ------------------------
 read "map_table_mygame.asm"
 
-
 ;----------------- MAPA DEL MUNDO para demo scroll (400bytes) ------------------------
 read "map_scroll_demo.asm"

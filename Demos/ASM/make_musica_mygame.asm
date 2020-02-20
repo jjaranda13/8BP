@@ -20,6 +20,7 @@ SONG_0_END:
 
 
 SONG_1:
+INCBIN	"../MUSIC/sin_canal_c.mus" ;
 SONG_1_END:
 
 SONG_2:
