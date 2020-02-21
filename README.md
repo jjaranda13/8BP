@@ -71,10 +71,10 @@ The improvements that are incorporated will be backwards compatible so your game
 ==============================================
 He actualizado el repositorio los siguientes cambios
 - libreria: ahora se incluye 8bitsdepoder_v39_001.asm con las siguientes mejoras:
-	- comando |COLSPALL, id : ahora explora a partir del colisionador id+1
+	- comando |COLSPALL, id : ahora explora a partir del colisionador id+1. Esto tiene mas sentido que buscar desde el sprite id, ya que este comando se usa para detectar nuevas colisiones a las ya detectadas con COLSPALL, y lo logico es que usemos el id del colisionador detectado, de modo que nos interesa explorar a partir de id+1
 	- comando |MUSIC: ahora acepta un nuevo parametro que permite dejar libre el canal C de sonido mientras suena la musica para usarlo en efectos sonoros con comando SOUND de BASIC 
 	- comando PRINTSPALL : ahora primero imprime y luego anima, de modo que el primer fotograma de una explosion se imprimira. Hasta ahora cuando se asignaba una secuencia de animacion, el primer fotograma no se imprimia porque primero animaba y luego imprimia
-	- ahora los comandos PRINTSP y PRINTSPALL pueden usar imagenes ubicadas en cualquier zona de memoria, incluso fuera del espacio destinado por la libreria 8BP para sprites. 
+	- ahora los comandos PRINTSP y PRINTSPALL pueden usar imagenes ubicadas en cualquier zona de memoria, incluso fuera del espacio destinado por la libreria 8BP para sprites. Esto antiguamente funcionaba pero desde que introduje las imágenes flipeadas, un pequeño error hizo que esta posibilidad quedase anulada, pero ya funciona de nuevo.
 	- corregido un minibug detectado en un caso concreto de sobreescritura
 	
 
