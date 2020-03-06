@@ -125,6 +125,7 @@
 950 f2=f-5:call &70f4,f2,15,img:call &70f4,f2,0,137:call &6c71,f2,100,48
 
 960 SOUND 4,100,15,10,,1
+'960 SOUND 4,100,15,13,,1:'464
 970 IF f=30 THEN f=25
 
 980 '--- scroll,colisions,print
@@ -318,6 +319,7 @@
 2240 f=f+1:|SETUPSP,f,15,img:|SETUPSP,f,0,169:|LOCATESP,f,100,48:|ROUTESP,f
 2250 f2=f-5:|SETUPSP,f2,15,img:|SETUPSP,f2,0,137:|LOCATESP,f2,100,48
 2260 SOUND 4,100,15,10,,1
+'2260 SOUND 4,100,15,13,,1:'464
 2270 IF f=30 THEN f=25
 
 2280 '--- auto,print ,colisions
