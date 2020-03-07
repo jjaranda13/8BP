@@ -27,6 +27,7 @@ descargate el ZIP y en el encontraras:
 	- "Frogger Eterno" : una versión del clasico "Frogger"
 	- "Eridu: the space port": un juego inspirado en el clasico scramble con scroll
 	- "Happy Monty": la segunda parte del clasico  mutant monty con 25 nuevos niveles
+	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -61,6 +62,7 @@ Download the ZIP and you will find:
 	- "Frogger Eterno": a version of the classic "Frogger"
 	- "Eridu: the space port": a game inspired in the classic "scramble"
 	- "Happy Monty": the second part of the classic game "mutant monty", with new 25 levels
+	- "Blaster Pilot": a spaceship arcade with multidirectional scroll style "time pilot" or "asteroids"
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
