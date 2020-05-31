@@ -28,6 +28,7 @@ descargate el ZIP y en el encontraras:
 	- "Eridu: the space port": un juego inspirado en el clasico scramble con scroll
 	- "Happy Monty": la segunda parte del clasico  mutant monty con 25 nuevos niveles
 	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
+	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -63,10 +64,32 @@ Download the ZIP and you will find:
 	- "Eridu: the space port": a game inspired in the classic "scramble"
 	- "Happy Monty": the second part of the classic game "mutant monty", with new 25 levels
 	- "Blaster Pilot": a spaceship arcade with multidirectional scroll style "time pilot" or "asteroids"
+	- "Zampa Manzana": an arcade game. collect all apples! by Riper & music by Xeno 
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+
+31/05/2020 ACTUALIZACION V40 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- libreria: ahora se incluye 8bitsdepoder_v40_00.asm con las siguientes mejoras:
+	- compatible con C
+	- en el subdirectorio "C" se incluye un wrapper de 8bp (8BP.h)
+	- en el subdirectorio "C" se incluye un minibasic (minibasic.h)
+	- en el subdirectorio "C" se incluye la herramienta de compilacion "compila.bat" que te simplifica el proceso de compilar y crear un .dsk
+
+- manual: he actualizado el manual e incluido un capitulo que te enseña a traducir tu ciclo de juego a C
+
+
+- Demos: todas las demos se recopilan en un menu y estan hechas con la v40. ahora hay una demo nueva que demuestra ciclo de juego en C
+
+- games: se incluye "Zampa Manzana" creado por Riper y musica de Xeno
+
+
+	
+
 
 
 20/02/2020 ACTUALIZACION V39 (retrocompatible)
