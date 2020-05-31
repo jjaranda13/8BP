@@ -7,7 +7,7 @@
 29 locate 10,4:print "   *   **   **"
 30 locate 10,5:print "  * *  * *  *"
 31 locate 10,6:print "  * *  * *  *"
-32 locate 10,7:print "   *  ***  ***   v39"
+32 locate 10,7:print "   *  ***  ***   v40"
 33 pen 2:print ""
 39 print "elige una demo"
 40 print "--------------------------": pen 3:ink 3,15
@@ -23,7 +23,8 @@
 93 print "10) test scroll multidireccional"
 94 print "11) test pseudo-3D"
 95 print "12) test stars"
-96 print "13) test music y fx a la vez":pen 1
+96 print "13) test music y fx a la vez"
+97 print "14) test 8BP en C":pen 1
 100 input demo
 110 run "demo"+mid$(str$(demo),2,10)+".bas"
 

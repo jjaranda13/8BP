@@ -28,3 +28,6 @@ read "map_table_mygame.asm"
 
 ;----------------- MAPA DEL MUNDO para demo scroll (400bytes) ------------------------
 read "map_scroll_demo.asm"
+
+;----------------- MAPA DEL MUNDO para demo c (200bytes) ------------------------
+read "map_demo_c.asm"

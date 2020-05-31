@@ -32,8 +32,8 @@
 _MAP_TABLE
 ;----------------------------------------------------------------------------------------------
 ; primero 3 parametros antes de la lista de "map items"
-MAX_SP_HEIGHT	dw 50; maximo alto de un sprite por si se cuela por arriba y ya hay que pintar parte de el
-MAX_SP_WIDTH 	dw -20*4; ancho maximo de cualquier map item. debe expresarse como numero negativo
+MAX_SP_HEIGHT	dw 48; maximo alto de un sprite por si se cuela por arriba y ya hay que pintar parte de el
+MAX_SP_WIDTH 	dw -16; ancho maximo de cualquier map item. debe expresarse como numero negativo
 MAPITEMS db 25; numero de elementos del mapa a considerar. como mucho debe ser 82
 
 ; la tabla de map items se recorre buscando items que puedan aparecer en pantalla.

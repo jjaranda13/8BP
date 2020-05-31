@@ -12,7 +12,8 @@ ROUTE_LIST
 	dw ROUTE6
 	dw ROUTE7; nave enemiga
 	dw ROUTE8; loop 
-
+	dw ROUTE9; demo c
+	dw ROUTE10; demo c
 ; DEFINICION DE CADA RUTA
 ;==========================
 ROUTE0; jump_right
@@ -89,47 +90,17 @@ ROUTE4; disparo_izq
 ; rutas space harrier
 ROUTE5; disparo_izq
 ;-----------------
-	db 253
-	dw FIRE1
-	db 4,0,-2
-	db 253
-	dw FIRE2
-	db 1,2,1;centra
-	db 3,0,-1
-	db 253
-	dw FIRE3
-	db 1,2,1;centra
-	db 2,0,-1
-	db 253
-	dw FIRE4
-	db 1,0,0
-	db 255,0,0
-	db 0
+
 
 
 ; rutas space harrier
 ROUTE6; disparo_dere
 ;-----------------
-	db 253
-	dw FIRE1
-	db 4,0,2
-	db 253
-	dw FIRE2
-	db 1,2,1; centra
-	db 3,0,1
-	db 253
-	dw FIRE3
-	db 1,2,1;centra
-	db 2,0,1
-	db 253
-	dw FIRE4
-	db 1,0,0
-	db 255,0,0
-	db 0
+
 
 ;rutas naves enemigas
 ROUTE7; 
-	dw 0
+
 
 ROUTE8; ruta de dragon
 	db 255, 128+64+32+8+1,0; cambio de estado
@@ -151,4 +122,18 @@ ROUTE8; ruta de dragon
 	db 1,-30,0
 	db 120,0,0
 	db 120,0,0
+	db 0
+
+ROUTE9; 
+	db 20,3,1
+	db 10,3,0
+	db 20,3,-1
+	db 10,3,0
+	db 0
+
+ROUTE10;
+	db 20,3,-1
+	db 10,3,0
+	db 20,3,1
+	db 10,3,0
 	db 0

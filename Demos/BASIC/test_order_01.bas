@@ -9,7 +9,7 @@
 53' cesped
 54 |SETUPSP,0,9,37: |SETUPSP,0,0,1: |LOCATESP,0,130,52
 56 |SETUPSP,1,9,37: |SETUPSP,1,0,1: |LOCATESP,1,120,35
-58 |poke,24000,27064: 'ordenamos desde sprite 4
+'58 |poke,24000,27064: 'ordenamos desde sprite 4
 75 ink 0,4
 80 dir=0:'derecha
 81 pen 2:locate 3,1:print "DEMO 8BP V36"
