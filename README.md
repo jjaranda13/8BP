@@ -29,6 +29,7 @@ descargate el ZIP y en el encontraras:
 	- "Happy Monty": la segunda parte del clasico  mutant monty con 25 nuevos niveles
 	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
 	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
+	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -65,11 +66,16 @@ Download the ZIP and you will find:
 	- "Happy Monty": the second part of the classic game "mutant monty", with new 25 levels
 	- "Blaster Pilot": a spaceship arcade with multidirectional scroll style "time pilot" or "asteroids"
 	- "Zampa Manzana": an arcade game. collect all apples! by Riper & music by Xeno 
+	- "dogfight": an arcade with airplanes and horizontal scroll. created by Ivan Avila
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+20/06/2020 ACTUALIZACION V40 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- games: se incluye "dogfight", un juego de arcade con aviones y scroll horizontal. by Ivan Avila , creado con 8BP v39
 
 31/05/2020 ACTUALIZACION V40 (retrocompatible)
 ==============================================
@@ -82,14 +88,9 @@ He actualizado el repositorio los siguientes cambios:
 
 - manual: he actualizado el manual e incluido un capitulo que te enseña a traducir tu ciclo de juego a C
 
-
 - Demos: todas las demos se recopilan en un menu y estan hechas con la v40. ahora hay una demo nueva que demuestra ciclo de juego en C
 
 - games: se incluye "Zampa Manzana" creado por Riper y musica de Xeno
-
-
-	
-
 
 
 20/02/2020 ACTUALIZACION V39 (retrocompatible)
