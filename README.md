@@ -72,6 +72,12 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+05/07/2020 ACTUALIZACION SPEDIT V12 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- SPEDIT: se incluye spedit v12 , que contiene ligeras mejoras. Advierte de como se debe definir el ancho de un sprite si se define incorrectamente y tambien incluye algunas mejoras esteticas
+
+
 20/06/2020 ACTUALIZACION V40 (retrocompatible)
 ==============================================
 He actualizado el repositorio los siguientes cambios:
