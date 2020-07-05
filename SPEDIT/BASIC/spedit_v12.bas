@@ -4,8 +4,8 @@
 40 CALL &BC02: REM inicializa paleta a valor por defecto
 41 RESTORE 4130:GOSUB 4000:' carga rutina get INK     
 50 MODE 1
-80 PEN 1:PRINT "    SPEDIT: Sprite Editor v11.0" 
-90 PRINT "" 
+80 PEN 1:PRINT "    SPEDIT: Sprite Editor v12.0" 
+90 PRINT "": ink 2,26:pen 2 
 110 PRINT "    ---- CONTROLES EDICION----"
 120 PRINT "     1,2 : tinta -/+"
 130 PRINT "     qaop : mueve cursor pixel"
@@ -18,7 +18,7 @@
 190 PRINT "     r: reload 20000"
 195 PRINT "     z, x: cambia color de tinta"
 196 PRINT "     t: RESET"
-200 PRINT "    -------------------------"
+200 PRINT "    -------------------------": pen 1
 210 PRINT "Antes de empezar puedes cargar un spriteensamblandolo en la direccion 20000."
 220 PRINT "No ensambles ancho y alto,solo los bytesdel dibujo."
 230 PRINT " la paleta custom esta en la linea 1840"
@@ -28,18 +28,21 @@
 243 INPUT p$
 260 INPUT "ancho (par)?", ancho
 270 INPUT "alto?",alto
-275 IF p$<"3" THEN INPUT "color de fondo?", fondo 
+275 'IF p$<"3" THEN INPUT "color de fondo?", fondo 
 276 INPUT "mode?" ,modo
+277 gosub 1831 :' control de ancho vs mode
+
+
 280 MODE modo: GOSUB 2030:PEN blanco:'AMARILLO    
 281 IF modo=0 THEN incx=4 ELSE incx=2:blanco=1:PEN blanco
 282 BORDER fondo
 290 REM voy a inicializar la paleta
-291 IF p$="3" THEN GOSUB 2300: ' paleta de tipo sobreescritura para 8BP
-292 IF p$="4" THEN GOSUB 5000: ' paleta de tipo sobreescritura para 8BP
-293 IF p$="5" THEN GOSUB 6000: ' paleta de tipo sobreescritura para 8BP
-300 IF p$="2" THEN GOSUB 1840: ' paleta custom
-301 IF p$<"3" THEN INK 0,fondo
-310 altob=alto:anchob=ancho/2: if modo=1 then anchob=ancho/4
+291 IF p$="3" THEN GOSUB 2300: ' paleta de tipo sobreescritura para 8BP (es un ejemplo)
+292 IF p$="4" THEN GOSUB 5000: ' paleta de tipo sobreescritura para 8BP (otro ejemplo)
+293 IF p$="5" THEN GOSUB 6000: ' paleta de tipo sobreescritura para 8BP (otro ejemplo)
+300 IF p$="2" THEN GOSUB 1840: ' paleta custom (otro ejemplo)
+301 'IF p$<"3" THEN INK 0,fondo
+310 altob=alto:anchob=ancho/2: IF modo=1 THEN anchob=ancho/4
 320 FOR y=0 TO altob-1
 321 dirorigy = buffer + y*anchob
 322 dirdesty= &C000  + (INT (y / 8) * 80) + (INT(y MOD 8) * 2048) 
@@ -54,7 +57,7 @@
 410 PLOT 1,399-alto*2,AMARILLO: DRAW (ancho)*incx,399-alto*2    
 420 PLOT (ancho)*incx,399:DRAW (ancho)*incx,399-alto*2   
 430 REM next
-431 if modo =0 then totaltintas=15 else totaltintas=3
+431 IF modo =0 THEN totaltintas=15 ELSE totaltintas=3
 440 FOR x=0 TO totaltintas
 450 PEN x
 460 LOCATE x+1,20: PRINT CHR$(143)
@@ -62,16 +65,16 @@
 471 BORDER 13
 480 PEN blanco:LOCATE 1,21:PRINT "ancho:";ancho;" ";"alto:";alto
 490 LOCATE 1,9
-500 PRINT "1,2 : tinta -/+"
-510 PRINT "qaop : mueve "
-520 PRINT "space: pinta"
-530 PRINT "h: flip horizontal"
-540 PRINT "v: flip vertical"
-550 PRINT "c: clear sprite"
-560 PRINT "b: imprime bytes "
-565 PRINT "r: reload 20000"   
-567 PRINT "z,x: tinta. t:RESET"
-568 PRINT "i: print paleta"
+500 pen 1:PRINT "1,2:";:pen blanco:print" tinta -/+"
+510 pen 1:PRINT "qaop:";:pen blanco:print" mueve "
+520 pen 1:PRINT "space:";:pen blanco:print" pinta"
+530 pen 1:PRINT "h:";:pen blanco:print" flip horizontal"
+540 pen 1:PRINT "v:";:pen blanco:print" flip vertical"
+550 pen 1:PRINT "c:";:pen blanco:print" clear sprite"
+560 pen 1:PRINT "b:";:pen blanco:print" print bytes "
+565 pen 1:PRINT "r:";:pen blanco:print" reload 20000"   
+567 pen 1:PRINT "z,x:";:pen blanco:print "color";:pen 1:print " t:";:pen blanco:print "RESET"
+568 pen 1:PRINT "i:";:pen blanco:print " print paleta"
 570 TCOUNT =0
 580 REM bloque principal del programa de edicion
 590 REM -----------------------------------------------------
@@ -97,6 +100,7 @@
 781 IF b$="1" AND tinta>2 AND (p$>"3") THEN tinta=tinta-1
 790 IF b$="2" THEN tinta=tinta+1:IF tinta>totaltintas THEN tinta=totaltintas
 791 IF b$="2" AND tinta>2 AND (p$>"3" ) THEN tinta=tinta+1:IF tinta>14 THEN tinta=14
+792 if b$="1" or b$="2" then LOCATE 1,24:PRINT"Num. tinta:";tinta
 800 IF b$="h" THEN GOSUB 1130
 810 IF b$="v" THEN GOSUB 1430
 820 IF b$="c" THEN GOSUB 1720
@@ -105,8 +109,8 @@
 835 IF b$="r" THEN GOTO 320
 836 IF b$="x" THEN cosa=cosa+1:IF cosa=27 THEN cosa=26 ELSE INK tinta,cosa: IF (p$="3" OR p$="4") AND tinta>1 THEN  INK tinta+1,cosa 
 837 IF b$="z" THEN cosa=cosa-1:IF cosa=-1 THEN cosa=0 ELSE INK tinta,cosa:IF (p$="3" OR p$="4") AND tinta >1 THEN INK tinta+1,cosa
-838 IF b$="i" THEN GOSUB 3000
-839 LOCATE 1,24:PRINT"Num. tinta: ";cosa
+838 IF b$="i" THEN GOSUB 3000: locate 1,24:print "                   ";
+839 if b$="x" or b$="z" then LOCATE 1,24:PRINT"Num. color:";cosa
 840 LOCATE tinta+1,19:PRINT CHR$(245)
 850 REM LOCATE 1,23:PRINT "tecla:";b$
 860 PLOT xa,ya, tintant
@@ -135,7 +139,7 @@
 1080 PRINT #8
 1090 NEXT
 1100 PRINT #8,";------ END IMAGE --------"
-1110 LOCATE 1,24: PRINT " sprite printed!"
+1110 LOCATE 1,24: PRINT " sprite printed!  "
 1120 RETURN
 1130 REM ---------flip H------------------------
 1140 LOCATE 1,25: INPUT "espejo izq?[Y/N]",e$: IF  e$="Y" OR e$="y" THEN mitad=(anchob)/2 ELSE mitad=0
@@ -148,14 +152,13 @@
 1180 REM dirorig = buffer + (INT(yf / 8) * 80) + (INT (yf MOD 8) * 2048) +xf
 1190 dirorig = dirorigy + xf
 1200 dirdest = dirdesty + (anchob-1-xf)
-1201 if modo=0 then 1210
+1201 IF modo=0 THEN 1210
 1202 a=(PEEK(dirorig) AND (128+8)):'pix 1
 1203 b=(PEEK(dirorig) AND (64+4)):'pix 2
 1204 c=(PEEK(dirorig) AND (32+2)):'pix 3
 1205 d=(PEEK(dirorig) AND (16+1)):'pix 4
 1206 byte=d*8+c*2+b/2+a/8
-1207 goto 1260
-
+1207 GOTO 1260
 1210 a=(PEEK(dirorig) AND 170):'pixel izq
 1220 b=(PEEK(dirorig) AND 85):'pixel derecho
 1230 REM a=a*2:b=b/2
@@ -230,6 +233,16 @@
 1810 NEXT
 1820 LOCATE 1,24: PRINT "clearing  ok  "  
 1830 RETURN
+1831 REM --------- control de ancho vs mode -------------------
+1832 if modo=0 and (ancho mod 2) = 0 then return
+1833 if modo=1 and (ancho mod 4) = 0 then return 
+1834 cls:print "Aunque SPEDIT te pide el ancho en pixels, el ancho de un sprite se especifica   internamente en bytes"
+1835 print:print "en mode 1 un byte son 4 pixels"
+1836 print "en mode 0 un byte son 2 pixels"
+1837 print:print "Para editar un sprite en mode 1 , el    ancho en pixels debe ser multiplo de 4"
+1838 print:print "Para editar un sprite en mode 0 , el    ancho en pixels debe ser multiplo de 2"
+1839 print:input "ENTER para reiniciar",x$: run
+
 1840 REM ---------- PALETA alternativa MODE 0------------------
 1850 INK 0,13: REM AZUL
 1860 INK 1,9: REM negro
