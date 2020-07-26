@@ -214,32 +214,32 @@
                             214 ; ---------------------------------
    0000                     215 _comandos_8BP_V39::
                             216 ;8BP_wrapper/8BP.h:133: __endasm;
-                     646C   217 	_3D	== 0x646c
+                     645A   217 	_3D	== 0x645A;
                      6FC9   218 	ANIMA	== 0x6fc9;
-                     770D   219 	ANIMALL	== 0x770d;
-                     717B   220 	AUTO	== 0x717b;
-                     71C9   221 	AUTOALL	== 0x71c9;
-                     71F8   222 	COLAY	== 0x71f8;
-                     73A3   223 	COLSP	== 0x73a3;
-                     75A8   224 	COLSPALL	== 0x75a8;
-                     7059   225 	LAYOUT	== 0x7059;
+                     7713   219 	ANIMALL	== 0x7713;
+                     7181   220 	AUTO	== 0x7181;
+                     71CF   221 	AUTOALL	== 0x71cf;
+                     71FE   222 	COLAY	== 0x71fe;
+                     73A9   223 	COLSP	== 0x73a9;
+                     75AE   224 	COLSPALL	== 0x75ae;
+                     705F   225 	LAYOUT	== 0x705f;
                      6C71   226 	LOCATESP	== 0x6C71
-                     64A8   227 	MAP2SP	== 0x64A8
-                     7535   228 	MOVER	== 0x7535;
-                     76E7   229 	MOVERALL	== 0x76e7;
+                     6496   227 	MAP2SP	== 0x6496;
+                     753B   228 	MOVER	== 0x753b;
+                     76ED   229 	MOVERALL	== 0x76ed;
                      6F55   230 	MUSIC	== 0x6F55
-                     6932   231 	PEEK	== 0x6932
-                     6945   232 	POKE	== 0x6945
-                     607F   233 	PRINTAT	== 0x607F
+                     692E   231 	PEEK	== 0x692e;
+                     6941   232 	POKE	== 0x6941;
+                     606D   233 	PRINTAT	== 0x606d;
                      6C94   234 	PRINTSP	== 0x6C94
-                     62BC   235 	PRINTSPALL	== 0x62BC
-                     7627   236 	RINK	== 0x7627;
-                     6606   237 	ROUTESP	== 0x6606
-                     65E5   238 	ROUTEALL	== 0x65E5
-                     6871   239 	SETLIMITS	== 0x6871
-                     70F8   240 	SETUPSP	== 0x70f8;
-                     7433   241 	STARS	== 0x7433;
-                     5F4A   242 	UMAP	== 0x5F4A
+                     62AA   235 	PRINTSPALL	== 0x62aa;
+                     762D   236 	RINK	== 0x762d;
+                     65F4   237 	ROUTESP	== 0x65f4;
+                     65D3   238 	ROUTEALL	== 0x65d3;
+                     686D   239 	SETLIMITS	== 0x686d;
+                     70FE   240 	SETUPSP	== 0x70fe;
+                     7439   241 	STARS	== 0x7439;
+                     5F38   242 	UMAP	== 0x5f38;
                             243 ;8BP_wrapper/8BP.h:134: }
    0000 C9            [10]  244 	ret
                             245 ;8BP_wrapper/8BP.h:137: void _8BP_3D_inv3(int offsety,int sp_fin, int flag)
@@ -251,7 +251,7 @@
    0001 3E 03         [ 7]  251 	ld	a, #3
    0003 DD 21 02 00   [14]  252 	ld	ix,#2 ;posicion primer parametro 
    0007 DD 39         [15]  253 	add ix,sp;
-   0009 CD 6C 64      [17]  254 	call	_3D ;
+   0009 CD 5A 64      [17]  254 	call	_3D ;
                             255 ;8BP_wrapper/8BP.h:150: }
    000C C9            [10]  256 	ret
                             257 ;8BP_wrapper/8BP.h:152: void _8BP_3D_3(int flag, int sp_fin,int offsety)  
@@ -290,7 +290,7 @@
    0031 3E 01         [ 7]  290 	ld	a, #1
    0033 DD 21 02 00   [14]  291 	ld	ix,#2 ;posicion primer parametro 
    0037 DD 39         [15]  292 	add ix,sp;
-   0039 CD 6C 64      [17]  293 	call	_3D ;
+   0039 CD 5A 64      [17]  293 	call	_3D ;
                             294 ;8BP_wrapper/8BP.h:166: }
    003C C9            [10]  295 	ret
                             296 ;8BP_wrapper/8BP.h:168: void _8BP_anima_1(int sp) 
@@ -312,7 +312,7 @@
    0049                     312 __8BP_animall::
                             313 ;8BP_wrapper/8BP.h:184: __endasm;			
    0049 3E 00         [ 7]  314 	ld	a,#0
-   004B CD 0D 77      [17]  315 	call	ANIMALL ;
+   004B CD 13 77      [17]  315 	call	ANIMALL ;
                             316 ;8BP_wrapper/8BP.h:186: }
    004E C9            [10]  317 	ret
                             318 ;8BP_wrapper/8BP.h:188: void _8BP_auto_1(int sp) 
@@ -324,7 +324,7 @@
    004F 3E 01         [ 7]  324 	ld	a, #1
    0051 DD 21 02 00   [14]  325 	ld	ix,#2 ;posicion primer parametro 
    0055 DD 39         [15]  326 	add ix,sp;
-   0057 CD 7B 71      [17]  327 	call	AUTO ;
+   0057 CD 81 71      [17]  327 	call	AUTO ;
                             328 ;8BP_wrapper/8BP.h:197: }
    005A C9            [10]  329 	ret
                             330 ;8BP_wrapper/8BP.h:199: void _8BP_autoall_1(int flag) 
@@ -336,7 +336,7 @@
    005B 3E 01         [ 7]  336 	ld	a, #1
    005D DD 21 02 00   [14]  337 	ld	ix,#2 ;posicion primer parametro 
    0061 DD 39         [15]  338 	add ix,sp;
-   0063 CD C9 71      [17]  339 	call	AUTOALL ;
+   0063 CD CF 71      [17]  339 	call	AUTOALL ;
                             340 ;8BP_wrapper/8BP.h:208: }
    0066 C9            [10]  341 	ret
                             342 ;8BP_wrapper/8BP.h:210: void _8BP_autoall() 
@@ -346,7 +346,7 @@
    0067                     346 __8BP_autoall::
                             347 ;8BP_wrapper/8BP.h:215: __endasm;			
    0067 3E 00         [ 7]  348 	ld	a, #0
-   0069 CD C9 71      [17]  349 	call	AUTOALL ;
+   0069 CD CF 71      [17]  349 	call	AUTOALL ;
                             350 ;8BP_wrapper/8BP.h:217: }
    006C C9            [10]  351 	ret
                             352 ;8BP_wrapper/8BP.h:219: void _8BP_colay_inv3( int sp,int* colision,int umbral)
@@ -358,7 +358,7 @@
    006D 3E 03         [ 7]  358 	ld	a, #3
    006F DD 21 02 00   [14]  359 	ld	ix,#2 ;posicion primer parametro 
    0073 DD 39         [15]  360 	add ix,sp;
-   0075 CD F8 71      [17]  361 	CALL	COLAY
+   0075 CD FE 71      [17]  361 	CALL	COLAY
                             362 ;8BP_wrapper/8BP.h:228: }
    0078 C9            [10]  363 	ret
                             364 ;8BP_wrapper/8BP.h:230: void _8BP_colay()
@@ -368,7 +368,7 @@
    0079                     368 __8BP_colay::
                             369 ;8BP_wrapper/8BP.h:235: __endasm;		
    0079 3E 00         [ 7]  370 	ld	a, #0
-   007B CD F8 71      [17]  371 	CALL	COLAY
+   007B CD FE 71      [17]  371 	CALL	COLAY
                             372 ;8BP_wrapper/8BP.h:237: }
    007E C9            [10]  373 	ret
                             374 ;8BP_wrapper/8BP.h:239: void _8BP_colay_inv2(int sp, int* colision)
@@ -380,7 +380,7 @@
    007F 3E 02         [ 7]  380 	ld	a, #2
    0081 DD 21 02 00   [14]  381 	ld	ix,#2 ;posicion primer parametro 
    0085 DD 39         [15]  382 	add ix,sp;
-   0087 CD F8 71      [17]  383 	CALL	COLAY
+   0087 CD FE 71      [17]  383 	CALL	COLAY
                             384 ;8BP_wrapper/8BP.h:248: }
    008A C9            [10]  385 	ret
                             386 ;8BP_wrapper/8BP.h:249: void _8BP_colay_2(int* colision, int sp)
@@ -414,7 +414,7 @@
    009E 3E 01         [ 7]  414 	ld	a, #1
    00A0 DD 21 02 00   [14]  415 	ld	ix,#2 ;posicion primer parametro 
    00A4 DD 39         [15]  416 	add ix,sp;
-   00A6 CD F8 71      [17]  417 	CALL	COLAY
+   00A6 CD FE 71      [17]  417 	CALL	COLAY
                             418 ;8BP_wrapper/8BP.h:264: }
    00A9 C9            [10]  419 	ret
                             420 ;8BP_wrapper/8BP.h:267: void _8BP_colay_3(int umbral, int* colision, int sp)
@@ -453,7 +453,7 @@
    00CE 3E 03         [ 7]  453 	ld	a, #3
    00D0 DD 21 02 00   [14]  454 	ld	ix,#2 ;posicion primer parametro 
    00D4 DD 39         [15]  455 	add ix,sp;
-   00D6 CD A3 73      [17]  456 	CALL	COLSP
+   00D6 CD A9 73      [17]  456 	CALL	COLSP
                             457 ;8BP_wrapper/8BP.h:285: }
    00D9 C9            [10]  458 	ret
                             459 ;8BP_wrapper/8BP.h:287: void _8BP_colsp_inv2(int* colision,int sp)
@@ -465,7 +465,7 @@
    00DA 3E 02         [ 7]  465 	ld	a, #2
    00DC DD 21 02 00   [14]  466 	ld	ix,#2 ;posicion primer parametro 
    00E0 DD 39         [15]  467 	add ix,sp;
-   00E2 CD A3 73      [17]  468 	CALL	COLSP
+   00E2 CD A9 73      [17]  468 	CALL	COLSP
                             469 ;8BP_wrapper/8BP.h:297: }
    00E5 C9            [10]  470 	ret
                             471 ;8BP_wrapper/8BP.h:299: void _8BP_colsp_3(int operation, int a, int b)  
@@ -526,7 +526,7 @@
    011D 3E 01         [ 7]  526 	ld	a, #1
    011F DD 21 02 00   [14]  527 	ld	ix,#2 ;posicion primer parametro 
    0123 DD 39         [15]  528 	add ix,sp;
-   0125 CD A3 73      [17]  529 	CALL	COLSP
+   0125 CD A9 73      [17]  529 	CALL	COLSP
                             530 ;8BP_wrapper/8BP.h:319: }
    0128 C9            [10]  531 	ret
                             532 ;8BP_wrapper/8BP.h:321: void _8BP_colspall_inv2(int* collided,int* collider) 
@@ -538,7 +538,7 @@
    0129 3E 02         [ 7]  538 	ld	a, #2
    012B DD 21 02 00   [14]  539 	ld	ix,#2 ;posicion primer parametro 
    012F DD 39         [15]  540 	add ix,sp;
-   0131 CD A8 75      [17]  541 	CALL	COLSPALL
+   0131 CD AE 75      [17]  541 	CALL	COLSPALL
                             542 ;8BP_wrapper/8BP.h:330: }
    0134 C9            [10]  543 	ret
                             544 ;8BP_wrapper/8BP.h:332: void _8BP_colspall() 
@@ -548,7 +548,7 @@
    0135                     548 __8BP_colspall::
                             549 ;8BP_wrapper/8BP.h:337: __endasm;	
    0135 3E 00         [ 7]  550 	ld	a, #0
-   0137 CD A8 75      [17]  551 	CALL	COLSPALL
+   0137 CD AE 75      [17]  551 	CALL	COLSPALL
                             552 ;8BP_wrapper/8BP.h:338: }
    013A C9            [10]  553 	ret
                             554 ;8BP_wrapper/8BP.h:340: void _8BP_colspall_1(int collider_ini) __critical
@@ -563,7 +563,7 @@
    013F 3E 01         [ 7]  563 	ld	a, #1
    0141 DD 21 02 00   [14]  564 	ld	ix,#2 ;posicion primer parametro 
    0145 DD 39         [15]  565 	add ix,sp;
-   0147 CD A8 75      [17]  566 	CALL	COLSPALL
+   0147 CD AE 75      [17]  566 	CALL	COLSPALL
                             567 ;8BP_wrapper/8BP.h:349: }
    014A F1            [10]  568 	pop	af
    014B E0            [11]  569 	ret	PO
@@ -726,7 +726,7 @@
    01F8 3E 04         [ 7]  726 	ld	a, #4
    01FA DD 21 02 00   [14]  727 	ld	ix,#2 ;posicion primer parametro 
    01FE DD 39         [15]  728 	add ix,sp;
-   0200 CD 7F 60      [17]  729 	CALL	PRINTAT
+   0200 CD 6D 60      [17]  729 	CALL	PRINTAT
                             730 ;8BP_wrapper/8BP.h:428: }
    0203 C9            [10]  731 	ret
                             732 ;8BP_wrapper/8BP.h:430: void _8BP_printat_4(int flag,int y,int x, char* cad)  
@@ -897,7 +897,7 @@
    02C2 3E 04         [ 7]  897 	ld	a, #4
    02C4 DD 21 02 00   [14]  898 	ld	ix,#2 ;posicion primer parametro 
    02C8 DD 39         [15]  899 	add ix,sp;
-   02CA CD BC 62      [17]  900 	CALL	PRINTSPALL
+   02CA CD AA 62      [17]  900 	CALL	PRINTSPALL
                             901 ;8BP_wrapper/8BP.h:505: }
    02CD C9            [10]  902 	ret
                             903 ;8BP_wrapper/8BP.h:507: void _8BP_printspall_4(int ini, int fin, int flag_anima, int flag_sync)  
@@ -942,7 +942,7 @@
    02FE 3E 01         [ 7]  942 	ld	a, #1
    0300 DD 21 02 00   [14]  943 	ld	ix,#2 ;posicion primer parametro 
    0304 DD 39         [15]  944 	add ix,sp;
-   0306 CD BC 62      [17]  945 	CALL	PRINTSPALL
+   0306 CD AA 62      [17]  945 	CALL	PRINTSPALL
                             946 ;8BP_wrapper/8BP.h:520: }
    0309 C9            [10]  947 	ret
                             948 ;8BP_wrapper/8BP.h:522: void _8BP_printspall() 
@@ -952,7 +952,7 @@
    030A                     952 __8BP_printspall::
                             953 ;8BP_wrapper/8BP.h:527: __endasm;	
    030A 3E 00         [ 7]  954 	ld	a, #0
-   030C CD BC 62      [17]  955 	CALL	PRINTSPALL
+   030C CD AA 62      [17]  955 	CALL	PRINTSPALL
                             956 ;8BP_wrapper/8BP.h:528: }
    030F C9            [10]  957 	ret
                             958 ;8BP_wrapper/8BP.h:530: void _8BP_routeall()
@@ -962,7 +962,7 @@
    0310                     962 __8BP_routeall::
                             963 ;8BP_wrapper/8BP.h:535: __endasm;	
    0310 3E 00         [ 7]  964 	ld	a, #0;
-   0312 CD E5 65      [17]  965 	CALL	ROUTEALL
+   0312 CD D3 65      [17]  965 	CALL	ROUTEALL
                             966 ;8BP_wrapper/8BP.h:537: }
    0315 C9            [10]  967 	ret
                             968 ;8BP_wrapper/8BP.h:540: void _8BP_routesp_inv2(int pasos, int sp) 
@@ -974,7 +974,7 @@
    0316 3E 02         [ 7]  974 	ld	a, #2 ;
    0318 DD 21 02 00   [14]  975 	ld	ix,#2 ;posicion primer parametro 
    031C DD 39         [15]  976 	add ix,sp;
-   031E CD 06 66      [17]  977 	CALL	ROUTESP
+   031E CD F4 65      [17]  977 	CALL	ROUTESP
                             978 ;8BP_wrapper/8BP.h:549: }
    0321 C9            [10]  979 	ret
                             980 ;8BP_wrapper/8BP.h:551: void _8BP_routesp_2(int sp, int pasos)  
@@ -1008,7 +1008,7 @@
    0335 3E 01         [ 7] 1008 	ld	a, #1 ;
    0337 DD 21 02 00   [14] 1009 	ld	ix,#2 ;posicion primer parametro 
    033B DD 39         [15] 1010 	add ix,sp;
-   033D CD 06 66      [17] 1011 	CALL	ROUTESP
+   033D CD F4 65      [17] 1011 	CALL	ROUTESP
                            1012 ;8BP_wrapper/8BP.h:565: }
    0340 C9            [10] 1013 	ret
                            1014 ;8BP_wrapper/8BP.h:567: void _8BP_setlimits_inv4(int ymax, int ymin, int xmax,int xmin)
@@ -1020,7 +1020,7 @@
    0341 3E 04         [ 7] 1020 	ld	a, #4 ;
    0343 DD 21 02 00   [14] 1021 	ld	ix,#2 ;posicion primer parametro 
    0347 DD 39         [15] 1022 	add ix,sp;
-   0349 CD 71 68      [17] 1023 	CALL	SETLIMITS
+   0349 CD 6D 68      [17] 1023 	CALL	SETLIMITS
                            1024 ;8BP_wrapper/8BP.h:577: }
    034C C9            [10] 1025 	ret
                            1026 ;8BP_wrapper/8BP.h:579: void _8BP_setlimits_4(int xmin,int xmax, int ymin, int ymax)
@@ -1065,7 +1065,7 @@
    037D 3E 03         [ 7] 1065 	ld	a, #3 ; se envian 3 parametros
    037F DD 21 02 00   [14] 1066 	ld	ix,#2 ;posicion primer parametro 
    0383 DD 39         [15] 1067 	add ix,sp;
-   0385 CD F8 70      [17] 1068 	CALL	SETUPSP
+   0385 CD FE 70      [17] 1068 	CALL	SETUPSP
                            1069 ;8BP_wrapper/8BP.h:594: }
    0388 C9            [10] 1070 	ret
                            1071 ;8BP_wrapper/8BP.h:596: void _8BP_setupsp_inv4(int value2,int value1,int param, int sp) 
@@ -1077,7 +1077,7 @@
    0389 3E 04         [ 7] 1077 	ld	a, #4 ;
    038B DD 21 02 00   [14] 1078 	ld	ix,#2 ;posicion primer parametro 
    038F DD 39         [15] 1079 	add ix,sp;
-   0391 CD F8 70      [17] 1080 	CALL	SETUPSP
+   0391 CD FE 70      [17] 1080 	CALL	SETUPSP
                            1081 ;8BP_wrapper/8BP.h:607: }
    0394 C9            [10] 1082 	ret
                            1083 ;8BP_wrapper/8BP.h:609: void _8BP_setupsp_3(int sp,int param, int value)  
@@ -1149,7 +1149,7 @@
    03E9 3E 05         [ 7] 1149 	ld	a, #5
    03EB DD 21 02 00   [14] 1150 	ld	ix,#2 ;posicion primer parametro 
    03EF DD 39         [15] 1151 	add ix,sp;
-   03F1 CD 33 74      [17] 1152 	CALL	STARS
+   03F1 CD 39 74      [17] 1152 	CALL	STARS
                            1153 ;8BP_wrapper/8BP.h:632: }
    03F4 C9            [10] 1154 	ret
                            1155 ;8BP_wrapper/8BP.h:634: void _8BP_stars_5(int star_ini, int num_stars,int color, int dy, int dx)  
@@ -1196,7 +1196,7 @@
    0431                    1196 __8BP_stars::
                            1197 ;8BP_wrapper/8BP.h:644: __endasm;	
    0431 3E 00         [ 7] 1198 	ld	a, #0
-   0433 CD 33 74      [17] 1199 	CALL	STARS
+   0433 CD 39 74      [17] 1199 	CALL	STARS
                            1200 ;8BP_wrapper/8BP.h:646: }
    0436 C9            [10] 1201 	ret
                            1202 ;8BP_wrapper/8BP.h:648: void _8BP_layout_inv3(char* descriptor, int x,int y)
@@ -1208,7 +1208,7 @@
    0437 3E 03         [ 7] 1208 	ld	a,#3
    0439 DD 21 02 00   [14] 1209 	ld	ix,#2 ;posicion primer parametro 
    043D DD 39         [15] 1210 	add ix,sp;
-   043F CD 59 70      [17] 1211 	CALL	LAYOUT
+   043F CD 5F 70      [17] 1211 	CALL	LAYOUT
                            1212 ;8BP_wrapper/8BP.h:657: }
    0442 C9            [10] 1213 	ret
                            1214 ;8BP_wrapper/8BP.h:659: void _8BP_layout_3(int y, int x, char* cad)
@@ -1288,7 +1288,7 @@
    049A 3E 02         [ 7] 1288 	ld	a,#2
    049C DD 21 02 00   [14] 1289 	ld	ix,#2 ;posicion primer parametro 
    04A0 DD 39         [15] 1290 	add ix,sp;
-   04A2 CD A8 64      [17] 1291 	CALL	MAP2SP
+   04A2 CD 96 64      [17] 1291 	CALL	MAP2SP
                            1292 ;8BP_wrapper/8BP.h:681: }
    04A5 C9            [10] 1293 	ret
                            1294 ;8BP_wrapper/8BP.h:682: void _8BP_map2sp_2(int y, int x)
@@ -1322,7 +1322,7 @@
    04B9 3E 01         [ 7] 1322 	ld	a,#1
    04BB DD 21 02 00   [14] 1323 	ld	ix,#2 ;posicion primer parametro 
    04BF DD 39         [15] 1324 	add ix,sp;
-   04C1 CD A8 64      [17] 1325 	CALL	MAP2SP
+   04C1 CD 96 64      [17] 1325 	CALL	MAP2SP
                            1326 ;8BP_wrapper/8BP.h:697: }
    04C4 C9            [10] 1327 	ret
                            1328 ;8BP_wrapper/8BP.h:699: void _8BP_mover_inv3(int dx,int dy,int sp)
@@ -1334,7 +1334,7 @@
    04C5 3E 03         [ 7] 1334 	ld	a,#3
    04C7 DD 21 02 00   [14] 1335 	ld	ix,#2 ;posicion primer parametro 
    04CB DD 39         [15] 1336 	add ix,sp;
-   04CD CD 35 75      [17] 1337 	CALL	MOVER
+   04CD CD 3B 75      [17] 1337 	CALL	MOVER
                            1338 ;8BP_wrapper/8BP.h:708: }
    04D0 C9            [10] 1339 	ret
                            1340 ;8BP_wrapper/8BP.h:709: void _8BP_mover_3(int sp, int dy,int dx)
@@ -1373,7 +1373,7 @@
    04F5 3E 01         [ 7] 1373 	ld	a,#1
    04F7 DD 21 02 00   [14] 1374 	ld	ix,#2 ;posicion primer parametro 
    04FB DD 39         [15] 1375 	add ix,sp;
-   04FD CD 35 75      [17] 1376 	CALL	MOVER
+   04FD CD 3B 75      [17] 1376 	CALL	MOVER
                            1377 ;8BP_wrapper/8BP.h:723: }
    0500 C9            [10] 1378 	ret
                            1379 ;8BP_wrapper/8BP.h:724: void _8BP_moverall_inv2(int dx, int dy)
@@ -1385,7 +1385,7 @@
    0501 3E 02         [ 7] 1385 	ld	a,#2
    0503 DD 21 02 00   [14] 1386 	ld	ix,#2 ;posicion primer parametro 
    0507 DD 39         [15] 1387 	add ix,sp;
-   0509 CD E7 76      [17] 1388 	CALL	MOVERALL
+   0509 CD ED 76      [17] 1388 	CALL	MOVERALL
                            1389 ;8BP_wrapper/8BP.h:733: }
    050C C9            [10] 1390 	ret
                            1391 ;8BP_wrapper/8BP.h:734: void _8BP_moverall_2(int dy, int dx)
@@ -1417,7 +1417,7 @@
    0520                    1417 __8BP_moverall::
                            1418 ;8BP_wrapper/8BP.h:744: __endasm;	
    0520 3E 00         [ 7] 1419 	ld	a,#0
-   0522 CD E7 76      [17] 1420 	CALL	MOVERALL
+   0522 CD ED 76      [17] 1420 	CALL	MOVERALL
                            1421 ;8BP_wrapper/8BP.h:746: }
    0525 C9            [10] 1422 	ret
                            1423 ;8BP_wrapper/8BP.h:748: void _8BP_peek_2(int address, int* dato)
@@ -1474,7 +1474,7 @@
    0553 3E 01         [ 7] 1474 	ld	a,#1
    0555 DD 21 02 00   [14] 1475 	ld	ix,#2 ;posicion primer parametro 
    0559 DD 39         [15] 1476 	add ix,sp;
-   055B CD 27 76      [17] 1477 	CALL	RINK
+   055B CD 2D 76      [17] 1477 	CALL	RINK
                            1478 ;8BP_wrapper/8BP.h:771: }
    055E C9            [10] 1479 	ret
                            1480 ;8BP_wrapper/8BP.h:775: void _8BP_rink_N(int num_params,int* ink_list)
@@ -1546,7 +1546,7 @@
    05B4 21r00r00      [10] 1546 	ld	hl, #__8BP_rink_N_color1;
    05B7 7E            [ 7] 1547 	ld	a,(hl)
    05B8 DD 21r01r00   [14] 1548 	ld	ix, #__8BP_rink_N_inverse_list;
-   05BC CD 27 76      [17] 1549 	CALL	RINK
+   05BC CD 2D 76      [17] 1549 	CALL	RINK
                            1550 ;8BP_wrapper/8BP.h:795: }
    05BF F1            [10] 1551 	pop	af
    05C0 C9            [10] 1552 	ret
@@ -1559,7 +1559,7 @@
    05C1 3E 06         [ 7] 1559 	ld	a,#6
    05C3 DD 21 02 00   [14] 1560 	ld	ix,#2 ;posicion primer parametro 
    05C7 DD 39         [15] 1561 	add ix,sp;
-   05C9 CD 4A 5F      [17] 1562 	CALL	UMAP
+   05C9 CD 38 5F      [17] 1562 	CALL	UMAP
                            1563 ;8BP_wrapper/8BP.h:807: }
    05CC C9            [10] 1564 	ret
                            1565 ;8BP_wrapper/8BP.h:809: void _8BP_umap_6(int map_ini, int map_fin, int y_ini, int y_fin, int x_ini, int x_fin)

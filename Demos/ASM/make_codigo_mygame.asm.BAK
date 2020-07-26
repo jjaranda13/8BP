@@ -1,7 +1,5 @@
 ;---------------------RUTINAS 8 bits de poder------------------
-;read "8bitsDePoder_v033_009.asm"; con mas optimizaciones 
-;read "8bitsDePoder_v033_010.asm"; corregido un bug de flip con alfabeto
-read "8bitsDePoder_v033_011.asm"; max sprites con map2sp =32
+read "8bitsDePoder_v040_000.asm";
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.
@@ -10,7 +8,7 @@ read "8bitsDePoder_v033_011.asm"; max sprites con map2sp =32
 ; inicializa el codigo del player, el cual esta en otro fichero pero
 ; se carga todo desde el loader.
 :_PLAYER_WYZ
-read "player_loader_cpc.asm"
+read "player_loader_cpc_v39.asm"
 
 
 ; DESDE LA 42039 HASTA 42539 SE ENCUENTRA EL LAYOUT y el mapa del mundo (solapados)

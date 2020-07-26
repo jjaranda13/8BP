@@ -48,7 +48,6 @@ char *cad="AAA";
  rescol=0;
  puntos=0;
  
- char* kk="AAAA";
  
  int tintas[5]={1,2,2,3,3};
  
@@ -56,7 +55,7 @@ char *cad="AAA";
  // ----------------------
  _8BP_colspall_2(&cor,&cod);
  
- _8BP_layout_3(10,1,kk);
+
  _8BP_map2sp_1(1);
  
  _8BP_umap_6(41600,41660,0,1000,0,1000);
@@ -161,7 +160,8 @@ _8BP_setupsp_3(cor,0,5);
 
 if (cod<22){
   _basic_border(7);	
-  _basic_sound(1,2000,10,7,0,0,15);
+  //_basic_sound(1,2000,10,7,0,0,15);
+   _basic_sound(4,638,30,15,0,1,0);
   _8BP_setupsp_3(cod,7,15);//animacion 
   _8BP_setupsp_3(cod,0,5);
   _basic_call(0xbd19);
