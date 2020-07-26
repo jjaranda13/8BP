@@ -72,6 +72,25 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+26/07/2020 ACTUALIZACION V41 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- libreria: se han incorporado algunas actualizaciones en ficheros asm para proporcionar las siguientes funcionalidades:
+	- el comando MUSIC ahora interpreta efectos de sonido (canal FX de wyxtracker) que incluya la melodia
+	- nuevo flag en el codigo de enrutamiento 254 para resetear opcionalmente el fotograma de la nueva ruta asignada a un sprite (para hacer que pase a frame 0)
+	- cambios en direcciones de cada rutina incorporadas al wrapper 8bp.h
+
+- SPEDIT: se incluye spedit v13 , que puede grabar la paleta en disco
+
+- manual:
+	- se incluyen las explicaciones de las mejoras
+	- se incluye una ampliacion de como usar mas color en el capitulo de sprites
+	- aclaracion del comando PRINTSPALL: primero anima y despues imprime
+	- actualizacion de las mejoras de SPEDIT v13
+
+
+- Demos: todas las demos actualizadas a v41
+
 05/07/2020 ACTUALIZACION SPEDIT V12 (retrocompatible)
 ==============================================
 He actualizado el repositorio los siguientes cambios:
