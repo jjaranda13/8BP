@@ -1,5 +1,6 @@
 ;---------------------RUTINAS 8 bits de poder------------------
-read "8bitsDePoder_v041_000.asm";
+;read "8bitsDePoder_v041_000.asm";
+read "8bitsDePoder_v041_001.asm";
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.

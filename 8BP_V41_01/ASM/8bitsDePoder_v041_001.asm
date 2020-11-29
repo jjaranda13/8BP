@@ -346,6 +346,10 @@ MOR_x: 	dw 0;
 PS2_spid	db 0
 
 
+; PRINTSP
+;************
+PRINTSP_flag db 0; este flag es para que printspall sepa que no debe animar pues la llamada viene de printsp
+
 ; para el player de musica
 ;BUFFER_DEC_CANAL_A ds 32
 
@@ -621,22 +625,8 @@ INS_cancion	db 0
 INS_speed	db 5; una velocidad "normal" es 6. si ponemos 5 estamos acelerando un poco la musica
 
 
-; de colspall
-COA_colider	dw 0; direccion de memoria de colider
+; ALGUNAS VARS LCALES
 
-; de colay
-COL_umbral	db 32; por defecto es el espacio en blanco " ", cuyo ASCII es 32
-var_col		dw 0; //direccion de la variable col
-col_numsp	db 0; guardamos el id sprite de una llamada a la siguiente para ganar velocidad v37
-
-; variables de la funcion SET_LIMITS
-;-------------------------------------
-SPR_DIFX	db 80
-SPR_DIFY	db 200
-
-; variables de autoall
-;-----------------------------------
-MOA_flag_route	db 0; flag de invocacion a ROUTEALL
 
 ;=================================================
 ; Tabla de alturas de sprites. esta tabla se ubica en la memoria de sprites
@@ -2603,6 +2593,19 @@ PS2_fin
 		;ld (flag3D),a
 
 		;v39 he cambiado esto de sitio. ahora la animacion se hace al final
+
+		;begin mejora v41_001		
+		; si venimos desde printsp no hay que animar
+		ld a, (PRINTSP_flag) 
+		and a
+		jr z, PS2_noprintsp
+
+		ld a,0
+		ld (PRINTSP_flag),a
+		ret
+		;end mejora v41_001
+
+PS2_noprintsp
 		ld a, (PS2_flag_anim)
 		and a
 		call NZ, _ANIMA_ALL
@@ -5166,6 +5169,7 @@ PSP:; RUTINA PSP
 
 ;		cp 1;1 parametro es que no trae coordenadas
 ;		JR Z,PSP_sp
+		
 
 		cp 1; no se puede hacer dec a
 		JR Z,PSP_sp; 1param
@@ -5208,6 +5212,9 @@ PSP_confTR
 
 PSP_sp
 		ld (PS2_spid), a; meto un 1 para que PRINTSPALL solo imprima 1
+
+		ld (PRINTSP_flag),a; V41_001 flag para que printspall no anime
+
 		;CALL _GET_MODE ; v34
 		ld a,(IX+0)
 
@@ -5938,9 +5945,9 @@ PTR2_bin2	cp %11000000; si los dos son 1, entonces no hacemos nada, no hay que r
 		JR Z,PTR2_transp; 
 
 		
-		; si estamos aqui es porque solo 1 bit esta a uno
+		; si estamos aqui es porque solo 1 bit esta a uno (solo un pixel del byte en mode 0)
 		ld a,c
-		bit 6,c; comprueba el bit 6 
+		bit 6,c; comprueba el bit 6 (pixel derecho mode 0)
 		JR Z, PTR2_izq
 		; si estoy aqui es que ese bit no es cero y por lo tanto el pixel a pintar debe ser el de pantalla
 		; es decir, no alterar nada
@@ -6333,9 +6340,10 @@ ANS_nomacro
 
 		;ld b,0
 		;ld c, 0
+
+		; si hl es cero es porque no tenia direccion de imagen asignada. por eso el jr z
+		; asi una secuencia puede tener menos de 8 frames
 		ld bc, 0
-
-
 		adc HL,bc
 		Jr z, ANS_fin_seq 	
 		
@@ -6373,7 +6381,7 @@ ANS_nextframe	; aqui llegamos con la variable de nuevo frame id rellena y
 
 
 ANS_nomuerte	ld HL, (ANS_spaddress)
-		ld bc , sp_frame_offset
+		ld bc , sp_frame_offset ; esta constante vale 8
 		add hl, bc
 		ld a, (ANS_newframeid)
 		ld (HL), a; frame id actualizado en la tabla de sprites
@@ -8574,3 +8582,25 @@ ROU_INIRUTA
 	;JR _UPDATE_SEGMENT
 	Jp _UPDATE_SEGMENT ; v28
 	
+
+
+
+
+; variables locales de colspall
+;------------------------------
+COA_colider	dw 0; direccion de memoria de colider
+
+; variables locales de colay
+;------------------------------
+COL_umbral	db 32; por defecto es el espacio en blanco " ", cuyo ASCII es 32
+var_col		dw 0; //direccion de la variable col
+col_numsp	db 0; guardamos el id sprite de una llamada a la siguiente para ganar velocidad v37
+
+; variables de la funcion SET_LIMITS
+;-------------------------------------
+SPR_DIFX	db 80
+SPR_DIFY	db 200
+
+; variables de autoall
+;-----------------------------------
+MOA_flag_route	db 0; flag de invocacion a ROUTEALL

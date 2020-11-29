@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 4.0.0 #11528 (MINGW32)
+; Version 4.0.0 #11528 (MINGW64)
 ;--------------------------------------------------------
 	.module ciclo
 	.optsdcc -mz80
@@ -34,7 +34,7 @@
 	.globl __8BP_colay_inv2
 	.globl __8BP_colay_inv3
 	.globl __8BP_3D_inv3
-	.globl _comandos_8BP_V39
+	.globl _comandos_8BP_V41
 	.globl _strlen
 	.globl _abs
 	.globl _ruta
@@ -208,38 +208,38 @@ _ruta::
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;8BP_wrapper/8BP.h:103: void comandos_8BP_V39(){
+;8BP_wrapper/8BP.h:103: void comandos_8BP_V41(){
 ;	---------------------------------
-; Function comandos_8BP_V39
+; Function comandos_8BP_V41
 ; ---------------------------------
-_comandos_8BP_V39::
+_comandos_8BP_V41::
 ;8BP_wrapper/8BP.h:133: __endasm;
-	_3D	== 0x645A;
-	ANIMA	== 0x6fc9;
-	ANIMALL	== 0x7713;
-	AUTO	== 0x7181;
-	AUTOALL	== 0x71cf;
-	COLAY	== 0x71fe;
-	COLSP	== 0x73a9;
-	COLSPALL	== 0x75ae;
-	LAYOUT	== 0x705f;
-	LOCATESP	== 0x6C71
-	MAP2SP	== 0x6496;
-	MOVER	== 0x753b;
-	MOVERALL	== 0x76ed;
-	MUSIC	== 0x6F55
-	PEEK	== 0x692e;
-	POKE	== 0x6941;
-	PRINTAT	== 0x606d;
-	PRINTSP	== 0x6C94
-	PRINTSPALL	== 0x62aa;
-	RINK	== 0x762d;
-	ROUTESP	== 0x65f4;
-	ROUTEALL	== 0x65d3;
-	SETLIMITS	== 0x686d;
-	SETUPSP	== 0x70fe;
-	STARS	== 0x7439;
-	UMAP	== 0x5f38;
+	_3D	== 0x645D;
+	ANIMA	== 0x6fcc;
+	ANIMALL	== 0x7716;
+	AUTO	== 0x7184;
+	AUTOALL	== 0x71d2;
+	COLAY	== 0x7201;
+	COLSP	== 0x73ac;
+	COLSPALL	== 0x75b1;
+	LAYOUT	== 0x7062;
+	LOCATESP	== 0x6C71;
+	MAP2SP	== 0x6499;
+	MOVER	== 0x753e;
+	MOVERALL	== 0x76f0;
+	MUSIC	== 0x6F58;
+	PEEK	== 0x6931;
+	POKE	== 0x6944;
+	PRINTAT	== 0x6064;
+	PRINTSP	== 0x6C94;
+	PRINTSPALL	== 0x62a1;
+	RINK	== 0x7630;
+	ROUTESP	== 0x65f7;
+	ROUTEALL	== 0x65d6;
+	SETLIMITS	== 0x6870;
+	SETUPSP	== 0x7101;
+	STARS	== 0x743c;
+	UMAP	== 0x5f2f;
 ;8BP_wrapper/8BP.h:134: }
 	ret
 ;8BP_wrapper/8BP.h:137: void _8BP_3D_inv3(int offsety,int sp_fin, int flag)

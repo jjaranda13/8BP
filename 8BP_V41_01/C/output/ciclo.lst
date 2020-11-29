@@ -1,0 +1,2514 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 4.0.0 #11528 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module ciclo
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _main
+                             12 	.globl _reverse
+                             13 	.globl _DisplayChar
+                             14 	.globl __8BP_umap_inv6
+                             15 	.globl __8BP_moverall_inv2
+                             16 	.globl __8BP_mover_inv3
+                             17 	.globl __8BP_map2sp_inv2
+                             18 	.globl __8BP_layout_inv3
+                             19 	.globl __8BP_stars_inv5
+                             20 	.globl __8BP_setupsp_inv4
+                             21 	.globl __8BP_setupsp_inv3
+                             22 	.globl __8BP_setlimits_inv4
+                             23 	.globl __8BP_routesp_inv2
+                             24 	.globl __8BP_printspall_inv4
+                             25 	.globl __8BP_printsp_inv2
+                             26 	.globl __8BP_printsp_inv3
+                             27 	.globl __8BP_printat_inv
+                             28 	.globl _getDescriptor
+                             29 	.globl __8BP_music_inv4
+                             30 	.globl __8BP_locatesp_inv3
+                             31 	.globl __8BP_colspall_inv2
+                             32 	.globl __8BP_colsp_inv2
+                             33 	.globl __8BP_colsp_inv3
+                             34 	.globl __8BP_colay_inv2
+                             35 	.globl __8BP_colay_inv3
+                             36 	.globl __8BP_3D_inv3
+                             37 	.globl _comandos_8BP_V41
+                             38 	.globl _strlen
+                             39 	.globl _abs
+                             40 	.globl __basic_rnd_x
+                             41 	.globl _fps
+                             42 	.globl _t2
+                             43 	.globl _t1
+                             44 	.globl _puntos
+                             45 	.globl _i
+                             46 	.globl _cor
+                             47 	.globl _cod
+                             48 	.globl _y
+                             49 	.globl _x
+                             50 	.globl _dir
+                             51 	.globl _c
+                             52 	.globl __8BP_rink_N_inverse_list
+                             53 	.globl __8BP_rink_N_color1
+                             54 	.globl __8BP_3D_3
+                             55 	.globl __8BP_3D_1
+                             56 	.globl __8BP_anima_1
+                             57 	.globl __8BP_animall
+                             58 	.globl __8BP_auto_1
+                             59 	.globl __8BP_autoall_1
+                             60 	.globl __8BP_autoall
+                             61 	.globl __8BP_colay
+                             62 	.globl __8BP_colay_2
+                             63 	.globl __8BP_colay_1
+                             64 	.globl __8BP_colay_3
+                             65 	.globl __8BP_colsp_3
+                             66 	.globl __8BP_colsp_2
+                             67 	.globl __8BP_colsp_1
+                             68 	.globl __8BP_colspall
+                             69 	.globl __8BP_colspall_1
+                             70 	.globl __8BP_colspall_2
+                             71 	.globl __8BP_locatesp_3
+                             72 	.globl __8BP_music_4
+                             73 	.globl __8BP_music
+                             74 	.globl __8BP_printat_4
+                             75 	.globl __8BP_printsp_3
+                             76 	.globl __8BP_printsp_2
+                             77 	.globl __8BP_printsp_1
+                             78 	.globl __8BP_printspall_4
+                             79 	.globl __8BP_printspall_1
+                             80 	.globl __8BP_printspall
+                             81 	.globl __8BP_routeall
+                             82 	.globl __8BP_routesp_2
+                             83 	.globl __8BP_routesp_1
+                             84 	.globl __8BP_setlimits_4
+                             85 	.globl __8BP_setupsp_3
+                             86 	.globl __8BP_setupsp_4
+                             87 	.globl __8BP_stars_5
+                             88 	.globl __8BP_stars
+                             89 	.globl __8BP_layout_3
+                             90 	.globl __8BP_map2sp_2
+                             91 	.globl __8BP_map2sp_1
+                             92 	.globl __8BP_mover_3
+                             93 	.globl __8BP_mover_1
+                             94 	.globl __8BP_moverall_2
+                             95 	.globl __8BP_moverall
+                             96 	.globl __8BP_peek_2
+                             97 	.globl __8BP_poke_2
+                             98 	.globl __8BP_rink_1
+                             99 	.globl __8BP_rink_N
+                            100 	.globl __8BP_umap_6
+                            101 	.globl __basic_time
+                            102 	.globl __basic_rnd
+                            103 	.globl __basic_border
+                            104 	.globl __basic_print
+                            105 	.globl __basic_inkey
+                            106 	.globl __basic_str
+                            107 	.globl __basic_call
+                            108 	.globl __basic_locate
+                            109 	.globl __basic_sound
+                            110 	.globl __basic_ink
+                            111 	.globl __basic_peek
+                            112 	.globl __basic_poke
+                            113 	.globl __basic_pen_txt
+                            114 	.globl __basic_pen_graph
+                            115 	.globl __basic_paper
+                            116 	.globl __basic_plot
+                            117 	.globl __basic_move
+                            118 	.globl __basic_draw
+                            119 ;--------------------------------------------------------
+                            120 ; special function registers
+                            121 ;--------------------------------------------------------
+                            122 ;--------------------------------------------------------
+                            123 ; ram data
+                            124 ;--------------------------------------------------------
+                            125 	.area _DATA
+   0000                     126 __8BP_rink_N_color1::
+   0000                     127 	.ds 1
+   0001                     128 __8BP_rink_N_inverse_list::
+   0001                     129 	.ds 34
+   0023                     130 __basic_str_buffer_65536_273:
+   0023                     131 	.ds 11
+   002E                     132 _c::
+   002E                     133 	.ds 2
+   0030                     134 _dir::
+   0030                     135 	.ds 1
+   0031                     136 _x::
+   0031                     137 	.ds 2
+   0033                     138 _y::
+   0033                     139 	.ds 2
+   0035                     140 _cod::
+   0035                     141 	.ds 2
+   0037                     142 _cor::
+   0037                     143 	.ds 2
+   0039                     144 _i::
+   0039                     145 	.ds 2
+   003B                     146 _puntos::
+   003B                     147 	.ds 2
+   003D                     148 _t1::
+   003D                     149 	.ds 2
+   003F                     150 _t2::
+   003F                     151 	.ds 2
+   0041                     152 _fps::
+   0041                     153 	.ds 2
+                            154 ;--------------------------------------------------------
+                            155 ; ram data
+                            156 ;--------------------------------------------------------
+                            157 	.area _INITIALIZED
+   0000                     158 __basic_rnd_x::
+   0000                     159 	.ds 2
+                            160 ;--------------------------------------------------------
+                            161 ; absolute external ram data
+                            162 ;--------------------------------------------------------
+                            163 	.area _DABS (ABS)
+                            164 ;--------------------------------------------------------
+                            165 ; global & static initialisations
+                            166 ;--------------------------------------------------------
+                            167 	.area _HOME
+                            168 	.area _GSINIT
+                            169 	.area _GSFINAL
+                            170 	.area _GSINIT
+                            171 ;mini_BASIC/minibasic.h:178: static char buffer[]="          ";
+   0000 21r23r00      [10]  172 	ld	hl, #__basic_str_buffer_65536_273
+   0003 36 20         [10]  173 	ld	(hl), #0x20
+   0005 21r24r00      [10]  174 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0001)
+   0008 36 20         [10]  175 	ld	(hl), #0x20
+   000A 21r25r00      [10]  176 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0002)
+   000D 36 20         [10]  177 	ld	(hl), #0x20
+   000F 21r26r00      [10]  178 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0003)
+   0012 36 20         [10]  179 	ld	(hl), #0x20
+   0014 21r27r00      [10]  180 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0004)
+   0017 36 20         [10]  181 	ld	(hl), #0x20
+   0019 21r28r00      [10]  182 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0005)
+   001C 36 20         [10]  183 	ld	(hl), #0x20
+   001E 21r29r00      [10]  184 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0006)
+   0021 36 20         [10]  185 	ld	(hl), #0x20
+   0023 21r2Ar00      [10]  186 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0007)
+   0026 36 20         [10]  187 	ld	(hl), #0x20
+   0028 21r2Br00      [10]  188 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0008)
+   002B 36 20         [10]  189 	ld	(hl), #0x20
+   002D 21r2Cr00      [10]  190 	ld	hl, #(__basic_str_buffer_65536_273 + 0x0009)
+   0030 36 20         [10]  191 	ld	(hl), #0x20
+   0032 21r2Dr00      [10]  192 	ld	hl, #(__basic_str_buffer_65536_273 + 0x000a)
+   0035 36 00         [10]  193 	ld	(hl), #0x00
+                            194 ;--------------------------------------------------------
+                            195 ; Home
+                            196 ;--------------------------------------------------------
+                            197 	.area _HOME
+                            198 	.area _HOME
+                            199 ;--------------------------------------------------------
+                            200 ; code
+                            201 ;--------------------------------------------------------
+                            202 	.area _CODE
+                            203 ;8BP_wrapper/8BP.h:103: void comandos_8BP_V41(){
+                            204 ;	---------------------------------
+                            205 ; Function comandos_8BP_V41
+                            206 ; ---------------------------------
+   0000                     207 _comandos_8BP_V41::
+                            208 ;8BP_wrapper/8BP.h:133: __endasm;
+                     645D   209 	_3D	== 0x645D;
+                     6FCC   210 	ANIMA	== 0x6fcc;
+                     7716   211 	ANIMALL	== 0x7716;
+                     7184   212 	AUTO	== 0x7184;
+                     71D2   213 	AUTOALL	== 0x71d2;
+                     7201   214 	COLAY	== 0x7201;
+                     73AC   215 	COLSP	== 0x73ac;
+                     75B1   216 	COLSPALL	== 0x75b1;
+                     7062   217 	LAYOUT	== 0x7062;
+                     6C71   218 	LOCATESP	== 0x6C71;
+                     6499   219 	MAP2SP	== 0x6499;
+                     753E   220 	MOVER	== 0x753e;
+                     76F0   221 	MOVERALL	== 0x76f0;
+                     6F58   222 	MUSIC	== 0x6F58;
+                     6931   223 	PEEK	== 0x6931;
+                     6944   224 	POKE	== 0x6944;
+                     6064   225 	PRINTAT	== 0x6064;
+                     6C94   226 	PRINTSP	== 0x6C94;
+                     62A1   227 	PRINTSPALL	== 0x62a1;
+                     7630   228 	RINK	== 0x7630;
+                     65F7   229 	ROUTESP	== 0x65f7;
+                     65D6   230 	ROUTEALL	== 0x65d6;
+                     6870   231 	SETLIMITS	== 0x6870;
+                     7101   232 	SETUPSP	== 0x7101;
+                     743C   233 	STARS	== 0x743c;
+                     5F2F   234 	UMAP	== 0x5f2f;
+                            235 ;8BP_wrapper/8BP.h:134: }
+   0000 C9            [10]  236 	ret
+                            237 ;8BP_wrapper/8BP.h:137: void _8BP_3D_inv3(int offsety,int sp_fin, int flag)
+                            238 ;	---------------------------------
+                            239 ; Function _8BP_3D_inv3
+                            240 ; ---------------------------------
+   0001                     241 __8BP_3D_inv3::
+                            242 ;8BP_wrapper/8BP.h:148: __endasm;			
+   0001 3E 03         [ 7]  243 	ld	a, #3
+   0003 DD 21 02 00   [14]  244 	ld	ix,#2 ;posicion primer parametro 
+   0007 DD 39         [15]  245 	add ix,sp;
+   0009 CD 5D 64      [17]  246 	call	_3D ;
+                            247 ;8BP_wrapper/8BP.h:150: }
+   000C C9            [10]  248 	ret
+                            249 ;8BP_wrapper/8BP.h:152: void _8BP_3D_3(int flag, int sp_fin,int offsety)  
+                            250 ;	---------------------------------
+                            251 ; Function _8BP_3D_3
+                            252 ; ---------------------------------
+   000D                     253 __8BP_3D_3::
+                            254 ;8BP_wrapper/8BP.h:154: _8BP_3D_inv3(offsety,sp_fin,flag);
+   000D C1            [10]  255 	pop	bc
+   000E E1            [10]  256 	pop	hl
+   000F E5            [11]  257 	push	hl
+   0010 C5            [11]  258 	push	bc
+   0011 E5            [11]  259 	push	hl
+   0012 FD 21 06 00   [14]  260 	ld	iy, #6
+   0016 FD 39         [15]  261 	add	iy, sp
+   0018 FD 6E 00      [19]  262 	ld	l, 0 (iy)
+   001B FD 66 01      [19]  263 	ld	h, 1 (iy)
+   001E E5            [11]  264 	push	hl
+   001F FD 23         [10]  265 	inc	iy
+   0021 FD 23         [10]  266 	inc	iy
+   0023 FD 6E 00      [19]  267 	ld	l, 0 (iy)
+   0026 FD 66 01      [19]  268 	ld	h, 1 (iy)
+   0029 E5            [11]  269 	push	hl
+   002A CDr01r00      [17]  270 	call	__8BP_3D_inv3
+   002D F1            [10]  271 	pop	af
+   002E F1            [10]  272 	pop	af
+   002F F1            [10]  273 	pop	af
+                            274 ;8BP_wrapper/8BP.h:155: }
+   0030 C9            [10]  275 	ret
+                            276 ;8BP_wrapper/8BP.h:157: void _8BP_3D_1(int flag) 
+                            277 ;	---------------------------------
+                            278 ; Function _8BP_3D_1
+                            279 ; ---------------------------------
+   0031                     280 __8BP_3D_1::
+                            281 ;8BP_wrapper/8BP.h:164: __endasm;			
+   0031 3E 01         [ 7]  282 	ld	a, #1
+   0033 DD 21 02 00   [14]  283 	ld	ix,#2 ;posicion primer parametro 
+   0037 DD 39         [15]  284 	add ix,sp;
+   0039 CD 5D 64      [17]  285 	call	_3D ;
+                            286 ;8BP_wrapper/8BP.h:166: }
+   003C C9            [10]  287 	ret
+                            288 ;8BP_wrapper/8BP.h:168: void _8BP_anima_1(int sp) 
+                            289 ;	---------------------------------
+                            290 ; Function _8BP_anima_1
+                            291 ; ---------------------------------
+   003D                     292 __8BP_anima_1::
+                            293 ;8BP_wrapper/8BP.h:175: __endasm;			
+   003D 3E 01         [ 7]  294 	ld	a, #1
+   003F DD 21 02 00   [14]  295 	ld	ix,#2 ;posicion primer parametro 
+   0043 DD 39         [15]  296 	add ix,sp;
+   0045 CD CC 6F      [17]  297 	call	ANIMA ;
+                            298 ;8BP_wrapper/8BP.h:177: }
+   0048 C9            [10]  299 	ret
+                            300 ;8BP_wrapper/8BP.h:179: void _8BP_animall() 
+                            301 ;	---------------------------------
+                            302 ; Function _8BP_animall
+                            303 ; ---------------------------------
+   0049                     304 __8BP_animall::
+                            305 ;8BP_wrapper/8BP.h:184: __endasm;			
+   0049 3E 00         [ 7]  306 	ld	a,#0
+   004B CD 16 77      [17]  307 	call	ANIMALL ;
+                            308 ;8BP_wrapper/8BP.h:186: }
+   004E C9            [10]  309 	ret
+                            310 ;8BP_wrapper/8BP.h:188: void _8BP_auto_1(int sp) 
+                            311 ;	---------------------------------
+                            312 ; Function _8BP_auto_1
+                            313 ; ---------------------------------
+   004F                     314 __8BP_auto_1::
+                            315 ;8BP_wrapper/8BP.h:195: __endasm;			
+   004F 3E 01         [ 7]  316 	ld	a, #1
+   0051 DD 21 02 00   [14]  317 	ld	ix,#2 ;posicion primer parametro 
+   0055 DD 39         [15]  318 	add ix,sp;
+   0057 CD 84 71      [17]  319 	call	AUTO ;
+                            320 ;8BP_wrapper/8BP.h:197: }
+   005A C9            [10]  321 	ret
+                            322 ;8BP_wrapper/8BP.h:199: void _8BP_autoall_1(int flag) 
+                            323 ;	---------------------------------
+                            324 ; Function _8BP_autoall_1
+                            325 ; ---------------------------------
+   005B                     326 __8BP_autoall_1::
+                            327 ;8BP_wrapper/8BP.h:206: __endasm;			
+   005B 3E 01         [ 7]  328 	ld	a, #1
+   005D DD 21 02 00   [14]  329 	ld	ix,#2 ;posicion primer parametro 
+   0061 DD 39         [15]  330 	add ix,sp;
+   0063 CD D2 71      [17]  331 	call	AUTOALL ;
+                            332 ;8BP_wrapper/8BP.h:208: }
+   0066 C9            [10]  333 	ret
+                            334 ;8BP_wrapper/8BP.h:210: void _8BP_autoall() 
+                            335 ;	---------------------------------
+                            336 ; Function _8BP_autoall
+                            337 ; ---------------------------------
+   0067                     338 __8BP_autoall::
+                            339 ;8BP_wrapper/8BP.h:215: __endasm;			
+   0067 3E 00         [ 7]  340 	ld	a, #0
+   0069 CD D2 71      [17]  341 	call	AUTOALL ;
+                            342 ;8BP_wrapper/8BP.h:217: }
+   006C C9            [10]  343 	ret
+                            344 ;8BP_wrapper/8BP.h:219: void _8BP_colay_inv3( int sp,int* colision,int umbral)
+                            345 ;	---------------------------------
+                            346 ; Function _8BP_colay_inv3
+                            347 ; ---------------------------------
+   006D                     348 __8BP_colay_inv3::
+                            349 ;8BP_wrapper/8BP.h:226: __endasm;		
+   006D 3E 03         [ 7]  350 	ld	a, #3
+   006F DD 21 02 00   [14]  351 	ld	ix,#2 ;posicion primer parametro 
+   0073 DD 39         [15]  352 	add ix,sp;
+   0075 CD 01 72      [17]  353 	CALL	COLAY
+                            354 ;8BP_wrapper/8BP.h:228: }
+   0078 C9            [10]  355 	ret
+                            356 ;8BP_wrapper/8BP.h:230: void _8BP_colay()
+                            357 ;	---------------------------------
+                            358 ; Function _8BP_colay
+                            359 ; ---------------------------------
+   0079                     360 __8BP_colay::
+                            361 ;8BP_wrapper/8BP.h:235: __endasm;		
+   0079 3E 00         [ 7]  362 	ld	a, #0
+   007B CD 01 72      [17]  363 	CALL	COLAY
+                            364 ;8BP_wrapper/8BP.h:237: }
+   007E C9            [10]  365 	ret
+                            366 ;8BP_wrapper/8BP.h:239: void _8BP_colay_inv2(int sp, int* colision)
+                            367 ;	---------------------------------
+                            368 ; Function _8BP_colay_inv2
+                            369 ; ---------------------------------
+   007F                     370 __8BP_colay_inv2::
+                            371 ;8BP_wrapper/8BP.h:246: __endasm;		
+   007F 3E 02         [ 7]  372 	ld	a, #2
+   0081 DD 21 02 00   [14]  373 	ld	ix,#2 ;posicion primer parametro 
+   0085 DD 39         [15]  374 	add ix,sp;
+   0087 CD 01 72      [17]  375 	CALL	COLAY
+                            376 ;8BP_wrapper/8BP.h:248: }
+   008A C9            [10]  377 	ret
+                            378 ;8BP_wrapper/8BP.h:249: void _8BP_colay_2(int* colision, int sp)
+                            379 ;	---------------------------------
+                            380 ; Function _8BP_colay_2
+                            381 ; ---------------------------------
+   008B                     382 __8BP_colay_2::
+                            383 ;8BP_wrapper/8BP.h:251: _8BP_colay_inv2(sp, colision);
+   008B C1            [10]  384 	pop	bc
+   008C E1            [10]  385 	pop	hl
+   008D E5            [11]  386 	push	hl
+   008E C5            [11]  387 	push	bc
+   008F E5            [11]  388 	push	hl
+   0090 21 06 00      [10]  389 	ld	hl, #6
+   0093 39            [11]  390 	add	hl, sp
+   0094 4E            [ 7]  391 	ld	c, (hl)
+   0095 23            [ 6]  392 	inc	hl
+   0096 46            [ 7]  393 	ld	b, (hl)
+   0097 C5            [11]  394 	push	bc
+   0098 CDr7Fr00      [17]  395 	call	__8BP_colay_inv2
+   009B F1            [10]  396 	pop	af
+   009C F1            [10]  397 	pop	af
+                            398 ;8BP_wrapper/8BP.h:252: }
+   009D C9            [10]  399 	ret
+                            400 ;8BP_wrapper/8BP.h:255: void _8BP_colay_1(int sp)
+                            401 ;	---------------------------------
+                            402 ; Function _8BP_colay_1
+                            403 ; ---------------------------------
+   009E                     404 __8BP_colay_1::
+                            405 ;8BP_wrapper/8BP.h:262: __endasm;		
+   009E 3E 01         [ 7]  406 	ld	a, #1
+   00A0 DD 21 02 00   [14]  407 	ld	ix,#2 ;posicion primer parametro 
+   00A4 DD 39         [15]  408 	add ix,sp;
+   00A6 CD 01 72      [17]  409 	CALL	COLAY
+                            410 ;8BP_wrapper/8BP.h:264: }
+   00A9 C9            [10]  411 	ret
+                            412 ;8BP_wrapper/8BP.h:267: void _8BP_colay_3(int umbral, int* colision, int sp)
+                            413 ;	---------------------------------
+                            414 ; Function _8BP_colay_3
+                            415 ; ---------------------------------
+   00AA                     416 __8BP_colay_3::
+                            417 ;8BP_wrapper/8BP.h:269: _8BP_colay_inv3( sp,colision,umbral);
+   00AA C1            [10]  418 	pop	bc
+   00AB E1            [10]  419 	pop	hl
+   00AC E5            [11]  420 	push	hl
+   00AD C5            [11]  421 	push	bc
+   00AE E5            [11]  422 	push	hl
+   00AF FD 21 06 00   [14]  423 	ld	iy, #6
+   00B3 FD 39         [15]  424 	add	iy, sp
+   00B5 FD 6E 00      [19]  425 	ld	l, 0 (iy)
+   00B8 FD 66 01      [19]  426 	ld	h, 1 (iy)
+   00BB E5            [11]  427 	push	hl
+   00BC FD 23         [10]  428 	inc	iy
+   00BE FD 23         [10]  429 	inc	iy
+   00C0 FD 6E 00      [19]  430 	ld	l, 0 (iy)
+   00C3 FD 66 01      [19]  431 	ld	h, 1 (iy)
+   00C6 E5            [11]  432 	push	hl
+   00C7 CDr6Dr00      [17]  433 	call	__8BP_colay_inv3
+   00CA F1            [10]  434 	pop	af
+   00CB F1            [10]  435 	pop	af
+   00CC F1            [10]  436 	pop	af
+                            437 ;8BP_wrapper/8BP.h:270: }
+   00CD C9            [10]  438 	ret
+                            439 ;8BP_wrapper/8BP.h:274: void _8BP_colsp_inv3( int b, int a,int operation)
+                            440 ;	---------------------------------
+                            441 ; Function _8BP_colsp_inv3
+                            442 ; ---------------------------------
+   00CE                     443 __8BP_colsp_inv3::
+                            444 ;8BP_wrapper/8BP.h:283: __endasm;		
+   00CE 3E 03         [ 7]  445 	ld	a, #3
+   00D0 DD 21 02 00   [14]  446 	ld	ix,#2 ;posicion primer parametro 
+   00D4 DD 39         [15]  447 	add ix,sp;
+   00D6 CD AC 73      [17]  448 	CALL	COLSP
+                            449 ;8BP_wrapper/8BP.h:285: }
+   00D9 C9            [10]  450 	ret
+                            451 ;8BP_wrapper/8BP.h:287: void _8BP_colsp_inv2(int* colision,int sp)
+                            452 ;	---------------------------------
+                            453 ; Function _8BP_colsp_inv2
+                            454 ; ---------------------------------
+   00DA                     455 __8BP_colsp_inv2::
+                            456 ;8BP_wrapper/8BP.h:295: __endasm;		
+   00DA 3E 02         [ 7]  457 	ld	a, #2
+   00DC DD 21 02 00   [14]  458 	ld	ix,#2 ;posicion primer parametro 
+   00E0 DD 39         [15]  459 	add ix,sp;
+   00E2 CD AC 73      [17]  460 	CALL	COLSP
+                            461 ;8BP_wrapper/8BP.h:297: }
+   00E5 C9            [10]  462 	ret
+                            463 ;8BP_wrapper/8BP.h:299: void _8BP_colsp_3(int operation, int a, int b)  
+                            464 ;	---------------------------------
+                            465 ; Function _8BP_colsp_3
+                            466 ; ---------------------------------
+   00E6                     467 __8BP_colsp_3::
+                            468 ;8BP_wrapper/8BP.h:301: _8BP_colsp_inv3(b,a,operation);
+   00E6 C1            [10]  469 	pop	bc
+   00E7 E1            [10]  470 	pop	hl
+   00E8 E5            [11]  471 	push	hl
+   00E9 C5            [11]  472 	push	bc
+   00EA E5            [11]  473 	push	hl
+   00EB FD 21 06 00   [14]  474 	ld	iy, #6
+   00EF FD 39         [15]  475 	add	iy, sp
+   00F1 FD 6E 00      [19]  476 	ld	l, 0 (iy)
+   00F4 FD 66 01      [19]  477 	ld	h, 1 (iy)
+   00F7 E5            [11]  478 	push	hl
+   00F8 FD 23         [10]  479 	inc	iy
+   00FA FD 23         [10]  480 	inc	iy
+   00FC FD 6E 00      [19]  481 	ld	l, 0 (iy)
+   00FF FD 66 01      [19]  482 	ld	h, 1 (iy)
+   0102 E5            [11]  483 	push	hl
+   0103 CDrCEr00      [17]  484 	call	__8BP_colsp_inv3
+   0106 F1            [10]  485 	pop	af
+   0107 F1            [10]  486 	pop	af
+   0108 F1            [10]  487 	pop	af
+                            488 ;8BP_wrapper/8BP.h:302: }
+   0109 C9            [10]  489 	ret
+                            490 ;8BP_wrapper/8BP.h:304: void _8BP_colsp_2(int sp, int* colision)  
+                            491 ;	---------------------------------
+                            492 ; Function _8BP_colsp_2
+                            493 ; ---------------------------------
+   010A                     494 __8BP_colsp_2::
+                            495 ;8BP_wrapper/8BP.h:306: _8BP_colsp_inv2(colision, sp);
+   010A C1            [10]  496 	pop	bc
+   010B E1            [10]  497 	pop	hl
+   010C E5            [11]  498 	push	hl
+   010D C5            [11]  499 	push	bc
+   010E E5            [11]  500 	push	hl
+   010F 21 06 00      [10]  501 	ld	hl, #6
+   0112 39            [11]  502 	add	hl, sp
+   0113 4E            [ 7]  503 	ld	c, (hl)
+   0114 23            [ 6]  504 	inc	hl
+   0115 46            [ 7]  505 	ld	b, (hl)
+   0116 C5            [11]  506 	push	bc
+   0117 CDrDAr00      [17]  507 	call	__8BP_colsp_inv2
+   011A F1            [10]  508 	pop	af
+   011B F1            [10]  509 	pop	af
+                            510 ;8BP_wrapper/8BP.h:307: }
+   011C C9            [10]  511 	ret
+                            512 ;8BP_wrapper/8BP.h:309: void _8BP_colsp_1(int sp)  
+                            513 ;	---------------------------------
+                            514 ; Function _8BP_colsp_1
+                            515 ; ---------------------------------
+   011D                     516 __8BP_colsp_1::
+                            517 ;8BP_wrapper/8BP.h:318: __endasm;		
+   011D 3E 01         [ 7]  518 	ld	a, #1
+   011F DD 21 02 00   [14]  519 	ld	ix,#2 ;posicion primer parametro 
+   0123 DD 39         [15]  520 	add ix,sp;
+   0125 CD AC 73      [17]  521 	CALL	COLSP
+                            522 ;8BP_wrapper/8BP.h:319: }
+   0128 C9            [10]  523 	ret
+                            524 ;8BP_wrapper/8BP.h:321: void _8BP_colspall_inv2(int* collided,int* collider) 
+                            525 ;	---------------------------------
+                            526 ; Function _8BP_colspall_inv2
+                            527 ; ---------------------------------
+   0129                     528 __8BP_colspall_inv2::
+                            529 ;8BP_wrapper/8BP.h:329: __endasm;
+   0129 3E 02         [ 7]  530 	ld	a, #2
+   012B DD 21 02 00   [14]  531 	ld	ix,#2 ;posicion primer parametro 
+   012F DD 39         [15]  532 	add ix,sp;
+   0131 CD B1 75      [17]  533 	CALL	COLSPALL
+                            534 ;8BP_wrapper/8BP.h:330: }
+   0134 C9            [10]  535 	ret
+                            536 ;8BP_wrapper/8BP.h:332: void _8BP_colspall() 
+                            537 ;	---------------------------------
+                            538 ; Function _8BP_colspall
+                            539 ; ---------------------------------
+   0135                     540 __8BP_colspall::
+                            541 ;8BP_wrapper/8BP.h:337: __endasm;	
+   0135 3E 00         [ 7]  542 	ld	a, #0
+   0137 CD B1 75      [17]  543 	CALL	COLSPALL
+                            544 ;8BP_wrapper/8BP.h:338: }
+   013A C9            [10]  545 	ret
+                            546 ;8BP_wrapper/8BP.h:340: void _8BP_colspall_1(int collider_ini) __critical
+                            547 ;	---------------------------------
+                            548 ; Function _8BP_colspall_1
+                            549 ; ---------------------------------
+   013B                     550 __8BP_colspall_1::
+   013B ED 57         [ 9]  551 	ld	a,i
+   013D F3            [ 4]  552 	di
+   013E F5            [11]  553 	push	af
+                            554 ;8BP_wrapper/8BP.h:348: __endasm;	
+   013F 3E 01         [ 7]  555 	ld	a, #1
+   0141 DD 21 02 00   [14]  556 	ld	ix,#2 ;posicion primer parametro 
+   0145 DD 39         [15]  557 	add ix,sp;
+   0147 CD B1 75      [17]  558 	CALL	COLSPALL
+                            559 ;8BP_wrapper/8BP.h:349: }
+   014A F1            [10]  560 	pop	af
+   014B E0            [11]  561 	ret	PO
+   014C FB            [ 4]  562 	ei
+   014D C9            [10]  563 	ret
+                            564 ;8BP_wrapper/8BP.h:351: void _8BP_colspall_2(int* collider, int* collided) 
+                            565 ;	---------------------------------
+                            566 ; Function _8BP_colspall_2
+                            567 ; ---------------------------------
+   014E                     568 __8BP_colspall_2::
+                            569 ;8BP_wrapper/8BP.h:353: _8BP_colspall_inv2(collided,collider);
+   014E C1            [10]  570 	pop	bc
+   014F E1            [10]  571 	pop	hl
+   0150 E5            [11]  572 	push	hl
+   0151 C5            [11]  573 	push	bc
+   0152 E5            [11]  574 	push	hl
+   0153 21 06 00      [10]  575 	ld	hl, #6
+   0156 39            [11]  576 	add	hl, sp
+   0157 4E            [ 7]  577 	ld	c, (hl)
+   0158 23            [ 6]  578 	inc	hl
+   0159 46            [ 7]  579 	ld	b, (hl)
+   015A C5            [11]  580 	push	bc
+   015B CDr29r01      [17]  581 	call	__8BP_colspall_inv2
+   015E F1            [10]  582 	pop	af
+   015F F1            [10]  583 	pop	af
+                            584 ;8BP_wrapper/8BP.h:354: }
+   0160 C9            [10]  585 	ret
+                            586 ;8BP_wrapper/8BP.h:356: void _8BP_locatesp_inv3(int x, int y, char sp)
+                            587 ;	---------------------------------
+                            588 ; Function _8BP_locatesp_inv3
+                            589 ; ---------------------------------
+   0161                     590 __8BP_locatesp_inv3::
+                            591 ;8BP_wrapper/8BP.h:365: __endasm;	
+   0161 3E 03         [ 7]  592 	ld	a, #3
+   0163 DD 21 02 00   [14]  593 	ld	ix,#2 ;posicion primer parametro 
+   0167 DD 39         [15]  594 	add ix,sp;
+   0169 CD 71 6C      [17]  595 	CALL	LOCATESP
+                            596 ;8BP_wrapper/8BP.h:367: }
+   016C C9            [10]  597 	ret
+                            598 ;8BP_wrapper/8BP.h:369: void _8BP_locatesp_3(char sp, int y, int x) 
+                            599 ;	---------------------------------
+                            600 ; Function _8BP_locatesp_3
+                            601 ; ---------------------------------
+   016D                     602 __8BP_locatesp_3::
+                            603 ;8BP_wrapper/8BP.h:371: _8BP_locatesp_inv3( x, y, sp);
+   016D FD 21 02 00   [14]  604 	ld	iy, #2
+   0171 FD 39         [15]  605 	add	iy, sp
+   0173 FD 7E 00      [19]  606 	ld	a, 0 (iy)
+   0176 F5            [11]  607 	push	af
+   0177 33            [ 6]  608 	inc	sp
+   0178 FD 23         [10]  609 	inc	iy
+   017A FD 6E 00      [19]  610 	ld	l, 0 (iy)
+   017D FD 66 01      [19]  611 	ld	h, 1 (iy)
+   0180 E5            [11]  612 	push	hl
+   0181 FD 23         [10]  613 	inc	iy
+   0183 FD 23         [10]  614 	inc	iy
+   0185 FD 6E 00      [19]  615 	ld	l, 0 (iy)
+   0188 FD 66 01      [19]  616 	ld	h, 1 (iy)
+   018B E5            [11]  617 	push	hl
+   018C CDr61r01      [17]  618 	call	__8BP_locatesp_inv3
+   018F F1            [10]  619 	pop	af
+   0190 F1            [10]  620 	pop	af
+   0191 33            [ 6]  621 	inc	sp
+                            622 ;8BP_wrapper/8BP.h:372: }
+   0192 C9            [10]  623 	ret
+                            624 ;8BP_wrapper/8BP.h:375: void _8BP_music_inv4(int speed, int song, int flag_repetition, int flag_c) 
+                            625 ;	---------------------------------
+                            626 ; Function _8BP_music_inv4
+                            627 ; ---------------------------------
+   0193                     628 __8BP_music_inv4::
+                            629 ;8BP_wrapper/8BP.h:386: __endasm;		
+   0193 3E 04         [ 7]  630 	ld	a, #4
+   0195 DD 21 02 00   [14]  631 	ld	ix,#2 ;posicion primer parametro 
+   0199 DD 39         [15]  632 	add ix,sp;
+   019B CD 58 6F      [17]  633 	CALL	MUSIC
+                            634 ;8BP_wrapper/8BP.h:387: }
+   019E C9            [10]  635 	ret
+                            636 ;8BP_wrapper/8BP.h:389: void _8BP_music_4(int flag_c, int flag_repetition,int song, int speed)  
+                            637 ;	---------------------------------
+                            638 ; Function _8BP_music_4
+                            639 ; ---------------------------------
+   019F                     640 __8BP_music_4::
+                            641 ;8BP_wrapper/8BP.h:391: _8BP_music_inv4(speed, song, flag_repetition, flag_c);
+   019F C1            [10]  642 	pop	bc
+   01A0 E1            [10]  643 	pop	hl
+   01A1 E5            [11]  644 	push	hl
+   01A2 C5            [11]  645 	push	bc
+   01A3 E5            [11]  646 	push	hl
+   01A4 FD 21 06 00   [14]  647 	ld	iy, #6
+   01A8 FD 39         [15]  648 	add	iy, sp
+   01AA FD 6E 00      [19]  649 	ld	l, 0 (iy)
+   01AD FD 66 01      [19]  650 	ld	h, 1 (iy)
+   01B0 E5            [11]  651 	push	hl
+   01B1 FD 23         [10]  652 	inc	iy
+   01B3 FD 23         [10]  653 	inc	iy
+   01B5 FD 6E 00      [19]  654 	ld	l, 0 (iy)
+   01B8 FD 66 01      [19]  655 	ld	h, 1 (iy)
+   01BB E5            [11]  656 	push	hl
+   01BC FD 23         [10]  657 	inc	iy
+   01BE FD 23         [10]  658 	inc	iy
+   01C0 FD 6E 00      [19]  659 	ld	l, 0 (iy)
+   01C3 FD 66 01      [19]  660 	ld	h, 1 (iy)
+   01C6 E5            [11]  661 	push	hl
+   01C7 CDr93r01      [17]  662 	call	__8BP_music_inv4
+   01CA F1            [10]  663 	pop	af
+   01CB F1            [10]  664 	pop	af
+   01CC F1            [10]  665 	pop	af
+   01CD F1            [10]  666 	pop	af
+                            667 ;8BP_wrapper/8BP.h:393: }
+   01CE C9            [10]  668 	ret
+                            669 ;8BP_wrapper/8BP.h:395: void _8BP_music()
+                            670 ;	---------------------------------
+                            671 ; Function _8BP_music
+                            672 ; ---------------------------------
+   01CF                     673 __8BP_music::
+                            674 ;8BP_wrapper/8BP.h:400: __endasm;		
+   01CF 3E 00         [ 7]  675 	ld	a, #0
+   01D1 CD 58 6F      [17]  676 	CALL	MUSIC
+                            677 ;8BP_wrapper/8BP.h:401: }
+   01D4 C9            [10]  678 	ret
+                            679 ;8BP_wrapper/8BP.h:403: void getDescriptor(char* desc,char *cad)
+                            680 ;	---------------------------------
+                            681 ; Function getDescriptor
+                            682 ; ---------------------------------
+   01D5                     683 _getDescriptor::
+                            684 ;8BP_wrapper/8BP.h:407: char len=strlen(cad);
+   01D5 21 04 00      [10]  685 	ld	hl, #4
+   01D8 39            [11]  686 	add	hl, sp
+   01D9 4E            [ 7]  687 	ld	c, (hl)
+   01DA 23            [ 6]  688 	inc	hl
+   01DB 46            [ 7]  689 	ld	b, (hl)
+   01DC C5            [11]  690 	push	bc
+   01DD CDr00r00      [17]  691 	call	_strlen
+   01E0 F1            [10]  692 	pop	af
+   01E1 4D            [ 4]  693 	ld	c, l
+                            694 ;8BP_wrapper/8BP.h:408: desc[0]=len;
+   01E2 D1            [10]  695 	pop	de
+   01E3 E1            [10]  696 	pop	hl
+   01E4 E5            [11]  697 	push	hl
+   01E5 D5            [11]  698 	push	de
+   01E6 71            [ 7]  699 	ld	(hl), c
+                            700 ;8BP_wrapper/8BP.h:410: p=desc+1;
+   01E7 23            [ 6]  701 	inc	hl
+                            702 ;8BP_wrapper/8BP.h:411: *p=cad;
+   01E8 FD 21 04 00   [14]  703 	ld	iy, #4
+   01EC FD 39         [15]  704 	add	iy, sp
+   01EE FD 4E 00      [19]  705 	ld	c, 0 (iy)
+   01F1 FD 7E 01      [19]  706 	ld	a, 1 (iy)
+   01F4 71            [ 7]  707 	ld	(hl), c
+   01F5 23            [ 6]  708 	inc	hl
+   01F6 77            [ 7]  709 	ld	(hl), a
+                            710 ;8BP_wrapper/8BP.h:414: }
+   01F7 C9            [10]  711 	ret
+                            712 ;8BP_wrapper/8BP.h:416: void _8BP_printat_inv(char *descriptor , int x, int y,int flag) 
+                            713 ;	---------------------------------
+                            714 ; Function _8BP_printat_inv
+                            715 ; ---------------------------------
+   01F8                     716 __8BP_printat_inv::
+                            717 ;8BP_wrapper/8BP.h:426: __endasm;			
+   01F8 3E 04         [ 7]  718 	ld	a, #4
+   01FA DD 21 02 00   [14]  719 	ld	ix,#2 ;posicion primer parametro 
+   01FE DD 39         [15]  720 	add ix,sp;
+   0200 CD 64 60      [17]  721 	CALL	PRINTAT
+                            722 ;8BP_wrapper/8BP.h:428: }
+   0203 C9            [10]  723 	ret
+                            724 ;8BP_wrapper/8BP.h:430: void _8BP_printat_4(int flag,int y,int x, char* cad)  
+                            725 ;	---------------------------------
+                            726 ; Function _8BP_printat_4
+                            727 ; ---------------------------------
+   0204                     728 __8BP_printat_4::
+   0204 F5            [11]  729 	push	af
+   0205 3B            [ 6]  730 	dec	sp
+                            731 ;8BP_wrapper/8BP.h:433: char descriptor[3]={0,0,0};
+   0206 21 00 00      [10]  732 	ld	hl, #0
+   0209 39            [11]  733 	add	hl, sp
+   020A EB            [ 4]  734 	ex	de, hl
+   020B AF            [ 4]  735 	xor	a, a
+   020C 12            [ 7]  736 	ld	(de), a
+   020D 4B            [ 4]  737 	ld	c, e
+   020E 42            [ 4]  738 	ld	b, d
+   020F 03            [ 6]  739 	inc	bc
+   0210 AF            [ 4]  740 	xor	a, a
+   0211 02            [ 7]  741 	ld	(bc), a
+   0212 6B            [ 4]  742 	ld	l, e
+   0213 62            [ 4]  743 	ld	h, d
+   0214 23            [ 6]  744 	inc	hl
+   0215 23            [ 6]  745 	inc	hl
+   0216 36 00         [10]  746 	ld	(hl), #0x00
+                            747 ;8BP_wrapper/8BP.h:434: char len=strlen(cad);
+   0218 C5            [11]  748 	push	bc
+   0219 21 0D 00      [10]  749 	ld	hl, #13
+   021C 39            [11]  750 	add	hl, sp
+   021D 4E            [ 7]  751 	ld	c, (hl)
+   021E 23            [ 6]  752 	inc	hl
+   021F 46            [ 7]  753 	ld	b, (hl)
+   0220 C5            [11]  754 	push	bc
+   0221 CDr00r00      [17]  755 	call	_strlen
+   0224 F1            [10]  756 	pop	af
+   0225 C1            [10]  757 	pop	bc
+   0226 7D            [ 4]  758 	ld	a, l
+                            759 ;8BP_wrapper/8BP.h:435: descriptor[0]=len;
+   0227 12            [ 7]  760 	ld	(de), a
+                            761 ;8BP_wrapper/8BP.h:437: p=descriptor+1;
+   0228 69            [ 4]  762 	ld	l, c
+   0229 60            [ 4]  763 	ld	h, b
+                            764 ;8BP_wrapper/8BP.h:438: *p=cad;  
+   022A FD 21 0B 00   [14]  765 	ld	iy, #11
+   022E FD 39         [15]  766 	add	iy, sp
+   0230 FD 4E 00      [19]  767 	ld	c, 0 (iy)
+   0233 FD 7E 01      [19]  768 	ld	a, 1 (iy)
+   0236 71            [ 7]  769 	ld	(hl), c
+   0237 23            [ 6]  770 	inc	hl
+   0238 77            [ 7]  771 	ld	(hl), a
+                            772 ;8BP_wrapper/8BP.h:441: _8BP_printat_inv(descriptor, x, y, flag);   
+   0239 FD 21 05 00   [14]  773 	ld	iy, #5
+   023D FD 39         [15]  774 	add	iy, sp
+   023F FD 6E 00      [19]  775 	ld	l, 0 (iy)
+   0242 FD 66 01      [19]  776 	ld	h, 1 (iy)
+   0245 E5            [11]  777 	push	hl
+   0246 FD 23         [10]  778 	inc	iy
+   0248 FD 23         [10]  779 	inc	iy
+   024A FD 6E 00      [19]  780 	ld	l, 0 (iy)
+   024D FD 66 01      [19]  781 	ld	h, 1 (iy)
+   0250 E5            [11]  782 	push	hl
+   0251 FD 23         [10]  783 	inc	iy
+   0253 FD 23         [10]  784 	inc	iy
+   0255 FD 6E 00      [19]  785 	ld	l, 0 (iy)
+   0258 FD 66 01      [19]  786 	ld	h, 1 (iy)
+   025B E5            [11]  787 	push	hl
+   025C D5            [11]  788 	push	de
+   025D CDrF8r01      [17]  789 	call	__8BP_printat_inv
+   0260 F1            [10]  790 	pop	af
+   0261 F1            [10]  791 	pop	af
+   0262 F1            [10]  792 	pop	af
+   0263 F1            [10]  793 	pop	af
+                            794 ;8BP_wrapper/8BP.h:443: } 
+   0264 F1            [10]  795 	pop	af
+   0265 33            [ 6]  796 	inc	sp
+   0266 C9            [10]  797 	ret
+                            798 ;8BP_wrapper/8BP.h:445: void _8BP_printsp_inv3(int x,int y, int sp)  
+                            799 ;	---------------------------------
+                            800 ; Function _8BP_printsp_inv3
+                            801 ; ---------------------------------
+   0267                     802 __8BP_printsp_inv3::
+                            803 ;8BP_wrapper/8BP.h:455: __endasm;	
+   0267 3E 03         [ 7]  804 	ld	a, #3 ; se envian 3 parametros
+   0269 DD 21 02 00   [14]  805 	ld	ix,#2 ;posicion primer parametro 
+   026D DD 39         [15]  806 	add ix,sp;
+   026F CD 94 6C      [17]  807 	CALL	PRINTSP
+                            808 ;8BP_wrapper/8BP.h:456: }
+   0272 C9            [10]  809 	ret
+                            810 ;8BP_wrapper/8BP.h:458: void _8BP_printsp_inv2(int bits, int sp) 
+                            811 ;	---------------------------------
+                            812 ; Function _8BP_printsp_inv2
+                            813 ; ---------------------------------
+   0273                     814 __8BP_printsp_inv2::
+                            815 ;8BP_wrapper/8BP.h:467: __endasm;	
+   0273 3E 02         [ 7]  816 	ld	a, #2
+   0275 DD 21 02 00   [14]  817 	ld	ix,#2 ;posicion primer parametro 
+   0279 DD 39         [15]  818 	add ix,sp;
+   027B CD 94 6C      [17]  819 	call	PRINTSP ;
+                            820 ;8BP_wrapper/8BP.h:469: }
+   027E C9            [10]  821 	ret
+                            822 ;8BP_wrapper/8BP.h:471: void _8BP_printsp_3(int sp, int y, int x)  
+                            823 ;	---------------------------------
+                            824 ; Function _8BP_printsp_3
+                            825 ; ---------------------------------
+   027F                     826 __8BP_printsp_3::
+                            827 ;8BP_wrapper/8BP.h:473: _8BP_printsp_inv3( x, y,  sp);
+   027F C1            [10]  828 	pop	bc
+   0280 E1            [10]  829 	pop	hl
+   0281 E5            [11]  830 	push	hl
+   0282 C5            [11]  831 	push	bc
+   0283 E5            [11]  832 	push	hl
+   0284 FD 21 06 00   [14]  833 	ld	iy, #6
+   0288 FD 39         [15]  834 	add	iy, sp
+   028A FD 6E 00      [19]  835 	ld	l, 0 (iy)
+   028D FD 66 01      [19]  836 	ld	h, 1 (iy)
+   0290 E5            [11]  837 	push	hl
+   0291 FD 23         [10]  838 	inc	iy
+   0293 FD 23         [10]  839 	inc	iy
+   0295 FD 6E 00      [19]  840 	ld	l, 0 (iy)
+   0298 FD 66 01      [19]  841 	ld	h, 1 (iy)
+   029B E5            [11]  842 	push	hl
+   029C CDr67r02      [17]  843 	call	__8BP_printsp_inv3
+   029F F1            [10]  844 	pop	af
+   02A0 F1            [10]  845 	pop	af
+   02A1 F1            [10]  846 	pop	af
+                            847 ;8BP_wrapper/8BP.h:474: }
+   02A2 C9            [10]  848 	ret
+                            849 ;8BP_wrapper/8BP.h:476: void _8BP_printsp_2(int sp,int bits_background)  
+                            850 ;	---------------------------------
+                            851 ; Function _8BP_printsp_2
+                            852 ; ---------------------------------
+   02A3                     853 __8BP_printsp_2::
+                            854 ;8BP_wrapper/8BP.h:478: _8BP_printsp_inv2( bits_background,  sp);
+   02A3 C1            [10]  855 	pop	bc
+   02A4 E1            [10]  856 	pop	hl
+   02A5 E5            [11]  857 	push	hl
+   02A6 C5            [11]  858 	push	bc
+   02A7 E5            [11]  859 	push	hl
+   02A8 21 06 00      [10]  860 	ld	hl, #6
+   02AB 39            [11]  861 	add	hl, sp
+   02AC 4E            [ 7]  862 	ld	c, (hl)
+   02AD 23            [ 6]  863 	inc	hl
+   02AE 46            [ 7]  864 	ld	b, (hl)
+   02AF C5            [11]  865 	push	bc
+   02B0 CDr73r02      [17]  866 	call	__8BP_printsp_inv2
+   02B3 F1            [10]  867 	pop	af
+   02B4 F1            [10]  868 	pop	af
+                            869 ;8BP_wrapper/8BP.h:479: }
+   02B5 C9            [10]  870 	ret
+                            871 ;8BP_wrapper/8BP.h:481: void _8BP_printsp_1(int sp)  
+                            872 ;	---------------------------------
+                            873 ; Function _8BP_printsp_1
+                            874 ; ---------------------------------
+   02B6                     875 __8BP_printsp_1::
+                            876 ;8BP_wrapper/8BP.h:489: __endasm;	
+   02B6 3E 01         [ 7]  877 	ld	a, #1
+   02B8 DD 21 02 00   [14]  878 	ld	ix,#2 ;posicion primer parametro 
+   02BC DD 39         [15]  879 	add ix,sp;
+   02BE CD 94 6C      [17]  880 	CALL	PRINTSP
+                            881 ;8BP_wrapper/8BP.h:492: }
+   02C1 C9            [10]  882 	ret
+                            883 ;8BP_wrapper/8BP.h:494: void _8BP_printspall_inv4(int flag_sync,int flag_anima, int fin, int ini)
+                            884 ;	---------------------------------
+                            885 ; Function _8BP_printspall_inv4
+                            886 ; ---------------------------------
+   02C2                     887 __8BP_printspall_inv4::
+                            888 ;8BP_wrapper/8BP.h:504: __endasm;	
+   02C2 3E 04         [ 7]  889 	ld	a, #4
+   02C4 DD 21 02 00   [14]  890 	ld	ix,#2 ;posicion primer parametro 
+   02C8 DD 39         [15]  891 	add ix,sp;
+   02CA CD A1 62      [17]  892 	CALL	PRINTSPALL
+                            893 ;8BP_wrapper/8BP.h:505: }
+   02CD C9            [10]  894 	ret
+                            895 ;8BP_wrapper/8BP.h:507: void _8BP_printspall_4(int ini, int fin, int flag_anima, int flag_sync)  
+                            896 ;	---------------------------------
+                            897 ; Function _8BP_printspall_4
+                            898 ; ---------------------------------
+   02CE                     899 __8BP_printspall_4::
+                            900 ;8BP_wrapper/8BP.h:509: _8BP_printspall_inv4(flag_sync, flag_anima, fin, ini);
+   02CE C1            [10]  901 	pop	bc
+   02CF E1            [10]  902 	pop	hl
+   02D0 E5            [11]  903 	push	hl
+   02D1 C5            [11]  904 	push	bc
+   02D2 E5            [11]  905 	push	hl
+   02D3 FD 21 06 00   [14]  906 	ld	iy, #6
+   02D7 FD 39         [15]  907 	add	iy, sp
+   02D9 FD 6E 00      [19]  908 	ld	l, 0 (iy)
+   02DC FD 66 01      [19]  909 	ld	h, 1 (iy)
+   02DF E5            [11]  910 	push	hl
+   02E0 FD 23         [10]  911 	inc	iy
+   02E2 FD 23         [10]  912 	inc	iy
+   02E4 FD 6E 00      [19]  913 	ld	l, 0 (iy)
+   02E7 FD 66 01      [19]  914 	ld	h, 1 (iy)
+   02EA E5            [11]  915 	push	hl
+   02EB FD 23         [10]  916 	inc	iy
+   02ED FD 23         [10]  917 	inc	iy
+   02EF FD 6E 00      [19]  918 	ld	l, 0 (iy)
+   02F2 FD 66 01      [19]  919 	ld	h, 1 (iy)
+   02F5 E5            [11]  920 	push	hl
+   02F6 CDrC2r02      [17]  921 	call	__8BP_printspall_inv4
+   02F9 F1            [10]  922 	pop	af
+   02FA F1            [10]  923 	pop	af
+   02FB F1            [10]  924 	pop	af
+   02FC F1            [10]  925 	pop	af
+                            926 ;8BP_wrapper/8BP.h:510: }
+   02FD C9            [10]  927 	ret
+                            928 ;8BP_wrapper/8BP.h:512: void _8BP_printspall_1(int order_type)  
+                            929 ;	---------------------------------
+                            930 ; Function _8BP_printspall_1
+                            931 ; ---------------------------------
+   02FE                     932 __8BP_printspall_1::
+                            933 ;8BP_wrapper/8BP.h:519: __endasm;	
+   02FE 3E 01         [ 7]  934 	ld	a, #1
+   0300 DD 21 02 00   [14]  935 	ld	ix,#2 ;posicion primer parametro 
+   0304 DD 39         [15]  936 	add ix,sp;
+   0306 CD A1 62      [17]  937 	CALL	PRINTSPALL
+                            938 ;8BP_wrapper/8BP.h:520: }
+   0309 C9            [10]  939 	ret
+                            940 ;8BP_wrapper/8BP.h:522: void _8BP_printspall() 
+                            941 ;	---------------------------------
+                            942 ; Function _8BP_printspall
+                            943 ; ---------------------------------
+   030A                     944 __8BP_printspall::
+                            945 ;8BP_wrapper/8BP.h:527: __endasm;	
+   030A 3E 00         [ 7]  946 	ld	a, #0
+   030C CD A1 62      [17]  947 	CALL	PRINTSPALL
+                            948 ;8BP_wrapper/8BP.h:528: }
+   030F C9            [10]  949 	ret
+                            950 ;8BP_wrapper/8BP.h:530: void _8BP_routeall()
+                            951 ;	---------------------------------
+                            952 ; Function _8BP_routeall
+                            953 ; ---------------------------------
+   0310                     954 __8BP_routeall::
+                            955 ;8BP_wrapper/8BP.h:535: __endasm;	
+   0310 3E 00         [ 7]  956 	ld	a, #0;
+   0312 CD D6 65      [17]  957 	CALL	ROUTEALL
+                            958 ;8BP_wrapper/8BP.h:537: }
+   0315 C9            [10]  959 	ret
+                            960 ;8BP_wrapper/8BP.h:540: void _8BP_routesp_inv2(int pasos, int sp) 
+                            961 ;	---------------------------------
+                            962 ; Function _8BP_routesp_inv2
+                            963 ; ---------------------------------
+   0316                     964 __8BP_routesp_inv2::
+                            965 ;8BP_wrapper/8BP.h:548: __endasm;	
+   0316 3E 02         [ 7]  966 	ld	a, #2 ;
+   0318 DD 21 02 00   [14]  967 	ld	ix,#2 ;posicion primer parametro 
+   031C DD 39         [15]  968 	add ix,sp;
+   031E CD F7 65      [17]  969 	CALL	ROUTESP
+                            970 ;8BP_wrapper/8BP.h:549: }
+   0321 C9            [10]  971 	ret
+                            972 ;8BP_wrapper/8BP.h:551: void _8BP_routesp_2(int sp, int pasos)  
+                            973 ;	---------------------------------
+                            974 ; Function _8BP_routesp_2
+                            975 ; ---------------------------------
+   0322                     976 __8BP_routesp_2::
+                            977 ;8BP_wrapper/8BP.h:553: _8BP_routesp_inv2(pasos,sp) ;
+   0322 C1            [10]  978 	pop	bc
+   0323 E1            [10]  979 	pop	hl
+   0324 E5            [11]  980 	push	hl
+   0325 C5            [11]  981 	push	bc
+   0326 E5            [11]  982 	push	hl
+   0327 21 06 00      [10]  983 	ld	hl, #6
+   032A 39            [11]  984 	add	hl, sp
+   032B 4E            [ 7]  985 	ld	c, (hl)
+   032C 23            [ 6]  986 	inc	hl
+   032D 46            [ 7]  987 	ld	b, (hl)
+   032E C5            [11]  988 	push	bc
+   032F CDr16r03      [17]  989 	call	__8BP_routesp_inv2
+   0332 F1            [10]  990 	pop	af
+   0333 F1            [10]  991 	pop	af
+                            992 ;8BP_wrapper/8BP.h:554: }
+   0334 C9            [10]  993 	ret
+                            994 ;8BP_wrapper/8BP.h:556: void _8BP_routesp_1(int sp)  
+                            995 ;	---------------------------------
+                            996 ; Function _8BP_routesp_1
+                            997 ; ---------------------------------
+   0335                     998 __8BP_routesp_1::
+                            999 ;8BP_wrapper/8BP.h:563: __endasm;	
+   0335 3E 01         [ 7] 1000 	ld	a, #1 ;
+   0337 DD 21 02 00   [14] 1001 	ld	ix,#2 ;posicion primer parametro 
+   033B DD 39         [15] 1002 	add ix,sp;
+   033D CD F7 65      [17] 1003 	CALL	ROUTESP
+                           1004 ;8BP_wrapper/8BP.h:565: }
+   0340 C9            [10] 1005 	ret
+                           1006 ;8BP_wrapper/8BP.h:567: void _8BP_setlimits_inv4(int ymax, int ymin, int xmax,int xmin)
+                           1007 ;	---------------------------------
+                           1008 ; Function _8BP_setlimits_inv4
+                           1009 ; ---------------------------------
+   0341                    1010 __8BP_setlimits_inv4::
+                           1011 ;8BP_wrapper/8BP.h:574: __endasm;	
+   0341 3E 04         [ 7] 1012 	ld	a, #4 ;
+   0343 DD 21 02 00   [14] 1013 	ld	ix,#2 ;posicion primer parametro 
+   0347 DD 39         [15] 1014 	add ix,sp;
+   0349 CD 70 68      [17] 1015 	CALL	SETLIMITS
+                           1016 ;8BP_wrapper/8BP.h:577: }
+   034C C9            [10] 1017 	ret
+                           1018 ;8BP_wrapper/8BP.h:579: void _8BP_setlimits_4(int xmin,int xmax, int ymin, int ymax)
+                           1019 ;	---------------------------------
+                           1020 ; Function _8BP_setlimits_4
+                           1021 ; ---------------------------------
+   034D                    1022 __8BP_setlimits_4::
+                           1023 ;8BP_wrapper/8BP.h:581: _8BP_setlimits_inv4( ymax,  ymin,  xmax, xmin);
+   034D C1            [10] 1024 	pop	bc
+   034E E1            [10] 1025 	pop	hl
+   034F E5            [11] 1026 	push	hl
+   0350 C5            [11] 1027 	push	bc
+   0351 E5            [11] 1028 	push	hl
+   0352 FD 21 06 00   [14] 1029 	ld	iy, #6
+   0356 FD 39         [15] 1030 	add	iy, sp
+   0358 FD 6E 00      [19] 1031 	ld	l, 0 (iy)
+   035B FD 66 01      [19] 1032 	ld	h, 1 (iy)
+   035E E5            [11] 1033 	push	hl
+   035F FD 23         [10] 1034 	inc	iy
+   0361 FD 23         [10] 1035 	inc	iy
+   0363 FD 6E 00      [19] 1036 	ld	l, 0 (iy)
+   0366 FD 66 01      [19] 1037 	ld	h, 1 (iy)
+   0369 E5            [11] 1038 	push	hl
+   036A FD 23         [10] 1039 	inc	iy
+   036C FD 23         [10] 1040 	inc	iy
+   036E FD 6E 00      [19] 1041 	ld	l, 0 (iy)
+   0371 FD 66 01      [19] 1042 	ld	h, 1 (iy)
+   0374 E5            [11] 1043 	push	hl
+   0375 CDr41r03      [17] 1044 	call	__8BP_setlimits_inv4
+   0378 F1            [10] 1045 	pop	af
+   0379 F1            [10] 1046 	pop	af
+   037A F1            [10] 1047 	pop	af
+   037B F1            [10] 1048 	pop	af
+                           1049 ;8BP_wrapper/8BP.h:582: }
+   037C C9            [10] 1050 	ret
+                           1051 ;8BP_wrapper/8BP.h:584: void _8BP_setupsp_inv3(int value,int param, int sp) 
+                           1052 ;	---------------------------------
+                           1053 ; Function _8BP_setupsp_inv3
+                           1054 ; ---------------------------------
+   037D                    1055 __8BP_setupsp_inv3::
+                           1056 ;8BP_wrapper/8BP.h:593: __endasm;	
+   037D 3E 03         [ 7] 1057 	ld	a, #3 ; se envian 3 parametros
+   037F DD 21 02 00   [14] 1058 	ld	ix,#2 ;posicion primer parametro 
+   0383 DD 39         [15] 1059 	add ix,sp;
+   0385 CD 01 71      [17] 1060 	CALL	SETUPSP
+                           1061 ;8BP_wrapper/8BP.h:594: }
+   0388 C9            [10] 1062 	ret
+                           1063 ;8BP_wrapper/8BP.h:596: void _8BP_setupsp_inv4(int value2,int value1,int param, int sp) 
+                           1064 ;	---------------------------------
+                           1065 ; Function _8BP_setupsp_inv4
+                           1066 ; ---------------------------------
+   0389                    1067 __8BP_setupsp_inv4::
+                           1068 ;8BP_wrapper/8BP.h:606: __endasm;	
+   0389 3E 04         [ 7] 1069 	ld	a, #4 ;
+   038B DD 21 02 00   [14] 1070 	ld	ix,#2 ;posicion primer parametro 
+   038F DD 39         [15] 1071 	add ix,sp;
+   0391 CD 01 71      [17] 1072 	CALL	SETUPSP
+                           1073 ;8BP_wrapper/8BP.h:607: }
+   0394 C9            [10] 1074 	ret
+                           1075 ;8BP_wrapper/8BP.h:609: void _8BP_setupsp_3(int sp,int param, int value)  
+                           1076 ;	---------------------------------
+                           1077 ; Function _8BP_setupsp_3
+                           1078 ; ---------------------------------
+   0395                    1079 __8BP_setupsp_3::
+                           1080 ;8BP_wrapper/8BP.h:611: _8BP_setupsp_inv3(value,param, sp);
+   0395 C1            [10] 1081 	pop	bc
+   0396 E1            [10] 1082 	pop	hl
+   0397 E5            [11] 1083 	push	hl
+   0398 C5            [11] 1084 	push	bc
+   0399 E5            [11] 1085 	push	hl
+   039A FD 21 06 00   [14] 1086 	ld	iy, #6
+   039E FD 39         [15] 1087 	add	iy, sp
+   03A0 FD 6E 00      [19] 1088 	ld	l, 0 (iy)
+   03A3 FD 66 01      [19] 1089 	ld	h, 1 (iy)
+   03A6 E5            [11] 1090 	push	hl
+   03A7 FD 23         [10] 1091 	inc	iy
+   03A9 FD 23         [10] 1092 	inc	iy
+   03AB FD 6E 00      [19] 1093 	ld	l, 0 (iy)
+   03AE FD 66 01      [19] 1094 	ld	h, 1 (iy)
+   03B1 E5            [11] 1095 	push	hl
+   03B2 CDr7Dr03      [17] 1096 	call	__8BP_setupsp_inv3
+   03B5 F1            [10] 1097 	pop	af
+   03B6 F1            [10] 1098 	pop	af
+   03B7 F1            [10] 1099 	pop	af
+                           1100 ;8BP_wrapper/8BP.h:612: }
+   03B8 C9            [10] 1101 	ret
+                           1102 ;8BP_wrapper/8BP.h:614: void _8BP_setupsp_4(int sp,int param, int value1,int value2) 
+                           1103 ;	---------------------------------
+                           1104 ; Function _8BP_setupsp_4
+                           1105 ; ---------------------------------
+   03B9                    1106 __8BP_setupsp_4::
+                           1107 ;8BP_wrapper/8BP.h:616: _8BP_setupsp_inv4(value2,value1,param, sp);
+   03B9 C1            [10] 1108 	pop	bc
+   03BA E1            [10] 1109 	pop	hl
+   03BB E5            [11] 1110 	push	hl
+   03BC C5            [11] 1111 	push	bc
+   03BD E5            [11] 1112 	push	hl
+   03BE FD 21 06 00   [14] 1113 	ld	iy, #6
+   03C2 FD 39         [15] 1114 	add	iy, sp
+   03C4 FD 6E 00      [19] 1115 	ld	l, 0 (iy)
+   03C7 FD 66 01      [19] 1116 	ld	h, 1 (iy)
+   03CA E5            [11] 1117 	push	hl
+   03CB FD 23         [10] 1118 	inc	iy
+   03CD FD 23         [10] 1119 	inc	iy
+   03CF FD 6E 00      [19] 1120 	ld	l, 0 (iy)
+   03D2 FD 66 01      [19] 1121 	ld	h, 1 (iy)
+   03D5 E5            [11] 1122 	push	hl
+   03D6 FD 23         [10] 1123 	inc	iy
+   03D8 FD 23         [10] 1124 	inc	iy
+   03DA FD 6E 00      [19] 1125 	ld	l, 0 (iy)
+   03DD FD 66 01      [19] 1126 	ld	h, 1 (iy)
+   03E0 E5            [11] 1127 	push	hl
+   03E1 CDr89r03      [17] 1128 	call	__8BP_setupsp_inv4
+   03E4 F1            [10] 1129 	pop	af
+   03E5 F1            [10] 1130 	pop	af
+   03E6 F1            [10] 1131 	pop	af
+   03E7 F1            [10] 1132 	pop	af
+                           1133 ;8BP_wrapper/8BP.h:617: }
+   03E8 C9            [10] 1134 	ret
+                           1135 ;8BP_wrapper/8BP.h:620: void _8BP_stars_inv5(int dx, int dy, int color, int num_stars,int star_ini)
+                           1136 ;	---------------------------------
+                           1137 ; Function _8BP_stars_inv5
+                           1138 ; ---------------------------------
+   03E9                    1139 __8BP_stars_inv5::
+                           1140 ;8BP_wrapper/8BP.h:631: __endasm;	
+   03E9 3E 05         [ 7] 1141 	ld	a, #5
+   03EB DD 21 02 00   [14] 1142 	ld	ix,#2 ;posicion primer parametro 
+   03EF DD 39         [15] 1143 	add ix,sp;
+   03F1 CD 3C 74      [17] 1144 	CALL	STARS
+                           1145 ;8BP_wrapper/8BP.h:632: }
+   03F4 C9            [10] 1146 	ret
+                           1147 ;8BP_wrapper/8BP.h:634: void _8BP_stars_5(int star_ini, int num_stars,int color, int dy, int dx)  
+                           1148 ;	---------------------------------
+                           1149 ; Function _8BP_stars_5
+                           1150 ; ---------------------------------
+   03F5                    1151 __8BP_stars_5::
+                           1152 ;8BP_wrapper/8BP.h:636: _8BP_stars_inv5(dx, dy, color, num_stars,star_ini);
+   03F5 C1            [10] 1153 	pop	bc
+   03F6 E1            [10] 1154 	pop	hl
+   03F7 E5            [11] 1155 	push	hl
+   03F8 C5            [11] 1156 	push	bc
+   03F9 E5            [11] 1157 	push	hl
+   03FA FD 21 06 00   [14] 1158 	ld	iy, #6
+   03FE FD 39         [15] 1159 	add	iy, sp
+   0400 FD 6E 00      [19] 1160 	ld	l, 0 (iy)
+   0403 FD 66 01      [19] 1161 	ld	h, 1 (iy)
+   0406 E5            [11] 1162 	push	hl
+   0407 FD 23         [10] 1163 	inc	iy
+   0409 FD 23         [10] 1164 	inc	iy
+   040B FD 6E 00      [19] 1165 	ld	l, 0 (iy)
+   040E FD 66 01      [19] 1166 	ld	h, 1 (iy)
+   0411 E5            [11] 1167 	push	hl
+   0412 FD 23         [10] 1168 	inc	iy
+   0414 FD 23         [10] 1169 	inc	iy
+   0416 FD 6E 00      [19] 1170 	ld	l, 0 (iy)
+   0419 FD 66 01      [19] 1171 	ld	h, 1 (iy)
+   041C E5            [11] 1172 	push	hl
+   041D FD 23         [10] 1173 	inc	iy
+   041F FD 23         [10] 1174 	inc	iy
+   0421 FD 6E 00      [19] 1175 	ld	l, 0 (iy)
+   0424 FD 66 01      [19] 1176 	ld	h, 1 (iy)
+   0427 E5            [11] 1177 	push	hl
+   0428 CDrE9r03      [17] 1178 	call	__8BP_stars_inv5
+   042B 21 0A 00      [10] 1179 	ld	hl, #10
+   042E 39            [11] 1180 	add	hl, sp
+   042F F9            [ 6] 1181 	ld	sp, hl
+                           1182 ;8BP_wrapper/8BP.h:637: }	
+   0430 C9            [10] 1183 	ret
+                           1184 ;8BP_wrapper/8BP.h:639: void _8BP_stars() 
+                           1185 ;	---------------------------------
+                           1186 ; Function _8BP_stars
+                           1187 ; ---------------------------------
+   0431                    1188 __8BP_stars::
+                           1189 ;8BP_wrapper/8BP.h:644: __endasm;	
+   0431 3E 00         [ 7] 1190 	ld	a, #0
+   0433 CD 3C 74      [17] 1191 	CALL	STARS
+                           1192 ;8BP_wrapper/8BP.h:646: }
+   0436 C9            [10] 1193 	ret
+                           1194 ;8BP_wrapper/8BP.h:648: void _8BP_layout_inv3(char* descriptor, int x,int y)
+                           1195 ;	---------------------------------
+                           1196 ; Function _8BP_layout_inv3
+                           1197 ; ---------------------------------
+   0437                    1198 __8BP_layout_inv3::
+                           1199 ;8BP_wrapper/8BP.h:655: __endasm;
+   0437 3E 03         [ 7] 1200 	ld	a,#3
+   0439 DD 21 02 00   [14] 1201 	ld	ix,#2 ;posicion primer parametro 
+   043D DD 39         [15] 1202 	add ix,sp;
+   043F CD 62 70      [17] 1203 	CALL	LAYOUT
+                           1204 ;8BP_wrapper/8BP.h:657: }
+   0442 C9            [10] 1205 	ret
+                           1206 ;8BP_wrapper/8BP.h:659: void _8BP_layout_3(int y, int x, char* cad)
+                           1207 ;	---------------------------------
+                           1208 ; Function _8BP_layout_3
+                           1209 ; ---------------------------------
+   0443                    1210 __8BP_layout_3::
+   0443 F5            [11] 1211 	push	af
+   0444 3B            [ 6] 1212 	dec	sp
+                           1213 ;8BP_wrapper/8BP.h:662: char descriptor[3]={0,0,0};
+   0445 21 00 00      [10] 1214 	ld	hl, #0
+   0448 39            [11] 1215 	add	hl, sp
+   0449 EB            [ 4] 1216 	ex	de, hl
+   044A AF            [ 4] 1217 	xor	a, a
+   044B 12            [ 7] 1218 	ld	(de), a
+   044C 4B            [ 4] 1219 	ld	c, e
+   044D 42            [ 4] 1220 	ld	b, d
+   044E 03            [ 6] 1221 	inc	bc
+   044F AF            [ 4] 1222 	xor	a, a
+   0450 02            [ 7] 1223 	ld	(bc), a
+   0451 6B            [ 4] 1224 	ld	l, e
+   0452 62            [ 4] 1225 	ld	h, d
+   0453 23            [ 6] 1226 	inc	hl
+   0454 23            [ 6] 1227 	inc	hl
+   0455 36 00         [10] 1228 	ld	(hl), #0x00
+                           1229 ;8BP_wrapper/8BP.h:663: char len=strlen(cad);
+   0457 C5            [11] 1230 	push	bc
+   0458 21 0B 00      [10] 1231 	ld	hl, #11
+   045B 39            [11] 1232 	add	hl, sp
+   045C 4E            [ 7] 1233 	ld	c, (hl)
+   045D 23            [ 6] 1234 	inc	hl
+   045E 46            [ 7] 1235 	ld	b, (hl)
+   045F C5            [11] 1236 	push	bc
+   0460 CDr00r00      [17] 1237 	call	_strlen
+   0463 F1            [10] 1238 	pop	af
+   0464 C1            [10] 1239 	pop	bc
+   0465 7D            [ 4] 1240 	ld	a, l
+                           1241 ;8BP_wrapper/8BP.h:664: descriptor[0]=len;
+   0466 12            [ 7] 1242 	ld	(de), a
+                           1243 ;8BP_wrapper/8BP.h:666: p=descriptor+1;
+   0467 69            [ 4] 1244 	ld	l, c
+   0468 60            [ 4] 1245 	ld	h, b
+                           1246 ;8BP_wrapper/8BP.h:667: *p=cad;  
+   0469 FD 21 09 00   [14] 1247 	ld	iy, #9
+   046D FD 39         [15] 1248 	add	iy, sp
+   046F FD 4E 00      [19] 1249 	ld	c, 0 (iy)
+   0472 FD 7E 01      [19] 1250 	ld	a, 1 (iy)
+   0475 71            [ 7] 1251 	ld	(hl), c
+   0476 23            [ 6] 1252 	inc	hl
+   0477 77            [ 7] 1253 	ld	(hl), a
+                           1254 ;8BP_wrapper/8BP.h:669: _8BP_layout_inv3(descriptor, x,  y );
+   0478 FD 21 05 00   [14] 1255 	ld	iy, #5
+   047C FD 39         [15] 1256 	add	iy, sp
+   047E FD 6E 00      [19] 1257 	ld	l, 0 (iy)
+   0481 FD 66 01      [19] 1258 	ld	h, 1 (iy)
+   0484 E5            [11] 1259 	push	hl
+   0485 FD 23         [10] 1260 	inc	iy
+   0487 FD 23         [10] 1261 	inc	iy
+   0489 FD 6E 00      [19] 1262 	ld	l, 0 (iy)
+   048C FD 66 01      [19] 1263 	ld	h, 1 (iy)
+   048F E5            [11] 1264 	push	hl
+   0490 D5            [11] 1265 	push	de
+   0491 CDr37r04      [17] 1266 	call	__8BP_layout_inv3
+   0494 F1            [10] 1267 	pop	af
+   0495 F1            [10] 1268 	pop	af
+   0496 F1            [10] 1269 	pop	af
+                           1270 ;8BP_wrapper/8BP.h:671: }
+   0497 F1            [10] 1271 	pop	af
+   0498 33            [ 6] 1272 	inc	sp
+   0499 C9            [10] 1273 	ret
+                           1274 ;8BP_wrapper/8BP.h:673: void _8BP_map2sp_inv2(int x, int y)
+                           1275 ;	---------------------------------
+                           1276 ; Function _8BP_map2sp_inv2
+                           1277 ; ---------------------------------
+   049A                    1278 __8BP_map2sp_inv2::
+                           1279 ;8BP_wrapper/8BP.h:680: __endasm;	
+   049A 3E 02         [ 7] 1280 	ld	a,#2
+   049C DD 21 02 00   [14] 1281 	ld	ix,#2 ;posicion primer parametro 
+   04A0 DD 39         [15] 1282 	add ix,sp;
+   04A2 CD 99 64      [17] 1283 	CALL	MAP2SP
+                           1284 ;8BP_wrapper/8BP.h:681: }
+   04A5 C9            [10] 1285 	ret
+                           1286 ;8BP_wrapper/8BP.h:682: void _8BP_map2sp_2(int y, int x)
+                           1287 ;	---------------------------------
+                           1288 ; Function _8BP_map2sp_2
+                           1289 ; ---------------------------------
+   04A6                    1290 __8BP_map2sp_2::
+                           1291 ;8BP_wrapper/8BP.h:685: _8BP_map2sp_inv2(x,y);
+   04A6 C1            [10] 1292 	pop	bc
+   04A7 E1            [10] 1293 	pop	hl
+   04A8 E5            [11] 1294 	push	hl
+   04A9 C5            [11] 1295 	push	bc
+   04AA E5            [11] 1296 	push	hl
+   04AB 21 06 00      [10] 1297 	ld	hl, #6
+   04AE 39            [11] 1298 	add	hl, sp
+   04AF 4E            [ 7] 1299 	ld	c, (hl)
+   04B0 23            [ 6] 1300 	inc	hl
+   04B1 46            [ 7] 1301 	ld	b, (hl)
+   04B2 C5            [11] 1302 	push	bc
+   04B3 CDr9Ar04      [17] 1303 	call	__8BP_map2sp_inv2
+   04B6 F1            [10] 1304 	pop	af
+   04B7 F1            [10] 1305 	pop	af
+                           1306 ;8BP_wrapper/8BP.h:686: }
+   04B8 C9            [10] 1307 	ret
+                           1308 ;8BP_wrapper/8BP.h:688: void _8BP_map2sp_1(unsigned char status)
+                           1309 ;	---------------------------------
+                           1310 ; Function _8BP_map2sp_1
+                           1311 ; ---------------------------------
+   04B9                    1312 __8BP_map2sp_1::
+                           1313 ;8BP_wrapper/8BP.h:695: __endasm;	
+   04B9 3E 01         [ 7] 1314 	ld	a,#1
+   04BB DD 21 02 00   [14] 1315 	ld	ix,#2 ;posicion primer parametro 
+   04BF DD 39         [15] 1316 	add ix,sp;
+   04C1 CD 99 64      [17] 1317 	CALL	MAP2SP
+                           1318 ;8BP_wrapper/8BP.h:697: }
+   04C4 C9            [10] 1319 	ret
+                           1320 ;8BP_wrapper/8BP.h:699: void _8BP_mover_inv3(int dx,int dy,int sp)
+                           1321 ;	---------------------------------
+                           1322 ; Function _8BP_mover_inv3
+                           1323 ; ---------------------------------
+   04C5                    1324 __8BP_mover_inv3::
+                           1325 ;8BP_wrapper/8BP.h:706: __endasm;	
+   04C5 3E 03         [ 7] 1326 	ld	a,#3
+   04C7 DD 21 02 00   [14] 1327 	ld	ix,#2 ;posicion primer parametro 
+   04CB DD 39         [15] 1328 	add ix,sp;
+   04CD CD 3E 75      [17] 1329 	CALL	MOVER
+                           1330 ;8BP_wrapper/8BP.h:708: }
+   04D0 C9            [10] 1331 	ret
+                           1332 ;8BP_wrapper/8BP.h:709: void _8BP_mover_3(int sp, int dy,int dx)
+                           1333 ;	---------------------------------
+                           1334 ; Function _8BP_mover_3
+                           1335 ; ---------------------------------
+   04D1                    1336 __8BP_mover_3::
+                           1337 ;8BP_wrapper/8BP.h:711: _8BP_mover_inv3(dx,dy,sp);
+   04D1 C1            [10] 1338 	pop	bc
+   04D2 E1            [10] 1339 	pop	hl
+   04D3 E5            [11] 1340 	push	hl
+   04D4 C5            [11] 1341 	push	bc
+   04D5 E5            [11] 1342 	push	hl
+   04D6 FD 21 06 00   [14] 1343 	ld	iy, #6
+   04DA FD 39         [15] 1344 	add	iy, sp
+   04DC FD 6E 00      [19] 1345 	ld	l, 0 (iy)
+   04DF FD 66 01      [19] 1346 	ld	h, 1 (iy)
+   04E2 E5            [11] 1347 	push	hl
+   04E3 FD 23         [10] 1348 	inc	iy
+   04E5 FD 23         [10] 1349 	inc	iy
+   04E7 FD 6E 00      [19] 1350 	ld	l, 0 (iy)
+   04EA FD 66 01      [19] 1351 	ld	h, 1 (iy)
+   04ED E5            [11] 1352 	push	hl
+   04EE CDrC5r04      [17] 1353 	call	__8BP_mover_inv3
+   04F1 F1            [10] 1354 	pop	af
+   04F2 F1            [10] 1355 	pop	af
+   04F3 F1            [10] 1356 	pop	af
+                           1357 ;8BP_wrapper/8BP.h:712: }
+   04F4 C9            [10] 1358 	ret
+                           1359 ;8BP_wrapper/8BP.h:713: void _8BP_mover_1(int sp)
+                           1360 ;	---------------------------------
+                           1361 ; Function _8BP_mover_1
+                           1362 ; ---------------------------------
+   04F5                    1363 __8BP_mover_1::
+                           1364 ;8BP_wrapper/8BP.h:720: __endasm;	
+   04F5 3E 01         [ 7] 1365 	ld	a,#1
+   04F7 DD 21 02 00   [14] 1366 	ld	ix,#2 ;posicion primer parametro 
+   04FB DD 39         [15] 1367 	add ix,sp;
+   04FD CD 3E 75      [17] 1368 	CALL	MOVER
+                           1369 ;8BP_wrapper/8BP.h:723: }
+   0500 C9            [10] 1370 	ret
+                           1371 ;8BP_wrapper/8BP.h:724: void _8BP_moverall_inv2(int dx, int dy)
+                           1372 ;	---------------------------------
+                           1373 ; Function _8BP_moverall_inv2
+                           1374 ; ---------------------------------
+   0501                    1375 __8BP_moverall_inv2::
+                           1376 ;8BP_wrapper/8BP.h:731: __endasm;	
+   0501 3E 02         [ 7] 1377 	ld	a,#2
+   0503 DD 21 02 00   [14] 1378 	ld	ix,#2 ;posicion primer parametro 
+   0507 DD 39         [15] 1379 	add ix,sp;
+   0509 CD F0 76      [17] 1380 	CALL	MOVERALL
+                           1381 ;8BP_wrapper/8BP.h:733: }
+   050C C9            [10] 1382 	ret
+                           1383 ;8BP_wrapper/8BP.h:734: void _8BP_moverall_2(int dy, int dx)
+                           1384 ;	---------------------------------
+                           1385 ; Function _8BP_moverall_2
+                           1386 ; ---------------------------------
+   050D                    1387 __8BP_moverall_2::
+                           1388 ;8BP_wrapper/8BP.h:736: _8BP_moverall_2(dx,dy);
+   050D C1            [10] 1389 	pop	bc
+   050E E1            [10] 1390 	pop	hl
+   050F E5            [11] 1391 	push	hl
+   0510 C5            [11] 1392 	push	bc
+   0511 E5            [11] 1393 	push	hl
+   0512 21 06 00      [10] 1394 	ld	hl, #6
+   0515 39            [11] 1395 	add	hl, sp
+   0516 4E            [ 7] 1396 	ld	c, (hl)
+   0517 23            [ 6] 1397 	inc	hl
+   0518 46            [ 7] 1398 	ld	b, (hl)
+   0519 C5            [11] 1399 	push	bc
+   051A CDr0Dr05      [17] 1400 	call	__8BP_moverall_2
+   051D F1            [10] 1401 	pop	af
+   051E F1            [10] 1402 	pop	af
+                           1403 ;8BP_wrapper/8BP.h:737: }
+   051F C9            [10] 1404 	ret
+                           1405 ;8BP_wrapper/8BP.h:739: void _8BP_moverall()
+                           1406 ;	---------------------------------
+                           1407 ; Function _8BP_moverall
+                           1408 ; ---------------------------------
+   0520                    1409 __8BP_moverall::
+                           1410 ;8BP_wrapper/8BP.h:744: __endasm;	
+   0520 3E 00         [ 7] 1411 	ld	a,#0
+   0522 CD F0 76      [17] 1412 	CALL	MOVERALL
+                           1413 ;8BP_wrapper/8BP.h:746: }
+   0525 C9            [10] 1414 	ret
+                           1415 ;8BP_wrapper/8BP.h:748: void _8BP_peek_2(int address, int* dato)
+                           1416 ;	---------------------------------
+                           1417 ; Function _8BP_peek_2
+                           1418 ; ---------------------------------
+   0526                    1419 __8BP_peek_2::
+                           1420 ;8BP_wrapper/8BP.h:751: p=(int *)address;	
+   0526 C1            [10] 1421 	pop	bc
+   0527 E1            [10] 1422 	pop	hl
+   0528 E5            [11] 1423 	push	hl
+   0529 C5            [11] 1424 	push	bc
+                           1425 ;8BP_wrapper/8BP.h:752: *dato=*p; //mas facil imposible
+   052A FD 21 04 00   [14] 1426 	ld	iy, #4
+   052E FD 39         [15] 1427 	add	iy, sp
+   0530 FD 4E 00      [19] 1428 	ld	c, 0 (iy)
+   0533 FD 46 01      [19] 1429 	ld	b, 1 (iy)
+   0536 5E            [ 7] 1430 	ld	e, (hl)
+   0537 23            [ 6] 1431 	inc	hl
+   0538 56            [ 7] 1432 	ld	d, (hl)
+   0539 7B            [ 4] 1433 	ld	a, e
+   053A 02            [ 7] 1434 	ld	(bc), a
+   053B 03            [ 6] 1435 	inc	bc
+   053C 7A            [ 4] 1436 	ld	a, d
+   053D 02            [ 7] 1437 	ld	(bc), a
+                           1438 ;8BP_wrapper/8BP.h:753: }
+   053E C9            [10] 1439 	ret
+                           1440 ;8BP_wrapper/8BP.h:755: void _8BP_poke_2(int address,int dato)
+                           1441 ;	---------------------------------
+                           1442 ; Function _8BP_poke_2
+                           1443 ; ---------------------------------
+   053F                    1444 __8BP_poke_2::
+                           1445 ;8BP_wrapper/8BP.h:758: p=(int *)address;
+   053F D1            [10] 1446 	pop	de
+   0540 C1            [10] 1447 	pop	bc
+   0541 C5            [11] 1448 	push	bc
+   0542 D5            [11] 1449 	push	de
+                           1450 ;8BP_wrapper/8BP.h:759: *p=dato; //mas facil imposible
+   0543 FD 21 04 00   [14] 1451 	ld	iy, #4
+   0547 FD 39         [15] 1452 	add	iy, sp
+   0549 FD 7E 00      [19] 1453 	ld	a, 0 (iy)
+   054C 02            [ 7] 1454 	ld	(bc), a
+   054D 03            [ 6] 1455 	inc	bc
+   054E FD 7E 01      [19] 1456 	ld	a, 1 (iy)
+   0551 02            [ 7] 1457 	ld	(bc), a
+                           1458 ;8BP_wrapper/8BP.h:760: }
+   0552 C9            [10] 1459 	ret
+                           1460 ;8BP_wrapper/8BP.h:763: void _8BP_rink_1(int step)
+                           1461 ;	---------------------------------
+                           1462 ; Function _8BP_rink_1
+                           1463 ; ---------------------------------
+   0553                    1464 __8BP_rink_1::
+                           1465 ;8BP_wrapper/8BP.h:770: __endasm;	
+   0553 3E 01         [ 7] 1466 	ld	a,#1
+   0555 DD 21 02 00   [14] 1467 	ld	ix,#2 ;posicion primer parametro 
+   0559 DD 39         [15] 1468 	add ix,sp;
+   055B CD 30 76      [17] 1469 	CALL	RINK
+                           1470 ;8BP_wrapper/8BP.h:771: }
+   055E C9            [10] 1471 	ret
+                           1472 ;8BP_wrapper/8BP.h:775: void _8BP_rink_N(int num_params,int* ink_list)
+                           1473 ;	---------------------------------
+                           1474 ; Function _8BP_rink_N
+                           1475 ; ---------------------------------
+   055F                    1476 __8BP_rink_N::
+   055F F5            [11] 1477 	push	af
+                           1478 ;8BP_wrapper/8BP.h:781: _8BP_rink_N_color1=num_params;
+   0560 FD 21 04 00   [14] 1479 	ld	iy, #4
+   0564 FD 39         [15] 1480 	add	iy, sp
+   0566 FD 7E 00      [19] 1481 	ld	a, 0 (iy)
+   0569 32r00r00      [13] 1482 	ld	(__8BP_rink_N_color1+0), a
+                           1483 ;8BP_wrapper/8BP.h:784: for (i=0;i<num_params;i++)
+   056C 01 00 00      [10] 1484 	ld	bc, #0x0000
+   056F                    1485 00103$:
+   056F 21 04 00      [10] 1486 	ld	hl, #4
+   0572 39            [11] 1487 	add	hl, sp
+   0573 79            [ 4] 1488 	ld	a, c
+   0574 96            [ 7] 1489 	sub	a, (hl)
+   0575 78            [ 4] 1490 	ld	a, b
+   0576 23            [ 6] 1491 	inc	hl
+   0577 9E            [ 7] 1492 	sbc	a, (hl)
+   0578 E2r7Dr05      [10] 1493 	jp	PO, 00118$
+   057B EE 80         [ 7] 1494 	xor	a, #0x80
+   057D                    1495 00118$:
+   057D F2rB4r05      [10] 1496 	jp	P, 00101$
+                           1497 ;8BP_wrapper/8BP.h:785: _8BP_rink_N_inverse_list[i]=ink_list[num_params-i-1];
+   0580 69            [ 4] 1498 	ld	l, c
+   0581 60            [ 4] 1499 	ld	h, b
+   0582 29            [11] 1500 	add	hl, hl
+   0583 11r01r00      [10] 1501 	ld	de, #__8BP_rink_N_inverse_list
+   0586 19            [11] 1502 	add	hl, de
+   0587 E3            [19] 1503 	ex	(sp), hl
+   0588 FD 21 04 00   [14] 1504 	ld	iy, #4
+   058C FD 39         [15] 1505 	add	iy, sp
+   058E FD 7E 00      [19] 1506 	ld	a, 0 (iy)
+   0591 91            [ 4] 1507 	sub	a, c
+   0592 5F            [ 4] 1508 	ld	e, a
+   0593 FD 7E 01      [19] 1509 	ld	a, 1 (iy)
+   0596 98            [ 4] 1510 	sbc	a, b
+   0597 57            [ 4] 1511 	ld	d, a
+   0598 1B            [ 6] 1512 	dec	de
+   0599 CB 23         [ 8] 1513 	sla	e
+   059B CB 12         [ 8] 1514 	rl	d
+   059D 7B            [ 4] 1515 	ld	a, e
+   059E 21 06 00      [10] 1516 	ld	hl, #6
+   05A1 39            [11] 1517 	add	hl, sp
+   05A2 86            [ 7] 1518 	add	a, (hl)
+   05A3 5F            [ 4] 1519 	ld	e, a
+   05A4 7A            [ 4] 1520 	ld	a, d
+   05A5 23            [ 6] 1521 	inc	hl
+   05A6 8E            [ 7] 1522 	adc	a, (hl)
+   05A7 57            [ 4] 1523 	ld	d, a
+   05A8 EB            [ 4] 1524 	ex	de,hl
+   05A9 5E            [ 7] 1525 	ld	e, (hl)
+   05AA 23            [ 6] 1526 	inc	hl
+   05AB 56            [ 7] 1527 	ld	d, (hl)
+   05AC E1            [10] 1528 	pop	hl
+   05AD E5            [11] 1529 	push	hl
+   05AE 73            [ 7] 1530 	ld	(hl), e
+   05AF 23            [ 6] 1531 	inc	hl
+   05B0 72            [ 7] 1532 	ld	(hl), d
+                           1533 ;8BP_wrapper/8BP.h:784: for (i=0;i<num_params;i++)
+   05B1 03            [ 6] 1534 	inc	bc
+   05B2 18 BB         [12] 1535 	jr	00103$
+   05B4                    1536 00101$:
+                           1537 ;8BP_wrapper/8BP.h:794: __endasm;	
+   05B4 21r00r00      [10] 1538 	ld	hl, #__8BP_rink_N_color1;
+   05B7 7E            [ 7] 1539 	ld	a,(hl)
+   05B8 DD 21r01r00   [14] 1540 	ld	ix, #__8BP_rink_N_inverse_list;
+   05BC CD 30 76      [17] 1541 	CALL	RINK
+                           1542 ;8BP_wrapper/8BP.h:795: }
+   05BF F1            [10] 1543 	pop	af
+   05C0 C9            [10] 1544 	ret
+                           1545 ;8BP_wrapper/8BP.h:797: void _8BP_umap_inv6(int x_fin,int x_ini, int y_fin, int y_ini, int map_fin, int map_ini)
+                           1546 ;	---------------------------------
+                           1547 ; Function _8BP_umap_inv6
+                           1548 ; ---------------------------------
+   05C1                    1549 __8BP_umap_inv6::
+                           1550 ;8BP_wrapper/8BP.h:804: __endasm;	
+   05C1 3E 06         [ 7] 1551 	ld	a,#6
+   05C3 DD 21 02 00   [14] 1552 	ld	ix,#2 ;posicion primer parametro 
+   05C7 DD 39         [15] 1553 	add ix,sp;
+   05C9 CD 2F 5F      [17] 1554 	CALL	UMAP
+                           1555 ;8BP_wrapper/8BP.h:807: }
+   05CC C9            [10] 1556 	ret
+                           1557 ;8BP_wrapper/8BP.h:809: void _8BP_umap_6(int map_ini, int map_fin, int y_ini, int y_fin, int x_ini, int x_fin)
+                           1558 ;	---------------------------------
+                           1559 ; Function _8BP_umap_6
+                           1560 ; ---------------------------------
+   05CD                    1561 __8BP_umap_6::
+                           1562 ;8BP_wrapper/8BP.h:811: _8BP_umap_inv6(x_fin,x_ini,y_fin,y_ini, map_fin, map_ini);
+   05CD C1            [10] 1563 	pop	bc
+   05CE E1            [10] 1564 	pop	hl
+   05CF E5            [11] 1565 	push	hl
+   05D0 C5            [11] 1566 	push	bc
+   05D1 E5            [11] 1567 	push	hl
+   05D2 FD 21 06 00   [14] 1568 	ld	iy, #6
+   05D6 FD 39         [15] 1569 	add	iy, sp
+   05D8 FD 6E 00      [19] 1570 	ld	l, 0 (iy)
+   05DB FD 66 01      [19] 1571 	ld	h, 1 (iy)
+   05DE E5            [11] 1572 	push	hl
+   05DF FD 23         [10] 1573 	inc	iy
+   05E1 FD 23         [10] 1574 	inc	iy
+   05E3 FD 6E 00      [19] 1575 	ld	l, 0 (iy)
+   05E6 FD 66 01      [19] 1576 	ld	h, 1 (iy)
+   05E9 E5            [11] 1577 	push	hl
+   05EA FD 23         [10] 1578 	inc	iy
+   05EC FD 23         [10] 1579 	inc	iy
+   05EE FD 6E 00      [19] 1580 	ld	l, 0 (iy)
+   05F1 FD 66 01      [19] 1581 	ld	h, 1 (iy)
+   05F4 E5            [11] 1582 	push	hl
+   05F5 FD 23         [10] 1583 	inc	iy
+   05F7 FD 23         [10] 1584 	inc	iy
+   05F9 FD 6E 00      [19] 1585 	ld	l, 0 (iy)
+   05FC FD 66 01      [19] 1586 	ld	h, 1 (iy)
+   05FF E5            [11] 1587 	push	hl
+   0600 FD 23         [10] 1588 	inc	iy
+   0602 FD 23         [10] 1589 	inc	iy
+   0604 FD 6E 00      [19] 1590 	ld	l, 0 (iy)
+   0607 FD 66 01      [19] 1591 	ld	h, 1 (iy)
+   060A E5            [11] 1592 	push	hl
+   060B CDrC1r05      [17] 1593 	call	__8BP_umap_inv6
+   060E 21 0C 00      [10] 1594 	ld	hl, #12
+   0611 39            [11] 1595 	add	hl, sp
+   0612 F9            [ 6] 1596 	ld	sp, hl
+                           1597 ;8BP_wrapper/8BP.h:813: }
+   0613 C9            [10] 1598 	ret
+                           1599 ;mini_BASIC/minibasic.h:55: unsigned int _basic_time()
+                           1600 ;	---------------------------------
+                           1601 ; Function _basic_time
+                           1602 ; ---------------------------------
+   0614                    1603 __basic_time::
+                           1604 ;mini_BASIC/minibasic.h:60: __endasm;
+   0614 CD 0D BD      [17] 1605 	call	0xbd0d
+   0617 C9            [10] 1606 	ret
+                           1607 ;mini_BASIC/minibasic.h:62: return 0;
+   0618 21 00 00      [10] 1608 	ld	hl, #0x0000
+                           1609 ;mini_BASIC/minibasic.h:64: }
+   061B C9            [10] 1610 	ret
+                           1611 ;mini_BASIC/minibasic.h:67: unsigned int _basic_rnd(int max)
+                           1612 ;	---------------------------------
+                           1613 ; Function _basic_rnd
+                           1614 ; ---------------------------------
+   061C                    1615 __basic_rnd::
+                           1616 ;mini_BASIC/minibasic.h:80: __endasm;
+   061C CD 0D BD      [17] 1617 	call	0xbd0d
+   061F 44            [ 4] 1618 	ld	b,h
+   0620 4D            [ 4] 1619 	ld	c, l
+   0621 21r00r00      [10] 1620 	ld	hl,#__basic_rnd_x; con el # es direccion, el _ es imprescindible en cualquier caso
+   0624 71            [ 7] 1621 	ld	(hl),c
+   0625 23            [ 6] 1622 	inc	hl
+   0626 70            [ 7] 1623 	ld	(hl),b
+                           1624 ;mini_BASIC/minibasic.h:82: return _basic_rnd_x % max;	
+   0627 D1            [10] 1625 	pop	de
+   0628 C1            [10] 1626 	pop	bc
+   0629 C5            [11] 1627 	push	bc
+   062A D5            [11] 1628 	push	de
+   062B C5            [11] 1629 	push	bc
+   062C 2Ar00r00      [16] 1630 	ld	hl, (__basic_rnd_x)
+   062F E5            [11] 1631 	push	hl
+   0630 CDr00r00      [17] 1632 	call	__moduint
+   0633 F1            [10] 1633 	pop	af
+   0634 F1            [10] 1634 	pop	af
+                           1635 ;mini_BASIC/minibasic.h:86: }
+   0635 C9            [10] 1636 	ret
+                           1637 ;mini_BASIC/minibasic.h:88: void _basic_border(char color) 
+                           1638 ;	---------------------------------
+                           1639 ; Function _basic_border
+                           1640 ; ---------------------------------
+   0636                    1641 __basic_border::
+                           1642 ;mini_BASIC/minibasic.h:101: __endasm;	
+                           1643 ;	recoge primer parametro
+                           1644 ;------------------------
+   0636 DD 21 02 00   [14] 1645 	ld	ix,#2; posicion primer parametro 
+   063A DD 39         [15] 1646 	add ix,sp;
+   063C DD 7E 00      [19] 1647 	ld	a,(ix)
+   063F 47            [ 4] 1648 	ld	b, a
+   0640 4F            [ 4] 1649 	ld	c, a
+   0641 CD 38 BC      [17] 1650 	call	0xbc38
+                           1651 ;mini_BASIC/minibasic.h:102: }
+   0644 C9            [10] 1652 	ret
+                           1653 ;mini_BASIC/minibasic.h:106: void DisplayChar( char c )
+                           1654 ;	---------------------------------
+                           1655 ; Function DisplayChar
+                           1656 ; ---------------------------------
+   0645                    1657 _DisplayChar::
+                           1658 ;mini_BASIC/minibasic.h:118: __endasm;
+   0645 21 02 00      [10] 1659 	ld	hl,#2; recoge primer parametro
+   0648 39            [11] 1660 	add	hl,sp
+   0649 7E            [ 7] 1661 	ld	a,(hl)
+   064A CD 5A BB      [17] 1662 	call	0xbb5a
+                           1663 ;mini_BASIC/minibasic.h:119: }
+   064D C9            [10] 1664 	ret
+                           1665 ;mini_BASIC/minibasic.h:122: void _basic_print(char *cad)
+                           1666 ;	---------------------------------
+                           1667 ; Function _basic_print
+                           1668 ; ---------------------------------
+   064E                    1669 __basic_print::
+                           1670 ;mini_BASIC/minibasic.h:125: textPtr=cad;
+   064E D1            [10] 1671 	pop	de
+   064F C1            [10] 1672 	pop	bc
+   0650 C5            [11] 1673 	push	bc
+   0651 D5            [11] 1674 	push	de
+                           1675 ;mini_BASIC/minibasic.h:127: while( *textPtr != 0 )
+   0652                    1676 00101$:
+   0652 0A            [ 7] 1677 	ld	a, (bc)
+   0653 B7            [ 4] 1678 	or	a, a
+   0654 C8            [11] 1679 	ret	Z
+                           1680 ;mini_BASIC/minibasic.h:129: DisplayChar( *textPtr);
+   0655 C5            [11] 1681 	push	bc
+   0656 F5            [11] 1682 	push	af
+   0657 33            [ 6] 1683 	inc	sp
+   0658 CDr45r06      [17] 1684 	call	_DisplayChar
+   065B 33            [ 6] 1685 	inc	sp
+   065C C1            [10] 1686 	pop	bc
+                           1687 ;mini_BASIC/minibasic.h:130: textPtr++;
+   065D 03            [ 6] 1688 	inc	bc
+                           1689 ;mini_BASIC/minibasic.h:132: } 
+   065E 18 F2         [12] 1690 	jr	00101$
+                           1691 ;mini_BASIC/minibasic.h:134: char _basic_inkey(char key) __naked 
+                           1692 ;	---------------------------------
+                           1693 ; Function _basic_inkey
+                           1694 ; ---------------------------------
+   0660                    1695 __basic_inkey::
+                           1696 ;mini_BASIC/minibasic.h:153: __endasm;
+   0660 DD 21 02 00   [14] 1697 	ld	ix,#2; posicion primer parametro 
+   0664 DD 39         [15] 1698 	add ix,sp;
+   0666 DD 7E 00      [19] 1699 	ld	a, (ix)
+   0669 CD 1E BB      [17] 1700 	CALL	0xBB1E
+   066C 20 03         [12] 1701 	jr	nz, pressed
+   066E 2E 01         [ 7] 1702 	ld	l,#1
+   0670 C9            [10] 1703 	ret
+   0671                    1704 	  pressed:
+   0671 2E 00         [ 7] 1705 	ld	l,#0
+   0673 C9            [10] 1706 	ret
+                           1707 ;mini_BASIC/minibasic.h:155: return 0;
+   0674 2E 00         [ 7] 1708 	ld	l, #0x00
+                           1709 ;mini_BASIC/minibasic.h:158: }
+                           1710 ;mini_BASIC/minibasic.h:166: char* reverse(char *buffer, int i, int j)
+                           1711 ;	---------------------------------
+                           1712 ; Function reverse
+                           1713 ; ---------------------------------
+   0676                    1714 _reverse::
+   0676 F5            [11] 1715 	push	af
+   0677 F5            [11] 1716 	push	af
+   0678 3B            [ 6] 1717 	dec	sp
+                           1718 ;mini_BASIC/minibasic.h:168: while (i < j)
+   0679 FD 21 0B 00   [14] 1719 	ld	iy, #11
+   067D FD 39         [15] 1720 	add	iy, sp
+   067F FD 4E 00      [19] 1721 	ld	c, 0 (iy)
+   0682 FD 46 01      [19] 1722 	ld	b, 1 (iy)
+   0685 FD 2B         [10] 1723 	dec	iy
+   0687 FD 2B         [10] 1724 	dec	iy
+   0689 FD 7E 00      [19] 1725 	ld	a, 0 (iy)
+   068C FD 21 03 00   [14] 1726 	ld	iy, #3
+   0690 FD 39         [15] 1727 	add	iy, sp
+   0692 FD 77 00      [19] 1728 	ld	0 (iy), a
+   0695 21 0A 00      [10] 1729 	ld	hl, #9+1
+   0698 39            [11] 1730 	add	hl, sp
+   0699 7E            [ 7] 1731 	ld	a, (hl)
+   069A FD 21 03 00   [14] 1732 	ld	iy, #3
+   069E FD 39         [15] 1733 	add	iy, sp
+   06A0 FD 77 01      [19] 1734 	ld	1 (iy), a
+   06A3                    1735 00101$:
+   06A3 FD 21 03 00   [14] 1736 	ld	iy, #3
+   06A7 FD 39         [15] 1737 	add	iy, sp
+   06A9 FD 7E 00      [19] 1738 	ld	a, 0 (iy)
+   06AC 91            [ 4] 1739 	sub	a, c
+   06AD FD 7E 01      [19] 1740 	ld	a, 1 (iy)
+   06B0 98            [ 4] 1741 	sbc	a, b
+   06B1 E2rB6r06      [10] 1742 	jp	PO, 00118$
+   06B4 EE 80         [ 7] 1743 	xor	a, #0x80
+   06B6                    1744 00118$:
+   06B6 F2rFCr06      [10] 1745 	jp	P, 00103$
+                           1746 ;mini_BASIC/minibasic.h:169: swap(&buffer[i++], &buffer[j--]);
+   06B9 FD 21 07 00   [14] 1747 	ld	iy, #7
+   06BD FD 39         [15] 1748 	add	iy, sp
+   06BF FD 7E 00      [19] 1749 	ld	a, 0 (iy)
+   06C2 81            [ 4] 1750 	add	a, c
+   06C3 5F            [ 4] 1751 	ld	e, a
+   06C4 FD 7E 01      [19] 1752 	ld	a, 1 (iy)
+   06C7 88            [ 4] 1753 	adc	a, b
+   06C8 57            [ 4] 1754 	ld	d, a
+   06C9 0B            [ 6] 1755 	dec	bc
+   06CA 33            [ 6] 1756 	inc	sp
+   06CB 33            [ 6] 1757 	inc	sp
+   06CC D5            [11] 1758 	push	de
+   06CD 21 03 00      [10] 1759 	ld	hl, #3
+   06D0 39            [11] 1760 	add	hl, sp
+   06D1 FD 7E 00      [19] 1761 	ld	a, 0 (iy)
+   06D4 86            [ 7] 1762 	add	a, (hl)
+   06D5 5F            [ 4] 1763 	ld	e, a
+   06D6 FD 7E 01      [19] 1764 	ld	a, 1 (iy)
+   06D9 23            [ 6] 1765 	inc	hl
+   06DA 8E            [ 7] 1766 	adc	a, (hl)
+   06DB 57            [ 4] 1767 	ld	d, a
+   06DC FD 21 03 00   [14] 1768 	ld	iy, #3
+   06E0 FD 39         [15] 1769 	add	iy, sp
+   06E2 FD 34 00      [23] 1770 	inc	0 (iy)
+   06E5 20 03         [12] 1771 	jr	NZ,00119$
+   06E7 FD 34 01      [23] 1772 	inc	1 (iy)
+   06EA                    1773 00119$:
+                           1774 ;mini_BASIC/minibasic.h:162: char t = *x; *x = *y; *y = t;
+   06EA 1A            [ 7] 1775 	ld	a, (de)
+   06EB FD 2B         [10] 1776 	dec	iy
+   06ED FD 77 00      [19] 1777 	ld	0 (iy), a
+   06F0 E1            [10] 1778 	pop	hl
+   06F1 E5            [11] 1779 	push	hl
+   06F2 7E            [ 7] 1780 	ld	a, (hl)
+   06F3 12            [ 7] 1781 	ld	(de), a
+   06F4 E1            [10] 1782 	pop	hl
+   06F5 E5            [11] 1783 	push	hl
+   06F6 FD 7E 00      [19] 1784 	ld	a, 0 (iy)
+   06F9 77            [ 7] 1785 	ld	(hl), a
+                           1786 ;mini_BASIC/minibasic.h:169: swap(&buffer[i++], &buffer[j--]);
+   06FA 18 A7         [12] 1787 	jr	00101$
+   06FC                    1788 00103$:
+                           1789 ;mini_BASIC/minibasic.h:171: return buffer;
+   06FC 21 07 00      [10] 1790 	ld	hl, #7
+   06FF 39            [11] 1791 	add	hl, sp
+   0700 7E            [ 7] 1792 	ld	a, (hl)
+   0701 23            [ 6] 1793 	inc	hl
+   0702 66            [ 7] 1794 	ld	h, (hl)
+   0703 6F            [ 4] 1795 	ld	l, a
+                           1796 ;mini_BASIC/minibasic.h:172: }
+   0704 F1            [10] 1797 	pop	af
+   0705 F1            [10] 1798 	pop	af
+   0706 33            [ 6] 1799 	inc	sp
+   0707 C9            [10] 1800 	ret
+                           1801 ;mini_BASIC/minibasic.h:174: char* _basic_str(int value) 
+                           1802 ;	---------------------------------
+                           1803 ; Function _basic_str
+                           1804 ; ---------------------------------
+   0708                    1805 __basic_str::
+   0708 F5            [11] 1806 	push	af
+   0709 F5            [11] 1807 	push	af
+                           1808 ;mini_BASIC/minibasic.h:179: int n = abs(value);
+   070A 21 06 00      [10] 1809 	ld	hl, #6
+   070D 39            [11] 1810 	add	hl, sp
+   070E 4E            [ 7] 1811 	ld	c, (hl)
+   070F 23            [ 6] 1812 	inc	hl
+   0710 46            [ 7] 1813 	ld	b, (hl)
+   0711 C5            [11] 1814 	push	bc
+   0712 CDr00r00      [17] 1815 	call	_abs
+   0715 F1            [10] 1816 	pop	af
+   0716 4D            [ 4] 1817 	ld	c, l
+   0717 44            [ 4] 1818 	ld	b, h
+                           1819 ;mini_BASIC/minibasic.h:182: while (n)
+   0718 11 00 00      [10] 1820 	ld	de, #0x0000
+   071B                    1821 00101$:
+                           1822 ;mini_BASIC/minibasic.h:186: buffer[i++] = 48 + r ;
+   071B 21 01 00      [10] 1823 	ld	hl, #0x0001
+   071E 19            [11] 1824 	add	hl, de
+   071F E3            [19] 1825 	ex	(sp), hl
+   0720 21r23r00      [10] 1826 	ld	hl, #__basic_str_buffer_65536_273
+   0723 19            [11] 1827 	add	hl, de
+                           1828 ;mini_BASIC/minibasic.h:182: while (n)
+   0724 78            [ 4] 1829 	ld	a, b
+   0725 B1            [ 4] 1830 	or	a, c
+   0726 28 33         [12] 1831 	jr	Z,00114$
+                           1832 ;mini_BASIC/minibasic.h:184: int r = n % 10;
+   0728 E5            [11] 1833 	push	hl
+   0729 C5            [11] 1834 	push	bc
+   072A 11 0A 00      [10] 1835 	ld	de, #0x000a
+   072D D5            [11] 1836 	push	de
+   072E C5            [11] 1837 	push	bc
+   072F CDr00r00      [17] 1838 	call	__modsint
+   0732 F1            [10] 1839 	pop	af
+   0733 F1            [10] 1840 	pop	af
+   0734 EB            [ 4] 1841 	ex	de,hl
+   0735 C1            [10] 1842 	pop	bc
+   0736 E1            [10] 1843 	pop	hl
+   0737 FD 21 02 00   [14] 1844 	ld	iy, #2
+   073B FD 39         [15] 1845 	add	iy, sp
+   073D FD 73 00      [19] 1846 	ld	0 (iy), e
+   0740 FD 72 01      [19] 1847 	ld	1 (iy), d
+                           1848 ;mini_BASIC/minibasic.h:186: buffer[i++] = 48 + r ;
+   0743 D1            [10] 1849 	pop	de
+   0744 D5            [11] 1850 	push	de
+   0745 FD 7E 00      [19] 1851 	ld	a, 0 (iy)
+   0748 C6 30         [ 7] 1852 	add	a, #0x30
+   074A 77            [ 7] 1853 	ld	(hl), a
+                           1854 ;mini_BASIC/minibasic.h:188: n = n / 10;
+   074B D5            [11] 1855 	push	de
+   074C 21 0A 00      [10] 1856 	ld	hl, #0x000a
+   074F E5            [11] 1857 	push	hl
+   0750 C5            [11] 1858 	push	bc
+   0751 CDr00r00      [17] 1859 	call	__divsint
+   0754 F1            [10] 1860 	pop	af
+   0755 F1            [10] 1861 	pop	af
+   0756 D1            [10] 1862 	pop	de
+   0757 4D            [ 4] 1863 	ld	c, l
+   0758 44            [ 4] 1864 	ld	b, h
+   0759 18 C0         [12] 1865 	jr	00101$
+   075B                    1866 00114$:
+   075B 4B            [ 4] 1867 	ld	c, e
+                           1868 ;mini_BASIC/minibasic.h:192: if (i == 0)
+   075C 7A            [ 4] 1869 	ld	a,d
+   075D 47            [ 4] 1870 	ld	b,a
+   075E B3            [ 4] 1871 	or	a, e
+   075F 20 04         [12] 1872 	jr	NZ,00105$
+                           1873 ;mini_BASIC/minibasic.h:193: buffer[i++] = '0';
+   0761 C1            [10] 1874 	pop	bc
+   0762 C5            [11] 1875 	push	bc
+   0763 36 30         [10] 1876 	ld	(hl), #0x30
+   0765                    1877 00105$:
+                           1878 ;mini_BASIC/minibasic.h:197: if (value < 0 )
+   0765 21 07 00      [10] 1879 	ld	hl, #6+1
+   0768 39            [11] 1880 	add	hl, sp
+   0769 CB 7E         [12] 1881 	bit	7, (hl)
+   076B 28 09         [12] 1882 	jr	Z,00107$
+                           1883 ;mini_BASIC/minibasic.h:198: buffer[i++] = '-';
+   076D 59            [ 4] 1884 	ld	e, c
+   076E 50            [ 4] 1885 	ld	d, b
+   076F 03            [ 6] 1886 	inc	bc
+   0770 21r23r00      [10] 1887 	ld	hl, #__basic_str_buffer_65536_273
+   0773 19            [11] 1888 	add	hl, de
+   0774 36 2D         [10] 1889 	ld	(hl), #0x2d
+   0776                    1890 00107$:
+                           1891 ;mini_BASIC/minibasic.h:200: buffer[i] = 0; // null terminate string
+   0776 21r23r00      [10] 1892 	ld	hl, #__basic_str_buffer_65536_273
+   0779 09            [11] 1893 	add	hl, bc
+   077A 36 00         [10] 1894 	ld	(hl), #0x00
+                           1895 ;mini_BASIC/minibasic.h:203: return reverse(buffer, 0, i - 1);
+   077C 0B            [ 6] 1896 	dec	bc
+   077D C5            [11] 1897 	push	bc
+   077E 21 00 00      [10] 1898 	ld	hl, #0x0000
+   0781 E5            [11] 1899 	push	hl
+   0782 21r23r00      [10] 1900 	ld	hl, #__basic_str_buffer_65536_273
+   0785 E5            [11] 1901 	push	hl
+   0786 CDr76r06      [17] 1902 	call	_reverse
+   0789 F1            [10] 1903 	pop	af
+   078A F1            [10] 1904 	pop	af
+   078B F1            [10] 1905 	pop	af
+                           1906 ;mini_BASIC/minibasic.h:204: }
+   078C F1            [10] 1907 	pop	af
+   078D F1            [10] 1908 	pop	af
+   078E C9            [10] 1909 	ret
+                           1910 ;mini_BASIC/minibasic.h:206: void _basic_call (unsigned int address) 
+                           1911 ;	---------------------------------
+                           1912 ; Function _basic_call
+                           1913 ; ---------------------------------
+   078F                    1914 __basic_call::
+                           1915 ;mini_BASIC/minibasic.h:216: __endasm;	
+   078F DD 21 02 00   [14] 1916 	ld	ix,#2; posicion primer parametro 
+   0793 DD 39         [15] 1917 	add ix,sp;
+   0795 DD 6E 00      [19] 1918 	ld	l, (ix)
+   0798 DD 66 01      [19] 1919 	ld	h, 1(ix)
+   079B 22r9Fr07      [16] 1920 	ld	(dir+1),hl
+   079E                    1921 	  dir:
+   079E CD 19 BD      [17] 1922 	CALL 0xbd19 ; la direccion 0xbd19 se machaca con la que venga
+                           1923 ;mini_BASIC/minibasic.h:218: }
+   07A1 C9            [10] 1924 	ret
+                           1925 ;mini_BASIC/minibasic.h:220: void _basic_locate (unsigned int x, unsigned int y) 
+                           1926 ;	---------------------------------
+                           1927 ; Function _basic_locate
+                           1928 ; ---------------------------------
+   07A2                    1929 __basic_locate::
+                           1930 ;mini_BASIC/minibasic.h:228: __endasm;	
+   07A2 DD 21 02 00   [14] 1931 	ld	ix,#2; posicion primer parametro 
+   07A6 DD 39         [15] 1932 	add ix,sp;
+   07A8 DD 6E 02      [19] 1933 	ld	l, 2(ix)
+   07AB DD 66 00      [19] 1934 	ld	h, (ix)
+   07AE CD 75 BB      [17] 1935 	call	0xbb75
+                           1936 ;mini_BASIC/minibasic.h:230: }
+   07B1 C9            [10] 1937 	ret
+                           1938 ;mini_BASIC/minibasic.h:252: void _basic_sound(unsigned char nChannelStatus, int nTonePeriod, int nDuration, unsigned char nVolume, char nVolumeEnvelope, char nToneEnvelope, unsigned char nNoisePeriod) 
+                           1939 ;	---------------------------------
+                           1940 ; Function _basic_sound
+                           1941 ; ---------------------------------
+   07B2                    1942 __basic_sound::
+                           1943 ;mini_BASIC/minibasic.h:331: __endasm;
+   07B2 DD 21 02 00   [14] 1944 	ld	ix,#2;
+   07B6 DD 39         [15] 1945 	add	ix,sp;
+   07B8 21 DE D7      [10] 1946 	LD	HL, #0xd7de
+   07BB DD 7E 00      [19] 1947 	LD	A, (IX) ;nChannelStatus
+   07BE 77            [ 7] 1948 	LD	(HL), A
+   07BF 23            [ 6] 1949 	INC	HL
+   07C0 DD 7E 06      [19] 1950 	LD	A,6 (IX) ;nVolumeEnvelope
+   07C3 77            [ 7] 1951 	LD	(HL), A
+   07C4 23            [ 6] 1952 	INC	HL
+   07C5 DD 7E 07      [19] 1953 	LD	A, 7 (IX) ;nToneEnvelope
+   07C8 77            [ 7] 1954 	LD	(HL), A
+   07C9 23            [ 6] 1955 	INC	HL
+   07CA DD 7E 01      [19] 1956 	LD	A, 1 (IX) ;nTonePeriod
+   07CD 77            [ 7] 1957 	LD	(HL), A
+   07CE 23            [ 6] 1958 	INC	HL
+   07CF DD 7E 02      [19] 1959 	LD	A, 2 (IX) ;nTonePeriod
+   07D2 77            [ 7] 1960 	LD	(HL), A
+   07D3 23            [ 6] 1961 	INC	HL
+   07D4 DD 7E 08      [19] 1962 	LD	A, 8 (IX) ;nNoisePeriod
+   07D7 77            [ 7] 1963 	LD	(HL), A
+   07D8 23            [ 6] 1964 	INC	HL
+   07D9 DD 7E 05      [19] 1965 	LD	A, 5 (IX) ;nVolume
+   07DC 77            [ 7] 1966 	LD	(HL), A
+   07DD 23            [ 6] 1967 	INC	HL
+   07DE DD 7E 03      [19] 1968 	LD	A, 3 (IX) ;nDuration
+   07E1 77            [ 7] 1969 	LD	(HL), A
+   07E2 23            [ 6] 1970 	INC	HL
+   07E3 DD 7E 04      [19] 1971 	LD	A, 4 (IX) ;nDuration
+   07E6 77            [ 7] 1972 	LD	(HL), A
+   07E7 23            [ 6] 1973 	INC	HL
+   07E8 21 DE D7      [10] 1974 	LD	HL, #0xd7de
+   07EB CD AA BC      [17] 1975 	CALL	#0xBCAA ;SOUND QUEUE
+                           1976 ;mini_BASIC/minibasic.h:334: }
+   07EE C9            [10] 1977 	ret
+                           1978 ;mini_BASIC/minibasic.h:336: void _basic_ink (char ink1, char ink2)
+                           1979 ;	---------------------------------
+                           1980 ; Function _basic_ink
+                           1981 ; ---------------------------------
+   07EF                    1982 __basic_ink::
+                           1983 ;mini_BASIC/minibasic.h:348: __endasm;	
+   07EF DD 21 02 00   [14] 1984 	ld	ix,#2; posicion primer parametro 
+   07F3 DD 39         [15] 1985 	add ix,sp;
+   07F5 DD 7E 00      [19] 1986 	ld	a, (ix)
+   07F8 DD 46 02      [19] 1987 	ld	b, 2(ix)
+   07FB 48            [ 4] 1988 	ld	c,b
+   07FC CD 32 BC      [17] 1989 	call	0xbc32
+                           1990 ;mini_BASIC/minibasic.h:349: }
+   07FF C9            [10] 1991 	ret
+                           1992 ;mini_BASIC/minibasic.h:351: char _basic_peek(unsigned int address)
+                           1993 ;	---------------------------------
+                           1994 ; Function _basic_peek
+                           1995 ; ---------------------------------
+   0800                    1996 __basic_peek::
+                           1997 ;mini_BASIC/minibasic.h:362: __endasm;
+   0800 DD 21 02 00   [14] 1998 	ld	ix,#2; posicion primer parametro 
+   0804 DD 39         [15] 1999 	add ix,sp;
+   0806 DD 6E 00      [19] 2000 	ld	l, (ix)
+   0809 DD 66 01      [19] 2001 	ld	h,1(ix)
+   080C 7E            [ 7] 2002 	ld	a,(hl)
+   080D 6F            [ 4] 2003 	ld	l,a
+   080E C9            [10] 2004 	ret
+                           2005 ;mini_BASIC/minibasic.h:364: return 0;
+   080F 2E 00         [ 7] 2006 	ld	l, #0x00
+                           2007 ;mini_BASIC/minibasic.h:366: }
+   0811 C9            [10] 2008 	ret
+                           2009 ;mini_BASIC/minibasic.h:368: void _basic_poke(unsigned int address, unsigned char data)
+                           2010 ;	---------------------------------
+                           2011 ; Function _basic_poke
+                           2012 ; ---------------------------------
+   0812                    2013 __basic_poke::
+                           2014 ;mini_BASIC/minibasic.h:382: __endasm;
+   0812 DD 21 02 00   [14] 2015 	ld	ix,#2; posicion primer parametro 
+   0816 DD 39         [15] 2016 	add ix,sp;
+   0818 DD 6E 00      [19] 2017 	ld	l, (ix)
+   081B DD 66 01      [19] 2018 	ld	h,1(ix)
+   081E DD 7E 02      [19] 2019 	ld	a,2(ix)
+   0821 77            [ 7] 2020 	ld	(hl),a
+   0822 C9            [10] 2021 	ret
+                           2022 ;mini_BASIC/minibasic.h:383: }
+   0823 C9            [10] 2023 	ret
+                           2024 ;mini_BASIC/minibasic.h:385: void _basic_pen_txt(char ink)
+                           2025 ;	---------------------------------
+                           2026 ; Function _basic_pen_txt
+                           2027 ; ---------------------------------
+   0824                    2028 __basic_pen_txt::
+                           2029 ;mini_BASIC/minibasic.h:393: __endasm;
+   0824 DD 21 02 00   [14] 2030 	ld	ix,#2; posicion primer parametro 
+   0828 DD 39         [15] 2031 	add ix,sp;
+   082A DD 7E 00      [19] 2032 	ld	a, (ix)
+   082D CD 90 BB      [17] 2033 	call	0xbb90
+                           2034 ;mini_BASIC/minibasic.h:396: }
+   0830 C9            [10] 2035 	ret
+                           2036 ;mini_BASIC/minibasic.h:397: void _basic_pen_graph(char ink)
+                           2037 ;	---------------------------------
+                           2038 ; Function _basic_pen_graph
+                           2039 ; ---------------------------------
+   0831                    2040 __basic_pen_graph::
+                           2041 ;mini_BASIC/minibasic.h:404: __endasm;
+   0831 DD 21 02 00   [14] 2042 	ld	ix,#2; posicion primer parametro 
+   0835 DD 39         [15] 2043 	add ix,sp;
+   0837 DD 7E 00      [19] 2044 	ld	a, (ix)
+   083A CD DE BB      [17] 2045 	call	0xbbde
+                           2046 ;mini_BASIC/minibasic.h:406: }
+   083D C9            [10] 2047 	ret
+                           2048 ;mini_BASIC/minibasic.h:412: void _basic_paper(char ink)
+                           2049 ;	---------------------------------
+                           2050 ; Function _basic_paper
+                           2051 ; ---------------------------------
+   083E                    2052 __basic_paper::
+                           2053 ;mini_BASIC/minibasic.h:419: __endasm;
+   083E DD 21 02 00   [14] 2054 	ld	ix,#2; posicion primer parametro 
+   0842 DD 39         [15] 2055 	add ix,sp;
+   0844 DD 7E 00      [19] 2056 	ld	a, (ix)
+   0847 CD 96 BB      [17] 2057 	call	0xbb96
+                           2058 ;mini_BASIC/minibasic.h:421: }
+   084A C9            [10] 2059 	ret
+                           2060 ;mini_BASIC/minibasic.h:423: void _basic_plot(int x, int y){
+                           2061 ;	---------------------------------
+                           2062 ; Function _basic_plot
+                           2063 ; ---------------------------------
+   084B                    2064 __basic_plot::
+                           2065 ;mini_BASIC/minibasic.h:436: __endasm;
+   084B DD 21 02 00   [14] 2066 	ld	ix,#2; posicion primer parametro 
+   084F DD 39         [15] 2067 	add ix,sp;
+   0851 DD 5E 00      [19] 2068 	ld	e,(ix)
+   0854 DD 56 01      [19] 2069 	ld	d, 1(ix)
+   0857 DD 6E 02      [19] 2070 	ld	l, 2(ix)
+   085A DD 66 03      [19] 2071 	ld	h, 3(ix)
+   085D CD EA BB      [17] 2072 	call	0xBBEA ; GRA PLOT ABSOLUTE
+   0860 C9            [10] 2073 	ret
+                           2074 ;mini_BASIC/minibasic.h:437: }
+   0861 C9            [10] 2075 	ret
+                           2076 ;mini_BASIC/minibasic.h:439: void _basic_move(int x, int y){
+                           2077 ;	---------------------------------
+                           2078 ; Function _basic_move
+                           2079 ; ---------------------------------
+   0862                    2080 __basic_move::
+                           2081 ;mini_BASIC/minibasic.h:452: __endasm;
+   0862 DD 21 02 00   [14] 2082 	ld	ix,#2; posicion primer parametro 
+   0866 DD 39         [15] 2083 	add ix,sp;
+   0868 DD 5E 00      [19] 2084 	ld	e,(ix)
+   086B DD 56 01      [19] 2085 	ld	d, 1(ix)
+   086E DD 6E 02      [19] 2086 	ld	l, 2(ix)
+   0871 DD 66 03      [19] 2087 	ld	h, 3(ix)
+   0874 CD C0 BB      [17] 2088 	call	0xBBC0 ; GRA MOVE ABSOLUTE
+   0877 C9            [10] 2089 	ret
+                           2090 ;mini_BASIC/minibasic.h:453: }
+   0878 C9            [10] 2091 	ret
+                           2092 ;mini_BASIC/minibasic.h:455: void _basic_draw(int x, int y)
+                           2093 ;	---------------------------------
+                           2094 ; Function _basic_draw
+                           2095 ; ---------------------------------
+   0879                    2096 __basic_draw::
+                           2097 ;mini_BASIC/minibasic.h:470: __endasm;	
+   0879 DD 21 02 00   [14] 2098 	ld	ix,#2; posicion primer parametro 
+   087D DD 39         [15] 2099 	add ix,sp;
+   087F DD 5E 00      [19] 2100 	ld	e,(ix)
+   0882 DD 56 01      [19] 2101 	ld	d, 1(ix)
+   0885 DD 6E 02      [19] 2102 	ld	l, 2(ix)
+   0888 DD 66 03      [19] 2103 	ld	h, 3(ix)
+   088B CD F6 BB      [17] 2104 	call	0xBBF6 ; GRA LlNE ABSOLUTE
+   088E C9            [10] 2105 	ret
+                           2106 ;mini_BASIC/minibasic.h:472: }
+   088F C9            [10] 2107 	ret
+                           2108 ;ciclo.c:26: int  main()
+                           2109 ;	---------------------------------
+                           2110 ; Function main
+                           2111 ; ---------------------------------
+   0890                    2112 _main::
+                           2113 ;ciclo.c:29: c=0;
+   0890 21 00 00      [10] 2114 	ld	hl, #0x0000
+   0893 22r2Er00      [16] 2115 	ld	(_c), hl
+                           2116 ;ciclo.c:30: dir=0;
+   0896 FD 21r30r00   [14] 2117 	ld	iy, #_dir
+   089A FD 36 00 00   [19] 2118 	ld	0 (iy), #0x00
+                           2119 ;ciclo.c:31: x=40;
+   089E 2E 28         [ 7] 2120 	ld	l, #0x28
+   08A0 22r31r00      [16] 2121 	ld	(_x), hl
+                           2122 ;ciclo.c:32: y=100;
+   08A3 2E 64         [ 7] 2123 	ld	l, #0x64
+   08A5 22r33r00      [16] 2124 	ld	(_y), hl
+                           2125 ;ciclo.c:33: cod=32;
+                           2126 ;ciclo.c:34: cor=32;
+   08A8 2E 20         [ 7] 2127 	ld	l,#0x20
+   08AA 22r35r00      [16] 2128 	ld	(_cod),hl
+   08AD 22r37r00      [16] 2129 	ld	(_cor), hl
+                           2130 ;ciclo.c:35: i=0;
+                           2131 ;ciclo.c:36: puntos=0;
+   08B0 2E 00         [ 7] 2132 	ld	l,#0x00
+   08B2 22r39r00      [16] 2133 	ld	(_i),hl
+   08B5 22r3Br00      [16] 2134 	ld	(_puntos), hl
+                           2135 ;ciclo.c:37: fps=0;
+   08B8 2E 00         [ 7] 2136 	ld	l, #0x00
+   08BA 22r41r00      [16] 2137 	ld	(_fps), hl
+                           2138 ;ciclo.c:38: t1=_basic_time();
+   08BD CDr14r06      [17] 2139 	call	__basic_time
+   08C0 22r3Dr00      [16] 2140 	ld	(_t1), hl
+                           2141 ;ciclo.c:41: _8BP_printspall_4(0,0,0,0);
+   08C3 21 00 00      [10] 2142 	ld	hl, #0x0000
+   08C6 E5            [11] 2143 	push	hl
+   08C7 2E 00         [ 7] 2144 	ld	l, #0x00
+   08C9 E5            [11] 2145 	push	hl
+   08CA 2E 00         [ 7] 2146 	ld	l, #0x00
+   08CC E5            [11] 2147 	push	hl
+   08CD 2E 00         [ 7] 2148 	ld	l, #0x00
+   08CF E5            [11] 2149 	push	hl
+   08D0 CDrCEr02      [17] 2150 	call	__8BP_printspall_4
+   08D3 F1            [10] 2151 	pop	af
+   08D4 F1            [10] 2152 	pop	af
+   08D5 F1            [10] 2153 	pop	af
+                           2154 ;ciclo.c:42: _8BP_colspall_2(&cor,&cod);
+   08D6 21r35r00      [10] 2155 	ld	hl, #_cod
+   08D9 E3            [19] 2156 	ex	(sp),hl
+   08DA 21r37r00      [10] 2157 	ld	hl, #_cor
+   08DD E5            [11] 2158 	push	hl
+   08DE CDr4Er01      [17] 2159 	call	__8BP_colspall_2
+   08E1 F1            [10] 2160 	pop	af
+   08E2 F1            [10] 2161 	pop	af
+                           2162 ;ciclo.c:46: label_CICLO:
+   08E3                    2163 00101$:
+                           2164 ;ciclo.c:48: c=c+1;
+   08E3 2Ar2Er00      [16] 2165 	ld	hl, (_c)
+   08E6 23            [ 6] 2166 	inc	hl
+   08E7 22r2Er00      [16] 2167 	ld	(_c), hl
+                           2168 ;ciclo.c:51: if (_basic_inkey(27)==0) {
+   08EA 3E 1B         [ 7] 2169 	ld	a, #0x1b
+   08EC F5            [11] 2170 	push	af
+   08ED 33            [ 6] 2171 	inc	sp
+   08EE CDr60r06      [17] 2172 	call	__basic_inkey
+   08F1 33            [ 6] 2173 	inc	sp
+   08F2 7D            [ 4] 2174 	ld	a, l
+   08F3 B7            [ 4] 2175 	or	a, a
+   08F4 20 2E         [12] 2176 	jr	NZ,00106$
+                           2177 ;ciclo.c:52: if (dir !=0) {
+   08F6 3Ar30r00      [13] 2178 	ld	a,(#_dir + 0)
+   08F9 B7            [ 4] 2179 	or	a, a
+   08FA 28 17         [12] 2180 	jr	Z,00103$
+                           2181 ;ciclo.c:53: _8BP_setupsp_3(31,7,1);
+   08FC 21 01 00      [10] 2182 	ld	hl, #0x0001
+   08FF E5            [11] 2183 	push	hl
+   0900 2E 07         [ 7] 2184 	ld	l, #0x07
+   0902 E5            [11] 2185 	push	hl
+   0903 2E 1F         [ 7] 2186 	ld	l, #0x1f
+   0905 E5            [11] 2187 	push	hl
+   0906 CDr95r03      [17] 2188 	call	__8BP_setupsp_3
+   0909 F1            [10] 2189 	pop	af
+   090A F1            [10] 2190 	pop	af
+   090B F1            [10] 2191 	pop	af
+                           2192 ;ciclo.c:54: dir=0;
+   090C 21r30r00      [10] 2193 	ld	hl,#_dir + 0
+   090F 36 00         [10] 2194 	ld	(hl), #0x00
+   0911 18 11         [12] 2195 	jr	00106$
+   0913                    2196 00103$:
+                           2197 ;ciclo.c:57: _8BP_anima_1(31);
+   0913 21 1F 00      [10] 2198 	ld	hl, #0x001f
+   0916 E5            [11] 2199 	push	hl
+   0917 CDr3Dr00      [17] 2200 	call	__8BP_anima_1
+   091A F1            [10] 2201 	pop	af
+                           2202 ;ciclo.c:58: x=x+1;
+   091B 2Ar31r00      [16] 2203 	ld	hl, (_x)
+   091E 23            [ 6] 2204 	inc	hl
+   091F 22r31r00      [16] 2205 	ld	(_x), hl
+                           2206 ;ciclo.c:59: goto label_195;
+   0922 18 38         [12] 2207 	jr	00112$
+   0924                    2208 00106$:
+                           2209 ;ciclo.c:62: if (_basic_inkey(34)==0) {
+   0924 3E 22         [ 7] 2210 	ld	a, #0x22
+   0926 F5            [11] 2211 	push	af
+   0927 33            [ 6] 2212 	inc	sp
+   0928 CDr60r06      [17] 2213 	call	__basic_inkey
+   092B 33            [ 6] 2214 	inc	sp
+   092C 7D            [ 4] 2215 	ld	a, l
+   092D B7            [ 4] 2216 	or	a, a
+   092E 20 2C         [12] 2217 	jr	NZ,00112$
+                           2218 ;ciclo.c:63: if (dir !=1) {
+   0930 3Ar30r00      [13] 2219 	ld	a,(#_dir + 0)
+   0933 3D            [ 4] 2220 	dec	a
+   0934 28 17         [12] 2221 	jr	Z,00108$
+                           2222 ;ciclo.c:64: _8BP_setupsp_3(31,7,2);
+   0936 21 02 00      [10] 2223 	ld	hl, #0x0002
+   0939 E5            [11] 2224 	push	hl
+   093A 2E 07         [ 7] 2225 	ld	l, #0x07
+   093C E5            [11] 2226 	push	hl
+   093D 2E 1F         [ 7] 2227 	ld	l, #0x1f
+   093F E5            [11] 2228 	push	hl
+   0940 CDr95r03      [17] 2229 	call	__8BP_setupsp_3
+   0943 F1            [10] 2230 	pop	af
+   0944 F1            [10] 2231 	pop	af
+   0945 F1            [10] 2232 	pop	af
+                           2233 ;ciclo.c:65: dir=1;
+   0946 21r30r00      [10] 2234 	ld	hl,#_dir + 0
+   0949 36 01         [10] 2235 	ld	(hl), #0x01
+   094B 18 0F         [12] 2236 	jr	00112$
+   094D                    2237 00108$:
+                           2238 ;ciclo.c:68: _8BP_anima_1(31);
+   094D 21 1F 00      [10] 2239 	ld	hl, #0x001f
+   0950 E5            [11] 2240 	push	hl
+   0951 CDr3Dr00      [17] 2241 	call	__8BP_anima_1
+   0954 F1            [10] 2242 	pop	af
+                           2243 ;ciclo.c:69: x=x-1;
+   0955 2Ar31r00      [16] 2244 	ld	hl, (_x)
+   0958 2B            [ 6] 2245 	dec	hl
+   0959 22r31r00      [16] 2246 	ld	(_x), hl
+                           2247 ;ciclo.c:72: label_195:
+   095C                    2248 00112$:
+                           2249 ;ciclo.c:74: _8BP_locatesp_3(31,y,x);
+   095C 2Ar31r00      [16] 2250 	ld	hl, (_x)
+   095F E5            [11] 2251 	push	hl
+   0960 2Ar33r00      [16] 2252 	ld	hl, (_y)
+   0963 E5            [11] 2253 	push	hl
+   0964 3E 1F         [ 7] 2254 	ld	a, #0x1f
+   0966 F5            [11] 2255 	push	af
+   0967 33            [ 6] 2256 	inc	sp
+   0968 CDr6Dr01      [17] 2257 	call	__8BP_locatesp_3
+   096B F1            [10] 2258 	pop	af
+   096C F1            [10] 2259 	pop	af
+   096D 33            [ 6] 2260 	inc	sp
+                           2261 ;ciclo.c:75: _8BP_autoall();
+   096E CDr67r00      [17] 2262 	call	__8BP_autoall
+                           2263 ;ciclo.c:76: _8BP_printspall();
+   0971 CDr0Ar03      [17] 2264 	call	__8BP_printspall
+                           2265 ;ciclo.c:77: _8BP_colspall();
+   0974 CDr35r01      [17] 2266 	call	__8BP_colspall
+                           2267 ;ciclo.c:80: if (cod<32) {
+   0977 FD 21r35r00   [14] 2268 	ld	iy, #_cod
+   097B FD 7E 00      [19] 2269 	ld	a, 0 (iy)
+   097E D6 20         [ 7] 2270 	sub	a, #0x20
+   0980 FD 7E 01      [19] 2271 	ld	a, 1 (iy)
+   0983 17            [ 4] 2272 	rla
+   0984 3F            [ 4] 2273 	ccf
+   0985 1F            [ 4] 2274 	rra
+   0986 DE 80         [ 7] 2275 	sbc	a, #0x80
+   0988 30 59         [12] 2276 	jr	NC,00114$
+                           2277 ;ciclo.c:81: _basic_border(7);
+   098A 3E 07         [ 7] 2278 	ld	a, #0x07
+   098C F5            [11] 2279 	push	af
+   098D 33            [ 6] 2280 	inc	sp
+   098E CDr36r06      [17] 2281 	call	__basic_border
+   0991 33            [ 6] 2282 	inc	sp
+                           2283 ;ciclo.c:83: _basic_sound(4,638,30,15,0,1,0);
+   0992 AF            [ 4] 2284 	xor	a, a
+   0993 57            [ 4] 2285 	ld	d,a
+   0994 1E 01         [ 7] 2286 	ld	e,#0x01
+   0996 D5            [11] 2287 	push	de
+   0997 AF            [ 4] 2288 	xor	a, a
+   0998 57            [ 4] 2289 	ld	d,a
+   0999 1E 0F         [ 7] 2290 	ld	e,#0x0f
+   099B D5            [11] 2291 	push	de
+   099C 21 1E 00      [10] 2292 	ld	hl, #0x001e
+   099F E5            [11] 2293 	push	hl
+   09A0 21 7E 02      [10] 2294 	ld	hl, #0x027e
+   09A3 E5            [11] 2295 	push	hl
+   09A4 3E 04         [ 7] 2296 	ld	a, #0x04
+   09A6 F5            [11] 2297 	push	af
+   09A7 33            [ 6] 2298 	inc	sp
+   09A8 CDrB2r07      [17] 2299 	call	__basic_sound
+   09AB 21 09 00      [10] 2300 	ld	hl, #9
+   09AE 39            [11] 2301 	add	hl, sp
+   09AF F9            [ 6] 2302 	ld	sp, hl
+                           2303 ;ciclo.c:84: puntos=puntos-1;
+   09B0 2Ar3Br00      [16] 2304 	ld	hl, (_puntos)
+   09B3 2B            [ 6] 2305 	dec	hl
+   09B4 22r3Br00      [16] 2306 	ld	(_puntos), hl
+                           2307 ;ciclo.c:85: _8BP_setupsp_3(cod,0,9);
+   09B7 21 09 00      [10] 2308 	ld	hl, #0x0009
+   09BA E5            [11] 2309 	push	hl
+   09BB 2E 00         [ 7] 2310 	ld	l, #0x00
+   09BD E5            [11] 2311 	push	hl
+   09BE 2Ar35r00      [16] 2312 	ld	hl, (_cod)
+   09C1 E5            [11] 2313 	push	hl
+   09C2 CDr95r03      [17] 2314 	call	__8BP_setupsp_3
+   09C5 F1            [10] 2315 	pop	af
+   09C6 F1            [10] 2316 	pop	af
+   09C7 F1            [10] 2317 	pop	af
+                           2318 ;ciclo.c:86: _basic_locate(7,1);
+   09C8 21 01 00      [10] 2319 	ld	hl, #0x0001
+   09CB E5            [11] 2320 	push	hl
+   09CC 2E 07         [ 7] 2321 	ld	l, #0x07
+   09CE E5            [11] 2322 	push	hl
+   09CF CDrA2r07      [17] 2323 	call	__basic_locate
+   09D2 F1            [10] 2324 	pop	af
+   09D3 F1            [10] 2325 	pop	af
+                           2326 ;ciclo.c:87: _basic_print(_basic_str(puntos));
+   09D4 2Ar3Br00      [16] 2327 	ld	hl, (_puntos)
+   09D7 E5            [11] 2328 	push	hl
+   09D8 CDr08r07      [17] 2329 	call	__basic_str
+   09DB E3            [19] 2330 	ex	(sp),hl
+   09DC CDr4Er06      [17] 2331 	call	__basic_print
+   09DF F1            [10] 2332 	pop	af
+                           2333 ;ciclo.c:88: goto _label_250;
+   09E0 C3rDBr0A      [10] 2334 	jp	00122$
+   09E3                    2335 00114$:
+                           2336 ;ciclo.c:91: else _basic_border(0);
+   09E3 AF            [ 4] 2337 	xor	a, a
+   09E4 F5            [11] 2338 	push	af
+   09E5 33            [ 6] 2339 	inc	sp
+   09E6 CDr36r06      [17] 2340 	call	__basic_border
+   09E9 33            [ 6] 2341 	inc	sp
+                           2342 ;ciclo.c:92: if (c %20 ==0) {
+   09EA 21 14 00      [10] 2343 	ld	hl, #0x0014
+   09ED E5            [11] 2344 	push	hl
+   09EE 2Ar2Er00      [16] 2345 	ld	hl, (_c)
+   09F1 E5            [11] 2346 	push	hl
+   09F2 CDr00r00      [17] 2347 	call	__modsint
+   09F5 F1            [10] 2348 	pop	af
+   09F6 F1            [10] 2349 	pop	af
+   09F7 7C            [ 4] 2350 	ld	a, h
+   09F8 B5            [ 4] 2351 	or	a, l
+   09F9 20 5B         [12] 2352 	jr	NZ,00117$
+                           2353 ;ciclo.c:93: puntos=puntos+10;
+   09FB 21r3Br00      [10] 2354 	ld	hl, #_puntos
+   09FE 7E            [ 7] 2355 	ld	a, (hl)
+   09FF C6 0A         [ 7] 2356 	add	a, #0x0a
+   0A01 77            [ 7] 2357 	ld	(hl), a
+   0A02 30 02         [12] 2358 	jr	NC,00178$
+   0A04 23            [ 6] 2359 	inc	hl
+   0A05 34            [11] 2360 	inc	(hl)
+   0A06                    2361 00178$:
+                           2362 ;ciclo.c:94: _basic_locate(7,1);
+   0A06 21 01 00      [10] 2363 	ld	hl, #0x0001
+   0A09 E5            [11] 2364 	push	hl
+   0A0A 2E 07         [ 7] 2365 	ld	l, #0x07
+   0A0C E5            [11] 2366 	push	hl
+   0A0D CDrA2r07      [17] 2367 	call	__basic_locate
+   0A10 F1            [10] 2368 	pop	af
+   0A11 F1            [10] 2369 	pop	af
+                           2370 ;ciclo.c:95: _basic_print(_basic_str(puntos));
+   0A12 2Ar3Br00      [16] 2371 	ld	hl, (_puntos)
+   0A15 E5            [11] 2372 	push	hl
+   0A16 CDr08r07      [17] 2373 	call	__basic_str
+   0A19 E3            [19] 2374 	ex	(sp),hl
+   0A1A CDr4Er06      [17] 2375 	call	__basic_print
+   0A1D F1            [10] 2376 	pop	af
+                           2377 ;ciclo.c:96: t2=t1;t1=_basic_time();
+   0A1E 2Ar3Dr00      [16] 2378 	ld	hl, (_t1)
+   0A21 22r3Fr00      [16] 2379 	ld	(_t2), hl
+   0A24 CDr14r06      [17] 2380 	call	__basic_time
+                           2381 ;ciclo.c:97: fps=6000/(t1-t2);
+   0A27 22r3Dr00      [16] 2382 	ld	(_t1), hl
+   0A2A ED 4Br3Fr00   [20] 2383 	ld	bc, (_t2)
+   0A2E BF            [ 4] 2384 	cp	a, a
+   0A2F ED 42         [15] 2385 	sbc	hl, bc
+   0A31 E5            [11] 2386 	push	hl
+   0A32 21 70 17      [10] 2387 	ld	hl, #0x1770
+   0A35 E5            [11] 2388 	push	hl
+   0A36 CDr00r00      [17] 2389 	call	__divsint
+   0A39 F1            [10] 2390 	pop	af
+   0A3A F1            [10] 2391 	pop	af
+   0A3B 22r41r00      [16] 2392 	ld	(_fps), hl
+                           2393 ;ciclo.c:98: _basic_locate(17,1);_basic_print(_basic_str(fps));
+   0A3E 21 01 00      [10] 2394 	ld	hl, #0x0001
+   0A41 E5            [11] 2395 	push	hl
+   0A42 2E 11         [ 7] 2396 	ld	l, #0x11
+   0A44 E5            [11] 2397 	push	hl
+   0A45 CDrA2r07      [17] 2398 	call	__basic_locate
+   0A48 F1            [10] 2399 	pop	af
+   0A49 F1            [10] 2400 	pop	af
+   0A4A 2Ar41r00      [16] 2401 	ld	hl, (_fps)
+   0A4D E5            [11] 2402 	push	hl
+   0A4E CDr08r07      [17] 2403 	call	__basic_str
+   0A51 E3            [19] 2404 	ex	(sp),hl
+   0A52 CDr4Er06      [17] 2405 	call	__basic_print
+   0A55 F1            [10] 2406 	pop	af
+   0A56                    2407 00117$:
+                           2408 ;ciclo.c:101: if (c %5 ==0){
+   0A56 21 05 00      [10] 2409 	ld	hl, #0x0005
+   0A59 E5            [11] 2410 	push	hl
+   0A5A 2Ar2Er00      [16] 2411 	ld	hl, (_c)
+   0A5D E5            [11] 2412 	push	hl
+   0A5E CDr00r00      [17] 2413 	call	__modsint
+   0A61 F1            [10] 2414 	pop	af
+   0A62 F1            [10] 2415 	pop	af
+   0A63 7C            [ 4] 2416 	ld	a, h
+   0A64 B5            [ 4] 2417 	or	a, l
+   0A65 20 74         [12] 2418 	jr	NZ,00122$
+                           2419 ;ciclo.c:102: _8BP_setupsp_3(i,9,19);_8BP_setupsp_4(i,5,4,_basic_rnd(3)-1);
+   0A67 21 13 00      [10] 2420 	ld	hl, #0x0013
+   0A6A E5            [11] 2421 	push	hl
+   0A6B 2E 09         [ 7] 2422 	ld	l, #0x09
+   0A6D E5            [11] 2423 	push	hl
+   0A6E 2Ar39r00      [16] 2424 	ld	hl, (_i)
+   0A71 E5            [11] 2425 	push	hl
+   0A72 CDr95r03      [17] 2426 	call	__8BP_setupsp_3
+   0A75 F1            [10] 2427 	pop	af
+   0A76 F1            [10] 2428 	pop	af
+   0A77 21 03 00      [10] 2429 	ld	hl, #0x0003
+   0A7A E3            [19] 2430 	ex	(sp),hl
+   0A7B CDr1Cr06      [17] 2431 	call	__basic_rnd
+   0A7E F1            [10] 2432 	pop	af
+   0A7F 4D            [ 4] 2433 	ld	c, l
+   0A80 44            [ 4] 2434 	ld	b, h
+   0A81 0B            [ 6] 2435 	dec	bc
+   0A82 C5            [11] 2436 	push	bc
+   0A83 21 04 00      [10] 2437 	ld	hl, #0x0004
+   0A86 E5            [11] 2438 	push	hl
+   0A87 2E 05         [ 7] 2439 	ld	l, #0x05
+   0A89 E5            [11] 2440 	push	hl
+   0A8A 2Ar39r00      [16] 2441 	ld	hl, (_i)
+   0A8D E5            [11] 2442 	push	hl
+   0A8E CDrB9r03      [17] 2443 	call	__8BP_setupsp_4
+   0A91 F1            [10] 2444 	pop	af
+   0A92 F1            [10] 2445 	pop	af
+   0A93 F1            [10] 2446 	pop	af
+   0A94 F1            [10] 2447 	pop	af
+                           2448 ;ciclo.c:103: _8BP_setupsp_3(i,0,11);_8BP_locatesp_3(i,10,_basic_rnd(80));
+   0A95 21 0B 00      [10] 2449 	ld	hl, #0x000b
+   0A98 E5            [11] 2450 	push	hl
+   0A99 2E 00         [ 7] 2451 	ld	l, #0x00
+   0A9B E5            [11] 2452 	push	hl
+   0A9C 2Ar39r00      [16] 2453 	ld	hl, (_i)
+   0A9F E5            [11] 2454 	push	hl
+   0AA0 CDr95r03      [17] 2455 	call	__8BP_setupsp_3
+   0AA3 F1            [10] 2456 	pop	af
+   0AA4 F1            [10] 2457 	pop	af
+   0AA5 21 50 00      [10] 2458 	ld	hl, #0x0050
+   0AA8 E3            [19] 2459 	ex	(sp),hl
+   0AA9 CDr1Cr06      [17] 2460 	call	__basic_rnd
+   0AAC F1            [10] 2461 	pop	af
+   0AAD 4D            [ 4] 2462 	ld	c, l
+   0AAE 44            [ 4] 2463 	ld	b, h
+   0AAF 21r39r00      [10] 2464 	ld	hl,#_i + 0
+   0AB2 56            [ 7] 2465 	ld	d, (hl)
+   0AB3 C5            [11] 2466 	push	bc
+   0AB4 21 0A 00      [10] 2467 	ld	hl, #0x000a
+   0AB7 E5            [11] 2468 	push	hl
+   0AB8 D5            [11] 2469 	push	de
+   0AB9 33            [ 6] 2470 	inc	sp
+   0ABA CDr6Dr01      [17] 2471 	call	__8BP_locatesp_3
+   0ABD F1            [10] 2472 	pop	af
+   0ABE F1            [10] 2473 	pop	af
+   0ABF 33            [ 6] 2474 	inc	sp
+                           2475 ;ciclo.c:104: i=i+1;if (i==30) i=0;
+   0AC0 2Ar39r00      [16] 2476 	ld	hl, (_i)
+   0AC3 23            [ 6] 2477 	inc	hl
+   0AC4 22r39r00      [16] 2478 	ld	(_i), hl
+   0AC7 FD 21r39r00   [14] 2479 	ld	iy, #_i
+   0ACB FD 7E 00      [19] 2480 	ld	a, 0 (iy)
+   0ACE D6 1E         [ 7] 2481 	sub	a, #0x1e
+   0AD0 FD B6 01      [19] 2482 	or	a, 1 (iy)
+   0AD3 20 06         [12] 2483 	jr	NZ,00122$
+   0AD5 21 00 00      [10] 2484 	ld	hl, #0x0000
+   0AD8 22r39r00      [16] 2485 	ld	(_i), hl
+                           2486 ;ciclo.c:107: _label_250:
+   0ADB                    2487 00122$:
+                           2488 ;ciclo.c:108: if (c<500) goto label_CICLO;
+   0ADB FD 21r2Er00   [14] 2489 	ld	iy, #_c
+   0ADF FD 7E 00      [19] 2490 	ld	a, 0 (iy)
+   0AE2 D6 F4         [ 7] 2491 	sub	a, #0xf4
+   0AE4 FD 7E 01      [19] 2492 	ld	a, 1 (iy)
+   0AE7 17            [ 4] 2493 	rla
+   0AE8 3F            [ 4] 2494 	ccf
+   0AE9 1F            [ 4] 2495 	rra
+   0AEA DE 81         [ 7] 2496 	sbc	a, #0x81
+   0AEC DArE3r08      [10] 2497 	jp	C, 00101$
+                           2498 ;ciclo.c:110: _8BP_poke_2(42038,puntos);
+   0AEF 2Ar3Br00      [16] 2499 	ld	hl, (_puntos)
+   0AF2 E5            [11] 2500 	push	hl
+   0AF3 21 36 A4      [10] 2501 	ld	hl, #0xa436
+   0AF6 E5            [11] 2502 	push	hl
+   0AF7 CDr3Fr05      [17] 2503 	call	__8BP_poke_2
+   0AFA F1            [10] 2504 	pop	af
+   0AFB F1            [10] 2505 	pop	af
+                           2506 ;ciclo.c:111: return 0;	
+   0AFC 21 00 00      [10] 2507 	ld	hl, #0x0000
+                           2508 ;ciclo.c:112: }
+   0AFF C9            [10] 2509 	ret
+                           2510 	.area _CODE
+                           2511 	.area _INITIALIZER
+   0000                    2512 __xinit___basic_rnd_x:
+   0000 00 00              2513 	.dw #0x0000
+                           2514 	.area _CABS (ABS)

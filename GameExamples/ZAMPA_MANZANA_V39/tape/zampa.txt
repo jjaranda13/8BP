@@ -1,0 +1,5 @@
+
+2cdt.exe -n -s 1 -r "LOADER.bas" "loader.BAS" zampa.cdt
+2cdt.exe -b 2000 -r "apple.scr" "apple.scr" zampa.cdt
+2cdt.exe -b 2000 -r "zampa.bin" "zampa.bin" zampa.cdt
+2cdt.exe -b 2000 -r "zampa.bas" "zampa.bas" zampa.cdt

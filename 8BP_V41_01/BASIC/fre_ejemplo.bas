@@ -1,0 +1,12 @@
+10 PRINT FRE(0)     
+20 GOSUB 100     
+30 GOTO 10
+100 FOR i=1 TO 1000:NEXT:a$=str$(21):RETURN 
+100 FOR i=1 TO 1000:NEXT:a$=str$(21):k=FRE(""):RETURN 
+
+
+
+10 PRINT FRE(0)     
+20 GOSUB 100     
+30 GOTO 10
+100 a$=str$(21):RETURN 

@@ -7,32 +7,32 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-    ANIMA                                                       =  6FC9 G
-    ANIMALL                                                     =  7713 G
-    AUTO                                                        =  7181 G
-    AUTOALL                                                     =  71CF G
-    COLAY                                                       =  71FE G
-    COLSP                                                       =  73A9 G
-    COLSPALL                                                    =  75AE G
-    LAYOUT                                                      =  705F G
+    ANIMA                                                       =  6FCC G
+    ANIMALL                                                     =  7716 G
+    AUTO                                                        =  7184 G
+    AUTOALL                                                     =  71D2 G
+    COLAY                                                       =  7201 G
+    COLSP                                                       =  73AC G
+    COLSPALL                                                    =  75B1 G
+    LAYOUT                                                      =  7062 G
     LOCATESP                                                    =  6C71 G
-    MAP2SP                                                      =  6496 G
-    MOVER                                                       =  753B G
-    MOVERALL                                                    =  76ED G
-    MUSIC                                                       =  6F55 G
-    PEEK                                                        =  692E G
-    POKE                                                        =  6941 G
-    PRINTAT                                                     =  606D G
+    MAP2SP                                                      =  6499 G
+    MOVER                                                       =  753E G
+    MOVERALL                                                    =  76F0 G
+    MUSIC                                                       =  6F58 G
+    PEEK                                                        =  6931 G
+    POKE                                                        =  6944 G
+    PRINTAT                                                     =  6064 G
     PRINTSP                                                     =  6C94 G
-    PRINTSPALL                                                  =  62AA G
-    RINK                                                        =  762D G
-    ROUTEALL                                                    =  65D3 G
-    ROUTESP                                                     =  65F4 G
-    SETLIMITS                                                   =  686D G
-    SETUPSP                                                     =  70FE G
-    STARS                                                       =  7439 G
-    UMAP                                                        =  5F38 G
-    _3D                                                         =  645A G
+    PRINTSPALL                                                  =  62A1 G
+    RINK                                                        =  7630 G
+    ROUTEALL                                                    =  65D6 G
+    ROUTESP                                                     =  65F7 G
+    SETLIMITS                                                   =  6870 G
+    SETUPSP                                                     =  7101 G
+    STARS                                                       =  743C G
+    UMAP                                                        =  5F2F G
+    _3D                                                         =  645D G
   0 _CHAR_CR                                                       0BD6 GR
   0 _DisplayChar                                                   0645 GR
   0 __8BP_3D_1                                                     0031 GR
@@ -158,7 +158,7 @@ Symbol Table
     _abs                                                           **** GX
   2 _c                                                             0002 GR
   2 _cod                                                           0012 GR
-  0 _comandos_8BP_V39                                              0000 GR
+  0 _comandos_8BP_V41                                              0000 GR
   2 _cor                                                           0010 GR
   2 _e                                                             000C GR
   2 _ex                                                            000E GR

@@ -7,7 +7,7 @@
 29 locate 10,4:print "   *   **   **"
 30 locate 10,5:print "  * *  * *  *"
 31 locate 10,6:print "  * *  * *  *"
-32 locate 10,7:print "   *  ***  ***   v41"
+32 locate 10,7:print "   *  ***  ***   v40"
 33 pen 2:print ""
 39 print "elige una demo"
 40 print "--------------------------": pen 3:ink 3,15
