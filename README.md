@@ -79,6 +79,8 @@ He actualizado el repositorio los siguientes cambios:
 - libreria: ahora se incluye 8bitsdepoder_v41_001.asm con las siguientes mejoras:
 	- el comando PRINTSP ahora es mas rapido pues he corregido un minibug (tambien animaba la lista de sprites y no hacia falta)
 
+- manual: he actualizado el manual con la nueva tabla de direcciones de memoria para cada comando.
+
 - Demos: todas las demos actualizadas a v41_01
 
 - games: se incluyen versiones .cdt de los juagos "zampamanzanas" y "dogfight". tambien se incluye una compilacion completa de juegos dandanator
