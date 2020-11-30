@@ -72,6 +72,18 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+
+29/11/2020 ACTUALIZACION V41_01 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- libreria: ahora se incluye 8bitsdepoder_v41_001.asm con las siguientes mejoras:
+	- el comando PRINTSP ahora es mas rapido pues he corregido un minibug (tambien animaba la lista de sprites y no hacia falta)
+
+- Demos: todas las demos actualizadas a v41_01
+
+- games: se incluyen versiones .cdt de los juagos "zampamanzanas" y "dogfight". tambien se incluye una compilacion completa de juegos dandanator
+
+
 26/07/2020 ACTUALIZACION V41 (retrocompatible)
 ==============================================
 He actualizado el repositorio los siguientes cambios:
