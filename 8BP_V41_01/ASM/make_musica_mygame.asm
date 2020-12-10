@@ -4,7 +4,7 @@
 ; 
 ; tras ensamblarlo, salvalo con save "musica.bin",b,32200,1400 
 
-org 32200 ; hasta 33500 tenemos 1.3KB desde v32
+org 32200 ; hasta 33600 tenemos 1.4KB desde v32
 ;--------------------MUSICA------------------------------------
 ; tiene la limitacion de tan solo poder incluir un solo fichero de 
 ; instrumentos para todas las canciones
