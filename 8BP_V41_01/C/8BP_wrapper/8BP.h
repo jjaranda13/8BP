@@ -733,7 +733,7 @@ __endasm;
 }
 void _8BP_moverall_2(int dy, int dx)
 {
-_8BP_moverall_2(dx,dy);
+_8BP_moverall_inv2(dx,dy);
 }
 
 void _8BP_moverall()
