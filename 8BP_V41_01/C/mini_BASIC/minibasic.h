@@ -340,7 +340,7 @@ __asm
    
   _BASIC_PASS_PARAM
   ld a, (ix)
-  ld b, 2(ix)
+  ld b, 1(ix)
   ld c,b
   call 0xbc32	
 	
