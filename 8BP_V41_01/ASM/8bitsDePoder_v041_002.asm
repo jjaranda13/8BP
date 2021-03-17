@@ -532,7 +532,7 @@ org &F7D0
 _SCREEN_6_BEGIN 
 
 ; 9 bytes para un buffer de sonido de la libreria minibasic.h. es la direccion d7de
-_SOUND_BUF	db 0,0,0,0,0,0,0,0,0
+;_SOUND_BUF	db 0,0,0,0,0,0,0,0,0
 
 ROU_NUM_PASOS	db 0; variable temporal de numero de pasos
 
@@ -555,6 +555,9 @@ route_sp13	db 0,0
 route_sp14	db 0,0
 route_sp15	db 0,0
 
+; 9 bytes para un buffer de sonido de la libreria minibasic.h. es la direccion d7de
+; ojo esta es la f7f1. la he cambiado porque no funcionaba bien. puede que consuma mas de 9 bytes?
+_SOUND_BUF	db 0,0,0,0,0,0,0,0,0
 
 _SCREEN_6_END; esta ultima instruccion debe ensamblarse como mucho en la F7FF
 	NOP

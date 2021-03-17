@@ -241,8 +241,9 @@ __endasm;
 //unsigned char bQueue = 0;
 
 //unsigned char _basic_SOUND_BUFF[]={0,0,0,0,0,0,0,0,0};
-//#define _basic_SOUND_BUFF 0xd7de  // 9 bytes en el sexto segmento oculto
-#define _basic_SOUND_BUFF 0xf7f1  // 9 bytes en el sexto segmento oculto
+#define _basic_SOUND_BUF 0xd7de  // 9 bytes en el segundo segmento oculto
+
+
 
 //unsigned char ENT_BUFF[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 //unsigned char ENV_BUFF[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -339,7 +340,7 @@ __asm
    
   _BASIC_PASS_PARAM
   ld a, (ix)
-  ld b, 1(ix)
+  ld b, 2(ix)
   ld c,b
   call 0xbc32	
 	
