@@ -72,6 +72,15 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+17/03/2021 ACTUALIZACION V41_02 (retrocompatible)
+==============================================
+He actualizado el repositorio los siguientes cambios:
+- libreria: ahora se incluye 8bitsdepoder_v41_002.asm con las siguientes mejoras:
+	- el buffer de sonido para minibasic ha cambiado de ubicacion. no afecta a ningun comando. Tan solo afecta si quieres hacer el ciclo de juego en C y vas a usar el comando SOUND del minibasic, pero no afecta a la programacion ni a la funcionalidad.
+	- el wrapper de 8BP (fichero 8BP.h) tenia un bug en el comando _8BP_moverall, que ha sido resuelto
+	- el wrapper de minibasic (fichero minibasic.h) ha cambiado internamente la direccion del buffer del comando _basic_sound pero no cambia nada. Esto se ha hecho porque con el buffer en la direccion de memoria anterior daba un problema pero esta resuelto
+
+
 
 29/11/2020 ACTUALIZACION V41_01 (retrocompatible)
 ==============================================
