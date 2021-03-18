@@ -75,8 +75,8 @@ TABLA_SONG:     DW      SONG_0
 ;codigo del player
 ;read "WYZPROPLAY47c_CPC_winape_v39.asm" ; permite mutar el canal c en la musica para usarlo con sound
 ;read "WYZPROPLAY47c_CPC_winape_v40.asm" ; permite mutar el canal c en la musica para usarlo con sound
-read "WYZPROPLAY47c_CPC_winape_v41.asm" ; permite canal de efectos
-
+;read "WYZPROPLAY47c_CPC_winape_v41.asm" ; permite canal de efectos
+read "WYZPROPLAY47c_CPC_winape_v42.asm" ; he movido algunas variables de segmentos ocultos aqui por detectar efectos en screen
 _END_PLAYERWYZ
 
 _END_CODE
