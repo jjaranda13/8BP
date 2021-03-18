@@ -74,12 +74,16 @@ The improvements that are incorporated will be backwards compatible so your game
 
 17/03/2021 ACTUALIZACION V41_02 (retrocompatible)
 ==============================================
-He actualizado el repositorio los siguientes cambios:
-- libreria: ahora se incluye 8bitsdepoder_v41_002.asm con las siguientes mejoras:
-	- el buffer de sonido para minibasic ha cambiado de ubicacion. no afecta a ningun comando. Tan solo afecta si quieres hacer el ciclo de juego en C y vas a usar el comando SOUND del minibasic, pero no afecta a la programacion ni a la funcionalidad.
-	- el wrapper de 8BP (fichero 8BP.h) tenia un bug en el comando _8BP_moverall, que ha sido resuelto
-	- el wrapper de minibasic (fichero minibasic.h) ha cambiado internamente la direccion del buffer del comando _basic_sound pero no cambia nada. Esto se ha hecho porque con el buffer en la direccion de memoria anterior daba un problema pero esta resuelto
+He actualizado el repositorio los siguientes cambios, que no son relevantes a nivel de programacion, tan solo es un "ajuste fino"
 
+- libreria: ahora se incluye 8bitsdepoder_v41_002.asm con las siguientes mejoras:
+	- el buffer de sonido para minibasic ha cambiado de ubicacion. no afecta a ningun comando. 
+	- el wrapper de 8BP (fichero 8BP.h) tenia un bug en el comando _8BP_moverall, que ha sido resuelto
+	- el wrapper de minibasic (fichero minibasic.h) ha cambiado internamente la direccion del buffer del comando _basic_sound pero no afecta al programador
+	- se incluye 8bitsdepoder_v41_002.asm, tan solo ha cambiado la ubicacion de un buffer de sonido. no afecta a los comandos ni a la funcionalidad
+	- los ficheros WYZPROPLAY47c_CPC_winape_v42.asm, make_codigo_mygame.asm, player_loader_cpc_v42.asm son nuevas versiones con unos cambios minimos para reubicar el buffer
+
+- el manual sigue siendo correcto, no ha cambiado
 
 
 29/11/2020 ACTUALIZACION V41_01 (retrocompatible)
