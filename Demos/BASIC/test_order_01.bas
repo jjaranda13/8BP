@@ -12,7 +12,7 @@
 '58 |poke,24000,27064: 'ordenamos desde sprite 4
 75 ink 0,4
 80 dir=0:'derecha
-81 pen 2:locate 3,1:print "DEMO 8BP V36"
+81 pen 2:locate 3,1:print "DEMO 8BP V41"
 82 c$="0 : ORDEN PARCIAL EN Y MINIMA ": |PRINTAT,0,10,0,@c$
 83 c$="1 : ORDEN COMPLETO EN Y MINIMA": |PRINTAT,0,18,0,@c$
 84 c$="2 : ORDEN PARCIAL EN Y MAXIMA": |PRINTAT,0,26,0,@c$

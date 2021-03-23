@@ -1,6 +1,7 @@
 ;---------------------RUTINAS 8 bits de poder------------------
 ;read "8bitsDePoder_v041_000.asm";
-read "8bitsDePoder_v041_001.asm";
+;read "8bitsDePoder_v041_001.asm";
+read "8bitsDePoder_v041_002.asm";
 ;---------------------PLAYER DE MUSICA-------------------------
 ; lo cargo justo despues de las rutinas. 
 ; rutinas + player no llega a ocupar 5KB.
@@ -9,7 +10,7 @@ read "8bitsDePoder_v041_001.asm";
 ; inicializa el codigo del player, el cual esta en otro fichero pero
 ; se carga todo desde el loader.
 :_PLAYER_WYZ
-read "player_loader_cpc_v41.asm"
+read "player_loader_cpc_v42.asm"
 
 
 ; DESDE LA 42039 HASTA 42539 SE ENCUENTRA EL LAYOUT y el mapa del mundo (solapados)
