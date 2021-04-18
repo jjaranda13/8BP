@@ -83,7 +83,9 @@ He actualizado el repositorio los siguientes cambios, que no son relevantes a ni
 	- se incluye 8bitsdepoder_v41_002.asm, tan solo ha cambiado la ubicacion de un buffer de sonido. no afecta a los comandos ni a la funcionalidad
 	- los ficheros WYZPROPLAY47c_CPC_winape_v42.asm, make_codigo_mygame.asm, player_loader_cpc_v42.asm son nuevas versiones con unos cambios minimos para reubicar el buffer
 
-- el manual sigue siendo correcto, no ha cambiado
+- el manual sigue siendo correcto, no ha cambiado, pero he anadido algunos consejos de programacion en el calculo de los FPS de tu juego y en el capitulo de scroll, donde explico una forma de crear enemigos basados en la posicion en el mapa
+
+- Demos : todas las demos actualizadas a V41_02
 
 
 29/11/2020 ACTUALIZACION V41_01 (retrocompatible)
