@@ -10,7 +10,7 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LE7TT8547SB5Q&item
 
 descargate el ZIP y en el encontraras:
 
-- manual en .pdf y en .docx, tanto en espanol como en ingles (la version ingles es borrador)
+- manual en .pdf y en .docx, tanto en espanol como en ingles (la version ingles es borrador). Ademas de este documento, en la misma carpeta de documentacion encontraras diversos documentos "making of" de diferentes juegos con los que puedes aprender paso a paso como estan hechos
 
 - libreria, ya preparada en una estructura de directorios para hacer un juego, de hecho en el directorio de la libreria encontraras un juego simple que te permitira dar los primeros pasos, ademas del SPEDIT, el editor de sprites (que funciona en BASIC en amstrad) para que hagas tus creaciones. La libreria tiene ficheros en ensamblador (.asm) que son los fuentes de la libreria y algunos otros ficheros auxiliares. Para hacer un juego completo necesitas esto pero no te preocupes porque no tendras que aprender ensamblador, tan solo tendras que aprender el significado de la palabra "ensamblar".
 
