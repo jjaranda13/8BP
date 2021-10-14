@@ -5,7 +5,7 @@
 41 RESTORE 4130:GOSUB 4000:' carga rutina get INK     
 50 MODE 1
 80 PEN 1:PRINT "    SPEDIT: Sprite Editor v13.0" 
-90 PRINT "": ink 2,26:pen 2 : ink 3,20
+90 PRINT "": INK 2,26:PEN 2 : INK 3,20
 110 PRINT "   ---- CONTROLES EDICION ----"
 120 PRINT "    1,2 : tinta -/+"
 130 PRINT "    qaop : mueve cursor pixel"
@@ -18,28 +18,26 @@
 190 PRINT "    r: reload 20000"
 195 PRINT "    z, x: cambia color de tinta"
 196 PRINT "    t: RESET"
-200 PRINT "   ---------------------------": pen 1
+200 PRINT "   ---------------------------": PEN 1
 210 PRINT "Antes de empezar puedes cargar un spriteensamblandolo en la direccion 20000."
 220 PRINT "No ensambles ancho y alto,solo los bytesdel dibujo."
-230 PRINT " la paleta custom esta en la linea";:pen 3:print " 2300":pen 1
+230 PRINT " la paleta custom esta en la linea";:PEN 3:PRINT " 2300":PEN 1
 240 PRINT " La paleta la puedes cambiar pero debera ser la misma en tu programa."
-241 PRINT "Selecciona paleta (1,2,3)"
-242 PRINT " 1:default   2:custom  3:file pal.dat"
-243 INPUT p$
+241 PRINT "":INPUT " EDIT(1) sprite o CAPTURE(2) sprite";e$:IF e$="2" THEN 9000 
+242 PRINT "Selecciona paleta (1,2,3)"
+243 PRINT " 1:default   2:custom  3:file pal.dat"
+244 INPUT p$
 260 INPUT "ancho (par)?", ancho
 270 INPUT "alto?",alto
 275 'IF p$<"3" THEN INPUT "color de fondo?", fondo 
 276 INPUT "mode?" ,modo
-277 gosub 1831 :' control de ancho vs mode
-
-
+277 GOSUB 1831 :' control de ancho vs mode
 280 MODE modo: GOSUB 2030:PEN blanco:'AMARILLO    
 281 IF modo=0 THEN incx=4 ELSE incx=2:blanco=1:PEN blanco
 282 BORDER fondo
 290 REM voy a inicializar la paleta
 291 IF p$="3" THEN GOSUB 7000: ' paleta en fichero pal.dat
 300 IF p$="2" THEN GOSUB 2300: ' paleta custom (ejemplo con sobreescritura)
-
 301 'IF p$<"3" THEN INK 0,fondo
 310 altob=alto:anchob=ancho/2: IF modo=1 THEN anchob=ancho/4
 320 FOR y=0 TO altob-1
@@ -64,16 +62,16 @@
 471 BORDER 13
 480 PEN blanco:LOCATE 1,21:PRINT "ancho:";ancho;" ";"alto:";alto
 490 LOCATE 1,9
-500 pen 1:PRINT "1,2:";:pen blanco:print" tinta -/+"
-510 pen 1:PRINT "qaop:";:pen blanco:print" mueve "
-520 pen 1:PRINT "space:";:pen blanco:print" pinta"
-530 pen 1:PRINT "h:";:pen blanco:print" flip horizontal"
-540 pen 1:PRINT "v:";:pen blanco:print" flip vertical"
-550 pen 1:PRINT "c:";:pen blanco:print" clear sprite"
-560 pen 1:PRINT "b:";:pen blanco:print" print bytes "
-565 pen 1:PRINT "r:";:pen blanco:print" reload 20000"   
-567 pen 1:PRINT "z,x:";:pen blanco:print "color";:pen 1:print " t:";:pen blanco:print "RESET"
-568 pen 1:PRINT "i:";:pen blanco:print " print paleta"
+500 PEN 1:PRINT "1,2:";:PEN blanco:PRINT" tinta -/+"
+510 PEN 1:PRINT "qaop:";:PEN blanco:PRINT" mueve "
+520 PEN 1:PRINT "space:";:PEN blanco:PRINT" pinta"
+530 PEN 1:PRINT "h:";:PEN blanco:PRINT" flip horizontal"
+540 PEN 1:PRINT "v:";:PEN blanco:PRINT" flip vertical"
+550 PEN 1:PRINT "c:";:PEN blanco:PRINT" clear sprite"
+560 PEN 1:PRINT "b:";:PEN blanco:PRINT" print bytes "
+565 PEN 1:PRINT "r:";:PEN blanco:PRINT" reload 20000"   
+567 PEN 1:PRINT "z,x:";:PEN blanco:PRINT "color";:PEN 1:PRINT " t:";:PEN blanco:PRINT "RESET"
+568 PEN 1:PRINT "i:";:PEN blanco:PRINT " print paleta"
 570 TCOUNT =0
 580 REM bloque principal del programa de edicion
 590 REM -----------------------------------------------------
@@ -99,7 +97,7 @@
 781 'IF b$="1" AND tinta>2 AND (p$>"3") THEN tinta=tinta-1
 790 IF b$="2" THEN tinta=tinta+1:IF tinta>totaltintas THEN tinta=totaltintas
 791 'IF b$="2" AND tinta>2 AND (p$>"3" ) THEN tinta=tinta+1:IF tinta>14 THEN tinta=14
-792 if b$="1" or b$="2" then LOCATE 1,24:PRINT"Num. tinta:";tinta
+792 IF b$="1" OR b$="2" THEN LOCATE 1,24:PRINT"Num. tinta:";tinta
 800 IF b$="h" THEN GOSUB 1130
 810 IF b$="v" THEN GOSUB 1430
 820 IF b$="c" THEN GOSUB 1720
@@ -108,8 +106,8 @@
 835 IF b$="r" THEN GOTO 320
 836 IF b$="x" THEN cosa=cosa+1:IF cosa=27 THEN cosa=26 ELSE INK tinta,cosa: 'IF (p$="3" OR p$="4") AND tinta>1 THEN  INK tinta+1,cosa 
 837 IF b$="z" THEN cosa=cosa-1:IF cosa=-1 THEN cosa=0 ELSE INK tinta,cosa:'IF (p$="3" OR p$="4") AND tinta >1 THEN INK tinta+1,cosa
-838 IF b$="i" THEN GOSUB 3000: locate 1,24:print "                   ";
-839 if b$="x" or b$="z" then LOCATE 1,24:PRINT"Num. color:";cosa
+838 IF b$="i" THEN GOSUB 3000: LOCATE 1,24:PRINT "                   ";
+839 IF b$="x" OR b$="z" THEN LOCATE 1,24:PRINT"Num. color:";cosa
 840 LOCATE tinta+1,19:PRINT CHR$(245)
 850 REM LOCATE 1,23:PRINT "tecla:";b$
 860 PLOT xa,ya, tintant
@@ -233,16 +231,15 @@
 1820 LOCATE 1,24: PRINT "clearing  ok  "  
 1830 RETURN
 1831 REM --------- control de ancho vs mode -------------------
-1832 if modo=0 and (ancho mod 2) = 0 then return
-1833 if modo=1 and (ancho mod 4) = 0 then return 
-1834 cls:print "Aunque SPEDIT te pide el ancho en pixels, el ancho de un sprite se especifica   internamente en bytes"
-1835 print:print "en mode 1 un byte son 4 pixels"
-1836 print "en mode 0 un byte son 2 pixels"
-1837 print:print "Para editar un sprite en mode 1 , el    ancho en pixels debe ser multiplo de 4"
-1838 print:print "Para editar un sprite en mode 0 , el    ancho en pixels debe ser multiplo de 2"
-1839 print:print "la altura max de un sprite es 127"
-1840 print:input "ENTER para reiniciar",x$: run
-
+1832 IF modo=0 AND (ancho MOD 2) = 0 THEN RETURN
+1833 IF modo=1 AND (ancho MOD 4) = 0 THEN RETURN 
+1834 CLS:PRINT "Aunque SPEDIT te pide el ancho en pixels, el ancho de un sprite se especifica   internamente en bytes"
+1835 PRINT:PRINT "en mode 1 un byte son 4 pixels"
+1836 PRINT "en mode 0 un byte son 2 pixels"
+1837 PRINT:PRINT "Para editar un sprite en mode 1 , el    ancho en pixels debe ser multiplo de 4"
+1838 PRINT:PRINT "Para editar un sprite en mode 0 , el    ancho en pixels debe ser multiplo de 2"
+1839 PRINT:PRINT "la altura max de un sprite es 127"
+1840 PRINT:INPUT "ENTER para reiniciar",x$: RUN
 2030 REM ---------- PALETA default MODE 0------------------
 2040 INK 0,1: REM AZUL
 2050 INK 1,24: REM amarillo
@@ -262,7 +259,6 @@
 2190 INK 15, 11,16: REM AMARILLO INTENSO
 2200 AMARILLO=1:blanco=4
 2210 RETURN
-
 2300 REM ---------- PALETA custom, ejemplo para sprites transparentes MODE 0 con 9 colores------------------
 2301 INK 0,1: REM azul oscuro
 2302 INK 1,15: REM naranja
@@ -282,36 +278,99 @@
 2316 INK 15, 16: 
 2317 AMARILLO=10: blanco=4
 2420 RETURN
-
-
-3000 LOCATE 1,24:PRINT "Palete printing..."
 3000 LOCATE 1,25:PRINT "& saving pal.dat...";
 3010 PRINT #8,"' ------ BEGIN PALETA --------"
 3011 valor%=0
 3012 FOR i=0 TO 15
 3013 CALL 30000,i,@valor%
 3020 PRINT #8,"INK "; i ;","; valor%
-3021 poke 31000+i,valor%
+3021 POKE 31000+i,valor%
 3022 NEXT
 3100 PRINT #8,"' ------ END PALETA --------"
-3101 gosub 8000
+3101 GOSUB 8000
 3110 RETURN
 4000 ' RUTINA GET INK 
 4001 ' ---------------
-4100 FOR dir=23900 TO 23914
 4100 FOR dir=30000 TO 30014
 4110 READ dato:POKE dir,dato
 4120 NEXT: RETURN
 4130 DATA &dd,&7e,&02,&cd,&35,&bc,&78,&dd,&6e,&00,&dd,&66,&01,&77,&c9
+7000 '--- carga de pal.dat ---
+7010 LOAD "pal.dat",31000
+7020 FOR i =0 TO 15
+7030 INK i,PEEK(31000+i)
+7040 NEXT
+7050 RETURN
+8000 ' --- save pal.dat ---
+8010 SAVE "pal.dat",b,31000,16
+8020 RETURN
+8999'---- FUNCIONALIDAD CAPTURA SPRITE ------------------
+9000 MODE 1:CALL &BC02:pen 2
+9001 print "Esta funcionalidad te permite capturar"
+9002 print "un sprite desde una imagen (.scr)"
+9003 print "para ello primero vamos a cargar la"
+9004 print "imagen .scr y despues manejaras un"
+9005 print "pixel con QAOP y seleccionaras la"
+9006 print "esquina up-left con Z y la"
+9007 print "esquina down-right con X"
+9008 print "al pulsar X se generara el sprite"
+9009 print "en el fichero de salida"
+9010 print: pen 1
+9015 INPUT "screen file"; file$
+9016 INPUT "mode";m
+9017 print "tipo de paleta"
+9018 print "1) pal.dat"
+9019 print "2) rutina convImg"
+9020 print "3) ninguna"
+9021 INPUT p$
+9022 mode m
 
+9023 LOCATE 1,1:PRINT "loading screen...":LOAD file$,&C000
+9030 'restore 15: rutina=23950
+9040 'for dir=rutina to rutina+14: read a:poke dir, a:next
+9050 'goto 20
+9060 'data &dd,&6e,0,&dd,&66,&01,&11,0,&c0,&01,0,&40,&ed,&b0,&c9
+9070 'call rutina, 7466:'lanza la copia de la pantalla
+'9080 LOCATE 1,25:PRINT "press a key":'necesaria por la rutina de paleta
+'9090 CALL &C000+2000:'establece la paleta si la imagen es de Comvimg
 
+'9080 LOCATE 1,24:INPUT "pal.dat(1) o rutina convImg(2)";p$
+9090 if p$="1" then gosub 7000:goto 9100 else if p$="3" then goto 9100
+9091 LOCATE 1,25:PRINT "press a key":'necesaria por la rutina de paleta
+9092 CALL &C000+2000:'establece la paleta si la imagen es de Comvimg
 
-7000'--- carga de pal.dat ---
-7010 load "pal.dat",31000
-7020 for i =0 to 15
-7030 ink i,peek(31000+i)
-7040 next
-7050 return
-8000' --- save pal.dat ---
-8010 save "pal.dat",b,31000,16
-8020 return
+9100 'ciclo de "juego"
+9110 x=0:y=398
+9120 '  lectura de teclas QAOP y ZX. Z es inicio de sprite X es fin de sprite
+9130 dirpant= &C000 + INT((199-y/2)/8)*80 +((199-y/2) MOD 8)*2048 + x/8: byte=PEEK(dirpant)
+9140 PLOT x,y,RND*15:' la tinta la puedes cambiar por la que se vea mejor
+9150 IF INKEY(27)=0 THEN x=x+8 ELSE IF INKEY(34)=0 THEN x=x-8
+9160 IF INKEY(67)=0 THEN y=y+2 ELSE IF INKEY(69)=0 THEN y=y-2
+9170 IF x<0 THEN x=0 ELSE IF x>632 THEN x=632
+9180 IF y<0 THEN y=0 ELSE IF y>398 THEN y=398
+9190 IF INKEY(71)=0 THEN xini=x/8:yini=200-y/2 : LOCATE 1,25:PRINT "ORIG=";x;",";y
+9190 IF INKEY(71)=0 THEN xini=x/8:yini=200-y/2 : LOCATE 1,25:PRINT "ORIG SPRITE SET"
+9200 IF INKEY(63)=0 THEN xfin=x/8:yfin=200-y/2:GOTO 9250 
+9210 LOCATE 1,22:PRINT x/8;" ";200-y/2;
+9220 LOCATE 1,23:PRINT "dir:";HEX$(dirpant)
+9230 POKE dirpant,byte:'reestablece el dibujo
+9240 GOTO 9130
+9250 LOCATE 1,25:PRINT "PRINTING SPRITE...";
+9260 'primero lo metemos en un buffer
+9270 dir=dirload
+9280 ancho= xfin-xini+1:POKE dir, ancho:
+9290 alto=yfin-yini:POKE dir+1, alto
+9300 PRINT #8,"":PRINT #8,";----------SPRITE CAPTURE------------"
+9310 y=yini:x=xini
+9320 PRINT #8,"db ";ancho
+9330 PRINT #8,"db ";alto
+9340 FOR y=0 TO alto-1
+9350 dir=&C000 + INT((yini+y)/8)*80 +((yini+y) MOD 8)*2048 + xini
+9360 FOR x=0 TO ancho-1
+9370 IF (x MOD 10=0) THEN PRINT #8,"":PRINT #8,"db "; ELSE PRINT #8,",";
+9380 PRINT #8,PEEK(dir);
+9390 dir=dir+1
+9400 NEXT x
+9410 NEXT y
+9420 LOCATE 1,25:PRINT "DONE!         ";
+9430 y=2*(200-yfin):x=xfin*8:GOTO 9130
