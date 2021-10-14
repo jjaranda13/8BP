@@ -72,6 +72,12 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+14/10/2021 ACTUALIZACION V41_04 
+==============================================
+he actualizado SPEDIT a version V14
+ahora tiene un modo de captura de sprites. Puedes cargar una pantalla (.scr) y seleccionar un trozo de la misma, de modo que se genere una imagen en el fichero de salida con los datos del recorte que has realizado. Es util para capturar un sprite de un juego que te guste y no quieres esforzarte en dibujarlo.
+
+
 17/03/2021 ACTUALIZACION V41_02 (retrocompatible)
 ==============================================
 He actualizado el repositorio los siguientes cambios, que no son relevantes a nivel de programacion, tan solo es un "ajuste fino"
