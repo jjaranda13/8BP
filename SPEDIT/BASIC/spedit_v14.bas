@@ -4,7 +4,7 @@
 40 CALL &BC02: REM inicializa paleta a valor por defecto
 41 RESTORE 4130:GOSUB 4000:' carga rutina get INK     
 50 MODE 1
-80 PEN 1:PRINT "    SPEDIT: Sprite Editor v13.0" 
+80 PEN 1:PRINT "    SPEDIT: Sprite Editor v14.0" 
 90 PRINT "": INK 2,26:PEN 2 : INK 3,20
 110 PRINT "   ---- CONTROLES EDICION ----"
 120 PRINT "    1,2 : tinta -/+"
@@ -22,8 +22,8 @@
 210 PRINT "Antes de empezar puedes cargar un spriteensamblandolo en la direccion 20000."
 220 PRINT "No ensambles ancho y alto,solo los bytesdel dibujo."
 230 PRINT " la paleta custom esta en la linea";:PEN 3:PRINT " 2300":PEN 1
-240 PRINT " La paleta la puedes cambiar pero debera ser la misma en tu programa."
-241 PRINT "":INPUT " EDIT(1) sprite o CAPTURE(2) sprite";e$:IF e$="2" THEN 9000 
+240 PRINT "La paleta la puedes cambiar para que sea la misma que la de tu videojuego."
+241 PRINT "":INPUT " EDITAR sprite(1) o CAPTURAR sprite(2)";e$:IF e$="2" THEN 9000 
 242 PRINT "Selecciona paleta (1,2,3)"
 243 PRINT " 1:default   2:custom  3:file pal.dat"
 244 INPUT p$
@@ -316,6 +316,10 @@
 9008 print "al pulsar X se generara el sprite"
 9009 print "en el fichero de salida"
 9010 print: pen 1
+9011 locate 4,10: print "Z": locate 11,15:print "X":locate 1,17
+9012 plot 2*32,400-10*16:draw 5*32,400-10*16:draw 5*32,400-14*16:draw 2*32,400-14*16:draw 2*32,400-10*16:
+
+
 9015 INPUT "screen file"; file$
 9016 INPUT "mode";m
 9017 print "tipo de paleta"
