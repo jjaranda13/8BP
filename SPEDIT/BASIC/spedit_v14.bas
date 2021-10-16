@@ -23,7 +23,7 @@
 220 PRINT "No ensambles ancho y alto,solo los bytesdel dibujo."
 230 PRINT " la paleta custom esta en la linea";:PEN 3:PRINT " 2300":PEN 1
 240 PRINT "La paleta la puedes cambiar para que sea la misma que la de tu videojuego."
-241 PRINT "":INPUT " EDITAR sprite(1) o CAPTURAR sprite(2)";e$:IF e$="2" THEN 9000 
+241 PRINT "":INPUT "EDITAR sprite(1) o CAPTURAR sprite(2)";e$:IF e$="2" THEN 9000 
 242 PRINT "Selecciona paleta (1,2,3)"
 243 PRINT " 1:default   2:custom  3:file pal.dat"
 244 INPUT p$
