@@ -317,7 +317,7 @@
 9009 print "en el fichero de salida"
 9010 print: pen 1
 9011 locate 4,10: print "Z": locate 11,15:print "X":locate 1,17
-9012 plot 2*32,400-10*16:draw 5*32,400-10*16:draw 5*32,400-14*16:draw 2*32,400-14*16:draw 2*32,400-10*16:
+9012 plot 2*32,400-10*16,1:draw 5*32,400-10*16:draw 5*32,400-14*16:draw 2*32,400-14*16:draw 2*32,400-10*16:
 
 
 9015 INPUT "screen file"; file$
@@ -359,7 +359,8 @@
 9220 LOCATE 1,23:PRINT "dir:";HEX$(dirpant)
 9230 POKE dirpant,byte:'reestablece el dibujo
 9240 GOTO 9130
-9250 LOCATE 1,25:PRINT "PRINTING SPRITE...";
+9250 POKE dirpant,byte:LOCATE 1,25:PRINT "PRINTING SPRITE...";
+9251 plot xini*8-8,400-yini*2+2,1:draw xfin*8+8,400-yini*2+2:draw xfin*8+8,400-yfin*2-2:draw xini*8-8,400-yfin*2-2:draw xini*8-8,400-yini*2+2
 9260 'primero lo metemos en un buffer
 9270 dir=dirload
 9280 ancho= xfin-xini+1:POKE dir, ancho:
