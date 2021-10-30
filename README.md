@@ -78,7 +78,7 @@ The improvements that are incorporated will be backwards compatible so your game
 ==============================================
 he actualizado el repositorio con los siguientes cambios
 
--libreria:
+- libreria:
 	- incluye un alfabeto para juegos en mode 1
 
 - manual: contiene algunas mejoras, ahora es v41_04
