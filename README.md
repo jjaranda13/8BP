@@ -77,6 +77,10 @@ The improvements that are incorporated will be backwards compatible so your game
 30/10/2021 ACTUALIZACION V41_04 
 ==============================================
 he actualizado el repositorio con los siguientes cambios
+
+-libreria:
+	- incluye un alfabeto para juegos en mode 1
+
 - manual: contiene algunas mejoras, ahora es v41_04
 	- actualizacion a la ultima version de spedit
 	- explicacion de como borrar el segmento 0 cuando se editan imagenes con convimg, para no interferir con variables de 8BP
