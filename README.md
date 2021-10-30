@@ -30,6 +30,7 @@ descargate el ZIP y en el encontraras:
 	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
 	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
 	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
+	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando"
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -67,10 +68,27 @@ Download the ZIP and you will find:
 	- "Blaster Pilot": a spaceship arcade with multidirectional scroll style "time pilot" or "asteroids"
 	- "Zampa Manzana": an arcade game. collect all apples! by Riper & music by Xeno 
 	- "dogfight": an arcade with airplanes and horizontal scroll. created by Ivan Avila
+	- "NOMWARS": an arcade with vertical scroll, "commando" style game.
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+30/10/2021 ACTUALIZACION V41_04 
+==============================================
+he actualizado el repositorio con los siguientes cambios
+- manual: contiene algunas mejoras, ahora es v41_04
+	- actualizacion a la ultima version de spedit
+	- explicacion de como borrar el segmento 0 cuando se editan imagenes con convimg, para no interferir con variables de 8BP
+	- nuevo alfabeto de mode 1 disponible
+	- recomendaciones de velocidad usando comando ON GOTO
+	- truco de doble sprite (uno transparente y otro visible) para colisiones de enemigos con mapa del mundo
+	
+- making of de NOMWARS: mini error corregido
+
+- games: se incluye "NOMWARS"
+
+
 
 14/10/2021 ACTUALIZACION V41_04 
 ==============================================
