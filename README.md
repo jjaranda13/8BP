@@ -86,6 +86,7 @@ he actualizado el repositorio con los siguientes cambios
 
 - games:
 	- he incluido "MENU_DES" que es un menu que contiene un juego, o tambien se puede ver como un juego con menu. La idea es que puedas jugar mientras eliges un juego del menu de juegos. Este programa esta pensado para ser ejecutado en un DES aunque puedes jugar a el sin DES, con el DSK, auqnue no podras lanzar los juegos del menu pero podras jugar al juego integrado 
+	- he incluido una imagen de memoria "SNA" de cada juego, capturada desde un CPC464. Estas imagenes permiten ser cargadas en emuladores. Y tambien sirven para crear ROMS para DES con la utilidad "ROM generator"
 
 
 30/10/2021 ACTUALIZACION V41_04 
