@@ -1,0 +1,3 @@
+este es un menu para DES programado con 8BP
+para conocer como esta programado consulta el documento "menus DES con 8BP"
+Te permitirá crear tus propios menus de juegos
