@@ -74,6 +74,20 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+6/11/2021 ACTUALIZACION V41_04 
+==============================================
+he actualizado el repositorio con los siguientes cambios
+
+- manual
+	- contiene la forma de comunicarse entre BASIC y C a traves de variables basic
+	- he corregido un diagrama del principio en el que se explica como crece la memoria usada al crear variables
+
+- nuevo documento: "menus DES con 8BP" te explica como esta hecho el menu DES que he creado con un juego en BASIC integrado en el menu (puedes jugar mientras te piensas que juego elegir del dispositivo DES"
+
+- games:
+	- he incluido "MENU_DES" que es un menu que contiene un juego, o tambien se puede ver como un juego con menu. La idea es que puedas jugar mientras eliges un juego del menu de juegos. Este programa esta pensado para ser ejecutado en un DES aunque puedes jugar a el sin DES, con el DSK, auqnue no podras lanzar los juegos del menu pero podras jugar al juego integrado 
+
+
 30/10/2021 ACTUALIZACION V41_04 
 ==============================================
 he actualizado el repositorio con los siguientes cambios
