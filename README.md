@@ -74,6 +74,15 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+22/12/2021 ACTUALIZACION V41_04 
+==============================================
+he actualizado el manual y he añadido en algunas carpetas de juegos una ficha de instrucciones y una ficha descriptiva
+- manual
+	- he añadido un comentario para corregir un warning al compilar en C
+	- he añadido un capitulo con una recomendacion de como programar hordas de enemigos en juegos con scroll
+	- he añadido al principio una explicacion de un tipico error (GOSUB sin RETURN) que produce memory full
+
+
 6/11/2021 ACTUALIZACION V41_04 
 ==============================================
 he actualizado el repositorio con los siguientes cambios
