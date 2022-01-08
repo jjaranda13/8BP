@@ -1,3 +1,4 @@
 este es un menu para DES programado con 8BP
 para conocer como esta programado consulta el documento "menus DES con 8BP"
 Te permitirá crear tus propios menus de juegos
+La ROM ha sido creada usando como rom alternativa la que se encuentra en la carpeta rom_autotest (creada por Noel)
