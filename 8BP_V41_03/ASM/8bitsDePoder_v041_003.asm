@@ -16,6 +16,7 @@
 ;
 ; tras invocar "call _INSTALL_RSX" desde BASIC, usando "CALL &6b78" dispondras de los siguientes comandos
 ;
+;|3D, spritefin, mode               -> configura la proyeccion 3D
 ;|ANIMA, #                          -> cambia el fotograma de un sprite segun su secuencia
 ;|ANIMALL                           -> cambia el fotograma de los sprites con flag animacion activado
 ;|AUTO, #                           -> movimiento automatico de un sprite de acuerdo a su velocidad
@@ -137,6 +138,8 @@
 ;  desde FFD0 hasta FFFF, ambos inclusive
 ;
 ; ===============================================================================================================
+_SYNC  EQU  #bd19
+
 _HIDDEN_SCREEN_SEGMENTS
 ;-----------------------------------------
 ;-----------------------------------------
@@ -630,6 +633,10 @@ INS_speed	db 5; una velocidad "normal" es 6. si ponemos 5 estamos acelerando un 
 
 ; ALGUNAS VARS LCALES
 
+; de mover
+MOR_ypointer dw 0; direccion de una variable basic dy . No puede estar en segmento oculto, pues 8BP la debe recordar
+MOR_xpointer dw 0; direccion de una variable basic dx. No puede estar en segmento oculto, pues 8BP la debe recordar
+
 
 ;=================================================
 ; Tabla de alturas de sprites. esta tabla se ubica en la memoria de sprites
@@ -1085,15 +1092,26 @@ m1_FLIP
 ;============================================================================
 m1_TRANSP
 
-		ld c, a; guarda  pixel en C		
+		ld c, a; guarda  pixel en C. En a habia pixels de sprite		
 m1PTR2_bin1	;and a,%11000000; o bien %11001100
-		and a,%11110000; 
+
+
+;		jr m1PTR2_4
+
+		;and a,%11110000; 
+		;and a,%00001111; 
+		and a; ******* v41_003 esto antes era and a,%11110000; 
 		JR Z,m1PTR2_fondo; todo ceros es para reestablecer el fondo en los 4 pixels transp o no transp
+		
 		; NOTA he observado que siembre salta a PTR_fondo porque pinto con colores que no usan los bits de fondo
 		; pero si hubiese color 1, entonces se usaria para redondear el contorno de sprites
 m1PTR2_bin2	;cp %11000000; si los dos son 1, entonces no hacemos nada, no hay que reestablecer nada
-		cp %00001111; si todos son 1, entonces no hacemos nada, no hay que reestablecer nada
-
+		ld a ,c; ******* v41_003
+;		cp %00001111; si todos son 1, entonces no hacemos nada, no hay que reestablecer nada
+		and %00001111
+		;cp %11110000;******* v41_003
+		ld c,a
+		
 		;JP Z,m1PTR2_transp; 
 		;JP Z, m1PTR2_pinta ; v35b esto creo que debe ser asi
 		ret Z; v35b esto creo que debe ser asi
@@ -1103,22 +1121,26 @@ m1PTR2_bin2	;cp %11000000; si los dos son 1, entonces no hacemos nada, no hay qu
 		;JR m1PTR2_fondo
 		
 
-		ld a,c
+m1PTR2_4	ld a,c; cargo en a de nuevo el byte de sprite
 		bit 4,c; comprueba el bit 4 
+		;bit 0,c; comprueba el bit 4 
 		JR Z, m1PTR2_5
 		; si estoy aqui es que ese bit no es cero y por lo tanto el pixel a pintar debe ser el de pantalla
 		; es decir, no alterar nada
 		res 4,c; lo pongo a cero
+		;res 0,c; lo pongo a cero
 		ld a, (DE); leo la pantalla
 		and a, %00010001; pixel 4
 		or  a,c; no modifico los 1's del pixel del sprite, almacenados en c
 		ld c,a
 m1PTR2_5
 		bit 5,c; comprueba el bit 5 
+		;bit 1,c; comprueba el bit 5 
 		JR Z, m1PTR2_6
 		; si estoy aqui es que ese bit no es cero y por lo tanto el pixel a pintar debe ser el de pantalla
 		; es decir, no alterar nada
 		res 5,c; lo pongo a cero
+		;res 1,c; lo pongo a cero
 		ld a, (DE); leo la pantalla
 		and a, %00100010; pixel 5
 		or  a,c; no modifico los 1's del pixel del sprite, almacenados en c
@@ -1126,20 +1148,24 @@ m1PTR2_5
 
 m1PTR2_6
 		bit 6,c; comprueba el bit 5 
+;		bit 2,c; comprueba el bit 5 
 		JR Z, m1PTR2_7
 		; si estoy aqui es que ese bit no es cero y por lo tanto el pixel a pintar debe ser el de pantalla
 		; es decir, no alterar nada
 		res 6,c; lo pongo a cero
+;		res 2,c; lo pongo a cero
 		ld a, (DE); leo la pantalla
 		and a, %01000100; pixel 5
 		or  a,c; no modifico los 1's del pixel del sprite, almacenados en c
 		ld c,a
 m1PTR2_7
 		bit 7,c; comprueba el bit 5 
+;		bit 3,c; comprueba el bit 5 
 		JR Z, m1PTR2_fondo
 		; si estoy aqui es que ese bit no es cero y por lo tanto el pixel a pintar debe ser el de pantalla
 		; es decir, no alterar nada
 		res 7,c; lo pongo a cero
+		;res 3,c; lo pongo a cero
 		ld a, (DE); leo la pantalla
 		and a, %10001000; pixel 7
 		or  a,c; no modifico los 1's del pixel del sprite, almacenados en c
@@ -2520,7 +2546,7 @@ DELSP_PS2
 ;-----------------------end seccion _DELSP --------------
 
 		; miro estado
-		ld a, (HL); en A cargo el status
+		ld a, (HL); en A cargo el status         
 		and %00000001
 		JR Z, PS2_next;
 
@@ -4516,24 +4542,28 @@ SET_0a16	ld b,0
 ;RUTINA DE SINCRONISMO _SYNC() (SYN)
 ;=============================================================================================================
 ; esta funcion espera al barrido de pantalla de un modo 
-; mas "correcto" que ra rutina del firmware call &bd19
+; mas "correcto" que la rutina del firmware call &bd19
 ; se puede eliminar para ahorrar memoria, reemplazandola por call &bd19, aunque ocupa poco (10 bytes)
 ; en caso de cambiarlo, el sitio desde donde se invoca a _SYNC es PRINTSPALL
-_SYNC:
 
-SYN:
+;_SYNC:
+
+;SYN:
 
 		;ld c,0
 		;ld b,#f5; PPI port B
-		ld bc, #f500; optimize
+;		ld bc, #f500; optimize
 
-SYN_lee:
-		in a,(c)
+;SYN_lee:
+;		in a,(c)
 		; (bit 0 = "1" if vsync is active,
 		;  or bit 0 = "0" if vsync is in-active)
-		rra; put bit 0 into carry flag
-		jr nc,SYN_lee
-SYN_ret		ret
+;		rra; put bit 0 into carry flag
+;		jr nc,SYN_lee
+
+;		call #bd19
+
+;SYN_ret		ret
 
 
 
@@ -4708,6 +4738,10 @@ SCS_paint
 		push HL; para protegerlo.
 		push ix; para protegerlo
 
+		
+		;push ix; para protegerlo
+		;push HL; para protegerlo.
+
 		push HL
 		pop ix; con esto cargo en ix el valor de HL
 		
@@ -4729,6 +4763,9 @@ SCS_pinta	ld (HL),a;
 SCS_nopinta
 		pop ix
 		pop HL
+		
+		;pop HL
+		;pop ix
 		ret	
 
 
@@ -5066,12 +5103,12 @@ SPR_MAX_Y:	; limite vertical para el clipping
 
 
 ;de MOVER
-MOR_ypointer dw 0; direccion de una variable basic dy
-MOR_xpointer dw 0; direccion de una variable basic dx
+;MOR_ypointer dw 0; direccion de una variable basic dy . No puede estar en segmento oculto, pues 8BP la debe recordar
+;MOR_xpointer dw 0; direccion de una variable basic dx. No puede estar en segmento oculto, pues 8BP la debe recordar
 
 ; de _STARS
-bkgd_color	db 0
-SCS_initstar	db 0
+;bkgd_color	db 0
+;SCS_initstar	db 0
 
 ;_end_24500
 ;-------------------------------------------------------------------------------
@@ -5172,17 +5209,20 @@ PSP:; RUTINA PSP
 
 ;		cp 1;1 parametro es que no trae coordenadas
 ;		JR Z,PSP_sp
-		
+		ld b,a
+		CALL _GET_MODE
+		ld a,b
+
 
 		cp 1; no se puede hacer dec a
-		JR Z,PSP_sp; 1param
+		JR Z,PSP_sp; 1param.  ejemplo PRINTSP,31
 		cp 3
-		JR Z,PSP_xy; 3param
+		JR Z,PSP_xy; 3param ejemplo PRINTSP,31, 100,40
 
-		;------------------ v33 2 param ---------------------
+		;------------------ v33 2 param ----- ejemplo PRINTSP,32,2 
 		ld a,(IX+2)
 		cp 32
-		ret nz
+		ret nz ; esto es un mecanismo de seguridad. no puedes poner 2 param y que no sea 32
 
 		; estamos aqui porque ha llegado un 32
 		; veamos cuantos bits de fondo quiere
@@ -5195,6 +5235,7 @@ PSP:; RUTINA PSP
 		JR NZ, PSP_2bitTR
 PSP_1bitTR
 		ld a,%11000000
+
 		JR  PSP_confTR
 PSP_2bitTR	
 		ld a,%11001100
@@ -5213,12 +5254,12 @@ PSP_confTR
 
 
 
-PSP_sp
+PSP_sp		; llamada con 1 solo parametro. ejemplo PRINTSP,31
 		ld (PS2_spid), a; meto un 1 para que PRINTSPALL solo imprima 1
 
 		ld (PRINTSP_flag),a; V41_001 flag para que printspall no anime
 
-		;CALL _GET_MODE ; v34
+		;CALL _GET_MODE ; v34 ; v41_003   ***********
 		ld a,(IX+0)
 
 
@@ -5235,7 +5276,7 @@ PSP_xy
 		; direcciones de memoria de la tabla de sprites.
 		CALL _LOCATE_SPRITE
 
-		CALL _GET_MODE ; v34		
+		;CALL _GET_MODE ; v34		
 
 		dec hl
 		dec hl
@@ -5298,17 +5339,6 @@ PSP_i
 		ld bc,9;los bytes 9 y 10 guardan la direccion de la imagen del sprite
 		add HL,bc
 		; ahora en HL esta la direccion donde esta la direccion de la imagen del sprite
-
-
-
-
-
-
-
-
-
-
-
 
 
 		ld c,(hl)
@@ -5450,7 +5480,8 @@ PSP_caso1:	; 1er caso el mas frecuente Y>min_Y .
 		and A; pone flag acarreo a cero
 		SBC HL,BC
 		JP P,PSP_clipVinf; si coordy>techo->no hay clipping superior
-
+		
+		
 		;Jr NC,PSP_clipVinf; si coordy>techo->no hay clipping superior
 	
 PSP_caso2: 	; HL ha salido negativo
@@ -5623,7 +5654,7 @@ PSP_NO3D
 		JR Z, PSP_nopaintsegment		
 		;CALL _3D_PAINT_SEGMENT
 		;ret	
-		jP _3D_PAINT_SEGMENT; optimize call +ret 
+		jp _3D_PAINT_SEGMENT; optimize call +ret 
 
 PSP_nopaintsegment		
 
@@ -5859,10 +5890,6 @@ PNT:
 			; en hl esta la dir de la imagen a pintar
 			
 		ld a,c;(SPR_anchofinal)
-
-
-
-
 
 
 	
@@ -7573,10 +7600,10 @@ COS_CHOCA
 
 ;star_color	db 64
 ;bkgd_color	db 0
-
-
 ;SCS_initstar	db 0
 
+bkgd_color	db 0
+SCS_initstar	db 0
 
 
 ; function body

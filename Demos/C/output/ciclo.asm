@@ -214,32 +214,32 @@ _ruta::
 ; ---------------------------------
 _comandos_8BP_V41::
 ;8BP_wrapper/8BP.h:133: __endasm;
-	_3D	== 0x645D;
-	ANIMA	== 0x6fcc;
-	ANIMALL	== 0x7716;
-	AUTO	== 0x7184;
-	AUTOALL	== 0x71d2;
-	COLAY	== 0x7201;
-	COLSP	== 0x73ac;
-	COLSPALL	== 0x75b1;
-	LAYOUT	== 0x7062;
-	LOCATESP	== 0x6C71;
-	MAP2SP	== 0x6499;
-	MOVER	== 0x753e;
-	MOVERALL	== 0x76f0;
-	MUSIC	== 0x6F58;
-	PEEK	== 0x6931;
-	POKE	== 0x6944;
-	PRINTAT	== 0x6064;
-	PRINTSP	== 0x6C94;
-	PRINTSPALL	== 0x62a1;
-	RINK	== 0x7630;
-	ROUTESP	== 0x65f7;
-	ROUTEALL	== 0x65d6;
-	SETLIMITS	== 0x6870;
-	SETUPSP	== 0x7101;
-	STARS	== 0x743c;
-	UMAP	== 0x5f2f;
+	_3D	== 0x6462;
+	ANIMA	== 0x6fc8;
+	ANIMALL	== 0x7714;
+	AUTO	== 0x7180;
+	AUTOALL	== 0x71ce;
+	COLAY	== 0x71fd;
+	COLSP	== 0x73a8;
+	COLSPALL	== 0x75af;
+	LAYOUT	== 0x705e;
+	LOCATESP	== 0x6C6b;
+	MAP2SP	== 0x649e;
+	MOVER	== 0x753c;
+	MOVERALL	== 0x76ee;
+	MUSIC	== 0x6F54;
+	PEEK	== 0x692d;
+	POKE	== 0x6940;
+	PRINTAT	== 0x6069;
+	PRINTSP	== 0x6C8e;
+	PRINTSPALL	== 0x62a6;
+	RINK	== 0x762e;
+	ROUTESP	== 0x65fc;
+	ROUTEALL	== 0x65db;
+	SETLIMITS	== 0x6875;
+	SETUPSP	== 0x70fd;
+	STARS	== 0x743a;
+	UMAP	== 0x5f34;
 ;8BP_wrapper/8BP.h:134: }
 	ret
 ;8BP_wrapper/8BP.h:137: void _8BP_3D_inv3(int offsety,int sp_fin, int flag)

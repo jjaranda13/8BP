@@ -26,32 +26,32 @@ Area                                    Addr        Size        Decimal Bytes (A
      00005BE6  s__HOME                         
      00005C1D  s__GSFINAL                      
      00005C1D  s__INITIALIZER                  
-     00005F2F  UMAP                               ciclo
-     00006064  PRINTAT                            ciclo
-     000062A1  PRINTSPALL                         ciclo
-     0000645D  _3D                                ciclo
-     00006499  MAP2SP                             ciclo
-     000065D6  ROUTEALL                           ciclo
-     000065F7  ROUTESP                            ciclo
-     00006870  SETLIMITS                          ciclo
-     00006931  PEEK                               ciclo
-     00006944  POKE                               ciclo
-     00006C71  LOCATESP                           ciclo
-     00006C94  PRINTSP                            ciclo
-     00006F58  MUSIC                              ciclo
-     00006FCC  ANIMA                              ciclo
-     00007062  LAYOUT                             ciclo
-     00007101  SETUPSP                            ciclo
-     00007184  AUTO                               ciclo
-     000071D2  AUTOALL                            ciclo
-     00007201  COLAY                              ciclo
-     000073AC  COLSP                              ciclo
-     0000743C  STARS                              ciclo
-     0000753E  MOVER                              ciclo
-     000075B1  COLSPALL                           ciclo
-     00007630  RINK                               ciclo
-     000076F0  MOVERALL                           ciclo
-     00007716  ANIMALL                            ciclo
+     00005F34  UMAP                               ciclo
+     00006069  PRINTAT                            ciclo
+     000062A6  PRINTSPALL                         ciclo
+     00006462  _3D                                ciclo
+     0000649E  MAP2SP                             ciclo
+     000065DB  ROUTEALL                           ciclo
+     000065FC  ROUTESP                            ciclo
+     00006875  SETLIMITS                          ciclo
+     0000692D  PEEK                               ciclo
+     00006940  POKE                               ciclo
+     00006C6B  LOCATESP                           ciclo
+     00006C8E  PRINTSP                            ciclo
+     00006F54  MUSIC                              ciclo
+     00006FC8  ANIMA                              ciclo
+     0000705E  LAYOUT                             ciclo
+     000070FD  SETUPSP                            ciclo
+     00007180  AUTO                               ciclo
+     000071CE  AUTOALL                            ciclo
+     000071FD  COLAY                              ciclo
+     000073A8  COLSP                              ciclo
+     0000743A  STARS                              ciclo
+     0000753C  MOVER                              ciclo
+     000075AF  COLSPALL                           ciclo
+     0000762E  RINK                               ciclo
+     000076EE  MOVERALL                           ciclo
+     00007714  ANIMALL                            ciclo
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
