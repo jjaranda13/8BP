@@ -74,6 +74,19 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+24/01/2022 ACTUALIZACION V41_04 
+==============================================
+he actualizado el repositorio con los siguientes cambios
+
+- manual
+	- mejoras en recomendaciones de uso de colores en mode 1
+
+- libreria
+	- correccion del comando PRINTSP. Tenia un minibug si se usaba sin haber ejecutado previamente PRINTSPALL en mode 1
+	- impresion transparente en mode 1 ha sido ligeramente mejorada para que se puedan usar tintas impares en los sprites transparentes. Se ignoran y se usa la tinta par, que es lo correcto
+	- speditV14 aparece en los ficheros dsk
+	- cambio en el sincronismo de pantalla interno que usan los comandos de 8BP, es inocuo.
+
 22/12/2021 ACTUALIZACION V41_04 
 ==============================================
 he actualizado el manual y he añadido en algunas carpetas de juegos una ficha de instrucciones y una ficha descriptiva
