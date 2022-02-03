@@ -30,7 +30,7 @@ descargate el ZIP y en el encontraras:
 	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
 	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
 	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
-	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando"
+	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando", disponible en versiones BASIC y BASIC + ciclo compilado
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
