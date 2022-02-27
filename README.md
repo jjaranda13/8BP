@@ -30,7 +30,7 @@ descargate el ZIP y en el encontraras:
 	- "Blaster Pilot": un juego de naves con scroll multidireccional, estilo "time pilot" o "asteroids"
 	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
 	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
-	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando"
+	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando", disponible en versiones BASIC y BASIC + ciclo compilado
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -80,12 +80,14 @@ he actualizado el repositorio con los siguientes cambios
 
 - manual
 	- mejoras en recomendaciones de uso de colores en mode 1
+	- actualizacion del apendice de direcciones de memoria de cada comando RSX
 
 - libreria
 	- correccion del comando PRINTSP. Tenia un minibug si se usaba sin haber ejecutado previamente PRINTSPALL en mode 1
 	- impresion transparente en mode 1 ha sido ligeramente mejorada para que se puedan usar tintas impares en los sprites transparentes. Se ignoran y se usa la tinta par, que es lo correcto
 	- speditV14 aparece en los ficheros dsk
 	- cambio en el sincronismo de pantalla interno que usan los comandos de 8BP, es inocuo.
+	- actualizacion de las direcciones de memoria de cada comando (en 8bp.h)
 
 22/12/2021 ACTUALIZACION V41_04 
 ==============================================
