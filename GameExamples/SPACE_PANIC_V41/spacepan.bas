@@ -1,0 +1,9 @@
+10 mode 0
+30 INK 0,1:INK 1,0:INK 2,2:INK 3,15:INK 4,3:INK 5,4:INK 6,6:INK 7,7:INK 8,8
+40 INK 9,9:INK 10,11:INK 11,18:INK 12,20:INK 13,24:INK 14,10:INK 15,26
+50 load"screen.scr"
+90 memory 4999
+100 LOAD"spacepan.BIN"
+130 LOAD"8bp.bin"
+135 paper 1:pen 3:cls
+190 call &1BE3 
