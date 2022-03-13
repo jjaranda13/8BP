@@ -31,6 +31,7 @@ descargate el ZIP y en el encontraras:
 	- "Zampa Manzana": un juego de arcade. Coge todas las manzanas! by Riper & music by Xeno
 	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
 	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando", disponible en versiones BASIC y BASIC + ciclo compilado
+	- "SPACE PANIC": un clon del clasico "Space Panic" by adolFito & music by xeno. Es un juego de ciclo compilado
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -69,10 +70,21 @@ Download the ZIP and you will find:
 	- "Zampa Manzana": an arcade game. collect all apples! by Riper & music by Xeno 
 	- "dogfight": an arcade with airplanes and horizontal scroll. created by Ivan Avila
 	- "NOMWARS": an arcade with vertical scroll, "commando" style game.
+	- "SPACE PANIC": clon of classic "Space Panic" by adolFito & music by xeno
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+13/03/2022 ACTUALIZACION V41_04 
+==============================================
+he actualizado el repositorio con los siguientes cambios
+- manual 
+	- mejoras pequeñas de escritura y algun consejo mas (cambio de rutas desde BASIC)
+
+- games:
+	- se incluye "SPACE PANIC" creado por AdolFito y musica by Xeno. Es un juego de ciclo compilado, una fiel conversion del clasico juego de maquina arcade de 1980
+
 
 24/01/2022 ACTUALIZACION V41_04 
 ==============================================
