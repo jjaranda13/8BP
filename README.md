@@ -76,7 +76,18 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
-13/03/2022 ACTUALIZACION V41_04 
+13/03/2022 ACTUALIZACION V41_04 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+-libreria
+	- he corregido un bug en el wrapper de C (fichero 8BP.h) que hacia que no fucionase bien el comando _8BP_moverall_2(). Tambien he recompilado los ejemplos que usan el wrapper de C
+
+- manual 
+	- un consejo de escritura de valores en variables en C (en capitulo de programacion C)
+
+
+13/03/2022 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
 - manual 
@@ -86,7 +97,7 @@ he actualizado el repositorio con los siguientes cambios
 	- se incluye "SPACE PANIC" creado por AdolFito y musica by Xeno. Es un juego de ciclo compilado, una fiel conversion del clasico juego de maquina arcade de 1980
 
 
-24/01/2022 ACTUALIZACION V41_04 
+24/01/2022 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
 
@@ -101,7 +112,7 @@ he actualizado el repositorio con los siguientes cambios
 	- cambio en el sincronismo de pantalla interno que usan los comandos de 8BP, es inocuo.
 	- actualizacion de las direcciones de memoria de cada comando (en 8bp.h)
 
-22/12/2021 ACTUALIZACION V41_04 
+22/12/2021 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado el manual y he añadido en algunas carpetas de juegos una ficha de instrucciones y una ficha descriptiva
 - manual
@@ -110,7 +121,7 @@ he actualizado el manual y he añadido en algunas carpetas de juegos una ficha d
 	- he añadido al principio una explicacion de un tipico error (GOSUB sin RETURN) que produce memory full
 
 
-6/11/2021 ACTUALIZACION V41_04 
+6/11/2021 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
 
@@ -125,7 +136,7 @@ he actualizado el repositorio con los siguientes cambios
 	- he incluido una imagen de memoria "SNA" de cada juego, capturada desde un CPC464. Estas imagenes permiten ser cargadas en emuladores. Y tambien sirven para crear ROMS para DES con la utilidad "ROM generator"
 
 
-30/10/2021 ACTUALIZACION V41_04 
+30/10/2021 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
 
@@ -145,7 +156,7 @@ he actualizado el repositorio con los siguientes cambios
 
 
 
-14/10/2021 ACTUALIZACION V41_04 
+14/10/2021 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
 he actualizado SPEDIT a version V14
 ahora tiene un modo de captura de sprites. Puedes cargar una pantalla (.scr) y seleccionar un trozo de la misma, de modo que se genere una imagen en el fichero de salida con los datos del recorte que has realizado. Es util para capturar un sprite de un juego que te guste y no quieres esforzarte en dibujarlo.
