@@ -1385,7 +1385,7 @@ __8BP_moverall_inv2::
 ; Function _8BP_moverall_2
 ; ---------------------------------
 __8BP_moverall_2::
-;8BP_wrapper/8BP.h:736: _8BP_moverall_2(dx,dy);
+;8BP_wrapper/8BP.h:736: _8BP_moverall_inv2(dx,dy);
 	pop	bc
 	pop	hl
 	push	hl
@@ -1397,7 +1397,7 @@ __8BP_moverall_2::
 	inc	hl
 	ld	b, (hl)
 	push	bc
-	call	__8BP_moverall_2
+	call	__8BP_moverall_inv2
 	pop	af
 	pop	af
 ;8BP_wrapper/8BP.h:737: }

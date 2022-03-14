@@ -1385,7 +1385,7 @@
                            1385 ; Function _8BP_moverall_2
                            1386 ; ---------------------------------
    050D                    1387 __8BP_moverall_2::
-                           1388 ;8BP_wrapper/8BP.h:736: _8BP_moverall_2(dx,dy);
+                           1388 ;8BP_wrapper/8BP.h:736: _8BP_moverall_inv2(dx,dy);
    050D C1            [10] 1389 	pop	bc
    050E E1            [10] 1390 	pop	hl
    050F E5            [11] 1391 	push	hl
@@ -1397,7 +1397,7 @@
    0517 23            [ 6] 1397 	inc	hl
    0518 46            [ 7] 1398 	ld	b, (hl)
    0519 C5            [11] 1399 	push	bc
-   051A CDr0Dr05      [17] 1400 	call	__8BP_moverall_2
+   051A CDr01r05      [17] 1400 	call	__8BP_moverall_inv2
    051D F1            [10] 1401 	pop	af
    051E F1            [10] 1402 	pop	af
                            1403 ;8BP_wrapper/8BP.h:737: }
