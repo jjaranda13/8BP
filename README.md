@@ -80,7 +80,7 @@ The improvements that are incorporated will be backwards compatible so your game
 ==============================================
 he actualizado el respositorio con los siguientes cambios
 
--libreria
+- libreria
 	- he corregido un bug en el wrapper de C (fichero 8BP.h) que hacia que no fucionase bien el comando _8BP_moverall_2(). Tambien he recompilado los ejemplos que usan el wrapper de C
 
 - manual 
