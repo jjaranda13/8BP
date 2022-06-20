@@ -1,0 +1,299 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  l__HOME                         
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000002  l__INITIALIZED                  
+     00000002  l__INITIALIZER                  
+     00000037  l__GSINIT                       
+     00000081  l__DATA                         
+     00001758  l__CODE                         
+     0000445C  s__CODE                         
+     00005BB4  s__DATA                         
+     00005C35  s__INITIALIZED                  
+     00005C37  s__GSINIT                       
+     00005C37  s__HOME                         
+     00005C6E  s__GSFINAL                      
+     00005C6E  s__INITIALIZER                  
+     00005F34  UMAP                               ciclo
+     00006069  PRINTAT                            ciclo
+     000062A6  PRINTSPALL                         ciclo
+     00006462  _3D                                ciclo
+     0000649E  MAP2SP                             ciclo
+     000065DB  ROUTEALL                           ciclo
+     000065FC  ROUTESP                            ciclo
+     00006875  SETLIMITS                          ciclo
+     0000692D  PEEK                               ciclo
+     00006940  POKE                               ciclo
+     00006C6B  LOCATESP                           ciclo
+     00006C8E  PRINTSP                            ciclo
+     00006F54  MUSIC                              ciclo
+     00006FC8  ANIMA                              ciclo
+     0000705E  LAYOUT                             ciclo
+     000070FD  SETUPSP                            ciclo
+     00007180  AUTO                               ciclo
+     000071CE  AUTOALL                            ciclo
+     000071FD  COLAY                              ciclo
+     000073A8  COLSP                              ciclo
+     0000743A  STARS                              ciclo
+     0000753C  MOVER                              ciclo
+     000075AF  COLSPALL                           ciclo
+     0000762E  RINK                               ciclo
+     000076EE  MOVERALL                           ciclo
+     00007714  ANIMALL                            ciclo
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               0000445C    00001758 =        5976. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000445C  _comandos_8BP_V41                  ciclo
+     0000445D  __8BP_3D_inv3                      ciclo
+     00004469  __8BP_3D_3                         ciclo
+     0000448D  __8BP_3D_1                         ciclo
+     00004499  __8BP_anima_1                      ciclo
+     000044A5  __8BP_animall                      ciclo
+     000044AB  __8BP_auto_1                       ciclo
+     000044B7  __8BP_autoall_1                    ciclo
+     000044C3  __8BP_autoall                      ciclo
+     000044C9  __8BP_colay_inv3                   ciclo
+     000044D5  __8BP_colay                        ciclo
+     000044DB  __8BP_colay_inv2                   ciclo
+     000044E7  __8BP_colay_2                      ciclo
+     00004500  __8BP_colay_1                      ciclo
+     0000450C  __8BP_colay_3                      ciclo
+     00004536  __8BP_colsp_inv3                   ciclo
+     00004542  __8BP_colsp_inv2                   ciclo
+     0000454E  __8BP_colsp_3                      ciclo
+     00004572  __8BP_colsp_2                      ciclo
+     0000458C  __8BP_colsp_1                      ciclo
+     00004598  __8BP_colspall_inv2                ciclo
+     000045A4  __8BP_colspall                     ciclo
+     000045AA  __8BP_colspall_1                   ciclo
+     000045BD  __8BP_colspall_2                   ciclo
+     000045DE  __8BP_locatesp_inv3                ciclo
+     000045EA  __8BP_locatesp_3                   ciclo
+     00004610  __8BP_music_inv4                   ciclo
+     0000461C  __8BP_music_4                      ciclo
+     0000464C  __8BP_music                        ciclo
+     00004652  _getDescriptor                     ciclo
+     00004675  __8BP_printat_inv                  ciclo
+     00004681  __8BP_printat_4                    ciclo
+     000046E4  __8BP_printsp_inv3                 ciclo
+     000046F0  __8BP_printsp_inv2                 ciclo
+     000046FC  __8BP_printsp_3                    ciclo
+     00004720  __8BP_printsp_2                    ciclo
+     00004733  __8BP_printsp_1                    ciclo
+     0000473F  __8BP_printspall_inv4              ciclo
+     0000474B  __8BP_printspall_4                 ciclo
+     0000477B  __8BP_printspall_1                 ciclo
+     00004787  __8BP_printspall                   ciclo
+     0000478D  __8BP_routeall                     ciclo
+     00004793  __8BP_routesp_inv2                 ciclo
+     0000479F  __8BP_routesp_2                    ciclo
+     000047B2  __8BP_routesp_1                    ciclo
+     000047BE  __8BP_setlimits_inv4               ciclo
+     000047CA  __8BP_setlimits_4                  ciclo
+     000047FA  __8BP_setupsp_inv3                 ciclo
+     00004806  __8BP_setupsp_inv4                 ciclo
+     00004812  __8BP_setupsp_3                    ciclo
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               0000445C    00001758 =        5976. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004836  __8BP_setupsp_4                    ciclo
+     00004866  __8BP_stars_inv5                   ciclo
+     00004872  __8BP_stars_5                      ciclo
+     000048AE  __8BP_stars                        ciclo
+     000048B4  __8BP_layout_inv3                  ciclo
+     000048C0  __8BP_layout_3                     ciclo
+     00004917  __8BP_map2sp_inv2                  ciclo
+     00004923  __8BP_map2sp_2                     ciclo
+     00004936  __8BP_map2sp_1                     ciclo
+     00004942  __8BP_mover_inv3                   ciclo
+     0000494E  __8BP_mover_3                      ciclo
+     00004972  __8BP_mover_1                      ciclo
+     0000497E  __8BP_moverall_inv2                ciclo
+     0000498A  __8BP_moverall_2                   ciclo
+     0000499D  __8BP_moverall                     ciclo
+     000049A3  __8BP_peek_2                       ciclo
+     000049BC  __8BP_poke_2                       ciclo
+     000049D0  __8BP_rink_1                       ciclo
+     000049DC  __8BP_rink_N                       ciclo
+     00004A3E  __8BP_umap_inv6                    ciclo
+     00004A4A  __8BP_umap_6                       ciclo
+     00004A91  __basic_time                       ciclo
+     00004A99  __basic_rnd                        ciclo
+     00004AB3  __basic_border                     ciclo
+     00004AC2  _DisplayChar                       ciclo
+     00004ACB  __basic_print                      ciclo
+     00004ADD  __basic_inkey                      ciclo
+     00004AF3  _reverse                           ciclo
+     00004B85  __basic_str                        ciclo
+     00004C0C  __basic_call                       ciclo
+     00004C1F  __basic_locate                     ciclo
+     00004C2F  __basic_sound                      ciclo
+     00004C6C  __basic_ink                        ciclo
+     00004C7D  __basic_peek                       ciclo
+     00004C8F  __basic_poke                       ciclo
+     00004CA1  __basic_pen_txt                    ciclo
+     00004CAE  __basic_pen_graph                  ciclo
+     00004CBB  __basic_paper                      ciclo
+     00004CC8  __basic_plot                       ciclo
+     00004CDF  __basic_move                       ciclo
+     00004CF6  __basic_draw                       ciclo
+     00004D0D  _main                              ciclo
+     000054AD  _logica_fantasma                   ciclo
+     000059C3  _logica_fantasma_precomputed       ciclo
+     00005AE0  _abs                               
+     00005AEC  _strlen                            
+     00005AFB  __modschar                         
+     00005B08  __modsint                          
+     00005B14  __moduchar                         
+     00005B20  __moduint                          
+     00005B2B  __divsint                          
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               0000445C    00001758 =        5976. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00005B34  __divschar                         
+     00005B3B  __div8                             
+     00005B3F  __div_signexte                     
+     00005B43  __div16                            
+     00005B69  __get_remainder                    
+     00005B73  __divuint                          
+     00005B7B  __divuchar                         
+     00005B82  __divu8                            
+     00005B85  __divu16                           
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               00005BB4    00000081 =         129. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00005BB4  __8BP_rink_N_color1                ciclo
+     00005BB5  __8BP_rink_N_inverse_list          ciclo
+     00005BE2  _c                                 ciclo
+     00005BE4  _n                                 ciclo
+     00005BE6  _x                                 ciclo
+     00005BE8  _y                                 ciclo
+     00005BEA  _y2                                ciclo
+     00005BEC  _dir                               ciclo
+     00005BEE  _cod                               ciclo
+     00005BF0  _cor                               ciclo
+     00005BF2  _col                               ciclo
+     00005BF4  _scr                               ciclo
+     00005BF6  _scr_dir                           ciclo
+     00005BF8  _target                            ciclo
+     00005BFA  _target_dir                        ciclo
+     00005BFC  _hi                                ciclo
+     00005BFE  _hi_dir                            ciclo
+     00005C00  _flaghi                            ciclo
+     00005C02  _flaghi_dir                        ciclo
+     00005C04  _music                             ciclo
+     00005C06  _music_dir                         ciclo
+     00005C08  _t1                                ciclo
+     00005C0A  _t2                                ciclo
+     00005C0C  _d                                 ciclo
+     00005C0E  _fps                               ciclo
+     00005C10  _cfps                              ciclo
+     00005C12  _dato                              ciclo
+     00005C13  _cad                               ciclo
+     00005C15  _rf                                ciclo
+     00005C19  _dfx                               ciclo
+     00005C21  _dfy                               ciclo
+     00005C29  _id                                ciclo
+     00005C2B  _xf                                ciclo
+     00005C2C  _yf                                ciclo
+     00005C2D  _newr                              ciclo
+     00005C2E  _op                                ciclo
+     00005C2F  _precomp                           ciclo
+     00005C31  _co                                ciclo
+     00005C33  _res                               ciclo
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_INITIALIZED                        00005C35    00000002 =           2. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00005C35  __basic_rnd_x                      ciclo
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             00005C37    00000037 =          55. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_INITIALIZER                        00005C6E    00000002 =           2. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+
+Files Linked                              [ module(s) ]
+
+output\ciclo.rel                          [ ciclo ]
+
+
+Libraries Linked                          [ object file ]
+
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ abs.rel ]
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ strlen.rel ]
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ modsigned.rel ]
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ modunsigned.rel ]
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ divsigned.rel ]
+C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
+                                          [ divunsigned.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+
+User Base Address Definitions
+
+_CODE = 0x445c
+_DATA = 0x0000
+
+

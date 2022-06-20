@@ -1,0 +1,212 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    ANIMA                                                       =  6FC8 G
+    ANIMALL                                                     =  7714 G
+    AUTO                                                        =  7180 G
+    AUTOALL                                                     =  71CE G
+    COLAY                                                       =  71FD G
+    COLSP                                                       =  73A8 G
+    COLSPALL                                                    =  75AF G
+    LAYOUT                                                      =  705E G
+    LOCATESP                                                    =  6C6B G
+    MAP2SP                                                      =  649E G
+    MOVER                                                       =  753C G
+    MOVERALL                                                    =  76EE G
+    MUSIC                                                       =  6F54 G
+    PEEK                                                        =  692D G
+    POKE                                                        =  6940 G
+    PRINTAT                                                     =  6069 G
+    PRINTSP                                                     =  6C8E G
+    PRINTSPALL                                                  =  62A6 G
+    RINK                                                        =  762E G
+    ROUTEALL                                                    =  65DB G
+    ROUTESP                                                     =  65FC G
+    SETLIMITS                                                   =  6875 G
+    SETUPSP                                                     =  70FD G
+    STARS                                                       =  743A G
+    UMAP                                                        =  5F34 G
+    _3D                                                         =  6462 G
+  0 _DisplayChar                                                   0666 GR
+  0 __8BP_3D_1                                                     0031 GR
+  0 __8BP_3D_3                                                     000D GR
+  0 __8BP_3D_inv3                                                  0001 GR
+  0 __8BP_anima_1                                                  003D GR
+  0 __8BP_animall                                                  0049 GR
+  0 __8BP_auto_1                                                   004F GR
+  0 __8BP_autoall                                                  0067 GR
+  0 __8BP_autoall_1                                                005B GR
+  0 __8BP_colay                                                    0079 GR
+  0 __8BP_colay_1                                                  00A4 GR
+  0 __8BP_colay_2                                                  008B GR
+  0 __8BP_colay_3                                                  00B0 GR
+  0 __8BP_colay_inv2                                               007F GR
+  0 __8BP_colay_inv3                                               006D GR
+  0 __8BP_colsp_1                                                  0130 GR
+  0 __8BP_colsp_2                                                  0116 GR
+  0 __8BP_colsp_3                                                  00F2 GR
+  0 __8BP_colsp_inv2                                               00E6 GR
+  0 __8BP_colsp_inv3                                               00DA GR
+  0 __8BP_colspall                                                 0148 GR
+  0 __8BP_colspall_1                                               014E GR
+  0 __8BP_colspall_2                                               0161 GR
+  0 __8BP_colspall_inv2                                            013C GR
+  0 __8BP_layout_3                                                 0464 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 __8BP_layout_inv3                                              0458 GR
+  0 __8BP_locatesp_3                                               018E GR
+  0 __8BP_locatesp_inv3                                            0182 GR
+  0 __8BP_map2sp_1                                                 04DA GR
+  0 __8BP_map2sp_2                                                 04C7 GR
+  0 __8BP_map2sp_inv2                                              04BB GR
+  0 __8BP_mover_1                                                  0516 GR
+  0 __8BP_mover_3                                                  04F2 GR
+  0 __8BP_mover_inv3                                               04E6 GR
+  0 __8BP_moverall                                                 0541 GR
+  0 __8BP_moverall_2                                               052E GR
+  0 __8BP_moverall_inv2                                            0522 GR
+  0 __8BP_music                                                    01F0 GR
+  0 __8BP_music_4                                                  01C0 GR
+  0 __8BP_music_inv4                                               01B4 GR
+  0 __8BP_peek_2                                                   0547 GR
+  0 __8BP_poke_2                                                   0560 GR
+  0 __8BP_printat_4                                                0225 GR
+  0 __8BP_printat_inv                                              0219 GR
+  0 __8BP_printsp_1                                                02D7 GR
+  0 __8BP_printsp_2                                                02C4 GR
+  0 __8BP_printsp_3                                                02A0 GR
+  0 __8BP_printsp_inv2                                             0294 GR
+  0 __8BP_printsp_inv3                                             0288 GR
+  0 __8BP_printspall                                               032B GR
+  0 __8BP_printspall_1                                             031F GR
+  0 __8BP_printspall_4                                             02EF GR
+  0 __8BP_printspall_inv4                                          02E3 GR
+  0 __8BP_rink_1                                                   0574 GR
+  0 __8BP_rink_N                                                   0580 GR
+  1 __8BP_rink_N_color1                                            0000 GR
+  1 __8BP_rink_N_inverse_list                                      0001 GR
+  0 __8BP_routeall                                                 0331 GR
+  0 __8BP_routesp_1                                                0356 GR
+  0 __8BP_routesp_2                                                0343 GR
+  0 __8BP_routesp_inv2                                             0337 GR
+  0 __8BP_setlimits_4                                              036E GR
+  0 __8BP_setlimits_inv4                                           0362 GR
+  0 __8BP_setupsp_3                                                03B6 GR
+  0 __8BP_setupsp_4                                                03DA GR
+  0 __8BP_setupsp_inv3                                             039E GR
+  0 __8BP_setupsp_inv4                                             03AA GR
+  0 __8BP_stars                                                    0452 GR
+  0 __8BP_stars_5                                                  0416 GR
+  0 __8BP_stars_inv5                                               040A GR
+  0 __8BP_umap_6                                                   05EE GR
+  0 __8BP_umap_inv6                                                05E2 GR
+  0 ___str_1                                                       1044 R
+  0 ___str_2                                                       1048 R
+  0 __basic_border                                                 0657 GR
+  0 __basic_call                                                   07B0 GR
+  0 __basic_draw                                                   089A GR
+  0 __basic_ink                                                    0810 GR
+  0 __basic_inkey                                                  0681 GR
+  0 __basic_locate                                                 07C3 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 3.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  0 __basic_move                                                   0883 GR
+  0 __basic_paper                                                  085F GR
+  0 __basic_peek                                                   0821 GR
+  0 __basic_pen_graph                                              0852 GR
+  0 __basic_pen_txt                                                0845 GR
+  0 __basic_plot                                                   086C GR
+  0 __basic_poke                                                   0833 GR
+  0 __basic_print                                                  066F GR
+  0 __basic_rnd                                                    063D GR
+  2 __basic_rnd_x                                                  0000 GR
+  0 __basic_sound                                                  07D3 GR
+  0 __basic_str                                                    0729 GR
+  1 __basic_str_buffer_65536_273                                   0023 R
+  0 __basic_time                                                   0635 GR
+    __divsint                                                      **** GX
+    __modsint                                                      **** GX
+    __moduint                                                      **** GX
+  7 __xinit___basic_rnd_x                                          0000 R
+    _abs                                                           **** GX
+  1 _c                                                             002E GR
+  1 _cad                                                           005F GR
+  1 _cfps                                                          005C GR
+  1 _co                                                            007D GR
+  1 _cod                                                           003A GR
+  1 _col                                                           003E GR
+  0 _comandos_8BP_V41                                              0000 GR
+  1 _cor                                                           003C GR
+  1 _d                                                             0058 GR
+  1 _dato                                                          005E GR
+  1 _dfx                                                           0065 GR
+  1 _dfy                                                           006D GR
+  1 _dir                                                           0038 GR
+  1 _flaghi                                                        004C GR
+  1 _flaghi_dir                                                    004E GR
+  1 _fps                                                           005A GR
+  0 _getDescriptor                                                 01F6 GR
+  1 _hi                                                            0048 GR
+  1 _hi_dir                                                        004A GR
+  1 _id                                                            0075 GR
+  0 _logica_fantasma                                               1051 GR
+  0 _logica_fantasma_precomputed                                   1567 GR
+  0 _main                                                          08B1 GR
+  1 _music                                                         0050 GR
+  1 _music_dir                                                     0052 GR
+  1 _n                                                             0030 GR
+  1 _newr                                                          0079 GR
+  1 _op                                                            007A GR
+  1 _precomp                                                       007B GR
+  1 _res                                                           007F GR
+  0 _reverse                                                       0697 GR
+  1 _rf                                                            0061 GR
+  1 _scr                                                           0040 GR
+  1 _scr_dir                                                       0042 GR
+    _strlen                                                        **** GX
+  1 _t1                                                            0054 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 4.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+  1 _t2                                                            0056 GR
+  1 _target                                                        0044 GR
+  1 _target_dir                                                    0046 GR
+  1 _x                                                             0032 GR
+  1 _xf                                                            0077 GR
+  1 _y                                                             0034 GR
+  1 _y2                                                            0036 GR
+  1 _yf                                                            0078 GR
+  0 dir                                                            07BF R
+  0 pressed                                                        0692 R
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 5.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size 1684   flags    0
+   1 _DATA                                      size   81   flags    0
+   2 _INITIALIZED                               size    2   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size   37   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    2   flags    0
+   8 _CABS                                      size    0   flags    8
+
