@@ -32,6 +32,7 @@ descargate el ZIP y en el encontraras:
 	- "dogfight": un juego de arcade con aviones y scroll horizontal. by Ivan Avila
 	- "NOMWARS": un juego de arcade de scroll vertical al estilo "commmando", disponible en versiones BASIC y BASIC + ciclo compilado
 	- "SPACE PANIC": un clon del clasico "Space Panic" by adolFito & music by xeno. Es un juego de ciclo compilado
+	- "Paco, el hombre": un comecocos con dos niveles BASIC y dos en C compilado
 
 - Demos: Aqui ire dejando pequeñas demos con ejemplos didácticos hechas con  8BP
  
@@ -71,10 +72,30 @@ Download the ZIP and you will find:
 	- "dogfight": an arcade with airplanes and horizontal scroll. created by Ivan Avila
 	- "NOMWARS": an arcade with vertical scroll, "commando" style game.
 	- "SPACE PANIC": clon of classic "Space Panic" by adolFito & music by xeno
+	- "Paco, el hombre" : a pac-man style game
 
 - Demos: Here i will upload small demos with didactic examples made 8BP
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
+
+
+20/06/2022 ACTUALIZACION V41_05 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+- manual: incorpora las siguientes mejoras:
+	- explicacion de movimiento suave de medio byte
+	- analisis velocidad vs longitud de variables
+	- mejoras en el capitulo de C
+	- mas logicas masivas
+
+- games:
+	- se incluye "Paco el hombre": un juego de tipo comecocos que hace uso intensivo de logicas masivas, alcanzando 20FPS en BASIC
+	- tambien se incorpora el documento "making of", que puedes encontrar en la carpeta de documentacion y en la del juego
+
+- SPEDITv15:
+	- incorpora una nueva caracteristica para facilitar la edicion de sprites con movimiento suave de medio byte (1 pixel de mode 0 o dos de mode 1)
+
 
 13/03/2022 ACTUALIZACION V41_04 (retrocompatible)
 ==============================================
