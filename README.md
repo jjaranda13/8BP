@@ -78,6 +78,17 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+29/01/2023 ACTUALIZACION V41_06 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+- manual: incorpora las siguientes mejoras:
+	- explicacion mejorada de las tintas que se deben usar al editar sprites con sobreescritura
+	- explicacion mejorada del problema y soluciones de de memory full
+	
+- SPEDITv15:
+	- corregido un bug (que solo afactaba a la v15) que daba error al cargar una paleta
+
 
 20/06/2022 ACTUALIZACION V41_05 (retrocompatible)
 ==============================================
