@@ -78,6 +78,25 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+24/06/2023 ACTUALIZACION V42_00 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+- libreria: incorpora las siguientes mejoras
+	- opciones de ensamblaje, con las que 8BP ahora te deja hasta 25KB libres para tu listado
+	- 1.5KB libres para musica (antes eran 1.4 KB)
+	- imagenes de fondo: permite scroll sin parpadeos en objetos que pasan por debajo de tus sprites
+	- secuencias de animacion encadenadas: esto permite hacer secuencias de animacion de cualquier numero de frames
+
+
+- manual: incorpora las siguientes mejoras:
+	- explicacion de las opciones de ensamblaje
+	- nuevo mapa de memoria
+	- explicacion de las imagenes de fondo
+	- explicacion de las secuencias de animacion encadenadas
+	- revision completa del manual con muchas mejoras en todos los capitulos
+
+
 29/01/2023 ACTUALIZACION V41_06 (retrocompatible)
 ==============================================
 he actualizado el respositorio con los siguientes cambios
