@@ -88,6 +88,7 @@ he actualizado el respositorio con los siguientes cambios
 	- imagenes de fondo: permite scroll sin parpadeos en objetos que pasan por debajo de tus sprites
 	- secuencias de animacion encadenadas: esto permite hacer secuencias de animacion de cualquier numero de frames
 
+- Demos: todas las demos actualizadas a v42_00
 
 - manual: incorpora las siguientes mejoras:
 	- explicacion de las opciones de ensamblaje
