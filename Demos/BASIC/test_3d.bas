@@ -8,9 +8,12 @@
 90 |3D,1,31,0:|SETLIMITS,0,80,0,200
 100 GOSUB 160
 101 xini=-40:xfin=80:incx=1   
-101 xini=-40:xfin=200:incx=1   
+101 xini=-40:xfin=200:incx=1  
+
 110 Y=0:X=5:|PRINTSPALL,0,0,0
+'110 Y=152:X=52:|PRINTSPALL,0,0,0
 120 |MAP2SP,Y,X:|PRINTSPALL
+121 locate 1,1:print y
 130 y=4+y MOD 450
 131 x=x+incx
 132 IF x>xfin OR x<xini THEN incx=-incx    

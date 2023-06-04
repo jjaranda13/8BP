@@ -58,7 +58,7 @@ char *cad="AAA";
 
  _8BP_map2sp_1(1);
  
- _8BP_umap_6(41600,41660,0,1000,0,1000);
+ _8BP_umap_6(41700,41760,0,1000,0,1000);
  CICLO:
  
    //ciclo de juego

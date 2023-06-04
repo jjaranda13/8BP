@@ -18,50 +18,50 @@ Area                                    Addr        Size        Decimal Bytes (A
      0000001C  l__INITIALIZER                  
      0000002E  l__DATA                         
      00000037  l__GSINIT                       
-     00000D7C  l__CODE                         
+     00000D7D  l__CODE                         
      00004E20  s__CODE                         
-     00005B9C  s__DATA                         
-     00005BCA  s__INITIALIZED                  
-     00005BE6  s__GSINIT                       
-     00005BE6  s__HOME                         
-     00005C1D  s__GSFINAL                      
-     00005C1D  s__INITIALIZER                  
-     00005F34  UMAP                               ciclo
-     00006069  PRINTAT                            ciclo
-     000062A6  PRINTSPALL                         ciclo
-     00006462  _3D                                ciclo
-     0000649E  MAP2SP                             ciclo
-     000065DB  ROUTEALL                           ciclo
-     000065FC  ROUTESP                            ciclo
-     00006875  SETLIMITS                          ciclo
-     0000692D  PEEK                               ciclo
-     00006940  POKE                               ciclo
-     00006C6B  LOCATESP                           ciclo
-     00006C8E  PRINTSP                            ciclo
-     00006F54  MUSIC                              ciclo
-     00006FC8  ANIMA                              ciclo
-     0000705E  LAYOUT                             ciclo
-     000070FD  SETUPSP                            ciclo
-     00007180  AUTO                               ciclo
-     000071CE  AUTOALL                            ciclo
-     000071FD  COLAY                              ciclo
-     000073A8  COLSP                              ciclo
-     0000743A  STARS                              ciclo
-     0000753C  MOVER                              ciclo
-     000075AF  COLSPALL                           ciclo
-     0000762E  RINK                               ciclo
-     000076EE  MOVERALL                           ciclo
-     00007714  ANIMALL                            ciclo
+     00005B9D  s__DATA                         
+     00005BCB  s__INITIALIZED                  
+     00005BE7  s__GSINIT                       
+     00005BE7  s__HOME                         
+     00005C1E  s__GSFINAL                      
+     00005C1E  s__INITIALIZER                  
+     00006B96  PRINTSPALL                         ciclo
+     00006B99  COLSPALL                           ciclo
+     00006B9C  AUTOALL                            ciclo
+     00006B9F  MOVERALL                           ciclo
+     00006BA2  MAP2SP                             ciclo
+     00006BA5  STARS                              ciclo
+     00006BA8  COLAY                              ciclo
+     00006BAB  SETUPSP                            ciclo
+     00006BAE  LOCATESP                           ciclo
+     00006BB1  PEEK                               ciclo
+     00006BB4  POKE                               ciclo
+     00006BB7  ANIMA                              ciclo
+     00006BBA  COLSP                              ciclo
+     00006BBD  RINK                               ciclo
+     00006BC0  MOVER                              ciclo
+     00006BC3  PRINTSP                            ciclo
+     00006BC6  PRINTAT                            ciclo
+     00006BC9  AUTO                               ciclo
+     00006BCC  ROUTESP                            ciclo
+     00006BCF  UMAP                               ciclo
+     00006BD2  ROUTEALL                           ciclo
+     00006BD5  LAYOUT                             ciclo
+     00006BD8  MUSIC                              ciclo
+     00006BDB  SETLIMITS                          ciclo
+     00006BDE  _3D                                ciclo
+     00007479  ANIMALL                            ciclo
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004E20    00000D7C =        3452. bytes (REL,CON)
+_CODE                               00004E20    00000D7D =        3453. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00004E20  _comandos_8BP_V41                  ciclo
+     00004E20  _comandos_8BP_V42                  ciclo
      00004E21  __8BP_3D_inv3                      ciclo
      00004E2D  __8BP_3D_3                         ciclo
      00004E51  __8BP_3D_1                         ciclo
@@ -116,7 +116,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004E20    00000D7C =        3452. bytes (REL,CON)
+_CODE                               00004E20    00000D7D =        3453. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -162,76 +162,76 @@ _CODE                               00004E20    00000D7C =        3452. bytes (R
      00005682  __basic_move                       ciclo
      00005699  __basic_draw                       ciclo
      000056B0  _main                              ciclo
-     000059F6  _CHAR_CR                           ciclo
-     000059F8  _rutina_colision                   ciclo
-     00005AC8  __divuint                          
-     00005AD0  __divuchar                         
-     00005AD7  __divu8                            
-     00005ADA  __divu16                           
-     00005B09  _abs                               
-     00005B15  _strlen                            
-     00005B24  __modschar                         
+     000059F7  _CHAR_CR                           ciclo
+     000059F9  _rutina_colision                   ciclo
+     00005AC9  __divuint                          
+     00005AD1  __divuchar                         
+     00005AD8  __divu8                            
+     00005ADB  __divu16                           
+     00005B0A  _abs                               
+     00005B16  _strlen                            
+     00005B25  __modschar                         
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004E20    00000D7C =        3452. bytes (REL,CON)
+_CODE                               00004E20    00000D7D =        3453. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00005B31  __modsint                          
-     00005B3D  __moduchar                         
-     00005B49  __moduint                          
-     00005B54  __divsint                          
-     00005B5D  __divschar                         
-     00005B64  __div8                             
-     00005B68  __div_signexte                     
-     00005B6C  __div16                            
-     00005B92  __get_remainder                    
+     00005B32  __modsint                          
+     00005B3E  __moduchar                         
+     00005B4A  __moduint                          
+     00005B55  __divsint                          
+     00005B5E  __divschar                         
+     00005B65  __div8                             
+     00005B69  __div_signexte                     
+     00005B6D  __div16                            
+     00005B93  __get_remainder                    
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_DATA                               00005B9C    0000002E =          46. bytes (REL,CON)
+_DATA                               00005B9D    0000002E =          46. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00005B9C  __8BP_rink_N_color1                ciclo
-     00005B9D  __8BP_rink_N_inverse_list          ciclo
+     00005B9D  __8BP_rink_N_color1                ciclo
+     00005B9E  __8BP_rink_N_inverse_list          ciclo
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZED                        00005BCA    0000001C =          28. bytes (REL,CON)
+_INITIALIZED                        00005BCB    0000001C =          28. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00005BCA  __basic_rnd_x                      ciclo
-     00005BCC  _c                                 ciclo
-     00005BCE  _last                              ciclo
-     00005BD0  _sp                                ciclo
-     00005BD2  _x                                 ciclo
-     00005BD4  _y                                 ciclo
-     00005BD6  _e                                 ciclo
-     00005BD8  _ex                                ciclo
-     00005BDA  _cor                               ciclo
-     00005BDC  _cod                               ciclo
-     00005BDE  _rescol                            ciclo
-     00005BE0  _puntos                            ciclo
-     00005BE2  _puntos_str                        ciclo
-     00005BE4  _ruta                              ciclo
+     00005BCB  __basic_rnd_x                      ciclo
+     00005BCD  _c                                 ciclo
+     00005BCF  _last                              ciclo
+     00005BD1  _sp                                ciclo
+     00005BD3  _x                                 ciclo
+     00005BD5  _y                                 ciclo
+     00005BD7  _e                                 ciclo
+     00005BD9  _ex                                ciclo
+     00005BDB  _cor                               ciclo
+     00005BDD  _cod                               ciclo
+     00005BDF  _rescol                            ciclo
+     00005BE1  _puntos                            ciclo
+     00005BE3  _puntos_str                        ciclo
+     00005BE5  _ruta                              ciclo
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             00005BE6    00000037 =          55. bytes (REL,CON)
+_GSINIT                             00005BE7    00000037 =          55. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -240,7 +240,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        00005C1D    0000001C =          28. bytes (REL,CON)
+_INITIALIZER                        00005C1E    0000001C =          28. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------

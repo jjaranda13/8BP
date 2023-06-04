@@ -7,33 +7,33 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-    ANIMA                                                       =  6FC8 G
-    ANIMALL                                                     =  7714 G
-    AUTO                                                        =  7180 G
-    AUTOALL                                                     =  71CE G
-    COLAY                                                       =  71FD G
-    COLSP                                                       =  73A8 G
-    COLSPALL                                                    =  75AF G
-    LAYOUT                                                      =  705E G
-    LOCATESP                                                    =  6C6B G
-    MAP2SP                                                      =  649E G
-    MOVER                                                       =  753C G
-    MOVERALL                                                    =  76EE G
-    MUSIC                                                       =  6F54 G
-    PEEK                                                        =  692D G
-    POKE                                                        =  6940 G
-    PRINTAT                                                     =  6069 G
-    PRINTSP                                                     =  6C8E G
-    PRINTSPALL                                                  =  62A6 G
-    RINK                                                        =  762E G
-    ROUTEALL                                                    =  65DB G
-    ROUTESP                                                     =  65FC G
-    SETLIMITS                                                   =  6875 G
-    SETUPSP                                                     =  70FD G
-    STARS                                                       =  743A G
-    UMAP                                                        =  5F34 G
-    _3D                                                         =  6462 G
-  0 _CHAR_CR                                                       0BD6 GR
+    ANIMA                                                       =  6BB7 G
+    ANIMALL                                                     =  7479 G
+    AUTO                                                        =  6BC9 G
+    AUTOALL                                                     =  6B9C G
+    COLAY                                                       =  6BA8 G
+    COLSP                                                       =  6BBA G
+    COLSPALL                                                    =  6B99 G
+    LAYOUT                                                      =  6BD5 G
+    LOCATESP                                                    =  6BAE G
+    MAP2SP                                                      =  6BA2 G
+    MOVER                                                       =  6BC0 G
+    MOVERALL                                                    =  6B9F G
+    MUSIC                                                       =  6BD8 G
+    PEEK                                                        =  6BB1 G
+    POKE                                                        =  6BB4 G
+    PRINTAT                                                     =  6BC6 G
+    PRINTSP                                                     =  6BC3 G
+    PRINTSPALL                                                  =  6B96 G
+    RINK                                                        =  6BBD G
+    ROUTEALL                                                    =  6BD2 G
+    ROUTESP                                                     =  6BCC G
+    SETLIMITS                                                   =  6BDB G
+    SETUPSP                                                     =  6BAB G
+    STARS                                                       =  6BA5 G
+    UMAP                                                        =  6BCF G
+    _3D                                                         =  6BDE G
+  0 _CHAR_CR                                                       0BD7 GR
   0 _DisplayChar                                                   0645 GR
   0 __8BP_3D_1                                                     0031 GR
   0 __8BP_3D_3                                                     000D GR
@@ -111,7 +111,7 @@ Symbol Table
   0 __8BP_stars_inv5                                               03E9 GR
   0 __8BP_umap_6                                                   05CD GR
   0 __8BP_umap_inv6                                                05C1 GR
-  0 ___str_2                                                       0CA4 R
+  0 ___str_2                                                       0CA5 R
   0 __basic_border                                                 0636 GR
   0 __basic_call                                                   078F GR
   0 __basic_draw                                                   0879 GR
@@ -158,7 +158,7 @@ Symbol Table
     _abs                                                           **** GX
   2 _c                                                             0002 GR
   2 _cod                                                           0012 GR
-  0 _comandos_8BP_V41                                              0000 GR
+  0 _comandos_8BP_V42                                              0000 GR
   2 _cor                                                           0010 GR
   2 _e                                                             000C GR
   2 _ex                                                            000E GR
@@ -170,7 +170,7 @@ Symbol Table
   2 _rescol                                                        0014 GR
   0 _reverse                                                       0676 GR
   2 _ruta                                                          001A GR
-  0 _rutina_colision                                               0BD8 GR
+  0 _rutina_colision                                               0BD9 GR
   2 _sp                                                            0006 GR
     _strlen                                                        **** GX
   2 _x                                                             0008 GR
@@ -184,7 +184,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size  CA8   flags    0
+   0 _CODE                                      size  CA9   flags    0
    1 _DATA                                      size   2E   flags    0
    2 _INITIALIZED                               size   1C   flags    0
    3 _DABS                                      size    0   flags    8

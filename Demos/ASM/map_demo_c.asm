@@ -1,4 +1,4 @@
-org 41600
+org 41700
 
 dw 50,20,PLANET_C
 dw 100,40,PLANET_C

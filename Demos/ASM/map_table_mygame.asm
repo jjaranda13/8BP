@@ -70,7 +70,7 @@ let y =50
 let dx=0
 let x=125
 let x=225
-
+;dw y+100,x,CARTEL_ZOOM
 dw y,x,SEGMENT_L0;
 dw y,x+ancho,SEGMENT_R0;
 let y =y+50;100

@@ -34,7 +34,7 @@
 	.globl __8BP_colay_inv2
 	.globl __8BP_colay_inv3
 	.globl __8BP_3D_inv3
-	.globl _comandos_8BP_V41
+	.globl _comandos_8BP_V42
 	.globl _strlen
 	.globl _abs
 	.globl _ruta
@@ -208,38 +208,38 @@ _ruta::
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;8BP_wrapper/8BP.h:103: void comandos_8BP_V41(){
+;8BP_wrapper/8BP.h:103: void comandos_8BP_V42(){
 ;	---------------------------------
-; Function comandos_8BP_V41
+; Function comandos_8BP_V42
 ; ---------------------------------
-_comandos_8BP_V41::
+_comandos_8BP_V42::
 ;8BP_wrapper/8BP.h:133: __endasm;
-	_3D	== 0x6462;
-	ANIMA	== 0x6fc8;
-	ANIMALL	== 0x7714;
-	AUTO	== 0x7180;
-	AUTOALL	== 0x71ce;
-	COLAY	== 0x71fd;
-	COLSP	== 0x73a8;
-	COLSPALL	== 0x75af;
-	LAYOUT	== 0x705e;
-	LOCATESP	== 0x6C6b;
-	MAP2SP	== 0x649e;
-	MOVER	== 0x753c;
-	MOVERALL	== 0x76ee;
-	MUSIC	== 0x6F54;
-	PEEK	== 0x692d;
-	POKE	== 0x6940;
-	PRINTAT	== 0x6069;
-	PRINTSP	== 0x6C8e;
-	PRINTSPALL	== 0x62a6;
-	RINK	== 0x762e;
-	ROUTESP	== 0x65fc;
-	ROUTEALL	== 0x65db;
-	SETLIMITS	== 0x6875;
-	SETUPSP	== 0x70fd;
-	STARS	== 0x743a;
-	UMAP	== 0x5f34;
+	_3D	== 0x6BDE;
+	ANIMA	== 0x6BB7;
+	ANIMALL	== 0x7479;no se usa
+	AUTO	== 0x6BC9;
+	AUTOALL	== 0x6B9C;
+	COLAY	== 0x6BA8;
+	COLSP	== 0x6BBA;
+	COLSPALL	== 0x6B99;
+	LAYOUT	== 0x6BD5;
+	LOCATESP	== 0x6BAE;
+	MAP2SP	== 0x6BA2;
+	MOVER	== 0x6BC0;
+	MOVERALL	== 0x6B9F;
+	MUSIC	== 0x6BD8;
+	PEEK	== 0x6BB1;
+	POKE	== 0x6BB4;
+	PRINTAT	== 0x6BC6;
+	PRINTSP	== 0x6BC3;
+	PRINTSPALL	== 0x6B96;
+	RINK	== 0x6BBD;
+	ROUTESP	== 0x6BCC;
+	ROUTEALL	== 0x6BD2;
+	SETLIMITS	== 0x6BDB;
+	SETUPSP	== 0x6BAB;
+	STARS	== 0x6BA5;
+	UMAP	== 0x6BCF;
 ;8BP_wrapper/8BP.h:134: }
 	ret
 ;8BP_wrapper/8BP.h:137: void _8BP_3D_inv3(int offsety,int sp_fin, int flag)
@@ -1393,7 +1393,7 @@ __8BP_moverall_inv2::
 ; Function _8BP_moverall_2
 ; ---------------------------------
 __8BP_moverall_2::
-;8BP_wrapper/8BP.h:736: _8BP_moverall_inv2(dx,dy);
+;8BP_wrapper/8BP.h:736: _8BP_moverall_2(dx,dy);
 	pop	bc
 	pop	hl
 	push	hl
@@ -1405,7 +1405,7 @@ __8BP_moverall_2::
 	inc	hl
 	ld	b, (hl)
 	push	bc
-	call	__8BP_moverall_inv2
+	call	__8BP_moverall_2
 	pop	af
 	pop	af
 ;8BP_wrapper/8BP.h:737: }
@@ -2201,7 +2201,7 @@ _main::
 	inc	sp
 	call	__8BP_map2sp_1
 	inc	sp
-;ciclo.c:61: _8BP_umap_6(41600,41660,0,1000,0,1000);
+;ciclo.c:61: _8BP_umap_6(41700,41760,0,1000,0,1000);
 	ld	hl, #0x03e8
 	push	hl
 	ld	hl, #0x0000
@@ -2210,9 +2210,9 @@ _main::
 	push	hl
 	ld	hl, #0x0000
 	push	hl
-	ld	hl, #0xa2bc
+	ld	hl, #0xa320
 	push	hl
-	ld	l, #0x80
+	ld	hl, #0xa2e4
 	push	hl
 	call	__8BP_umap_6
 	ld	hl, #12

@@ -1,0 +1,73 @@
+10 MEMORY 19999
+11 CALL &BC02:load "8bp2.bin"
+20 'ON BREAK GOSUB 550
+30 CALL &6B78
+40 DEFINT a-z
+50 ' preparamos juego
+60 MODE 1:BORDER 0: INK 0,0: PEN 1
+70 FOR i=0 TO 31:|SETUPSP,i,0,0:NEXT:'reset sprites
+71 ENT 1,10,10,1
+80 |PRINTSPALL,0,0,1,0
+90 |SETUPSP,31,9,53:'nave
+100 |SETUPSP,31,0,1+32:'printable y colisionador
+110 cod=32:cor=32:|COLSPALL,@cor,@cod
+121 |SETLIMITS,0,80,5,199
+122 |SETUPSP,22,9,51:'muro
+123 |SETUPSP,22,0,2:'collided
+124 |LOCATESP,22,-10,0
+130 c=0: x=40:y=100: e=11:
+131 LOAD "ciclo.bin",20000
+132 |UMAP,41700,41760,0,1000,0,1000:|MAP2SP,1
+133 INPUT "BASIC (1) o C(2)",o:MODE 0
+134 score=0:c$="SCORE:"+STR$(score):|PRINTAT,0,0,40-14,@c$:c$="FPS:":|PRINTAT,0,0,52,@c$
+135 IF o =1 THEN 148
+136 CALL &56B0
+137 '
+138 END
+148 POKE &B8B4,0: POKE &B8B5,0: POKE &B8B6,0: POKE &B8B7,0:'reset timer cpc6128. hace falta pues TIME puede retornar un numero muy grande y puede dar overflow con DEDFINT
+149 t1=TIME
+150 '--- ciclo de juego ---
+160 c=c+1
+170 IF INKEY(27) THEN 190
+180 x=x+1: GOTO 210
+190 IF INKEY(34) THEN 210
+200 x=x-1
+210 IF INKEY(67) THEN 230
+220 y=y-2:GOTO 250
+230 IF INKEY(69) THEN 250
+240 y=y+2
+250 IF c-last<8 THEN 320
+260 IF INKEY(47) THEN 320
+270 sp=23+sp MOD 8: last=c
+280 |SETUPSP,sp,9,48
+290 |SETUPSP,sp,0,1+8+32
+300 |SETUPSP,sp,5,-5,0
+310 |LOCATESP,sp,y-4,x
+311 SOUND 1,10,10,7,0,1
+320 |LOCATESP,31,y,x
+330 |AUTOALL,1:|PRINTSPALL:|COLSPALL
+331 |MAP2SP,(2*c) MOD 300,0
+340 '--- creacion de enemigos ---
+350 IF c AND 63 THEN 450
+351 t2=TIME:fps=19200/(t2-t1):c$=STR$(fps):|PRINTAT,0,0,64,@c$:t1=t2
+360 ex=10+RND*50:r=9+RND*1
+370 FOR i=1 TO 4
+380 e=e+1: IF e=22 THEN e=10
+390 |SETUPSP,e,9,49
+400 |SETUPSP,e,0,128+8+3
+410 |SETUPSP,e,15,r
+420 |LOCATESP,e,-80,ex:|ROUTESP,e,i*6
+430 NEXT
+440 '-- end creacion enemigo ---
+450 |STARS,0,10,4,2,0
+460 IF cor<32 THEN GOSUB 480:'rutina colision
+470 GOTO 160:' --- end ciclo juego
+480 '--- rutina colision ---
+490 ' BORDER 7: CALL &BD19:BORDER 0
+500 IF cor=31 THEN 540 ELSE score=score+10:c$=STR$(score):|PRINTAT,0,0,40,@c$:SOUND 1,2000,10,7,0,0,15
+510 |SETUPSP,cor,7,15:|SETUPSP,cor,0,4+1
+520 IF cod<22 THEN |SETUPSP,cod,7,15:|SETUPSP,cod,0,4+1:BORDER 7: CALL &BD19:BORDER 0 
+530 RETURN
+540 '--- fin ---
+550 b$=INKEY$:IF b$<>"" THEN 550
+560 |MUSIC
