@@ -10,10 +10,10 @@ IMAGE_LIST
 ; no hace falta que la lista tenga 255 elementos. es de longitud variable, incluso puede estar vacia
 ;----------------------------------------------------------------------------------------------
 dw SOLDADO_R0; 16
-dw SOLDADO_R1;16 piernas abiertas
-dw SOLDADO_R2;17
-dw DISPARO;18
-dw SOLDADO_L0;19
+dw SOLDADO_R1;17 piernas abiertas
+dw SOLDADO_R2;18
+dw DISPARO;19
+
 
 
 ; ahora las imagenes

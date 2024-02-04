@@ -5,16 +5,24 @@
 
 ; DESDE LA V42 EXISTEN "OPCIONES" DE ENSAMBLAJE
 ; ------------------------------------------------
-; ASSEMBLING_OPTION = 0 --> todos los comandos disponibles. 
-
+; ASSEMBLING_OPTION = 0 --> todos los comandos disponibles. MEMORY 23500
+;			    para salvar libreria +graficos+ musica
+;                           SAVE "8BP0.bin",b,23500,19119
+;
 ; ASSEMBLING_OPTION = 1 --> para juegos de laberintos. MEMORY 25000
 ; 			    disponibles los comandos |LAYOUT, |COLAY  
+;			    para salvar libreria +graficos+ musica
+;                           SAVE "8BP1.bin",b,25000,17619
 ;
 ; ASSEMBLING_OPTION = 2 --> para juegos con scroll, MEMORY 24800                          
 ;		            disponibles los comandos |MAP2SP, |UMA
+;			    para salvar libreria +graficos+ musica
+;                           SAVE "8BP2.bin", b,24800,17819
 ;
 ; ASSEMBLING_OPTION = 3 --> para juegos pseudo 3D , MEMORY 24000 
 ; 			    disponible comando |3D
+;			    para salvar libreria +graficos+ musica
+;                           SAVE "8BP3.bin", b,24000,18619
 ;
 ; ASSEMBLING_OPTION = 4 --> uso futuro
 

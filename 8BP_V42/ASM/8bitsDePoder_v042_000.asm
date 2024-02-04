@@ -106,9 +106,12 @@
 ;
 ; las funciones usables desde basic las denoto con etiquetas asm con formato  "_<function name>"
 ; ===============================================================================================================
+; DESDE LA V42 EXISTEN "OPCIONES" DE ENSAMBLAJE
+; consulta make_all_my_game.asm o el manual para conocer las opciones, los memory a usar, y los 
+; parametros del comando SAVE para cada opcion.
 ;
 ;
-; ASSEMBLONG OPTIONS
+; ASSEMBLING OPTIONS
 ;---------------------
 ; scrolling se pone a true en opciones 0 (all) , 2 (scroll), 3 (3d)
 ; scrolling es 0 false en opcion 1 (layout)

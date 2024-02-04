@@ -1,4 +1,4 @@
-10 memory 24800
+10 memory 24799
 11 MODE 0
 12 load "8bp2.bin"
 13 on break gosub 300
