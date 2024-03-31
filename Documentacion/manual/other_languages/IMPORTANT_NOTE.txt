@@ -1,0 +1,8 @@
+courtesy of The Electric Monk
+
+please be careful with these translations.
+it have been produced by an automatic tool, not humans
+There are clear mistakes, mainly in source code examples, in which sometimes the tool translate the commands. 
+Therefore it is convenient to consult the examples in the Spanish version
+
+enjoy!
