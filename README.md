@@ -78,6 +78,14 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+31/03/2024 ACTUALIZACION V42_00 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+- manual:
+	- ahora contiene una carpeta llamada "other languages" con versiones del manual en aleman, ingles, frances y griego. Es una contribucion de "the Electrinc Monk". Son versiones creadas de forma automatica con una herramienta, de modo que contienen algunos errores, sobre todo en los ejemplos de codigo fuente, donde a veces la herramienta trata de traducir los comandos. Es conveniente consultar los ejemplos en la version en espanol
+
+
 24/06/2023 ACTUALIZACION V42_00 (retrocompatible)
 ==============================================
 he actualizado el respositorio con los siguientes cambios
