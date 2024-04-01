@@ -112,10 +112,10 @@ he actualizado el respositorio con los siguientes cambios
 
 - manual: incorpora las siguientes mejoras:
 	- explicacion mejorada de las tintas que se deben usar al editar sprites con sobreescritura
-	- explicacion mejorada del problema y soluciones de de memory full
+	- explicacion mejorada del problema y soluciones de memory full
 	
 - SPEDITv15:
-	- corregido un bug (que solo afactaba a la v15) que daba error al cargar una paleta
+	- corregido un bug (que solo afectaba a la v15) que daba error al cargar una paleta
 
 
 20/06/2022 ACTUALIZACION V41_05 (retrocompatible)
