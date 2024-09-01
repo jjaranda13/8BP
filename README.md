@@ -78,6 +78,20 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+1/09/2024 ACTUALIZACION V42_001 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios
+
+- manual
+  	- he actualizado el capitulo de scroll, con dos apartados nuevos:
+  	  	- magenes dinamicas en tu mapa: crear imagenes en el mapa dinamicamente desde tu programa
+  	  	- imagenes animadas en tu mapa: hacer que una imagen del mapa cambie de frame a frame
+- libreria
+	- hasta ahora era posible crear imagenes en el mapa usando direcciones de imagen o bien identificadores de imagen de la IMAGE_LIST pero en caso de usar identificadores, los comandos COLSP y COLSPALL dejaban de funcionar. Esto ha sido corregido y ademas ahora son mas rapidos y la libreria ocupa unos pocos bytes menos.
+   	- para facilitar la programacion de mapas dinamicos se ha guardado la direccion de IMAGE_LIST en una direccion fija que se puede consultar desde tu programa BASIC o C. Es la direccion 27617
+
+   
+
 31/03/2024 ACTUALIZACION V42_00 (retrocompatible)
 ==============================================
 he actualizado el respositorio con los siguientes cambios
