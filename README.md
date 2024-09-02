@@ -80,7 +80,7 @@ The improvements that are incorporated will be backwards compatible so your game
 
 1/09/2024 ACTUALIZACION V42_001 (retrocompatible)
 ==============================================
-he actualizado el respositorio con los siguientes cambios
+he actualizado el repositorio con los siguientes cambios
 
 - manual
   	- he actualizado el capitulo de scroll, con dos apartados nuevos:
