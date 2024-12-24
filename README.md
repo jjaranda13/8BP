@@ -78,6 +78,13 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+24/12/2024 ACTUALIZACION V42_002 (retrocompatible)
+==============================================
+he actualizado el wrapper de 8BP para programar en C (el fichero 8bp.h) para corregir un bug en la funcion _8BP_moverall_2
+este bug lo he corregido gracias que mi amigo fito lo ha detectado. 
+
+
+
 1/09/2024 ACTUALIZACION V42_001 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
