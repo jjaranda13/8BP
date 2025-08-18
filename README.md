@@ -78,6 +78,32 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+18/08/2025 ACTUALIZACION V43_00 (retrocompatible)
+==============================================
+he actualizado el repositorio con los siguientes cambios
+- libreria
+	- soporte de doble clipping horizontal
+	- nuevo flag de borrado. Se activa con PRINTSP,33,1 y se desactiva con PRINTSP,33,0. Con el flag activo tanto PRINTSP como PRINTSPALL borran los sprites. Este mecanismo funciona tambien con sprites que tienen sobreescritura
+ 	- nuevo modo de ensamblaje ASSEMBLING_OPTION = 4 que permite prescindir de layout y scroll, y que te deja 25300 bytes para tu codigo y 500 bytes mas para tus sprites
+	- mas memoria disponible en el modo de ensamblaje cero. Antes eran 23500 y ahora son 23600 bytes
+ 	- corregido bug en ANIMASP
+
+- demos:
+	- loader nuevo con dos paginas de demos
+ 	- dos demos nuevas (una de doble clipping y otra de flag de borrado)
+
+- documentacion
+	- manual actualizado:
+ 		- aclarado uso de 3 parametros en PRINTSPALL
+   		- aclarado un poco mas el sonido on-game
+		- descripcion del nuevo modo de ensamblaje (ahora hay 4 modos)
+  		- nuevo mapa de memoria con algo mas de memoria disponible en modo de ensamblaje cero
+		- explicacion del flag de borrado (seccion 8.8)
+		- clipping doble horizontal, aclarado en descripcion de SETLIMITS
+
+ 
+
+
 24/12/2024 ACTUALIZACION V42_002 (retrocompatible)
 ==============================================
 he actualizado el wrapper de 8BP para programar en C (el fichero 8bp.h) para corregir un bug en la funcion _8BP_moverall_2
