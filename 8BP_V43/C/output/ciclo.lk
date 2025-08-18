@@ -1,0 +1,9 @@
+-mjwx
+-i output\ciclo.ihx
+-b _CODE = 0x4e20
+-b _DATA = 0x0000
+-k C:\Program Files\SDCC\bin\..\lib\z80
+-l z80
+output\ciclo.rel
+
+-e

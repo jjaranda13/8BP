@@ -23,14 +23,8 @@ org 27000
 read "sprites_table_mygame.asm"
 
 org 42040; 
-ifnot ASSEMBLING_OPTION =4
 ;----------------- MAPA DEL MUNDO para demo 3d (400bytes) ------------------------
-read "map_table_mygame.asm"
-
-;----------------- MAPA DEL MUNDO para demo scroll (400bytes) ------------------------
-read "map_scroll_demo.asm"
-
-;----------------- MAPA DEL MUNDO para demo c (200bytes) ------------------------
-read "map_demo_c.asm"
-
+ifnot ASSEMBLING_OPTION =4
+  read "map_table_mygame.asm"
 endif
+

@@ -1,0 +1,286 @@
+ManageDsk
+---------
+
+Gestionnaire de fichiers DSK.
+Permet de manipuler des fichier .DSK comme des disquettes virtuelles.
+
+L'utilisation est assez simple :
+les 3 boutons en bas de l'interface permettent respectivement :
+- Bouton "Créer DSK" : Crée une disquette virtuelle vierge au format DATA
+- Bouton "Lire DSK" : Charge un fichier DSK en tant que disquette virtuelle
+- Bouton "Sauver DSK" : Sauvegarde de la disquette virtuelle dans un fichier
+    au format DSK
+
+La fenêtre centrale affiche un résumé des fichiers présents sur la disquette
+virtuelle, avec :
+- Le nom du fichier,
+- Le numéro d'User,
+- L'attribut de protection en écriture,
+- L'attribut de fichier caché,
+- Le type du fichier,
+- La taille du fichier.
+Pour obtenir plus d'informations sur un fichier, il suffit de faire un
+"click droit sur celui-ci". Une pop-up apparaît alors avec les informations
+sur le fichier sélectionné. Depuis cette popup, il est possible de modifier
+directement certains paramètres du fichier comme :
+Son adresse de début,
+Son point d'entrée,
+Ses attributs (lecture seule et fichier caché).
+
+Les boutons en dessous de la fenêtre permettent la manipulation des fichiers :
+- Bouton "Ajouter Fichier(s)" : Permet l'ajout de 1 ou plusieurs fichiers sur
+la disquette virtuelle. La sélection de plusieurs fichiers se fait à l'aide
+de l'interface standard de windows (Touche CTRL maintenue enfoncée).
+- Bouton "Exporter Fichier(s)" : Permet d'extraire de la disquette virtuelle
+1 ou plusieurs fichiers. Il suffit de sélectionner dans la fenêtre le ou les
+fichiers à exporter (en maintenant la touche CTRL enfoncée dans le cas de
+plusieurs fichiers) puis de cliquer sur le bouton. On pourra renommer chaque
+fichiers avant l'export.
+- Bouton "Renommer Fichier(s)" : Permet de renommer 1 ou plusieurs fichiers de
+la disquette virtuelle. Il suffit de sélectionner dans la fenêtre le ou les
+fichiers à exporter (en maintenant la touche CTRL enfoncée dans le cas de
+plusieurs fichiers) puis de cliquer sur le bouton. On pourra alors modifier
+le nom du fichier et le numéro d'User.
+- Bouton "Supprimer Fichier(s)" : Permet de supprimer 1 ou plusieurs fichiers
+de la disquette virtuelle. Il suffit de sélectionner dans la fenêtre le ou les
+fichiers à exporter (en maintenant la touche CTRL enfoncée dans le cas de
+plusieurs fichiers) puis de cliquer sur le bouton. Une confirmation de
+suppression sera demandée pour chaque fichiers.
+
+La case à cocher "nettoyage automatique des en-têtes au format AMSDOS" permet
+de vider (remplir avec des zéros) les octets inutilisés dans l'en-tête AMSDOS
+des fichiers basic ou BINAIRE. Cette option permet de gagner de la place lors
+de la compression d'un fichier DSK au format ZIP par exemple.
+Cette option fonctionne dans les deux sens : à l'importation de fichiers dans
+la disquette virtuelle et à l'exportation vers le disque dur du PC.
+
+Ligne de commande
+-----------------
+
+Depuis la version 0.8, ManageDsk peut s'utiliser depuis la ligne de commande,
+ou depuis un fichier batch (.BAT ou .CMD) : si il est lancé avec un ou
+plusieurs arguments, il n'ouvre pas l'interface, mais exécute les fonctions
+qui sont précisés sur la ligne de commande.
+Les paramètres acceptés par la ligne de commande sont les suivants :
+-Lnomdsk : permet de lire un fichier DSL.
+-C : permet de créer un DSK vierge
+-Amasquenomfichier : permet d'ajouter un ou plusieurs fichiers sur le .DSK.
+Les fichiers sont ajoutés tel quel, sans création/modification de l'en-tête
+amsdos éventuelle qu'ils pourraient contenir.
+-Snomdsk : permet de sauvegarder le dsk sous un nom particulier
+-IChemincompletfichier/fichierCPC/type/debut/execution : permet d'ajouter un fichier en
+spécifiant les informations à écrire dans l'en-tête amsdos: type du fichier,
+adresse de début et point d'entrée (adresse d'exécution).
+Exemples :      -IC:\MONFICHIER/TOTO.BIN/BIN/16384/16384
+                -I"D:\documents and settings\toto\mon ecran.src"/ECRAN.SCR/BIN/49152
+                -IC:\testbasic/PROG.BAS/BAS/368
+                -IC:\fichierbidon/test/ASCII
+Pour les fichiers ascii, nul besoin d'indiquer adresse de debut et exécution.
+		
+
+Les arguments peuvent se suivre sur la ligne de commande, et doivent être
+séparés par des espaces.
+
+Voici un exemple typique de création d'un dsk, ajout de fichiers binaires, puis
+sauvegarde de ce dsk sous le nom de toto.dsk :
+
+ManageDsk -C -A*.BIN -Stoto.dsk
+
+Autre exemple : Lecture d'un dsk, ajout de fichiers .BAS et .BIN,
+puis sauvegarde :
+
+ManageDsk -LOld.dsk -A*.BAS -A*.BIN -SNew.dsk
+
+Remarque :
+- chaque commande (argument) commence par le caractère '-' (caractère moins)
+- Les options des commandes (noms de fichiers) doivent être accolés à la
+commande (pas d'espaces)
+- Les commandes peuvent être entrés en majuscules ou en minuscules.
+- pour le moment, 5 commandes sont connues :
+    -L : Lecture DSK
+    -C : Création DSK
+    -A : Ajout fichiers sur DSK
+    -S : Sauvegarde DSK
+    -I : Ajout d'un fichier en spécifiant éventuellement les paramètres de l'en-tête AMSDOS
+
+Lecture/écriture directe sur disquette 3,5 pouces
+-------------------------------------------------
+Depuis la version 0.15, ManageDsk est capable de lire/écrire directement sur
+des disquettes 3,5 pouces. Ceci permet par exemple de :
+- lire une disquette 3,5 pouces et créer le DSK correspondant,
+- lire un fichier dsk et l'écrire sur disquette 3,5 pouces pour pouvoir 
+    utiliser la disquette 3,5 pouces sur CPC
+Ceci est possible grace à l'utilisation du driver fdrawcmd.sys de Simon Owen.
+Il est donc nécessaire d'installer ce driver pour pouvoir utiliser ces 
+nouvelles fonctions de lecture/écriture directe.
+fdrawcmd.sys n'est pas livré dans l'archive, mais est disponnible gratuitement
+à l'adresse suivante : http://simonowen.com/fdrawcmd
+
+
+Gestion versions
+----------------
+
+Version 0.6 (25/02/2005)
+------------------------
+Corrections apportées :
+- Possibilité de minimiser l'interface
+- Import ASCII : quand forcé en ASCII, supprime l'en-tête amsdos si elle existe
+- Importation d'un fichier ASCII en mode 'choix utilisateur', si passage en 
+binaire, ajout de l'en-tête amsdos
+- Ajout bouton "sauver sous" et modification du bouton "sauver dsk" qui
+sauve directement le fichier existant en l'écrasant.
+
+Version 0.7 (26/02/2005)
+------------------------
+Corrections apportées :
+- Problème de sauvegarde de la table des répertoires sur disquette avec des
+secteurs entrelacés fixé.
+
+Version 0.8 (02/03/2005)
+------------------------
+- Possibilité de modifier les attributs "Lecture seule" et "Cachés" de chaque
+fichiers présents sur un .DSK
+- Gestion de la ligne de commande (utile pour les fichiers batch)
+
+
+Version 0.9 (07/03/2005)
+------------------------
+- Correction d'un bugg lors de l'affichage des infos sur un fichier ASCII
+- Ajout du "double click" sur un fichier, qui a la même fonctionnalité que
+le "click droit"
+- Possibilité de changer le type d'un fichier
+- Visualiseur de secteurs
+
+Version 0.10 (13/03/2005)
+-------------------------
+- Séparation des modes d'import et d'export
+- Evite de considérer un fichier commençant par 128 octets à zéro comme ayant
+une en-tête amsdos (petit bugg...)
+
+Version 0.11 (29/03/2005)
+-------------------------
+- Ajout d'un visualiseur de fichiers en mode hexa ou basic si le fichier est
+détecté en tant que tel, et mode mémoire vidéo écran cpc.
+- Correction d'un petit bugg lors de la création de l'en-tête amsdos pour les
+fichiers comportant des chiffres dans le nom.
+
+Version 0.12 (04/04/2005)
+-------------------------
+- Possibilité de modifier la hauteur/largeur de l'affichage dans le viewer de
+fichiers en mode mémoire vidéo écran cpc (mode "à plat")
+- Possibilité de sauvegarder l'affichage à l'écran dans le mode mémoire vidéo
+cpc (mode "à plat")
+- Correction d'un petit bugg lors de l'importation de fichiers contenant une
+en-tête amsdos dont on veut modifier les paramètres (début/point d'entrée)
+
+Version 0.12b (05/04/2005)
+--------------------------
+- Suppression d'un petit bugg dans le viewer de fichiers : l'en-tête Amsdos
+était incluse dans la visualisation
+
+Version 0.12c (15/04/2005)
+-------------------------
+- Force le nombre de pistes à 40 si celui-ci est supérieure à 40 lors de la
+lecture d'un fichier .DSK
+
+Version 0.13 (14/11/2005)
+-------------------------
+- Prise en compte du format spécial du PCW (9 secteurs de 1 à 9).
+- Interdiction de copier plusieurs fois le même fichier sur une disquette.
+- Correction d'un bugg de sauvegarde des fichiers images au format EXTDSK.
+
+Version 0.14 (19/11/2005)
+-------------------------
+- Visualisation possible des fichier au format Dams ou format désassemblé.
+
+Version 0.14b (02/12/2005)
+-------------------------
+- Permettre de créer des disquettes de plus de 42 pistes (utiliser les blocs
+AMSDOS jusqu'à 255 au lieu de 188).
+- Ajout confirmation en lecture et en sortie lorsque la dernière disquette
+modifiée n'a pas été sauvegardée.
+
+Version 0.14c (04/01/2006)
+--------------------------
+- Ajout du nom du fichier dans la fenêtre de visualisation.
+- Correction d'un petit bugg d'affichage de la longueur d'un fichier sur un
+click droit.
+- Correction d'un bugg d'affichage dans le désassembleur.
+- Correction d'un bugg d'affichage des valeurs flottantes dans le viewer basic.
+
+Version 0.14d (non releasée)
+----------------------------
+- Correction d'un bugg dans le déssassembleur (instructions #DD/#FD #CB ...).
+- Correction d'un bugg d'affichage dans le viewer en mode "listing".
+
+Version 0.15 (15/08/2006)
+-------------------------
+- Correction de certains textes restés en Français dans l'interface.
+- Ajout d'un caractère '_' après un label "réservé" (READ, WRITE, END) en mode
+"dams".
+- Gestion simultanée de deux fichiers DSK.
+- Possibilité de modifier la hauteur/largeur en visualisation écran "standard".
+- Possibilité de modifier la palette en visualisation écran.
+- Options de lecture/écriture directe vers une disquette 3,5 pouces
+
+Version 0.15b (21/08/2006)
+--------------------------
+- Correction du bug du bouton "annuler" dans l'écriture directe vers A:
+- Correction bugs du viewer de listings sur des fichiers BASIC/ASCII
+- Conversion automatiques des caractères accentués CPC vers PC (mode listing)
+- Export possible de listings en mode texte
+- Entrelacement des fichiers .DSK non entrelacé sur demande.
+- Affichage des fichier .WIN d'OCP
+- Lecture automatique du fichier .PAL correspondant à un fichier .SCR ou à un
+fichier .WIN en mode visu "écran".
+- Affichage automatique fichiers BASIC, .WIN ou .SCR
+
+Version 0.15c (15/09/2006)
+--------------------------
+- Correction du bug du run"xxx dans le viewer basic.
+- Correction d'un bug qui faisait planter le mode viewer Dams (dépassement du
+nombre de caractères dans un label)
+- Correction d'un bug sur la lecture des secteurs de taille != 2 
+- Affichage des listings en basic protégés (décryptés)
+- Passage de la limite de la taille écran de 80 colonnes à 128 colonnes (dans
+le viewer en mode mémoire vidéo cpc).
+
+Version 0.16 (24/12/2006)
+--------------------------
+- Correction du bug d'accès au drives 5"1/4 (problème du signal READY)
+- Correction d'un bug lors de l'écriture de secteurs de taille != 2
+- Possibilité de visualiser les fichiers sur des DSK non "standards"
+- Possibilité de visualiser des fichiers de plus de 64Ko
+- Possibilité de sauvegarder un fichier au format DAMS en fichier texte via
+le viewer de fichiers.
+
+Version 0.17 (06/05/2010)
+------------------------
+- Correction du bug lors du formatage d'un DSK
+- Correction du bug sur les noms de fichiers non standard
+
+Version 0.18 (28/07/2010)
+-------------------------
+- Ajout de l'option -I en ligne de commande
+- Ajout d'un bouton "Comparer" qui permet la comparaison de deux DSKs ou
+des fichiers présents sur deux DSKs
+
+Version 0.19 (xx/12/2010)
+-------------------------
+- Localisation du programme en Espagnol
+- Correction du bug de changement du numéro d'user d'un fichier
+- Correction du bug d'affichage (actualisation liste fichiers) de la fonction 
+"Voir directory
+
+Remerciements à Ramlaid, pour son autorisation d'utiliser le code de
+DamsConverter, ainsi qu'à Targhan, et Longshot pour leurs nombreux buggs-report,
+à Simon Owen pour son fdrawcmd.sys, à Lex Sparrow pour sa traduction en Espagnol,
+et à tous les utilisateurs !
+
+
+Pour toute informations complémentaires, rapport de buggs ou autre, envoyez
+moi un message à l'adresse suivante :
+
+ludovic.deplanque(at)libertysurf(point)fr
+
+ou allez visiter ma page web : http://demoniak-contrib.forumactif.com

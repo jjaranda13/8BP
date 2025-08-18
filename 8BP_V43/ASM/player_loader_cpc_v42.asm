@@ -79,8 +79,6 @@ TABLA_SONG:     DW      SONG_0
 read "WYZPROPLAY47c_CPC_winape_v42.asm" ; he movido algunas variables de segmentos ocultos aqui por detectar efectos en screen
 _END_PLAYERWYZ
 
-
-
 _END_CODE
 ;org _SCREEN_4_BEGIN
 ;BUFFER_DEC     DS      48		;************************* mucha atencion!!!!
