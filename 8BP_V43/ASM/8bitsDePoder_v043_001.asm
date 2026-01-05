@@ -108,7 +108,7 @@
 ; ===============================================================================================================
 ;
 ;
-; ASSEMBLONG OPTIONS
+; ASSEMBLING OPTIONS
 ;---------------------
 ; scrolling se pone a true en opciones 0 (all) , 2 (scroll), 3 (3d)
 ; scrolling es 0 false en opcion 1 (layout)
@@ -1872,7 +1872,7 @@ PSTR_transp	inc de
 		inc hl
 		;dec b
 		;jr nz, PSTR_scanh	
-		djnz, PSTR_scanh; opt
+		djnz PSTR_scanh; opt
 		ret
 
 
@@ -2436,7 +2436,7 @@ m1PTR2_pinta	ld (DE), a
 
 m1PTR2_transp	inc de
 		inc hl
-		djnz,m1PTR2_scanh; opt
+		djnz m1PTR2_scanh; opt
 		jP PNT_PAINTED
 
 ;=============================================================================
@@ -2522,7 +2522,7 @@ m1PNTF_transp	inc de
 		
 		;dec b
 		;jp nz, PNTF_scanh
-		djnz,m1PNTF_scanh; opt
+		djnz m1PNTF_scanh; opt
 
 		; reajuste final de HL
 		ld a,(SPR_anchofinal)
@@ -5627,7 +5627,7 @@ PTR2_pinta	ld (DE), a
 
 PTR2_transp	inc de
 		inc hl
-		djnz,PTR2_scanh; opt
+		djnz PTR2_scanh; opt
 		jr PNT_PAINTED
 
 
@@ -5700,7 +5700,7 @@ PNTF_transp	inc de
 		
 		;dec b
 		;jp nz, PNTF_scanh
-		djnz,PNTF_scanh; opt
+		djnz PNTF_scanh; opt
 
 		; reajuste final de HL
 		ld a,(SPR_anchofinal)
@@ -5747,7 +5747,7 @@ PNTFN_transp	inc de
 		;dec b
 		;jp nz, PNTFN_scanh
 
-		djnz,PNTFN_scanh; opt
+		djnz PNTFN_scanh; opt
 
 		; reajuste final de HL
 		ld a,(SPR_anchofinal)

@@ -2,7 +2,7 @@
 ; deberia ser al menos donde acaba el codigo de 8bp y del player, comprobando
 ; donde se ensambla la etiqueta _END_CODE. 
 ; 
-; tras ensamblarlo, salvalo con save "musica.bin",b,32200,1400 
+; tras ensamblarlo, salvalo con save "musica.bin",b,32100,1500 
 
 org 32100 ; hasta 33600 tenemos 1.5KB desde v42
 ;--------------------MUSICA------------------------------------
