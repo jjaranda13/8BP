@@ -78,6 +78,19 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+05/01/2026 ACTUALIZACION V43_01 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios (gracias a la ayuda de adolfito!)
+- libreria : he actualizado los siguientes ficheros
+	- make_all_my_game : comentarios reparados
+ 	- 8bp_v43_001.asm: quitadas comas en DJNZ y algunos comentarios reparados
+  	- make_musica_mygame.asm: un comentario reparado
+  	- WYZ player: se ha cambiado un DB por un DW, ya que habia un minibug inocuo pero necesario corregir
+
+- documentacion:
+	- manual: diversos cambios menores, y sobre todo el apartado 20.4 donde se hablaba de la direccion 24000 como inicio de 8bp, que ahora depende del modo de ensamblaje
+
+
 18/08/2025 ACTUALIZACION V43_00 (retrocompatible)
 ==============================================
 he actualizado el repositorio con los siguientes cambios
