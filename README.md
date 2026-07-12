@@ -78,6 +78,14 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+12/07/2026 ACTUALIZACION V43_01 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios (gracias a la ayuda de adolfito!)
+- documentacion:
+	- manual: he mejorado el capitulo de arquitectura del amstrad, explicando el fenomeno de la contención y como se lee el teclado a traves del chip de sonido
+
+ 
+
 05/01/2026 ACTUALIZACION V43_01 (retrocompatible)
 ==============================================
 he actualizado el respositorio con los siguientes cambios (gracias a la ayuda de adolfito!)
