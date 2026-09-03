@@ -78,6 +78,13 @@ Download the ZIP and you will find:
 
 The improvements that are incorporated will be backwards compatible so your game you can always upgrade to the latest version of the library. The library will be alive and always will distribute free upgrades and documentation and games. Everything will always be available to all. That's the spirit. To share creations makes them meaningful 
 
+03/09/2026 ACTUALIZACION V43_02 (retrocompatible)
+==============================================
+he actualizado el respositorio con los siguientes cambios 
+- libreria : he actualizado los siguientes ficheros
+	- 8bp_v43_002.asm: incluye una correccion del comando PRINTSPALL cuando se usan 4 parametros. Habia un bug que impedia que el primer parametro fuese >16
+   
+
 12/07/2026 ACTUALIZACION V43_01 (retrocompatible)
 ==============================================
 he actualizado el respositorio con los siguientes cambios (gracias a la ayuda de adolfito!)
