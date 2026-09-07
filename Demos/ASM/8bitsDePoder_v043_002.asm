@@ -2885,6 +2885,10 @@ PAT_fin
 ;=============================================================================================================
 ; _PRINT_SPRITES(spriteid_final_orden, anima, sync)   PS2
 ; desde BASIC es |PRINTSPALL
+;|PRINTSPALL, ini, fin, anima, sync
+;|PRINTSPALL, ordermode
+;|PRINTSPALL
+
 ;=============================================================================================================
 ; esta rutina pinta todos los sprites activos
 ; puede sincronizar si se lo indicamos con sync!=0
@@ -2960,17 +2964,28 @@ PS2_check3param
 		JR Z,PS2_3param
 
 PS2_4param	; si estamos aqui es que hay 4 param
-		ld a, (IX+6)
+		ld l, (IX+6)
+		ld h, 0
+		add hl, hl; *2
+		add hl, hl;*4
+		add hl, hl;*8
+		add hl, hl;*16
+		ld de, 27000
+		add hl, de
+		ld (SOR_DIRSTART), hl
+;		nop ;xor a; acarreo a cero. es imprescindible. BASTA UN NOP!!!
+
+;		ld a, (IX+6)
 		; a=a*16
-		add a,a; *2
-		add a,a;*4
-		add a,a;*8
-		add a,a;*16
-		ld c,a
-		ld b,0	
-		ld HL,27000
-		add hl,bc
-		ld (SOR_DIRSTART),HL
+;		add a,a; *2
+;		add a,a;*4
+;		add a,a;*8
+;		add a,a;*16
+;		ld c,a
+;		ld b,0	
+;		ld HL,27000
+;		add hl,bc
+;		ld (SOR_DIRSTART),HL
 		
 
 PS2_3param	; si estamos aqui  es que hay 3 parametros 
@@ -8899,7 +8914,7 @@ M2S_PNTS_tr
 
 		ret
 
-M2S_no1
+M2S_no1 ; ("no1" es "no ha llegado un solo parametro"
 
 		; lectura de margen Y
 		ld hl,(_MAP_TABLE); justo aqui se encuentra el max alto
@@ -8917,7 +8932,7 @@ M2S_no1
 		ld hl,(M2S_ANCHOVISIBLE); 
 
 		and a
-		sbc hl,bc ; al restar un numero negativo es como sumarlo
+		sbc hl,bc ; al restar un numero negativo es como sumarlo M2SXMARGIN=M2S_ANCHOVISIBLE+M2SXoffset
 		ld (M2SXMARGIN),hl
 		
 		ld HL,_SPR_SPRITES_TABLE
@@ -8942,7 +8957,7 @@ M2S_2param
 		;---------
 
 		ld hl,(M2SXoffset); este offset es negativo o cero
-		add hl,bc; por lo tanto esto es una resta
+		add hl,bc; por lo tanto esto es una resta. HL contiene la coord mas pequena valida para considerar un sprite
 		
 		; comprobamos 3d por si hay que restar 160 al xo
 		;---------------------------------------------
@@ -8954,7 +8969,7 @@ M2S_2param
 
 
 M2S_xo
-		ld (M2S_Xorig),hl
+		ld (M2S_Xorig),hl; ahora M2S_Xorig contiene la coord mas pequena valida para considerar un sprite
 
 		
 		; origen Y
